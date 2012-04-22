@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -58,9 +58,15 @@ and record the reflected signal. This signal is then processed to extract the
 distance between the lidar system and the target.</p>
 <p>Topographical lidar systems are such systems embedded in airborne
 platforms. They measure distances between the platform and the Earth, so as to
-deliver information on the Earth&#8217;s topography (see <a class="reference internal" href="#mallet09">[Mallet09]</a> for more details).</p>
+deliver information on the Earth&#8217;s topography (see <a class="footnote-reference" href="#mallet" id="id1">[1]</a> for more details).</p>
+<table class="docutils footnote" frame="void" id="mallet" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Mallet, C. and Bretar, F. Full-Waveform Topographic Lidar: State-of-the-Art. <em>ISPRS Journal of Photogrammetry and Remote Sensing</em> 64(1), pp.1-16, January 2009 <a class="reference external" href="http://dx.doi.org/10.1016/j.isprsjprs.2008.09.007">http://dx.doi.org/10.1016/j.isprsjprs.2008.09.007</a></td></tr>
+</tbody>
+</table>
 <p>In this tutorial, the goal is to analyze the waveform recorded by the lidar
-system <a class="footnote-reference" href="#data" id="id2">[1]</a>. Such a signal contains peaks whose center and amplitude permit to
+system <a class="footnote-reference" href="#data" id="id2">[2]</a>. Such a signal contains peaks whose center and amplitude permit to
 compute the position and some characteristics of the hit target. When the
 footprint of the laser beam is around 1m on the Earth surface, the beam can hit
 multiple targets during the two-way propagation (for example the ground and the
@@ -87,7 +93,7 @@ Gaussian functions.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
-<div align="center" class="align-center"><img alt="../../_images/waveform_1.png" class="align-center" src="../../_images/waveform_1.png" /></div>
+<img alt="../../_images/waveform_12.png" class="align-center" src="../../_images/waveform_12.png" />
 <p>As you can notice, this waveform is a 80-bin-length signal with a single peak.</p>
 </div>
 <div class="section" id="fitting-a-waveform-with-a-simple-gaussian-model">
@@ -164,7 +170,7 @@ following arguments:</p>
 that contains three significant peaks. You must adapt the model which is
 now a sum of Gaussian functions instead of only one Gaussian peak.</li>
 </ul>
-<div align="center" class="align-center"><img alt="../../_images/waveform_2.png" class="align-center" src="../../_images/waveform_2.png" /></div>
+<img alt="../../_images/waveform_22.png" class="align-center" src="../../_images/waveform_22.png" />
 <ul>
 <li><p class="first">In some cases, writing an explicit function to compute the Jacobian is faster
 than letting <tt class="docutils literal"><span class="pre">leastsq</span></tt> estimate it numerically. Create a function to compute
@@ -186,13 +192,7 @@ add is the sign of our variables (which are all positive).</p>
 <table class="docutils footnote" frame="void" id="data" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>The data used for this tutorial are part of the demonstration data available for the <a class="reference external" href="http://fullanalyze.sourceforge.net">FullAnalyze software</a> and were kindly provided by the <a class="reference external" href="http://www.ore.fr/rubrique.php3?id_rubrique=24">GIS DRAIX</a>.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="mallet09" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Mallet09]</a></td><td>Mallet, C. and Bretar, F. Full-Waveform Topographic Lidar: State-of-the-Art. <em>ISPRS Journal of Photogrammetry and Remote Sensing</em> 64(1), pp.1-16, January 2009 <a class="reference external" href="http://dx.doi.org/10.1016/j.isprsjprs.2008.09.007">http://dx.doi.org/10.1016/j.isprsjprs.2008.09.007</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>The data used for this tutorial are part of the demonstration data available for the <a class="reference external" href="http://fullanalyze.sourceforge.net">FullAnalyze software</a> and were kindly provided by the <a class="reference external" href="http://www.ore.fr/rubrique.php3?id_rubrique=24">GIS DRAIX</a>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -219,7 +219,7 @@ add is the sign of our variables (which are all positive).</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

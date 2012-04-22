@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -72,11 +72,11 @@ called <strong>test.py</strong></p>
 interpreter. This is maybe the most common use of scripts in scientific
 computing.</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>in Ipython, the syntax to execute a script is <tt class="docutils literal"><span class="pre">%run</span>
 <span class="pre">script.py</span></tt>. For example,</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
 <span class="go">Hello</span>
 <span class="go">how</span>
@@ -115,13 +115,13 @@ you?
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Don&#8217;t implement option parsing yourself. Use modules such as
-<a class="reference external" href="http://docs.python.org/2.7/library/optparse.html#module-optparse" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">optparse</span></tt></a>.</p>
+<a class="reference external" href="http://docs.python.org/2.7/library/optparse.html#optparse" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">optparse</span></tt></a>.</p>
 </div>
 </div>
 <div class="section" id="importing-objects-from-modules">
 <h2>1.2.6.2. Importing objects from modules<a class="headerlink" href="#importing-objects-from-modules" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">os</span>
+<div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="gp">In [2]: </span><span class="n">os</span>
 <span class="go">Out[2]: </span><span class="o">&lt;</span><span class="n">module</span> <span class="s">&#39;os&#39;</span> <span class="kn">from</span> <span class="err">&#39;/</span><span class="nn">usr</span><span class="err">/</span><span class="nn">lib</span><span class="err">/</span><span class="nn">python2.6</span><span class="err">/</span><span class="nn">os.pyc</span><span class="err">&#39;&gt;</span>
@@ -140,19 +140,19 @@ you?
 <span class="go"> &#39;index.rst&#39;]</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <p>And also:</p>
 <blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <p>Importing shorthands:</p>
 <blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="o">*</span>
@@ -197,7 +197,7 @@ classes) and that we want to reuse several times, we have to create our
 own <strong>modules</strong>.</p>
 <p>Let us create a module <tt class="xref py py-obj docutils literal"><span class="pre">demo</span></tt> contained in the file <tt class="xref py py-obj docutils literal"><span class="pre">demo.py</span></tt>:</p>
 <blockquote>
-<div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;A demo module.&quot;</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;A demo module.&quot;</span>
 
 <span class="k">def</span> <span class="nf">print_b</span><span class="p">():</span>
     <span class="s">&quot;Prints b.&quot;</span>
@@ -212,7 +212,7 @@ own <strong>modules</strong>.</p>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <p>In this file, we defined two functions <tt class="xref py py-obj docutils literal"><span class="pre">print_a</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">print_b</span></tt>. Suppose
 we want to call the <tt class="xref py py-obj docutils literal"><span class="pre">print_a</span></tt> function from the interpreter. We could
 execute the file as a script, but since we just want to have access to
@@ -293,21 +293,21 @@ object&#8217;s name, otherwise Python won&#8217;t recognize the instruction.</p>
 <p class="first admonition-title">Warning</p>
 <p><strong>Module caching</strong></p>
 <blockquote>
-Modules are cached: if you modify <tt class="xref py py-obj docutils literal"><span class="pre">demo.py</span></tt> and re-import it in the
-old session, you will get the old one.</blockquote>
+<div>Modules are cached: if you modify <tt class="xref py py-obj docutils literal"><span class="pre">demo.py</span></tt> and re-import it in the
+old session, you will get the old one.</div></blockquote>
 <p>Solution:</p>
 <blockquote class="last">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="nb">reload</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
+<div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="nb">reload</span><span class="p">(</span><span class="n">demo</span><span class="p">)</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="main-and-module-loading">
 <h2>1.2.6.4. &#8216;__main__&#8217; and module loading<a class="headerlink" href="#main-and-module-loading" title="Permalink to this headline">¶</a></h2>
 <p>File <tt class="xref py py-obj docutils literal"><span class="pre">demo2.py</span></tt>:</p>
 <blockquote>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">def</span> <span class="nf">print_a</span><span class="p">():</span>
     <span class="s">&quot;Prints a.&quot;</span>
@@ -319,7 +319,7 @@ old session, you will get the old one.</blockquote>
     <span class="n">print_a</span><span class="p">()</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <p>Importing it:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="kn">import</span> <span class="nn">demo2</span>
 <span class="go">b</span>
@@ -565,7 +565,7 @@ Code</a>.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

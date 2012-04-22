@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../index.html" />
     <link rel="next" title="1.1. Scientific computing with tools and workflow" href="intro.html" />
-    <link rel="prev" title="Python Scientific Lecture Notes" href="../index.html" /> 
+    <link rel="prev" title="What’s new" href="../CHANGES.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,7 +34,7 @@
           <a href="intro.html" title="1.1. Scientific computing with tools and workflow"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="../index.html" title="Python Scientific Lecture Notes"
+          <a href="../CHANGES.html" title="What’s new"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li> 
       </ul>
@@ -149,7 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="language/standard_library.html#pickle-easy-persistence">1.2.8.5. <tt class="docutils literal"><span class="pre">pickle</span></tt>: easy persistence</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="language/exceptions.html">1.2.9. Exceptions handling in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="language/exceptions.html">1.2.9. Exception handling in Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="language/exceptions.html#exceptions">1.2.9.1. Exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="language/exceptions.html#catching-exceptions">1.2.9.2. Catching exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="language/exceptions.html#raising-exceptions">1.2.9.3. Raising exceptions</a></li>
@@ -159,48 +159,44 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="numpy/numpy.html">1.3. NumPy: creating and manipulating numerical data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#intro">1.3.1. Intro</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#what-is-numpy">1.3.1.1. What is Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#the-numpy-array-object">1.3.1. The numpy array object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and numpy arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#reference-documentation">1.3.1.2. Reference documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#creating-arrays">1.3.1.3. Creating arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-data-types">1.3.1.4. Basic data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-visualization">1.3.1.5. Basic visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-and-slicing">1.3.1.6. Indexing and slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#copies-and-views">1.3.1.7. Copies and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#data-files">1.3.1.8. Data files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary-exercises">1.3.1.9. Summary &amp; Exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#basics-i">1.3.2. 1. Basics I</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#getting-started">1.3.2.1. Getting started</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#reference-documentation">1.3.2.2. Reference documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#creating-arrays">1.3.2.3. Creating arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-data-types">1.3.2.4. Basic data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-visualization">1.3.2.5. Basic visualization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-and-slicing">1.3.2.6. Indexing and slicing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#copies-and-views">1.3.2.7. Copies and views</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#data-files">1.3.2.8. Data files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary-exercises">1.3.2.9. Summary &amp; Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#numerical-operations-on-arrays">1.3.2. Numerical operations on arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#elementwise-operations">1.3.2.1. Elementwise operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-linear-algebra">1.3.2.2. Basic linear algebra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-reductions">1.3.2.3. Basic reductions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#broadcasting">1.3.2.4. Broadcasting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#array-shape-manipulation">1.3.2.5. Array shape manipulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fancy-indexing">1.3.2.6. Fancy indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#sorting-data">1.3.2.7. Sorting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id1">1.3.2.8. Summary &amp; Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#conclusions">1.3.2.9. Conclusions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#basics-ii">1.3.3. 2. Basics II</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#elementwise-operations">1.3.3.1. Elementwise operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-linear-algebra">1.3.3.2. Basic linear algebra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-reductions">1.3.3.3. Basic reductions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#broadcasting">1.3.3.4. Broadcasting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#array-shape-manipulation">1.3.3.5. Array shape manipulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fancy-indexing">1.3.3.6. Fancy indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#sorting-data">1.3.3.7. Sorting data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id1">1.3.3.8. Summary &amp; Exercises</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#conclusions">1.3.3.9. Conclusions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#moving-on">1.3.3. Moving on</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#more-data-types">1.3.3.1. More data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#structured-data-types">1.3.3.2. Structured data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fourier-transforms">1.3.3.3. Fourier transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#masked-arrays">1.3.3.4. Masked arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#polynomials">1.3.3.5. Polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id2">1.3.3.6. Summary &amp; Exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#moving-on">1.3.4. 3. Moving on</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#more-data-types">1.3.4.1. More data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#structured-data-types">1.3.4.2. Structured data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fourier-transforms">1.3.4.3. Fourier transforms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#masked-arrays">1.3.4.4. Masked arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#polynomials">1.3.4.5. Polynomials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id2">1.3.4.6. Summary &amp; Exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#under-the-hood">1.3.5. 4. Under the hood</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#it-s">1.3.5.1. It&#8217;s...</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#block-of-memory">1.3.5.2. Block of memory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-scheme-strides">1.3.5.3. Indexing scheme: strides</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary">1.3.5.4. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#under-the-hood">1.3.4. Under the hood</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#it-s">1.3.4.1. It&#8217;s...</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#block-of-memory">1.3.4.2. Block of memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-scheme-strides">1.3.4.3. Indexing scheme: strides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary">1.3.4.4. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -208,61 +204,18 @@
 <li class="toctree-l1"><a class="reference internal" href="help/help.html">1.4. Getting help and finding documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matplotlib/matplotlib.html">1.5. Matplotlib</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#introduction">1.5.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ipython">1.5.2. IPython</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#pylab">1.5.3. pylab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#simple-plots">1.5.4. Simple Plots</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#exercises">1.5.4.1. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ipython-and-the-pylab-mode">1.5.2. IPython and the pylab mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#ipython">1.5.2.1. IPython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#pylab">1.5.2.2. pylab</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#properties">1.5.5. Properties</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#exercise">1.5.5.1. Exercise</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#text">1.5.6. Text</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#id1">1.5.6.1. Exercise</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ticks">1.5.7. Ticks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#where-and-what">1.5.7.1. Where and What</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#tick-locators">1.5.7.2. Tick Locators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#tick-formatters">1.5.7.3. Tick Formatters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#id2">1.5.7.4. Exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#figures-subplots-and-axes">1.5.8. Figures, Subplots, and Axes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-hierarchy">1.5.8.1. The Hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#figures">1.5.8.2. Figures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#subplots">1.5.8.3. Subplots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#axes">1.5.8.4. Axes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#id3">1.5.8.5. Exercises</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#other-types-of-plots">1.5.9. Other Types of Plots</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#many-more">1.5.9.1. Many More</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#bar-charts">1.5.9.2. Bar Charts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#horizontal-bar-charts">1.5.9.3. Horizontal Bar Charts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#broken-horizontal-bar-charts">1.5.9.4. Broken Horizontal Bar Charts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#box-and-whisker-plots">1.5.9.5. Box and Whisker Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#contour-plots">1.5.9.6. Contour Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#histograms">1.5.9.7. Histograms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#loglog-plots">1.5.9.8. Loglog Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#pie-charts">1.5.9.9. Pie Charts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#polar-plots">1.5.9.10. Polar Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#arrow-plots">1.5.9.11. Arrow Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#scatter-plots">1.5.9.12. Scatter Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#sparsity-pattern-plots">1.5.9.13. Sparsity Pattern Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#stem-plots">1.5.9.14. Stem Plots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#date-plots">1.5.9.15. Date Plots</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#the-class-library">1.5.10. The Class Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-figure-class">1.5.10.1. The Figure Class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-classes-axes-and-subplot">1.5.10.2. The Classes Axes and Subplot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#other-classes">1.5.10.3. Other Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#example">1.5.10.4. Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#id4">1.5.10.5. Exercises</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#simple-plots">1.5.3. Simple Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#properties">1.5.4. Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#text">1.5.5. Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ticks">1.5.6. Ticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#figures-subplots-and-axes">1.5.7. Figures, Subplots, and Axes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#other-types-of-plots">1.5.8. Other Types of Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#the-class-library">1.5.9. The Class Library</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scipy.html">1.6. Scipy : high-level scientific computing</a><ul>
@@ -321,14 +274,14 @@
           <a href="intro.html" title="1.1. Scientific computing with tools and workflow"
              >next</a></li>
         <li class="right" >
-          <a href="../index.html" title="Python Scientific Lecture Notes"
+          <a href="../CHANGES.html" title="What’s new"
              >previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

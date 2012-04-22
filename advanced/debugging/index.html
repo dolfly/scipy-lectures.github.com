@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -74,27 +74,27 @@ that we will employ are tailored to its needs.</p>
 <div class="contents local topic" id="chapters-contents">
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
-<li><a class="reference external" href="#avoiding-bugs" id="id1">Avoiding bugs</a><ul>
-<li><a class="reference external" href="#coding-best-practices-to-avoid-getting-in-trouble" id="id2">Coding best practices to avoid getting in trouble</a></li>
-<li><a class="reference external" href="#pyflakes-fast-static-analysis" id="id3">pyflakes: fast static analysis</a><ul>
-<li><a class="reference external" href="#running-pyflakes-on-the-current-edited-file" id="id4">Running pyflakes on the current edited file</a></li>
-<li><a class="reference external" href="#a-type-as-go-spell-checker-like-integration" id="id5">A type-as-go spell-checker like integration</a></li>
+<li><a class="reference internal" href="#avoiding-bugs" id="id1">Avoiding bugs</a><ul>
+<li><a class="reference internal" href="#coding-best-practices-to-avoid-getting-in-trouble" id="id2">Coding best practices to avoid getting in trouble</a></li>
+<li><a class="reference internal" href="#pyflakes-fast-static-analysis" id="id3">pyflakes: fast static analysis</a><ul>
+<li><a class="reference internal" href="#running-pyflakes-on-the-current-edited-file" id="id4">Running pyflakes on the current edited file</a></li>
+<li><a class="reference internal" href="#a-type-as-go-spell-checker-like-integration" id="id5">A type-as-go spell-checker like integration</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="#debugging-workflow" id="id6">Debugging workflow</a></li>
-<li><a class="reference external" href="#using-the-python-debugger" id="id7">Using the Python debugger</a><ul>
-<li><a class="reference external" href="#invoking-the-debugger" id="id8">Invoking the debugger</a><ul>
-<li><a class="reference external" href="#postmortem" id="id9">Postmortem</a></li>
-<li><a class="reference external" href="#step-by-step-execution" id="id10">Step-by-step execution</a></li>
-<li><a class="reference external" href="#other-ways-of-starting-a-debugger" id="id11">Other ways of starting a debugger</a></li>
+<li><a class="reference internal" href="#debugging-workflow" id="id6">Debugging workflow</a></li>
+<li><a class="reference internal" href="#using-the-python-debugger" id="id7">Using the Python debugger</a><ul>
+<li><a class="reference internal" href="#invoking-the-debugger" id="id8">Invoking the debugger</a><ul>
+<li><a class="reference internal" href="#postmortem" id="id9">Postmortem</a></li>
+<li><a class="reference internal" href="#step-by-step-execution" id="id10">Step-by-step execution</a></li>
+<li><a class="reference internal" href="#other-ways-of-starting-a-debugger" id="id11">Other ways of starting a debugger</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#debugger-commands-and-interaction" id="id12">Debugger commands and interaction</a></li>
+<li><a class="reference internal" href="#debugger-commands-and-interaction" id="id12">Debugger commands and interaction</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#debugging-segmentation-faults-using-gdb" id="id13">Debugging segmentation faults using gdb</a></li>
+<li><a class="reference internal" href="#debugging-segmentation-faults-using-gdb" id="id13">Debugging segmentation faults using gdb</a></li>
 </ul>
 </div>
 <div class="section" id="avoiding-bugs">
@@ -133,11 +133,11 @@ mathematics names)</li>
 <a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a>.
 Here we focus on pyflakes, which is the simplest tool.</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li><strong>Fast, simple</strong></li>
 <li>Detects syntax errors, missing imports, typos on names.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <p>Integrating pyflakes in your editor is highly recommended, it <strong>does
 yield productivity gains</strong>.</p>
 <div class="section" id="running-pyflakes-on-the-current-edited-file">
@@ -147,7 +147,7 @@ yield productivity gains</strong>.</p>
 <li><p class="first"><strong>In kate</strong>
 Menu: &#8216;settings -&gt; configure kate</p>
 <blockquote>
-<ul>
+<div><ul>
 <li><p class="first">In plugins enable &#8216;external tools&#8217;</p>
 </li>
 <li><p class="first">In external Tools&#8217;, add <tt class="xref py py-obj docutils literal"><span class="pre">pyflakes</span></tt>:</p>
@@ -155,7 +155,7 @@ Menu: &#8216;settings -&gt; configure kate</p>
 </div>
 </li>
 </ul>
-</blockquote>
+</div></blockquote>
 </li>
 <li><p class="first"><strong>In TextMate</strong></p>
 <p>Menu: TextMate -&gt; Preferences -&gt; Advanced -&gt; Shell variables, add a
@@ -198,7 +198,7 @@ In your <tt class="xref py py-obj docutils literal"><span class="pre">emacs</spa
 </div>
 <div class="section" id="a-type-as-go-spell-checker-like-integration">
 <h4><a class="toc-backref" href="#id5">2.3.1.2.2. A type-as-go spell-checker like integration</a><a class="headerlink" href="#a-type-as-go-spell-checker-like-integration" title="Permalink to this headline">¶</a></h4>
-<img align="right" alt="../../_images/vim_pyflakes.png" class="align-right" src="../../_images/vim_pyflakes.png" />
+<img alt="../../_images/vim_pyflakes1.png" class="align-right" src="../../_images/vim_pyflakes1.png" />
 <ul>
 <li><p class="first"><strong>In vim</strong>
 Use the pyflakes.vim plugin:</p>
@@ -237,9 +237,9 @@ your .emacs file:</p>
 <p>I you do have a non trivial bug, this is when debugging strategies kick
 in. There is no silver bullet. Yet, strategies help:</p>
 <blockquote>
-<strong>For debugging a given problem, the favorable situation is when the
+<div><strong>For debugging a given problem, the favorable situation is when the
 problem is isolated in a small number of lines of code, outside
-framework or application code, with short modify-run-fail cycles</strong></blockquote>
+framework or application code, with short modify-run-fail cycles</strong></div></blockquote>
 <ol class="arabic">
 <li><p class="first">Make it fail reliably.  Find a test case that makes the code fail
 every time.</p>
@@ -273,14 +273,14 @@ the corresponding code to your test suite.</p>
 allows you to inspect your code interactively.</p>
 <p>Specifically it allows you to:</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>View the source code.</li>
 <li>Walk up and down the call stack.</li>
 <li>Inspect values of variables.</li>
 <li>Modify values of variables.</li>
 <li>Set breakpoints.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <div class="topic">
 <p class="topic-title first"><strong>print</strong></p>
 <p>Yes, <tt class="docutils literal"><span class="pre">print</span></tt> statements do work as a debugging tool. However to
@@ -297,7 +297,7 @@ inspect runtime, it is often more efficient to use the debugger.</p>
 <div class="section" id="postmortem">
 <h4><a class="toc-backref" href="#id9">2.3.3.1.1. Postmortem</a><a class="headerlink" href="#postmortem" title="Permalink to this headline">¶</a></h4>
 <p><strong>Situation</strong>: You&#8217;re working in ipython and you get a traceback.</p>
-<p>Here we debug the file <a class="reference download internal" href="../../_downloads/index_error.py"><tt class="xref download docutils literal"><span class="pre">index_error.py</span></tt></a>. When running it, an
+<p>Here we debug the file <a class="reference download internal" href="../../_downloads/index_error1.py"><tt class="xref download docutils literal"><span class="pre">index_error.py</span></tt></a>. When running it, an
 <tt class="xref py py-obj docutils literal"><span class="pre">IndexError</span></tt> is raised. Type <tt class="docutils literal"><span class="pre">%debug</span></tt> and drop into the debugger.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">index_error</span><span class="o">.</span><span class="n">py</span>
 <span class="go">---------------------------------------------------------------------------</span>
@@ -376,7 +376,7 @@ Running 'cont' or 'step' will restart the program
 <div class="section" id="step-by-step-execution">
 <h4><a class="toc-backref" href="#id10">2.3.3.1.2. Step-by-step execution</a><a class="headerlink" href="#step-by-step-execution" title="Permalink to this headline">¶</a></h4>
 <p><strong>Situation</strong>: You believe a bug exists in a module but are not sure where.</p>
-<p>For instance we are trying to debug <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a>.
+<p>For instance we are trying to debug <a class="reference download internal" href="../../_downloads/wiener_filtering1.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a>.
 Indeed the code runs, but the filtering does not work well.</p>
 <ul>
 <li><p class="first">Run the script with the debugger:</p>
@@ -390,7 +390,7 @@ Indeed the code runs, but the filtering does not work well.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Enter the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file and set a break point at line
+<li><p class="first">Enter the <a class="reference download internal" href="../../_downloads/wiener_filtering1.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file and set a break point at line
 34:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; n</span>
 <span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(4)&lt;module&gt;()</span>
@@ -453,7 +453,7 @@ execution contexts, i.e. enable exploring inside function calls:</p>
 doing integer arithmetic.</p>
 <div class="topic">
 <p class="topic-title first">Raising exception on numerical errors</p>
-<p>When we run the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file, the following
+<p>When we run the <a class="reference download internal" href="../../_downloads/wiener_filtering1.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file, the following
 warnings are raised:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="o">%</span><span class="n">run</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
 <span class="go">Warning: divide by zero encountered in divide</span>
@@ -564,9 +564,9 @@ useless. For this we turn to the gnu debugger,
 <p>Before we start with gdb, let us add a few Python-specific tools to it.
 For this we add a few macros to our <tt class="xref py py-obj docutils literal"><span class="pre">gbdinit</span></tt>. The optimal choice of
 macro depends on your Python version and your gdb version. I have added a
-simplified version in <a class="reference download internal" href="../../_downloads/gdbinit"><tt class="xref download docutils literal"><span class="pre">gdbinit</span></tt></a>, but feel free to read
+simplified version in <a class="reference download internal" href="../../_downloads/gdbinit1"><tt class="xref download docutils literal"><span class="pre">gdbinit</span></tt></a>, but feel free to read
 <a class="reference external" href="http://wiki.python.org/moin/DebuggingWithGdb">DebuggingWithGdb</a>.</p>
-<p>To debug with gdb the Python script <a class="reference download internal" href="../../_downloads/segfault.py"><tt class="xref download docutils literal"><span class="pre">segfault.py</span></tt></a>, we can run the
+<p>To debug with gdb the Python script <a class="reference download internal" href="../../_downloads/segfault1.py"><tt class="xref download docutils literal"><span class="pre">segfault.py</span></tt></a>, we can run the
 script in gdb as follows:</p>
 <div class="highlight-python"><pre>$ gdb python
 ...
@@ -651,7 +651,7 @@ the source of this file.</p>
 <p>The following script is well documented and hopefully legible. It
 seeks to answer a problem of actual interest for numerical computing,
 but it does not work... Can you debug it?</p>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/to_debug.py"><tt class="xref download docutils literal"><span class="pre">to_debug.py</span></tt></a></p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/to_debug1.py"><tt class="xref download docutils literal"><span class="pre">to_debug.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">A script to compare different root-finding algorithms.</span>
 
@@ -741,7 +741,7 @@ but it does not work... Can you debug it?</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

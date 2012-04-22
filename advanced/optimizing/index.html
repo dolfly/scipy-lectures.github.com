@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -70,21 +70,21 @@
 <div class="contents local topic" id="chapters-contents">
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
-<li><a class="reference external" href="#optimization-workflow" id="id2">Optimization workflow</a></li>
-<li><a class="reference external" href="#profiling-python-code" id="id3">Profiling Python code</a><ul>
-<li><a class="reference external" href="#timeit" id="id4">Timeit</a></li>
-<li><a class="reference external" href="#profiler" id="id5">Profiler</a></li>
-<li><a class="reference external" href="#line-profiler" id="id6">Line-profiler</a></li>
+<li><a class="reference internal" href="#optimization-workflow" id="id2">Optimization workflow</a></li>
+<li><a class="reference internal" href="#profiling-python-code" id="id3">Profiling Python code</a><ul>
+<li><a class="reference internal" href="#timeit" id="id4">Timeit</a></li>
+<li><a class="reference internal" href="#profiler" id="id5">Profiler</a></li>
+<li><a class="reference internal" href="#line-profiler" id="id6">Line-profiler</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#making-code-go-faster" id="id7">Making code go faster</a><ul>
-<li><a class="reference external" href="#algorithmic-optimization" id="id8">Algorithmic optimization</a><ul>
-<li><a class="reference external" href="#example-of-the-svd" id="id9">Example of the SVD</a></li>
+<li><a class="reference internal" href="#making-code-go-faster" id="id7">Making code go faster</a><ul>
+<li><a class="reference internal" href="#algorithmic-optimization" id="id8">Algorithmic optimization</a><ul>
+<li><a class="reference internal" href="#example-of-the-svd" id="id9">Example of the SVD</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="#writing-faster-numerical-code" id="id10">Writing faster numerical code</a></li>
+<li><a class="reference internal" href="#writing-faster-numerical-code" id="id10">Writing faster numerical code</a></li>
 </ul>
 </div>
 <div class="section" id="optimization-workflow">
@@ -139,7 +139,7 @@ less precise but faster</p>
 <div class="section" id="profiler">
 <h3><a class="toc-backref" href="#id5">2.4.2.2. Profiler</a><a class="headerlink" href="#profiler" title="Permalink to this headline">¶</a></h3>
 <p>Useful when you have a large program to profile, for example the
-<a class="reference download internal" href="../../_downloads/demo.py"><tt class="xref download docutils literal"><span class="pre">following</span> <span class="pre">file</span></tt></a>:</p>
+<a class="reference download internal" href="../../_downloads/demo1.py"><tt class="xref download docutils literal"><span class="pre">following</span> <span class="pre">file</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
 <span class="kn">from</span> <span class="nn">ica</span> <span class="kn">import</span> <span class="n">fastica</span>
@@ -343,20 +343,39 @@ on them:</p>
 continuous way is much faster than random access. This implies amongst
 other things that <strong>smaller strides are faster</strong> (see
 <a class="reference internal" href="../advanced_numpy/index.html#cache-effects"><em>CPU cache effects</em></a>):</p>
-<div class="highlight-python"><pre>In [1]: c = np.zeros((1e4, 1e4), order='C')
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;C&#39;</span><span class="p">)</span>
 
-In [2]: %timeit c.sum(axis=0)
-1 loops, best of 3: 3.89 s per loop
+<span class="gp">In [2]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">c</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">1 loops, best of 3: 3.89 s per loop</span>
 
-In [3]: %timeit c.sum(axis=1)
-1 loops, best of 3: 188 ms per loop
+<span class="gp">In [3]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">c</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1 loops, best of 3: 188 ms per loop</span>
 
-In [4]: c.strides
-Out[4]: (80000, 8)</pre>
+<span class="gp">In [4]: </span><span class="n">c</span><span class="o">.</span><span class="n">strides</span>
+<span class="go">Out[4]: </span><span class="p">(</span><span class="mi">80000</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>This is the reason why Fortran ordering or C ordering may make a big
-difference on operations. Using
-<a class="reference external" href="http://code.google.com/p/numexpr/">numexpr</a> can be useful to
+difference on operations:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="gp">In [7]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="go">1 loops, best of 3: 194 ms per loop</span>
+
+<span class="gp">In [8]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="gp">In [9]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 84.2 ms per loop</span>
+</pre></div>
+</div>
+<p>Note that copying the data to work around this effect may not be worth it:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 106 ms per loop</span>
+</pre></div>
+</div>
+<p>Using <a class="reference external" href="http://code.google.com/p/numexpr/">numexpr</a> can be useful to
 automatically optimize code for such effects.</p>
 </li>
 <li><p class="first"><strong>Use compiled code</strong></p>
@@ -398,7 +417,7 @@ optimization on theoretical considerations.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

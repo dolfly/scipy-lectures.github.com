@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -50,9 +50,8 @@
   <div class="section" id="example-of-solution-for-the-image-processing-exercise-unmolten-grains-in-glass">
 <span id="image-answers"></span><h1>1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass<a class="headerlink" href="#example-of-solution-for-the-image-processing-exercise-unmolten-grains-in-glass" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<a class="reference internal image-reference" href="../../_images/MV_HFV_012.jpg"><div align="center" class="align-center"><img alt="../../_images/MV_HFV_012.jpg" class="align-center" src="../../_images/MV_HFV_012.jpg" style="width: 716.8px; height: 660.1px;" /></div>
-</a>
-</blockquote>
+<div><a class="reference internal image-reference" href="../../_images/MV_HFV_012.jpg"><img alt="../../_images/MV_HFV_012.jpg" class="align-center" src="../../_images/MV_HFV_012.jpg" style="width: 716.8px; height: 660.1px;" /></a>
+</div></blockquote>
 <ol class="arabic">
 <li><p class="first">Open the image file MV_HFV_012.jpg and display it. Browse through the
 keyword arguments in the docstring of <tt class="docutils literal"><span class="pre">imshow</span></tt> to display the image
@@ -76,7 +75,7 @@ histogram. Check how the histogram changes.</p>
 </div>
 </li>
 </ol>
-<div align="center" class="align-center"><img alt="../../_images/exo_histos.png" class="align-center" src="../../_images/exo_histos.png" /></div>
+<img alt="../../_images/exo_histos2.png" class="align-center" src="../../_images/exo_histos2.png" />
 <ol class="arabic" start="4">
 <li><p class="first">Using the histogram of the filtered image, determine thresholds that
 allow to define masks for sand pixels, glass pixels and bubble pixels.
@@ -96,7 +95,7 @@ different colors.</p>
 </div>
 </li>
 </ol>
-<div align="center" class="align-center"><img alt="../../_images/three_phases.png" class="align-center" src="../../_images/three_phases.png" /></div>
+<img alt="../../_images/three_phases2.png" class="align-center" src="../../_images/three_phases2.png" />
 <ol class="arabic" start="6">
 <li><p class="first">Use mathematical morphology to clean the different phases.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sand_op</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">sand</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -115,7 +114,7 @@ sand mask grains that are smaller than 10 pixels. To do so, use
 </div>
 </li>
 </ol>
-<div align="center" class="align-center"><img alt="../../_images/sands.png" class="align-center" src="../../_images/sands.png" /></div>
+<img alt="../../_images/sands2.png" class="align-center" src="../../_images/sands2.png" />
 <ol class="arabic" start="8">
 <li><p class="first">Compute the mean size of bubbles.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bubbles_labels</span><span class="p">,</span> <span class="n">bubbles_nb</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
@@ -151,7 +150,7 @@ sand mask grains that are smaller than 10 pixels. To do so, use
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

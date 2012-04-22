@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.7.3. Figures and decorations &mdash; Scipy lecture notes</title>
+    <title>2.8.3. Figures and decorations &mdash; Scipy lecture notes</title>
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2011',
+        VERSION:     '2011.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,23 +23,23 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2.7. 3D plotting with Mayavi" href="index.html" />
-    <link rel="next" title="2.7.4. Interaction" href="interaction.html" />
-    <link rel="prev" title="2.7.2. 3D plotting functions" href="3d_plotting_functions.html" /> 
+    <link rel="up" title="2.8. 3D plotting with Mayavi" href="index.html" />
+    <link rel="next" title="2.8.4. Interaction" href="interaction.html" />
+    <link rel="prev" title="2.8.2. 3D plotting functions" href="3d_plotting_functions.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="interaction.html" title="2.7.4. Interaction"
+          <a href="interaction.html" title="2.8.4. Interaction"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="3d_plotting_functions.html" title="2.7.2. 3D plotting functions"
+          <a href="3d_plotting_functions.html" title="2.8.2. 3D plotting functions"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >2. Advanced topics</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">2.7. 3D plotting with Mayavi</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">2.8. 3D plotting with Mayavi</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,9 +48,9 @@
           <div class="body">
             
   <div class="section" id="figures-and-decorations">
-<h1>2.7.3. Figures and decorations<a class="headerlink" href="#figures-and-decorations" title="Permalink to this headline">¶</a></h1>
+<h1>2.8.3. Figures and decorations<a class="headerlink" href="#figures-and-decorations" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="figure-management">
-<h2>2.7.3.1. Figure management<a class="headerlink" href="#figure-management" title="Permalink to this headline">¶</a></h2>
+<h2>2.8.3.1. Figure management<a class="headerlink" href="#figure-management" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="34%" />
@@ -81,7 +81,7 @@
 </table>
 </div>
 <div class="section" id="changing-plot-properties">
-<h2>2.7.3.2. Changing plot properties<a class="headerlink" href="#changing-plot-properties" title="Permalink to this headline">¶</a></h2>
+<h2>2.8.3.2. Changing plot properties<a class="headerlink" href="#changing-plot-properties" title="Permalink to this headline">¶</a></h2>
 <div class="topic">
 <p class="topic-title first"><strong>Example docstring:</strong> <cite>mlab.mesh</cite></p>
 <p>Plots a surface using grid-spaced data supplied as 2D arrays.</p>
@@ -96,7 +96,7 @@ implied by the connectivity on the arrays.</p>
 as it will create more efficient data structures.</p>
 <p><strong>Keyword arguments:</strong></p>
 <blockquote>
-<table class="docutils field-list" frame="void" rules="none">
+<div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -166,7 +166,7 @@ If None, the min of the data will be used</td>
 </tr>
 </tbody>
 </table>
-</blockquote>
+</div></blockquote>
 </div>
 <p>Example:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -189,11 +189,10 @@ If None, the min of the data will be used</td>
 <span class="go">Out[8]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xdd6a71c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/polar_mesh.png"><div align="center" class="align-center"><img alt="../../_images/polar_mesh.png" class="align-center" src="../../_images/polar_mesh.png" style="width: 174.3px; height: 196.7px;" /></div>
-</a>
+<a class="reference internal image-reference" href="../../_images/polar_mesh1.png"><img alt="../../_images/polar_mesh1.png" class="align-center" src="../../_images/polar_mesh1.png" style="width: 174.3px; height: 196.7px;" /></a>
 </div>
 <div class="section" id="decorations">
-<h2>2.7.3.3. Decorations<a class="headerlink" href="#decorations" title="Permalink to this headline">¶</a></h2>
+<h2>2.8.3.3. Decorations<a class="headerlink" href="#decorations" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [9]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;vertical&#39;</span><span class="p">)</span>
 <span class="go">Out[9]: </span><span class="o">&lt;</span><span class="n">tvtk_classes</span><span class="o">.</span><span class="n">scalar_bar_actor</span><span class="o">.</span><span class="n">ScalarBarActor</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xd897f8c</span><span class="o">&gt;</span>
 
@@ -207,8 +206,7 @@ If None, the min of the data will be used</td>
 <span class="go">Out[12]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">Axes</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xd2e4bcc</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/decorations.png"><div align="center" class="align-center"><img alt="../../_images/decorations.png" class="align-center" src="../../_images/decorations.png" style="width: 480.0px; height: 339.2px;" /></div>
-</a>
+<a class="reference internal image-reference" href="../../_images/decorations1.png"><img alt="../../_images/decorations1.png" class="align-center" src="../../_images/decorations1.png" style="width: 480.0px; height: 339.2px;" /></a>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last"><strong>extent:</strong> If we specified extents for a plotting object,
@@ -226,19 +224,19 @@ If None, the min of the data will be used</td>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="interaction.html" title="2.7.4. Interaction"
+          <a href="interaction.html" title="2.8.4. Interaction"
              >next</a></li>
         <li class="right" >
-          <a href="3d_plotting_functions.html" title="2.7.2. 3D plotting functions"
+          <a href="3d_plotting_functions.html" title="2.8.2. 3D plotting functions"
              >previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >2. Advanced topics</a> &raquo;</li>
-          <li><a href="index.html" >2.7. 3D plotting with Mayavi</a> &raquo;</li> 
+          <li><a href="index.html" >2.8. 3D plotting with Mayavi</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>
