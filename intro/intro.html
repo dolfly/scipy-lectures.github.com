@@ -1,15 +1,17 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>1.1. Scientific computing with tools and workflow &mdash; Scipy lecture notes</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -52,7 +54,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">authors:</th><td class="field-body">Fernando Perez, Emmanuelle Gouillart, Gaël Varoquaux</td>
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Fernando Perez, Emmanuelle Gouillart, Gaël Varoquaux</td>
 </tr>
 </tbody>
 </table>
@@ -166,6 +168,9 @@ software or toolboxes.</li>
 </div>
 <div class="section" id="scientific-python-building-blocks">
 <h2>1.1.2. Scientific Python building blocks<a class="headerlink" href="#scientific-python-building-blocks" title="Permalink to this headline">¶</a></h2>
+<p>Unlike Matlab, scilab or R, Python does not come with a pre-bundled set
+of modules for scientific computing. Below are the basic building blocks
+that can be combined to optain a scientific-computing environment:</p>
 <ul>
 <li><p class="first"><strong>Python</strong>, a generic and modern computing language</p>
 <blockquote>
@@ -179,41 +184,38 @@ computing.</li>
 <li>Development tools (automatic tests, documentation generation)</li>
 </ul>
 </div></blockquote>
-<a class="reference internal image-reference" href="../_images/snapshot_ipython1.png"><img alt="../_images/snapshot_ipython1.png" class="align-right" src="../_images/snapshot_ipython1.png" style="width: 474.0px; height: 237.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/snapshot_ipython.png"><img alt="../_images/snapshot_ipython.png" class="align-right" src="../_images/snapshot_ipython.png" style="width: 316.0px; height: 158.0px;" /></a>
 </li>
-<li><p class="first"><strong>IPython</strong>, an advanced <strong>Python shell</strong></p>
-<p><a class="reference external" href="http://ipython.scipy.org/moin/">http://ipython.scipy.org/moin/</a></p>
+<li><p class="first"><strong>IPython</strong>, an advanced <strong>Python shell</strong> <a class="reference external" href="http://ipython.scipy.org/moin/">http://ipython.scipy.org/moin/</a></p>
 </li>
 <li><p class="first"><strong>Numpy</strong> : provides powerful <strong>numerical arrays</strong> objects, and routines to
-manipulate them.</p>
-<p><a class="reference external" href="http://www.numpy.org/">http://www.numpy.org/</a></p>
+manipulate them. <a class="reference external" href="http://www.numpy.org/">http://www.numpy.org/</a></p>
 </li>
 </ul>
 <ul>
 <li><p class="first"><strong>Scipy</strong> : high-level data processing routines.
-Optimization, regression, interpolation, etc</p>
-<p><a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></p>
+Optimization, regression, interpolation, etc <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></p>
+<a class="reference internal image-reference" href="../_images/random_c.jpg"><img alt="../_images/random_c.jpg" class="align-right" src="../_images/random_c.jpg" style="width: 340.0px; height: 210.0px;" /></a>
 </li>
-<li><p class="first"><strong>Matplotlib</strong> : 2-D visualization, &#8220;publication-ready&#8221; plots</p>
-<a class="reference internal image-reference" href="../_images/random_c1.jpg"><img alt="../_images/random_c1.jpg" class="align-right" src="../_images/random_c1.jpg" style="width: 340.0px; height: 210.0px;" /></a>
-<p><a class="reference external" href="http://matplotlib.sourceforge.net/">http://matplotlib.sourceforge.net/</a></p>
+<li><p class="first"><strong>Matplotlib</strong> : 2-D visualization, &#8220;publication-ready&#8221; plots
+<a class="reference external" href="http://matplotlib.sourceforge.net/">http://matplotlib.sourceforge.net/</a></p>
+<div style="clear: both"></div><a class="reference internal image-reference" href="../_images/example_surface_from_irregular_data.jpg"><img alt="../_images/example_surface_from_irregular_data.jpg" class="align-right" src="../_images/example_surface_from_irregular_data.jpg" style="width: 240.0px; height: 190.8px;" /></a>
 </li>
-<li><p class="first"><strong>Mayavi</strong> : 3-D visualization</p>
-<a class="reference internal image-reference" href="../_images/example_surface_from_irregular_data1.jpg"><img alt="../_images/example_surface_from_irregular_data1.jpg" class="align-right" src="../_images/example_surface_from_irregular_data1.jpg" style="width: 240.0px; height: 190.8px;" /></a>
-<p><a class="reference external" href="http://code.enthought.com/projects/mayavi/">http://code.enthought.com/projects/mayavi/</a></p>
+<li><p class="first"><strong>Mayavi</strong> : 3-D visualization
+<a class="reference external" href="http://code.enthought.com/projects/mayavi/">http://code.enthought.com/projects/mayavi/</a></p>
 </li>
 </ul>
-<div style="padding-top: 9em;"></div></div>
+<div style="clear: both"></div></div>
 <div class="section" id="the-interactive-workflow-ipython-and-a-text-editor">
 <h2>1.1.3. The interactive workflow: IPython and a text editor<a class="headerlink" href="#the-interactive-workflow-ipython-and-a-text-editor" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><strong>Interactive work to test and understand algorithm</strong></div></blockquote>
+<p><strong>Interactive work to test and understand algorithm:</strong> In this section, we
+describe an interactive workflow with <a class="reference external" href="http://ipython.org">IPython</a> that is
+handy to explore and understand algorithms.</p>
 <p>Python is a general-purpose language. As such, there is not one blessed
 environement to work into, and not only one way of using it. Although
 this makes it harder for beginners to find their way, it makes it
 possible for Python to be used to write programs, in web servers, or
-embedded devices. Here, we describe an interactive workflow with IPython
-that is handy to explore and understand algorithms.</p>
+embedded devices.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Reference document for this section:</p>
@@ -247,11 +249,12 @@ that is handy to explore and understand algorithms.</p>
 <h3>1.1.3.2. Elaboration of the algorithm in an editor<a class="headerlink" href="#elaboration-of-the-algorithm-in-an-editor" title="Permalink to this headline">¶</a></h3>
 <p>Create a file <tt class="xref py py-obj docutils literal"><span class="pre">my_file.py</span></tt> in a text editor. Under EPD, you can use
 <tt class="xref py py-obj docutils literal"><span class="pre">Scite</span></tt>, available from the start menu. Under Python(x,y), you can use
-Spyder. Under Ubuntu, if you don&#8217;t already have your favorite editor, I
+Spyder. Under Ubuntu, if you don&#8217;t already have your favorite editor, We
 would advise installing <tt class="xref py py-obj docutils literal"><span class="pre">Stani's</span> <span class="pre">Python</span> <span class="pre">editor</span></tt>. In the file, add the
 following lines:</p>
-<div class="highlight-python"><pre>s = `Hello world`
-print(s)</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Hello world&#39;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>Now, you can run it in ipython and explore the resulting variables:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="o">%</span><span class="n">run</span> <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
@@ -266,9 +269,11 @@ print(s)</pre>
 <span class="go">s          str     Hello word</span>
 </pre></div>
 </div>
-<hr class="docutils" />
 <div class="topic">
 <p class="topic-title first"><strong>From a script to functions</strong></p>
+<p>While it is tempting to work only with scripts, that is a file full
+of instructions following each other, do plan to progressively evolve
+the script to a set of functions:</p>
 <ul class="simple">
 <li>A script is not reusable, functions are.</li>
 <li>Thinking in terms of functions helps breaking the problem in small
@@ -298,8 +303,8 @@ blocks.</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

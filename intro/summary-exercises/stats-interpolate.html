@@ -1,15 +1,17 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.6.12.5. Maximum wind speed prediction at the Sprogø station &mdash; Scipy lecture notes</title>
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <title>1.6.12.13. Maximum wind speed prediction at the Sprogø station &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -24,18 +26,18 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
     <link rel="up" title="1.6. Scipy : high-level scientific computing" href="../scipy.html" />
-    <link rel="next" title="1.6.12.6. Non linear least squares curve fitting: application to point extraction in topographical lidar data" href="optimize-fit.html" />
-    <link rel="prev" title="1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass" href="answers_image_processing.html" /> 
+    <link rel="next" title="1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data" href="optimize-fit.html" />
+    <link rel="prev" title="1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass" href="answers_image_processing.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="optimize-fit.html" title="1.6.12.6. Non linear least squares curve fitting: application to point extraction in topographical lidar data"
+          <a href="optimize-fit.html" title="1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="answers_image_processing.html" title="1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass"
+          <a href="answers_image_processing.html" title="1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
@@ -48,7 +50,7 @@
           <div class="body">
             
   <div class="section" id="maximum-wind-speed-prediction-at-the-sprogo-station">
-<span id="summary-exercise-stat-interp"></span><h1>1.6.12.5. Maximum wind speed prediction at the Sprogø station<a class="headerlink" href="#maximum-wind-speed-prediction-at-the-sprogo-station" title="Permalink to this headline">¶</a></h1>
+<span id="summary-exercise-stat-interp"></span><h1>1.6.12.13. Maximum wind speed prediction at the Sprogø station<a class="headerlink" href="#maximum-wind-speed-prediction-at-the-sprogo-station" title="Permalink to this headline">¶</a></h1>
 <p>The exercise goal is to predict the maximum wind speed occurring every
 50 years even if no measure exists for such a period. The available
 data are only measured over 21 years at the Sprogø meteorological
@@ -57,7 +59,7 @@ and then illustrated with functions from the scipy.interpolate module.
 At the end the interested readers are invited to compute results from
 raw data and in a slightly different approach.</p>
 <div class="section" id="statistical-approach">
-<h2>1.6.12.5.1. Statistical approach<a class="headerlink" href="#statistical-approach" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.12.13.1. Statistical approach<a class="headerlink" href="#statistical-approach" title="Permalink to this headline">¶</a></h2>
 <p>The annual maxima are supposed to fit a normal probability density
 function. However such function is not going to be estimated because
 it gives a probability from a wind speed maxima. Finding the maximum wind
@@ -78,12 +80,12 @@ maxima is going to be evaluated from the cumulative probability
 of the 2% quantile.</p>
 </div>
 <div class="section" id="computing-the-cumulative-probabilities">
-<h2>1.6.12.5.2. Computing the cumulative probabilities<a class="headerlink" href="#computing-the-cumulative-probabilities" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.12.13.2. Computing the cumulative probabilities<a class="headerlink" href="#computing-the-cumulative-probabilities" title="Permalink to this headline">¶</a></h2>
 <p>The annual wind speeds maxima have already been computed and saved in
-the numpy format in the file <a class="reference download internal" href="../../_downloads/max-speeds2.npy"><tt class="xref download docutils literal"><span class="pre">examples/max-speeds.npy</span></tt></a>, thus they will be loaded
+the numpy format in the file <a class="reference download internal" href="../../_downloads/max-speeds.npy"><tt class="xref download docutils literal"><span class="pre">examples/max-speeds.npy</span></tt></a>, thus they will be loaded
 by using numpy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">max_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;examples/max-speeds.npy&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">max_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;intro/summary-exercises/examples/max-speeds.npy&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">years_nb</span> <span class="o">=</span> <span class="n">max_speeds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -98,7 +100,7 @@ section, the corresponding values will be:</p>
 </div>
 </div>
 <div class="section" id="prediction-with-univariatespline">
-<h2>1.6.12.5.3. Prediction with UnivariateSpline<a class="headerlink" href="#prediction-with-univariatespline" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.12.13.3. Prediction with UnivariateSpline<a class="headerlink" href="#prediction-with-univariatespline" title="Permalink to this headline">¶</a></h2>
 <p>In this section the quantile function will be estimated by using the
 <tt class="docutils literal"><span class="pre">UnivariateSpline</span></tt> class which can represent a spline from points. The
 default behavior is to build a spline of degree 3 and points can
@@ -133,8 +135,8 @@ value will be:</p>
 </div>
 <p>So the storm wind speed occurring every 50 years can be guessed by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span> <span class="o">=</span> <span class="n">quantile_func</span><span class="p">(</span><span class="n">fifty_prob</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span>
-<span class="go">array([ 32.97989825])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span>      
+<span class="go">32.97989825...</span>
 </pre></div>
 </div>
 <p>The results are now gathered on a Matplotlib figure:</p>
@@ -144,12 +146,12 @@ value will be:</p>
 </div>
 </div>
 <div class="section" id="exercise-with-the-gumbell-distribution">
-<h2>1.6.12.5.4. Exercise with the Gumbell distribution<a class="headerlink" href="#exercise-with-the-gumbell-distribution" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.12.13.4. Exercise with the Gumbell distribution<a class="headerlink" href="#exercise-with-the-gumbell-distribution" title="Permalink to this headline">¶</a></h2>
 <p>The interested readers are now invited to make an exercise by using the wind
 speeds measured over 21 years. The measurement period is around 90 minutes (the
 original period was around 10 minutes but the file size has been reduced for
 making the exercise setup easier). The data are stored in numpy format inside
-the file <a class="reference download internal" href="../../_downloads/sprog-windspeeds2.npy"><tt class="xref download docutils literal"><span class="pre">examples/sprog-windspeeds.npy</span></tt></a>. Do not look at
+the file <a class="reference download internal" href="../../_downloads/sprog-windspeeds.npy"><tt class="xref download docutils literal"><span class="pre">examples/sprog-windspeeds.npy</span></tt></a>. Do not look at
 the source code for the plots
 until you have completed the exercise.</p>
 <ul class="simple">
@@ -187,10 +189,10 @@ occurring every 50 years.</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="optimize-fit.html" title="1.6.12.6. Non linear least squares curve fitting: application to point extraction in topographical lidar data"
+          <a href="optimize-fit.html" title="1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data"
              >next</a></li>
         <li class="right" >
-          <a href="answers_image_processing.html" title="1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass"
+          <a href="answers_image_processing.html" title="1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass"
              >previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
@@ -198,8 +200,8 @@ occurring every 50 years.</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -1,15 +1,17 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>2.5.2. Storage Schemes &mdash; Scipy lecture notes</title>
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -189,7 +191,7 @@ ndarray/matrix does not work</li>
 <col width="30%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">format</th>
+<tr class="row-odd"><th class="head">format</th>
 <th class="head">matrix * vector</th>
 <th class="head">get item</th>
 <th class="head">fancy get</th>
@@ -200,7 +202,7 @@ ndarray/matrix does not work</li>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>DIA</td>
+<tr class="row-even"><td>DIA</td>
 <td>sparsetools</td>
 <td>.</td>
 <td>.</td>
@@ -209,7 +211,7 @@ ndarray/matrix does not work</li>
 <td>iterative</td>
 <td>has data array, specialized</td>
 </tr>
-<tr><td>LIL</td>
+<tr class="row-odd"><td>LIL</td>
 <td>via CSR</td>
 <td>yes</td>
 <td>yes</td>
@@ -218,7 +220,7 @@ ndarray/matrix does not work</li>
 <td>iterative</td>
 <td>arithmetics via CSR, incremental construction</td>
 </tr>
-<tr><td>DOK</td>
+<tr class="row-even"><td>DOK</td>
 <td>python</td>
 <td>yes</td>
 <td>one axis only</td>
@@ -227,7 +229,7 @@ ndarray/matrix does not work</li>
 <td>iterative</td>
 <td>O(1) item access, incremental construction</td>
 </tr>
-<tr><td>COO</td>
+<tr class="row-odd"><td>COO</td>
 <td>sparsetools</td>
 <td>.</td>
 <td>.</td>
@@ -236,7 +238,7 @@ ndarray/matrix does not work</li>
 <td>iterative</td>
 <td>has data array, facilitates fast conversion</td>
 </tr>
-<tr><td>CSR</td>
+<tr class="row-even"><td>CSR</td>
 <td>sparsetools</td>
 <td>yes</td>
 <td>yes</td>
@@ -245,7 +247,7 @@ ndarray/matrix does not work</li>
 <td>any</td>
 <td>has data array, fast row-wise ops</td>
 </tr>
-<tr><td>CSC</td>
+<tr class="row-odd"><td>CSC</td>
 <td>sparsetools</td>
 <td>yes</td>
 <td>yes</td>
@@ -254,7 +256,7 @@ ndarray/matrix does not work</li>
 <td>any</td>
 <td>has data array, fast column-wise ops</td>
 </tr>
-<tr><td>BSR</td>
+<tr class="row-even"><td>BSR</td>
 <td>sparsetools</td>
 <td>.</td>
 <td>.</td>
@@ -288,8 +290,8 @@ ndarray/matrix does not work</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -1,15 +1,17 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>1.5. Matplotlib &mdash; Scipy lecture notes</title>
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -52,7 +54,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">author:</th><td class="field-body">Mike Müller</td>
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Mike Müller</td>
 </tr>
 </tbody>
 </table>
@@ -100,73 +102,86 @@ object? -&gt; Details about 'object'. ?object also works, ?? prints more.
 Welcome to pylab, a matplotlib-based Python environment.
 For more information, type 'help(pylab)'.</pre>
 </div>
-<div class="highlight-python"><pre>In [1]:</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+</pre></div>
 </div>
 <p>Now we can make our first, really simple plot:</p>
-<div class="highlight-python"><pre>In [1]: plot(range(10))
-Out[1]: [&lt;matplotlib.lines.Line2D instance at 0x01AA26E8&gt;]
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01AA26E8</span><span class="o">&gt;</span><span class="p">]</span>
 
-In [2]:</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+</pre></div>
 </div>
 <p>The numbers form 0 through 9 are plotted:</p>
-<img alt="../../_images/simple1.png" src="../../_images/simple1.png" style="width: 50%;" />
+<img alt="../../_images/simple.png" src="../../_images/simple.png" style="width: 50%;" />
 <p>Now we can interactively add features to or plot:</p>
-<div class="highlight-python"><pre>In [2]: xlabel('measured')
-Out[2]: &lt;matplotlib.text.Text instance at 0x01A9D210&gt;
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;measured&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9D210</span><span class="o">&gt;</span>
 
-In [3]: ylabel('calculated')
-Out[3]: &lt;matplotlib.text.Text instance at 0x01A9D918&gt;
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;calculated&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9D918</span><span class="o">&gt;</span>
 
-In [4]: title('Measured vs. calculated')
-Out[4]: &lt;matplotlib.text.Text instance at 0x01A9DF80&gt;
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Measured vs. calculated&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9DF80</span><span class="o">&gt;</span>
 
-In [5]: grid(True)
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
-In [6]:</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+</pre></div>
 </div>
 <p>We get a reference to our plot:</p>
-<div class="highlight-python"><pre>In [6]: my_plot = gca()</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">my_plot</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
+</pre></div>
 </div>
 <p>and to our line we plotted, which is the first in the plot:</p>
-<div class="highlight-python"><pre>In [7]: line = my_plot.lines[0]</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">line</span> <span class="o">=</span> <span class="n">my_plot</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
 </div>
 <p>Now we can set properties using <tt class="docutils literal"><span class="pre">set_something</span></tt> methods:</p>
-<div class="highlight-python"><pre>In [8]: line.set_marker('o')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>or the <tt class="docutils literal"><span class="pre">setp</span></tt> function:</p>
-<div class="highlight-python"><pre>In [9]: setp(line, color='g')
-Out[9]: [None]</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">setp</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span>
+</pre></div>
 </div>
 <p>To apply the new properties we need to redraw the screen:</p>
-<div class="highlight-python"><pre>In [10]: draw()</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">draw</span><span class="p">()</span>
+</pre></div>
 </div>
 <p>We can also add several lines to one plot:</p>
-<div class="highlight-python"><pre>In [1]: x = arange(100)
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-In [2]: linear = arange(100)
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">linear</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-In [3]: square = [v * v for v in arange(0, 10, 0.1)]
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">square</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)]</span>
 
-In [4]: lines = plot(x, linear, x, square)</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>Let&#8217;s add a legend:</p>
-<div class="highlight-python"><pre>In [5]: legend(('linear', 'square'))
-Out[5]: &lt;matplotlib.legend.Legend instance at 0x01BBC170&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BBC170</span><span class="o">&gt;</span>
+</pre></div>
 </div>
 <p>This does not look particularly nice. We would rather like to have
 it at the left. So we clean the old graph:</p>
-<div class="highlight-python"><pre>In [6]: clf()</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">clf</span><span class="p">()</span>
+</pre></div>
 </div>
 <p>and print it anew providing new line styles (a green dotted
 line with crosses for the linear and a red dashed line with
 circles for the square graph):</p>
-<div class="highlight-python"><pre>In [7]: lines = plot(x, linear, 'g:+', x, square, 'r--o')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="s">&#39;g:+&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="s">&#39;r--o&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>Now we add the legend at the upper left corner:</p>
-<div class="highlight-python"><pre>In [8]: l = legend(('linear', 'square'), loc='upper left')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">l</span> <span class="o">=</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>The result looks like this:</p>
-<img alt="../../_images/legend1.png" src="../../_images/legend1.png" style="width: 50%;" />
+<img alt="../../_images/legend.png" src="../../_images/legend.png" style="width: 50%;" />
 <ol class="arabic simple">
 <li>Plot a simple graph of a sinus function in the range 0 to 3
 with a step size of 0.01.</li>
@@ -178,9 +193,9 @@ with a step size of 0.01.</li>
 <h2>1.5.4. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
 <p>So far we have used properties for the lines.
 There are three possibilities to set them:</p>
-<p>1) as keyword arguments at creation time:
-<tt class="docutils literal"><span class="pre">plot(x,</span> <span class="pre">linear,</span> <span class="pre">'g:+',</span> <span class="pre">x,</span> <span class="pre">square,</span> <span class="pre">'r--o')</span></tt>.</p>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple">
+<li>as keyword arguments at creation time:
+<tt class="docutils literal"><span class="pre">plot(x,</span> <span class="pre">linear,</span> <span class="pre">'g:+',</span> <span class="pre">x,</span> <span class="pre">square,</span> <span class="pre">'r--o')</span></tt>.</li>
 <li>with the function <tt class="docutils literal"><span class="pre">setp</span></tt>: <tt class="docutils literal"><span class="pre">setp(line,</span> <span class="pre">color='g')</span></tt>.</li>
 <li>using the <tt class="docutils literal"><span class="pre">set_something</span></tt> methods: <tt class="docutils literal"><span class="pre">line.set_marker('o')</span></tt></li>
 </ol>
@@ -191,45 +206,45 @@ There are three possibilities to set them:</p>
 <col width="82%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Property</th>
+<tr class="row-odd"><th class="head">Property</th>
 <th class="head">Value</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>alpha</td>
+<tr class="row-even"><td>alpha</td>
 <td>alpha transparency on 0-1 scale</td>
 </tr>
-<tr><td>antialiased</td>
+<tr class="row-odd"><td>antialiased</td>
 <td>True or False - use antialised rendering</td>
 </tr>
-<tr><td>color</td>
+<tr class="row-even"><td>color</td>
 <td>matplotlib color arg</td>
 </tr>
-<tr><td>data_clipping</td>
+<tr class="row-odd"><td>data_clipping</td>
 <td>whether to use numeric to clip data</td>
 </tr>
-<tr><td>label</td>
+<tr class="row-even"><td>label</td>
 <td>string optionally used for legend</td>
 </tr>
-<tr><td>linestyle</td>
+<tr class="row-odd"><td>linestyle</td>
 <td>one of <tt class="docutils literal"><span class="pre">-</span></tt> <tt class="docutils literal"><span class="pre">:</span></tt> <tt class="docutils literal"><span class="pre">-.</span></tt> <tt class="docutils literal"><span class="pre">-</span></tt></td>
 </tr>
-<tr><td>linewidth</td>
+<tr class="row-even"><td>linewidth</td>
 <td>float, the line width in points</td>
 </tr>
-<tr><td>marker</td>
+<tr class="row-odd"><td>marker</td>
 <td>one of <tt class="docutils literal"><span class="pre">+</span></tt> <tt class="docutils literal"><span class="pre">,</span></tt> <tt class="docutils literal"><span class="pre">o</span></tt> <tt class="docutils literal"><span class="pre">.</span></tt> <tt class="docutils literal"><span class="pre">s</span></tt> <tt class="docutils literal"><span class="pre">v</span></tt> <tt class="docutils literal"><span class="pre">x</span></tt> <tt class="docutils literal"><span class="pre">&gt;</span></tt> <tt class="docutils literal"><span class="pre">&lt;</span></tt>, etc</td>
 </tr>
-<tr><td>markeredgewidth</td>
+<tr class="row-even"><td>markeredgewidth</td>
 <td>line width around the marker symbol</td>
 </tr>
-<tr><td>markeredgecolor</td>
+<tr class="row-odd"><td>markeredgecolor</td>
 <td>edge color if a marker is used</td>
 </tr>
-<tr><td>markerfacecolor</td>
+<tr class="row-even"><td>markerfacecolor</td>
 <td>face color if a marker is used</td>
 </tr>
-<tr><td>markersize</td>
+<tr class="row-odd"><td>markersize</td>
 <td>size of the marker in points</td>
 </tr>
 </tbody>
@@ -241,87 +256,87 @@ There are three possibilities to set them:</p>
 <col width="78%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Symbol</th>
+<tr class="row-odd"><th class="head">Symbol</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><tt class="docutils literal"><span class="pre">-</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-</span></tt></td>
 <td>solid line</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">--</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">--</span></tt></td>
 <td>dashed line</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">-.</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-.</span></tt></td>
 <td>dash-dot line</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">:</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">:</span></tt></td>
 <td>dotted line</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">.</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">.</span></tt></td>
 <td>points</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">,</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">,</span></tt></td>
 <td>pixels</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">o</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">o</span></tt></td>
 <td>circle symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">^</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">^</span></tt></td>
 <td>triangle up symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">v</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">v</span></tt></td>
 <td>triangle down symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
 <td>triangle left symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
 <td>triangle right symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">s</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">s</span></tt></td>
 <td>square symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">+</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">+</span></tt></td>
 <td>plus symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">x</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">x</span></tt></td>
 <td>cross symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">D</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">D</span></tt></td>
 <td>diamond symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">d</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">d</span></tt></td>
 <td>thin diamond symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">1</span></tt></td>
 <td>tripod down symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">2</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">2</span></tt></td>
 <td>tripod up symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">3</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">3</span></tt></td>
 <td>tripod left symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">4</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">4</span></tt></td>
 <td>tripod right symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">h</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">h</span></tt></td>
 <td>hexagon symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">H</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">H</span></tt></td>
 <td>rotated hexagon symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">p</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">p</span></tt></td>
 <td>pentagon symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">|</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">|</span></tt></td>
 <td>vertical line symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">_</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">_</span></tt></td>
 <td>horizontal line symbols</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">steps</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">steps</span></tt></td>
 <td>use gnuplot style &#8216;steps&#8217; # kwarg only</td>
 </tr>
 </tbody>
@@ -337,33 +352,33 @@ With following you can get quite a few things done:</p>
 <col width="43%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Abbreviation</th>
+<tr class="row-odd"><th class="head">Abbreviation</th>
 <th class="head">Color</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>b</td>
+<tr class="row-even"><td>b</td>
 <td>blue</td>
 </tr>
-<tr><td>g</td>
+<tr class="row-odd"><td>g</td>
 <td>green</td>
 </tr>
-<tr><td>r</td>
+<tr class="row-even"><td>r</td>
 <td>red</td>
 </tr>
-<tr><td>c</td>
+<tr class="row-odd"><td>c</td>
 <td>cyan</td>
 </tr>
-<tr><td>m</td>
+<tr class="row-even"><td>m</td>
 <td>magenta</td>
 </tr>
-<tr><td>y</td>
+<tr class="row-odd"><td>y</td>
 <td>yellow</td>
 </tr>
-<tr><td>k</td>
+<tr class="row-even"><td>k</td>
 <td>black</td>
 </tr>
-<tr><td>w</td>
+<tr class="row-odd"><td>w</td>
 <td>white</td>
 </tr>
 </tbody>
@@ -376,54 +391,54 @@ the text properties:</p>
 <col width="74%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Property</th>
+<tr class="row-odd"><th class="head">Property</th>
 <th class="head">Value</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>alpha</td>
+<tr class="row-even"><td>alpha</td>
 <td>alpha transparency on 0-1 scale</td>
 </tr>
-<tr><td>color</td>
+<tr class="row-odd"><td>color</td>
 <td>matplotlib color arg</td>
 </tr>
-<tr><td>family</td>
+<tr class="row-even"><td>family</td>
 <td>set the font family, eg sans-serif, cursive, fantasy</td>
 </tr>
-<tr><td>fontangle</td>
+<tr class="row-odd"><td>fontangle</td>
 <td>the font slant, one of normal, italic, oblique</td>
 </tr>
-<tr><td>horizontalalignment</td>
+<tr class="row-even"><td>horizontalalignment</td>
 <td>left, right or center</td>
 </tr>
-<tr><td>multialignment</td>
+<tr class="row-odd"><td>multialignment</td>
 <td>left, right or center only for multiline strings</td>
 </tr>
-<tr><td>name</td>
+<tr class="row-even"><td>name</td>
 <td>font name, eg, Sans, Courier, Helvetica</td>
 </tr>
-<tr><td>position</td>
+<tr class="row-odd"><td>position</td>
 <td>x,y location</td>
 </tr>
-<tr><td>variant</td>
+<tr class="row-even"><td>variant</td>
 <td>font variant, eg normal, small-caps</td>
 </tr>
-<tr><td>rotation</td>
+<tr class="row-odd"><td>rotation</td>
 <td>angle in degrees for rotated text</td>
 </tr>
-<tr><td>size</td>
+<tr class="row-even"><td>size</td>
 <td>fontsize in points, eg, 8, 10, 12</td>
 </tr>
-<tr><td>style</td>
+<tr class="row-odd"><td>style</td>
 <td>font style, one of normal, italic, oblique</td>
 </tr>
-<tr><td>text</td>
+<tr class="row-even"><td>text</td>
 <td>set the text string itself</td>
 </tr>
-<tr><td>verticalalignment</td>
+<tr class="row-odd"><td>verticalalignment</td>
 <td>top, bottom or center</td>
 </tr>
-<tr><td>weight</td>
+<tr class="row-even"><td>weight</td>
 <td>font weight, e.g. normal, bold, heavy, light</td>
 </tr>
 </tbody>
@@ -440,21 +455,24 @@ Experiment with different styles.</li>
 <tt class="docutils literal"><span class="pre">ylabel</span></tt>, and <tt class="docutils literal"><span class="pre">title</span></tt>.</p>
 <p>There are two functions to put text at a defined position.
 <tt class="docutils literal"><span class="pre">text</span></tt> adds the text with data coordinates:</p>
-<div class="highlight-python"><pre>In [2]: plot(arange(10))
-In [3]: t1 = text(5, 5, 'Text in the middle')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Text in the middle&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">figtext</span></tt> uses figure coordinates form 0 to 1:</p>
-<div class="highlight-python"><pre>In [4]: t2 = figtext(0.8, 0.8, 'Upper right text')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">figtext</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Upper right text&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<img alt="../../_images/text1.png" src="../../_images/text1.png" style="width: 50%;" />
+<img alt="../../_images/text.png" src="../../_images/text.png" style="width: 50%;" />
 <p><tt class="docutils literal"><span class="pre">matplotlib</span></tt> supports TeX mathematical expression. So <tt class="docutils literal"><span class="pre">r'$\pi$'</span></tt>
 will show up as:</p>
 <div class="math">
-<p><img src="../../_images/math/9e3b96acac89497c17b8b482907419c707b76cf0.png" alt="\pi" /></p>
+<p><img src="../../_images/math/9e3b96acac89497c17b8b482907419c707b76cf0.png" alt="\pi"/></p>
 </div><p>If you want to get more control over where the text goes, you
 use annotations:</p>
-<div class="highlight-python"><pre>In [4]: ax = gca()
-In [5]: ax.annotate('Here is something special', xy = (1, 1))</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
 </div>
 <p>We will write the text at the position (1, 1) in terms of data.
 There are many optional arguments that help to customize
@@ -466,30 +484,30 @@ the position of the text.  The arguments <tt class="docutils literal"><span clas
 <col width="72%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">argument</th>
+<tr class="row-odd"><th class="head">argument</th>
 <th class="head">coordinate system</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>figure points</td>
+<tr class="row-even"><td>figure points</td>
 <td>points from the lower left corner of the figure</td>
 </tr>
-<tr><td>figure pixels</td>
+<tr class="row-odd"><td>figure pixels</td>
 <td>pixels from the lower left corner of the figure</td>
 </tr>
-<tr><td>figure fraction</td>
+<tr class="row-even"><td>figure fraction</td>
 <td>0,0 is lower left of figure and 1,1 is upper, right</td>
 </tr>
-<tr><td>axes points</td>
+<tr class="row-odd"><td>axes points</td>
 <td>points from lower left corner of axes</td>
 </tr>
-<tr><td>axes pixels</td>
+<tr class="row-even"><td>axes pixels</td>
 <td>pixels from lower left corner of axes</td>
 </tr>
-<tr><td>axes fraction</td>
+<tr class="row-odd"><td>axes fraction</td>
 <td>0,1 is lower left of axes and 1,1 is upper right</td>
 </tr>
-<tr><td>data</td>
+<tr class="row-even"><td>data</td>
 <td>use the axes data coordinate system</td>
 </tr>
 </tbody>
@@ -497,16 +515,17 @@ the position of the text.  The arguments <tt class="docutils literal"><span clas
 <p>If we do not supply <tt class="docutils literal"><span class="pre">xycoords</span></tt>, the text will be written at <tt class="docutils literal"><span class="pre">xy</span></tt>.</p>
 <p>Furthermore, we can use an arrow whose appearance can also be described
 in detail:</p>
-<div class="highlight-python"><pre>In [14]: plot(arange(10))
-Out[14]: [&lt;matplotlib.lines.Line2D instance at 0x01BB15D0&gt;]
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BB15D0</span><span class="o">&gt;</span><span class="p">]</span>
 
-In [15]: ax = gca()
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
 
-In [16]: ax.annotate('Here is something special', xy = (2, 1), xytext=(1,5))
-Out[16]: &lt;matplotlib.text.Annotation instance at 0x01BB1648&gt;
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Annotation</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BB1648</span><span class="o">&gt;</span>
 
-In [17]: ax.annotate('Here is something special', xy = (2, 1), xytext=(1,5),
-   ....: arrowprops={'facecolor': 'r'})</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+   <span class="o">....</span><span class="p">:</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">})</span>
+</pre></div>
 </div>
 <ol class="arabic simple">
 <li>Annotate a line at two places with text. Use green and red arrows
@@ -529,27 +548,27 @@ an empty list for them because it is as <tt class="docutils literal"><span class
 <col width="81%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Class</th>
+<tr class="row-odd"><th class="head">Class</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>NullLocator</td>
+<tr class="row-even"><td>NullLocator</td>
 <td>no ticks</td>
 </tr>
-<tr><td>IndexLocator</td>
+<tr class="row-odd"><td>IndexLocator</td>
 <td>locator for index plots (e.g. where <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">range(len(y)</span></tt>)</td>
 </tr>
-<tr><td>LinearLocator</td>
+<tr class="row-even"><td>LinearLocator</td>
 <td>evenly spaced ticks from min to max</td>
 </tr>
-<tr><td>LogLocator</td>
+<tr class="row-odd"><td>LogLocator</td>
 <td>logarithmically ticks from min to max</td>
 </tr>
-<tr><td>MultipleLocator</td>
+<tr class="row-even"><td>MultipleLocator</td>
 <td>ticks and range are a multiple of base; either integer or float</td>
 </tr>
-<tr><td>AutoLocator</td>
+<tr class="row-odd"><td>AutoLocator</td>
 <td>choose a MultipleLocator and dynamically reassign</td>
 </tr>
 </tbody>
@@ -564,30 +583,30 @@ provides special locators in <tt class="docutils literal"><span class="pre">matp
 <col width="65%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Class</th>
+<tr class="row-odd"><th class="head">Class</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>MinuteLocator</td>
+<tr class="row-even"><td>MinuteLocator</td>
 <td>locate minutes</td>
 </tr>
-<tr><td>HourLocator</td>
+<tr class="row-odd"><td>HourLocator</td>
 <td>locate hours</td>
 </tr>
-<tr><td>DayLocator</td>
+<tr class="row-even"><td>DayLocator</td>
 <td>locate specified days of the month</td>
 </tr>
-<tr><td>WeekdayLocator</td>
+<tr class="row-odd"><td>WeekdayLocator</td>
 <td>locate days of the week, e.g. MO, TU</td>
 </tr>
-<tr><td>MonthLocator</td>
+<tr class="row-even"><td>MonthLocator</td>
 <td>locate months, e.g. 10 for October</td>
 </tr>
-<tr><td>YearLocator</td>
+<tr class="row-odd"><td>YearLocator</td>
 <td>locate years that are multiples of base</td>
 </tr>
-<tr><td>RRuleLocator</td>
+<tr class="row-even"><td>RRuleLocator</td>
 <td>locate using a matplotlib.dates.rrule</td>
 </tr>
 </tbody>
@@ -599,34 +618,34 @@ provides special locators in <tt class="docutils literal"><span class="pre">matp
 <col width="66%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Class</th>
+<tr class="row-odd"><th class="head">Class</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>NullFormatter</td>
+<tr class="row-even"><td>NullFormatter</td>
 <td>no labels on the ticks</td>
 </tr>
-<tr><td>FixedFormatter</td>
+<tr class="row-odd"><td>FixedFormatter</td>
 <td>set the strings manually for the labels</td>
 </tr>
-<tr><td>FuncFormatter</td>
+<tr class="row-even"><td>FuncFormatter</td>
 <td>user defined function sets the labels</td>
 </tr>
-<tr><td>FormatStrFormatter</td>
+<tr class="row-odd"><td>FormatStrFormatter</td>
 <td>use a sprintf format string</td>
 </tr>
-<tr><td>IndexFormatter</td>
+<tr class="row-even"><td>IndexFormatter</td>
 <td>cycle through fixed strings by tick position</td>
 </tr>
-<tr><td>ScalarFormatter</td>
+<tr class="row-odd"><td>ScalarFormatter</td>
 <td>default formatter for scalars;
 autopick the fmt string</td>
 </tr>
-<tr><td>LogFormatter</td>
+<tr class="row-even"><td>LogFormatter</td>
 <td>formatter for log axes</td>
 </tr>
-<tr><td>DateFormatter</td>
+<tr class="row-odd"><td>DateFormatter</td>
 <td>use an strftime string to format the date</td>
 </tr>
 </tbody>
@@ -636,22 +655,23 @@ You can make your own formatter deriving from it.</p>
 <p>Now we set our major locator to 2 and the minor locator
 to 1. We also format the numbers as decimals using the
 <tt class="docutils literal"><span class="pre">FormatStrFormatter</span></tt>:</p>
-<div class="highlight-python"><pre>In [5]: major_locator = MultipleLocator(2)
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">major_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-In [6]: major_formatter = FormatStrFormatter('%5.2f')
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">major_formatter</span> <span class="o">=</span> <span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%5.2f</span><span class="s">&#39;</span><span class="p">)</span>
 
-In [7]: minor_locator = MultipleLocator(1)
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">minor_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-In [8]: ax.xaxis.set_major_locator(major_locator)
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">major_locator</span><span class="p">)</span>
 
-In [9]: ax.xaxis.set_minor_locator(minor_locator)
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
 
-In [10]: ax.xaxis.set_major_formatter(major_formatter)
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">major_formatter</span><span class="p">)</span>
 
-In [10]: draw()</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">draw</span><span class="p">()</span>
+</pre></div>
 </div>
 <p>After we redraw the figure our x axis should look like this:</p>
-<img alt="../../_images/ticks1.png" src="../../_images/ticks1.png" style="width: 50%;" />
+<img alt="../../_images/ticks.png" src="../../_images/ticks.png" style="width: 50%;" />
 <ol class="arabic simple">
 <li>Plot a graph with dates for one year with daily
 values at the x axis using the built-in module <tt class="docutils literal"><span class="pre">datetime</span></tt>.</li>
@@ -689,34 +709,34 @@ looks like:</p>
 <col width="54%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Argument</th>
+<tr class="row-odd"><th class="head">Argument</th>
 <th class="head">Default</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><tt class="docutils literal"><span class="pre">num</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">num</span></tt></td>
 <td><tt class="docutils literal"><span class="pre">1</span></tt></td>
 <td>number of figure</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">figsize</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">figsize</span></tt></td>
 <td><tt class="docutils literal"><span class="pre">figure.figsize</span></tt></td>
 <td>figure size in in inches (width, height)</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">dpi</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">dpi</span></tt></td>
 <td><tt class="docutils literal"><span class="pre">figure.dpi</span></tt></td>
 <td>resolution in dots per inch</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">facecolor</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">facecolor</span></tt></td>
 <td><tt class="docutils literal"><span class="pre">figure.facecolor</span></tt></td>
 <td>color of the drawing background</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">edgecolor</span></tt></td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">edgecolor</span></tt></td>
 <td><tt class="docutils literal"><span class="pre">figure.edgecolor</span></tt></td>
 <td>color of edge around the drawing background</td>
 </tr>
-<tr><td><tt class="docutils literal"><span class="pre">frameon</span></tt></td>
-<td><tt class="xref docutils literal"><span class="pre">True</span></tt></td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">frameon</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">True</span></tt></td>
 <td>draw figure frame or not</td>
 </tr>
 </tbody>
@@ -735,14 +755,14 @@ or with the <tt class="docutils literal"><span class="pre">set_something</span><
 specify the number of rows and columns and the number of the plot.</p>
 <p>A plot with two rows and one column is created with
 <tt class="docutils literal"><span class="pre">subplot(211)</span></tt> and <tt class="docutils literal"><span class="pre">subplot(212)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_horizontal1.png" src="../../_images/subplots_horizontal1.png" style="width: 25%;" />
+<img alt="../../_images/subplots_horizontal.png" src="../../_images/subplots_horizontal.png" style="width: 25%;" />
 <p>If you want two plots side by side, you create one row and two columns
 with <tt class="docutils literal"><span class="pre">subplot(121)</span></tt> and <tt class="docutils literal"><span class="pre">subplot(112)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_vertical1.png" src="../../_images/subplots_vertical1.png" style="width: 25%;" />
+<img alt="../../_images/subplots_vertical.png" src="../../_images/subplots_vertical.png" style="width: 25%;" />
 <p>You can arrange as many figures as you want. A two-by-two arrangement can
 be created with <tt class="docutils literal"><span class="pre">subplot(221)</span></tt>,  <tt class="docutils literal"><span class="pre">subplot(222)</span></tt>, <tt class="docutils literal"><span class="pre">subplot(223)</span></tt>, and
 <tt class="docutils literal"><span class="pre">subplot(224)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_four1.png" src="../../_images/subplots_four1.png" style="width: 25%;" />
+<img alt="../../_images/subplots_four.png" src="../../_images/subplots_four.png" style="width: 25%;" />
 <p>Frequently, you don&#8217;t want all subplots to have ticks or labels.
 You can set the <tt class="docutils literal"><span class="pre">xticklabels</span></tt> or the <tt class="docutils literal"><span class="pre">yticklabels</span></tt> to an empty
 list (<tt class="docutils literal"><span class="pre">[]</span></tt>). Every subplot defines the methods <tt class="docutils literal"><span class="pre">'is_first_row</span></tt>,
@@ -751,15 +771,16 @@ set ticks and labels only for the outer pots.</p>
 <p>Axes are very similar to subplots but allow placement of plots
 at any location in the figure.  So if we want to put a smaller
 plot inside a bigger one we do so with <tt class="docutils literal"><span class="pre">axes</span></tt>:</p>
-<div class="highlight-python"><pre>In [22]: plot(x)
-Out[22]: [&lt;matplotlib.lines.Line2D instance at 0x02C9CE90&gt;]
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x02C9CE90</span><span class="o">&gt;</span><span class="p">]</span>
 
-In [23]: a = axes([0.2, 0.5, 0.25, 0.25])
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
 
-In [24]: plot(x)</pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>The result looks like this:</p>
-<img alt="../../_images/axes1.png" src="../../_images/axes1.png" style="width: 25%;" />
+<img alt="../../_images/axes.png" src="../../_images/axes.png" style="width: 25%;" />
 <ol class="arabic simple">
 <li>Draw two figures, one 5 by 5, one 10 by 10 inches.</li>
 <li>Add four subplots to one figure. Add labels and ticks only to
@@ -778,7 +799,7 @@ optional arguments that are not shown here.</p>
 </div>
 <p>Now we have three bars starting at 1, 2, and 3 with height of
 4, 3, 7 respectively:</p>
-<img alt="../../_images/bar1.png" src="../../_images/bar1.png" style="width: 25%;" />
+<img alt="../../_images/bar.png" src="../../_images/bar.png" style="width: 25%;" />
 <p>The default column width is 0.8. It can be changed with
 common methods by setting <tt class="docutils literal"><span class="pre">width</span></tt>. As it can be <tt class="docutils literal"><span class="pre">color</span></tt> and
 <tt class="docutils literal"><span class="pre">bottom</span></tt>, we can also set an error bar with <tt class="docutils literal"><span class="pre">yerr</span></tt> or <tt class="docutils literal"><span class="pre">xerr</span></tt>.</p>
@@ -788,7 +809,7 @@ Using the same data:</p>
 </pre></div>
 </div>
 <p>We get:</p>
-<img alt="../../_images/barh1.png" src="../../_images/barh1.png" style="width: 25%;" />
+<img alt="../../_images/barh.png" src="../../_images/barh.png" style="width: 25%;" />
 <p>We can also have discontinuous vertical bars with <tt class="docutils literal"><span class="pre">broken_barh</span></tt>.
 We specify start and width of the range in y-direction and all
 start-width pairs in x-direction:</p>
@@ -805,7 +826,7 @@ start-width pairs in x-direction:</p>
 </pre></div>
 </div>
 <p>and get this:</p>
-<img alt="../../_images/broken_barh1.png" src="../../_images/broken_barh1.png" style="width: 25%;" />
+<img alt="../../_images/broken_barh.png" src="../../_images/broken_barh.png" style="width: 25%;" />
 <p>We can draw box and whisker plots:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">boxplot</span><span class="p">((</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
 </pre></div>
@@ -818,7 +839,7 @@ increase the y axis:</p>
 </pre></div>
 </div>
 <p>Our plot looks like this:</p>
-<img alt="../../_images/boxplot1.png" src="../../_images/boxplot1.png" style="width: 25%;" />
+<img alt="../../_images/boxplot.png" src="../../_images/boxplot.png" style="width: 25%;" />
 <p>The range of the whiskers can be determined with the
 argument <tt class="docutils literal"><span class="pre">whis</span></tt>, which defaults to 1.5. The range of
 the whiskers is between the most extreme data point
@@ -851,7 +872,7 @@ x and y coordinates:</p>
 </pre></div>
 </div>
 <p>Our plot looks like this:</p>
-<img alt="../../_images/contour1.png" src="../../_images/contour1.png" style="width: 25%;" />
+<img alt="../../_images/contour.png" src="../../_images/contour.png" style="width: 25%;" />
 <p>We can also fill the area. We just use numbers form 0 to 9 for
 the values <tt class="docutils literal"><span class="pre">v</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="n">x</span>
@@ -859,7 +880,7 @@ the values <tt class="docutils literal"><span class="pre">v</span></tt>:</p>
 </pre></div>
 </div>
 <p>Now our plot area is filled:</p>
-<img alt="../../_images/contourf1.png" src="../../_images/contourf1.png" style="width: 25%;" />
+<img alt="../../_images/contourf.png" src="../../_images/contourf.png" style="width: 25%;" />
 <p>We can make histograms. Let&#8217;s get some normally distributed
 random numbers from <tt class="docutils literal"><span class="pre">numpy</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">N</span>
@@ -871,7 +892,7 @@ random numbers from <tt class="docutils literal"><span class="pre">numpy</span><
 </pre></div>
 </div>
 <p>With 100 numbers our figure looks pretty good:</p>
-<img alt="../../_images/hist1.png" src="../../_images/hist1.png" style="width: 25%;" />
+<img alt="../../_images/hist.png" src="../../_images/hist.png" style="width: 25%;" />
 <p>Plots with logarithmic scales are easy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">loglog</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 </pre></div>
@@ -882,7 +903,7 @@ random numbers from <tt class="docutils literal"><span class="pre">numpy</span><
 </pre></div>
 </div>
 <p>Now we have loglog plot:</p>
-<img alt="../../_images/loglog1.png" src="../../_images/loglog1.png" style="width: 25%;" />
+<img alt="../../_images/loglog.png" src="../../_images/loglog.png" style="width: 25%;" />
 <p>If we want only one axis with a logarithmic scale we can
 use <tt class="docutils literal"><span class="pre">semilogx</span></tt> or <tt class="docutils literal"><span class="pre">semilogy</span></tt>.</p>
 <p>Pie charts can also be created with a few lines:</p>
@@ -892,7 +913,7 @@ use <tt class="docutils literal"><span class="pre">semilogx</span></tt> or <tt c
 </pre></div>
 </div>
 <p>The result looks as expected:</p>
-<img alt="../../_images/pie1.png" src="../../_images/pie1.png" style="width: 25%;" />
+<img alt="../../_images/pie.png" src="../../_images/pie.png" style="width: 25%;" />
 <p>Polar plots are also possible. Let&#8217;s define our <tt class="docutils literal"><span class="pre">r</span></tt> from
 0 to 360 and our <tt class="docutils literal"><span class="pre">theta</span></tt> from 0 to 360 degrees. We need to
 convert them to radians:</p>
@@ -905,7 +926,7 @@ convert them to radians:</p>
 </pre></div>
 </div>
 <p>We get a nice spiral:</p>
-<img alt="../../_images/polar1.png" src="../../_images/polar1.png" style="width: 25%;" />
+<img alt="../../_images/polar.png" src="../../_images/polar.png" style="width: 25%;" />
 <p>Plotting arrows in 2D plane can be achieved with <tt class="docutils literal"><span class="pre">quiver</span></tt>.
 We define the x and y coordinates of the arrow shafts:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -925,7 +946,7 @@ We define the x and y coordinates of the arrow shafts:</p>
 <p>All arrows point to the upper right, except two. The one
 at the location (4, 4) has 3 units in x-direction and the
 other at location (1, 1) has -1 unit in y direction:</p>
-<img alt="../../_images/quiver1.png" src="../../_images/quiver1.png" style="width: 25%;" />
+<img alt="../../_images/quiver.png" src="../../_images/quiver.png" style="width: 25%;" />
 <p>Scatter plots print x vs. y diagrams. We define <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
 and make some point in <tt class="docutils literal"><span class="pre">y</span></tt> random:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -940,7 +961,7 @@ and make some point in <tt class="docutils literal"><span class="pre">y</span></
 </pre></div>
 </div>
 <p>The three different values for <tt class="docutils literal"><span class="pre">y</span></tt> break out of the line:</p>
-<img alt="../../_images/scatter1.png" src="../../_images/scatter1.png" style="width: 25%;" />
+<img alt="../../_images/scatter.png" src="../../_images/scatter.png" style="width: 25%;" />
 <p>Working with sparse matrices, it is often of interest as
 how the matrix looks like in terms of sparsity.
 We take an identity matrix as an example:</p>
@@ -962,32 +983,33 @@ We take an identity matrix as an example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">spy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/spy1.png" src="../../_images/spy1.png" style="width: 25%;" />
+<img alt="../../_images/spy.png" src="../../_images/spy.png" style="width: 25%;" />
 <p>Stem plots vertical lines at the given x location up to
 the specified y location. Let&#8217;s reuse <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
 from our scatter (see above):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/stem1.png" src="../../_images/stem1.png" style="width: 25%;" />
+<img alt="../../_images/stem.png" src="../../_images/stem.png" style="width: 25%;" />
 <p>There is a function for creating date plots.
 Let&#8217;s define 10 dates starting at January 1st 2000
 at 15.day intervals:</p>
-<div class="highlight-python"><pre>import datetime
-d1 = datetime.datetime(2000, 1, 1)
-delta = datetime.timedelta(15)
-dates = [d1 + x * delta for x in range(1
-dates
-[datetime.datetime(2000, 1, 1, 0, 0),
- datetime.datetime(2000, 1, 16, 0, 0),
- datetime.datetime(2000, 1, 31, 0, 0),
- datetime.datetime(2000, 2, 15, 0, 0),
- datetime.datetime(2000, 3, 1, 0, 0),
- datetime.datetime(2000, 3, 16, 0, 0),
- datetime.datetime(2000, 3, 31, 0, 0),
- datetime.datetime(2000, 4, 15, 0, 0),
- datetime.datetime(2000, 4, 30, 0, 0),
- datetime.datetime(2000, 5, 15, 0, 0)]</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">delta</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span>
+<span class="n">dates</span>
+<span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+ <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+</pre></div>
 </div>
 <p>We reuse our data from the scatter plot (see above):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">y</span>
@@ -998,7 +1020,7 @@ dates
 <div class="highlight-python"><div class="highlight"><pre><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/date1.png" src="../../_images/date1.png" style="width: 25%;" />
+<img alt="../../_images/date.png" src="../../_images/date.png" style="width: 25%;" />
 </div>
 <div class="section" id="the-class-library">
 <h2>1.5.9. The Class Library<a class="headerlink" href="#the-class-library" title="Permalink to this headline">¶</a></h2>
@@ -1135,8 +1157,8 @@ with a plot of two lines, one linear and square with a legend in it.</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

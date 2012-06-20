@@ -54,11 +54,6 @@ Examples
 
    :ref:`example_plot_clean_morpho.py`
 
-.. figure:: ./images/thumb/plot_cubist_lena.png
-   :target: ./plot_cubist_lena.html
-
-   :ref:`example_plot_cubist_lena.py`
-
 .. figure:: ./images/thumb/plot_denoising.png
    :target: ./plot_denoising.html
 

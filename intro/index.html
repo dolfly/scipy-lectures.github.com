@@ -1,15 +1,17 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>1. Getting started with Python for science &mdash; Scipy lecture notes</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -62,7 +64,7 @@
       list-style-type: none;
       font-size: 150% ;
       font-weight: bold;
-  }
+      }
 
   li.toctree-l1 ul {
       padding-left: 40px ;
@@ -72,13 +74,13 @@
       font-size: 70% ;
       list-style-type: square;
       font-weight: normal;
-  }
+      }
 
   li.toctree-l3 {
       font-size: 85% ;
       list-style-type: circle;
       font-weight: normal;
-  }
+      }
 
 </style><div class="toctree-wrapper compound">
 <ul>
@@ -158,45 +160,38 @@
 <li class="toctree-l2"><a class="reference internal" href="language/oop.html">1.2.10. Object-oriented programming (OOP)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="numpy/numpy.html">1.3. NumPy: creating and manipulating numerical data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#the-numpy-array-object">1.3.1. The numpy array object</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and numpy arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#reference-documentation">1.3.1.2. Reference documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#creating-arrays">1.3.1.3. Creating arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-data-types">1.3.1.4. Basic data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-visualization">1.3.1.5. Basic visualization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-and-slicing">1.3.1.6. Indexing and slicing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#copies-and-views">1.3.1.7. Copies and views</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#data-files">1.3.1.8. Data files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary-exercises">1.3.1.9. Summary &amp; Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/index.html">1.3. NumPy: creating and manipulating numerical data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numpy/array_object.html">1.3.1. The numpy array object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and numpy arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#reference-documentation">1.3.1.2. Reference documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#creating-arrays">1.3.1.3. Creating arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#basic-data-types">1.3.1.4. Basic data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#basic-visualization">1.3.1.5. Basic visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#indexing-and-slicing">1.3.1.6. Indexing and slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#copies-and-views">1.3.1.7. Copies and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/array_object.html#fancy-indexing">1.3.1.8. Fancy indexing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#numerical-operations-on-arrays">1.3.2. Numerical operations on arrays</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#elementwise-operations">1.3.2.1. Elementwise operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-linear-algebra">1.3.2.2. Basic linear algebra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#basic-reductions">1.3.2.3. Basic reductions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#broadcasting">1.3.2.4. Broadcasting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#array-shape-manipulation">1.3.2.5. Array shape manipulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fancy-indexing">1.3.2.6. Fancy indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#sorting-data">1.3.2.7. Sorting data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id1">1.3.2.8. Summary &amp; Exercises</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#conclusions">1.3.2.9. Conclusions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/operations.html">1.3.2. Numerical operations on arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#elementwise-operations">1.3.2.1. Elementwise operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#basic-reductions">1.3.2.2. Basic reductions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#broadcasting">1.3.2.3. Broadcasting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#array-shape-manipulation">1.3.2.4. Array shape manipulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#sorting-data">1.3.2.5. Sorting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#some-exercices">1.3.2.6. Some exercices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/operations.html#summary">1.3.2.7. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#moving-on">1.3.3. Moving on</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#more-data-types">1.3.3.1. More data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#structured-data-types">1.3.3.2. Structured data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#fourier-transforms">1.3.3.3. Fourier transforms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#masked-arrays">1.3.3.4. Masked arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#polynomials">1.3.3.5. Polynomials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#id2">1.3.3.6. Summary &amp; Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/elaborate_arrays.html">1.3.3. More elaborate arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#more-data-types">1.3.3.1. More data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#structured-data-types">1.3.3.2. Structured data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#masked-arrays">1.3.3.3. Masked arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#under-the-hood-the-memory-layout-of-a-numpy-array">1.3.3.4. Under the hood: the memory layout of a numpy array</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="numpy/numpy.html#under-the-hood">1.3.4. Under the hood</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#it-s">1.3.4.1. It&#8217;s...</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#block-of-memory">1.3.4.2. Block of memory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#indexing-scheme-strides">1.3.4.3. Indexing scheme: strides</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/numpy.html#summary">1.3.4.4. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy/advanced_operations.html">1.3.4. Advanced operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="numpy/advanced_operations.html#polynomials">1.3.4.1. Polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/advanced_operations.html#loading-data-files">1.3.4.2. Loading data files</a></li>
 </ul>
 </li>
 </ul>
@@ -246,14 +241,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="scipy.html#summary-exercises-on-scientific-computing">1.6.12. Summary exercises on scientific computing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.12.5. Maximum wind speed prediction at the Sprogø station</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.12.6. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.12.7. Image processing application: counting bubbles and unmolten grains</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.12.5. Maximum wind speed prediction at the Sprogø station</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.12.6. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.12.7. Image processing application: counting bubbles and unmolten grains</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.12.8. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.12.13. Maximum wind speed prediction at the Sprogø station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.12.15. Image processing application: counting bubbles and unmolten grains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.12.13. Maximum wind speed prediction at the Sprogø station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.12.15. Image processing application: counting bubbles and unmolten grains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.12.13. Maximum wind speed prediction at the Sprogø station</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.12.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.12.15. Image processing application: counting bubbles and unmolten grains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.12.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
 </ul>
 </li>
 </ul>
@@ -280,8 +279,8 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
