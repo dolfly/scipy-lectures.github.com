@@ -69,6 +69,9 @@
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">scipy</span></tt>: <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt> submodule dedicated to image processing
 (n-dimensional images). See <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/tutorial/ndimage.html">http://docs.scipy.org/doc/scipy/reference/tutorial/ndimage.html</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">a few examples use specialized toolkits working with <tt class="docutils literal"><span class="pre">np.array</span></tt>:</p>
 <blockquote>
@@ -118,7 +121,7 @@
 <li><a class="reference internal" href="#segmentation" id="id13">Segmentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#measuring-objects-properties" id="id14">Measuring objects properties</a></li>
+<li><a class="reference internal" href="#measuring-objects-properties-ndimage-measurements" id="id14">Measuring objects properties: <tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></a></li>
 </ul>
 </div>
 <div class="section" id="opening-and-writing-to-image-files">
@@ -293,7 +296,8 @@ element</em>.</p>
 <div class="section" id="blurring-smoothing">
 <h3><a class="toc-backref" href="#id7">2.6.4.1. Blurring/smoothing</a><a class="headerlink" href="#blurring-smoothing" title="Permalink to this headline">¶</a></h3>
 <p><strong>Gaussian filter</strong> from <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">blurred_lena</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">very_blurred</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
@@ -310,7 +314,8 @@ element</em>.</p>
 <div class="section" id="sharpening">
 <h3><a class="toc-backref" href="#id8">2.6.4.2. Sharpening</a><a class="headerlink" href="#sharpening" title="Permalink to this headline">¶</a></h3>
 <p>Sharpen a blurred image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">blurred_l</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -329,7 +334,8 @@ Laplacian:</p>
 <div class="section" id="denoising">
 <h3><a class="toc-backref" href="#id9">2.6.4.3. Denoising</a><a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h3>
 <p>Noisy lena:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">230</span><span class="p">:</span><span class="mi">310</span><span class="p">,</span> <span class="mi">210</span><span class="p">:</span><span class="mi">350</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">noisy</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">l</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -453,9 +459,9 @@ image.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">63</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bigger_points</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">grey_dilation</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">structure</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_bf</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
@@ -498,9 +504,9 @@ image.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">open_square</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eroded_square</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reconstruction</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_propagation</span><span class="p">(</span><span class="n">eroded_square</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">square</span><span class="p">)</span>
 </pre></div>
@@ -565,16 +571,14 @@ but for convenience we&#8217;ve shipped it as a <tt class="xref download docutil
 <span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">l</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">l</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">im</span> <span class="o">&gt;</span> <span class="n">im</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">im</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bin_centers</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">binary_img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
@@ -584,24 +588,22 @@ but for convenience we&#8217;ve shipped it as a <tt class="xref download docutil
 <p>[<a class="reference internal" href="auto_examples/plot_histo_segmentation.html#example-plot-histo-segmentation-py"><em>Python source code</em></a>]</p>
 <p>Automatic thresholding: use Gaussian mixture model:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">im</span> <span class="o">&gt;</span> <span class="n">im</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">im</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">+</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cvtype</span><span class="o">=</span><span class="s">&#39;full&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
-<span class="go">GMM(cvtype=&#39;full&#39;, n_components=2)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">means</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span> 
+<span class="go">GMM(...)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">means_</span>
 <span class="go">array([[ 0.9353155 ],</span>
-<span class="go">[-0.02966039]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">classif</span><span class="o">.</span><span class="n">covars</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="go">       [-0.02966039]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">classif</span><span class="o">.</span><span class="n">covars_</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <span class="go">array([ 0.35074631,  0.28225327])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">weights</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classif</span><span class="o">.</span><span class="n">weights_</span>
 <span class="go">array([ 0.40989799,  0.59010201])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">classif</span><span class="o">.</span><span class="n">means</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">classif</span><span class="o">.</span><span class="n">means_</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">binary_img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">&gt;</span> <span class="n">threshold</span>
 </pre></div>
 </div>
@@ -617,17 +619,15 @@ but for convenience we&#8217;ve shipped it as a <tt class="xref download docutil
 <a class="reference external image-reference" href="auto_examples/plot_clean_morpho.html"><img alt="../../_images/plot_clean_morpho_1.png" src="../../_images/plot_clean_morpho_1.png" style="width: 780.0px; height: 195.0px;" /></a>
 </div>
 <p>[<a class="reference internal" href="auto_examples/plot_clean_morpho.html#example-plot-clean-morpho-py"><em>Python source code</em></a>]</p>
-<div class="topic">
+<div class="green topic">
 <p class="topic-title first"><strong>Exercise</strong></p>
 <p>Check that reconstruction operations (erosion + propagation) produce a
 better result than opening/closing:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">eroded_img</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">binary_img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reconstruct_img</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_propagation</span><span class="p">(</span><span class="n">eroded_img</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span><span class="o">=</span><span class="n">binary_img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reconstruct_img</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_propagation</span><span class="p">(</span><span class="n">eroded_img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">binary_img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">reconstruct_img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eroded_tmp</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reconstruct_final</span> <span class="o">=</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ndimage</span><span class="o">.</span><span class="n">binary_propagation</span><span class="p">(</span><span class="n">eroded_tmp</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">tmp</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reconstruct_final</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ndimage</span><span class="o">.</span><span class="n">binary_propagation</span><span class="p">(</span><span class="n">eroded_tmp</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">tmp</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mask</span> <span class="o">-</span> <span class="n">close_img</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="go">0.014678955078125</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mask</span> <span class="o">-</span> <span class="n">reconstruct_final</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -635,7 +635,7 @@ better result than opening/closing:</p>
 </pre></div>
 </div>
 </div>
-<div class="topic">
+<div class="green topic">
 <p class="topic-title first"><strong>Exercise</strong></p>
 <p>Check how a first denoising step (median filter, total variation)
 modifies the histogram, and check that the resulting histogram-based
@@ -644,39 +644,37 @@ segmentation is more accurate.</p>
 <ul class="simple">
 <li><strong>Graph-based</strong> segmentation: use spatial information.</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.cluster</span> <span class="kn">import</span> <span class="n">spectral_clustering</span>
-<span class="go">&gt;&gt;&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">spectral_clustering</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">center1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">center2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">center3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">67</span><span class="p">,</span> <span class="mi">58</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">center4</span> <span class="o">=</span> <span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radius1</span><span class="p">,</span> <span class="n">radius2</span><span class="p">,</span> <span class="n">radius3</span><span class="p">,</span> <span class="n">radius4</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">circle1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">center1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">center1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">radius1</span><span class="o">**</span><span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">circle2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">center2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">center2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">radius2</span><span class="o">**</span><span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">circle3</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">center3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">center3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">radius3</span><span class="o">**</span><span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">circle4</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">center4</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">center4</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">radius4</span><span class="o">**</span><span class="mi">2</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># 4 circles</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">circle1</span> <span class="o">+</span> <span class="n">circle2</span> <span class="o">+</span> <span class="n">circle3</span> <span class="o">+</span> <span class="n">circle4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Convert the image into a graph with the value of the gradient on</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">the</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># edges.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># the edges.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">img_to_graph</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Take a decreasing function of the gradient: we take it weakly</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># dependant from the gradient the segmentation is close to a voronoi</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">graph</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="n">graph</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
-<span class="go">&gt;&gt;&gt;</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label_im</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label_im</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
@@ -685,9 +683,8 @@ segmentation is more accurate.</p>
 <img alt="../../_images/image_spectral_clustering.png" class="align-center" src="../../_images/image_spectral_clustering.png" />
 </div>
 </div>
-<div class="section" id="measuring-objects-properties">
-<h2><a class="toc-backref" href="#id14">2.6.6. Measuring objects properties</a><a class="headerlink" href="#measuring-objects-properties" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></p>
+<div class="section" id="measuring-objects-properties-ndimage-measurements">
+<h2><a class="toc-backref" href="#id14">2.6.6. Measuring objects properties: <tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></a><a class="headerlink" href="#measuring-objects-properties-ndimage-measurements" title="Permalink to this headline">¶</a></h2>
 <p>Synthetic data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">256</span>
@@ -705,8 +702,8 @@ segmentation is more accurate.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">label_im</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nb_labels</span> <span class="c"># how many regions?</span>
 <span class="go">23</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_im</span><span class="p">)</span>
-<span class="go">&lt;matplotlib.image.AxesImage object at 0x6624d50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_im</span><span class="p">)</span>        
+<span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
 </pre></div>
 </div>
 <div class="figure">
@@ -724,7 +721,8 @@ segmentation is more accurate.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">remove_pixel</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(256, 256)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label_im</span><span class="p">[</span><span class="n">remove_pixel</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_im</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">label_im</span><span class="p">)</span>        
+<span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
 </pre></div>
 </div>
 <p>Now reassign labels with <tt class="docutils literal"><span class="pre">np.searchsorted</span></tt>:</p>
@@ -739,7 +737,8 @@ segmentation is more accurate.</p>
 <p>Find region of interest enclosing object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">slice_x</span><span class="p">,</span> <span class="n">slice_y</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">label_im</span><span class="o">==</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">roi</span> <span class="o">=</span> <span class="n">im</span><span class="p">[</span><span class="n">slice_x</span><span class="p">,</span> <span class="n">slice_y</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>     
+<span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
 </pre></div>
 </div>
 <div class="figure">
@@ -756,7 +755,7 @@ segmentation is more accurate.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">sx</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">sy</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">regions</span> <span class="o">=</span> <span class="n">sy</span><span class="o">/</span><span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="o">/</span><span class="mi">6</span>  <span class="c"># note that we use broadcasting</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">block_mean</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">regions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">regions</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="n">regions</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">block_mean</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">sx</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">sy</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -767,7 +766,10 @@ segmentation is more accurate.</p>
 <p>When regions are regular blocks, it is more efficient to use stride
 tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-manipulation-label"><em>Example: fake dimensions with strides</em></a>).</p>
 <p>Non-regularly-spaced blocks: radial mean:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">rbin</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="o">*</span> <span class="n">r</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sx</span><span class="p">,</span> <span class="n">sy</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">shape</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">sx</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">sy</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">sx</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">sy</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rbin</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="o">*</span> <span class="n">r</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radial_mean</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">rbin</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rbin</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -790,11 +792,11 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
 <span class="gp">...</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">granulometry</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="n">s</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">s</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">sizes</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="n">sizes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">sizes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">granulo</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndimage</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> \
-<span class="gp">... </span>            <span class="n">structure</span><span class="o">=</span><span class="n">disk_structure</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">]</span>
+<span class="gp">... </span>        <span class="n">structure</span><span class="o">=</span><span class="n">disk_structure</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">]</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">granulo</span>
 <span class="gp">...</span>
 <span class="go">&gt;&gt;&gt;</span>

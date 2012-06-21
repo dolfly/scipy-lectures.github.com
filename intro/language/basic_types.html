@@ -53,26 +53,32 @@
 <h1>1.2.2. Basic types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="numerical-types">
 <h2>1.2.2.1. Numerical types<a class="headerlink" href="#numerical-types" title="Permalink to this headline">¶</a></h2>
-<p>Integer variables:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Integer:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p>floats</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mf">2.1</span>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Floats:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mf">2.1</span>
 </pre></div>
 </div>
-<p>complex (a native type in Python!)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="mf">0.5</span><span class="n">j</span>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Complex:</th><td class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="mf">0.5</span><span class="n">j</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">real</span>
 <span class="go">1.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">imag</span>
 <span class="go">0.5</span>
 </pre></div>
 </div>
-<p>and booleans:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Booleans:</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span>
@@ -81,6 +87,10 @@
 <span class="go">&lt;type &#39;bool&#39;&gt;</span>
 </pre></div>
 </div>
+</td>
+</tr>
+</tbody>
+</table>
 <p>A Python shell can therefore replace your pocket calculator, with the
 basic arithmetic operations <tt class="docutils literal"><span class="pre">+</span></tt>, <tt class="docutils literal"><span class="pre">-</span></tt>, <tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">/</span></tt>, <tt class="docutils literal"><span class="pre">%</span></tt> (modulo)
 natively implemented:</p>
@@ -162,7 +172,7 @@ types. For example</p>
 such as  <tt class="docutils literal"><span class="pre">start&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">stop</span></tt> (<tt class="docutils literal"><span class="pre">i</span></tt> ranging from <tt class="docutils literal"><span class="pre">start</span></tt> to
 <tt class="docutils literal"><span class="pre">stop-1</span></tt>). Therefore, <tt class="docutils literal"><span class="pre">l[start:stop]</span></tt> has <tt class="docutils literal"><span class="pre">(stop-start)</span></tt> elements.</p>
 </div>
-<p><strong>Slicing syntax</strong>: <tt class="xref py py-obj docutils literal"><span class="pre">l[start:stop:stride]</span></tt></p>
+<p><strong>Slicing syntax</strong>: <cite>l[start:stop:stride]</cite></p>
 <p>All slicing parameters are optional:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
 <span class="go">[4, 5]</span>
@@ -219,7 +229,7 @@ or query them. Here are a few examples; for more details, see
 <span class="go">[1, 2, 3, 4, 5]</span>
 </pre></div>
 </div>
-<p>Reverse <tt class="xref py py-obj docutils literal"><span class="pre">l</span></tt>:</p>
+<p>Reverse <cite>l</cite>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">l</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
 <span class="go">[5, 4, 3, 2, 1]</span>
@@ -243,7 +253,7 @@ or query them. Here are a few examples; for more details, see
 <p><strong>Methods and Object-Oriented Programming</strong></p>
 <p class="last">The notation <tt class="docutils literal"><span class="pre">r.method()</span></tt> (<tt class="docutils literal"><span class="pre">r.sort(),</span> <span class="pre">r.append(3),</span> <span class="pre">l.pop()</span></tt>) is our
 first example of object-oriented programming (OOP). Being a <tt class="docutils literal"><span class="pre">list</span></tt>, the
-object <tt class="xref py py-obj docutils literal"><span class="pre">r</span></tt> owns the <em>method</em> <tt class="xref py py-obj docutils literal"><span class="pre">function</span></tt> that is called using the notation
+object <cite>r</cite> owns the <em>method</em> <cite>function</cite> that is called using the notation
 <strong>.</strong>. No further knowledge of OOP than understanding the notation <strong>.</strong> is
 necessary for going through this tutorial.</p>
 </div>
@@ -429,7 +439,7 @@ beginning of an object&#8217;s name (variable, function, module), press
 the <strong>Tab</strong> key and Ipython will complete the expression to match
 available names. If many names are possible, a list of names is
 displayed.</li>
-<li><strong>History</strong>: press the <tt class="xref py py-obj docutils literal"><span class="pre">up</span></tt> (resp. <tt class="xref py py-obj docutils literal"><span class="pre">down</span></tt>) arrow to go through all
+<li><strong>History</strong>: press the <cite>up</cite> (resp. <cite>down</cite>) arrow to go through all
 previous (resp. next) instructions starting with the expression on
 the left of the cursor (put the cursor at the beginning of the line
 to go through all previous commands)</li>
