@@ -54,17 +54,17 @@
 <div class="contents local topic" id="section-contents">
 <p class="topic-title first">Section contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#elementwise-operations" id="id1">Elementwise operations</a></li>
-<li><a class="reference internal" href="#basic-reductions" id="id2">Basic reductions</a></li>
-<li><a class="reference internal" href="#broadcasting" id="id3">Broadcasting</a></li>
-<li><a class="reference internal" href="#array-shape-manipulation" id="id4">Array shape manipulation</a></li>
-<li><a class="reference internal" href="#sorting-data" id="id5">Sorting data</a></li>
-<li><a class="reference internal" href="#some-exercices" id="id6">Some exercices</a></li>
-<li><a class="reference internal" href="#summary" id="id7">Summary</a></li>
+<li><a class="reference internal" href="#elementwise-operations" id="id2">Elementwise operations</a></li>
+<li><a class="reference internal" href="#basic-reductions" id="id3">Basic reductions</a></li>
+<li><a class="reference internal" href="#broadcasting" id="id4">Broadcasting</a></li>
+<li><a class="reference internal" href="#array-shape-manipulation" id="id5">Array shape manipulation</a></li>
+<li><a class="reference internal" href="#sorting-data" id="id6">Sorting data</a></li>
+<li><a class="reference internal" href="#some-exercices" id="id7">Some exercices</a></li>
+<li><a class="reference internal" href="#summary" id="id8">Summary</a></li>
 </ul>
 </div>
 <div class="section" id="elementwise-operations">
-<h2><a class="toc-backref" href="#id1">1.3.2.1. Elementwise operations</a><a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">1.3.2.1. Elementwise operations</a><a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">¶</a></h2>
 <p>With scalars:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
@@ -139,7 +139,7 @@ Traceback (most recent call last):
 File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 ValueError: shape mismatch: objects cannot be broadcast to a single shape</pre>
 </div>
-<p><strong>&#8216;Broadcast&#8217;?</strong> We&#8217;ll return to that later.</p>
+<p><strong>&#8216;Broadcast&#8217;?</strong> We&#8217;ll return to that <a class="reference internal" href="#broadcasting"><em>later</em></a>.</p>
 <p><strong>Transposition</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c"># see help(np.triu)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -168,7 +168,7 @@ recommend to use <tt class="xref py py-obj docutils literal"><span class="pre">s
 </div>
 </div>
 <div class="section" id="basic-reductions">
-<h2><a class="toc-backref" href="#id2">1.3.2.2. Basic reductions</a><a class="headerlink" href="#basic-reductions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">1.3.2.2. Basic reductions</a><a class="headerlink" href="#basic-reductions" title="Permalink to this headline">¶</a></h2>
 <p>Computing sums:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -343,7 +343,7 @@ Canada during 20 years.</p>
 <p>The RMS distance grows as the square root of the time!</p>
 </div>
 <div class="section" id="broadcasting">
-<h2><a class="toc-backref" href="#id3">1.3.2.3. Broadcasting</a><a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id4">1.3.2.3. Broadcasting</a><a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Basic operations on <tt class="docutils literal"><span class="pre">numpy</span></tt> arrays (addition, etc.) are elementwise</p>
 </li>
@@ -485,7 +485,7 @@ indices for cases where we can&#8217;t (or don&#8217;t want to) benefit from bro
 <p>However, in practice, this is rarely needed!</p>
 </div>
 <div class="section" id="array-shape-manipulation">
-<h2><a class="toc-backref" href="#id4">1.3.2.4. Array shape manipulation</a><a class="headerlink" href="#array-shape-manipulation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">1.3.2.4. Array shape manipulation</a><a class="headerlink" href="#array-shape-manipulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="flattening">
 <h3>1.3.2.4.1. Flattening<a class="headerlink" href="#flattening" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -697,7 +697,7 @@ and then reshape =&gt; correct matrix product.</p>
 </div>
 </div>
 <div class="section" id="sorting-data">
-<h2><a class="toc-backref" href="#id5">1.3.2.5. Sorting data</a><a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">1.3.2.5. Sorting data</a><a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
 <p>Sorting along an axis:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -736,7 +736,7 @@ and then reshape =&gt; correct matrix product.</p>
 </div>
 </div>
 <div class="section" id="some-exercices">
-<h2><a class="toc-backref" href="#id6">1.3.2.6. Some exercices</a><a class="headerlink" href="#some-exercices" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">1.3.2.6. Some exercices</a><a class="headerlink" href="#some-exercices" title="Permalink to this headline">¶</a></h2>
 <div class="topic">
 <p class="topic-title first">Worked example: Framing Lena</p>
 <p>Let&#8217;s do some manipulations on numpy arrays by starting with the
@@ -950,7 +950,7 @@ reductions, <tt class="docutils literal"><span class="pre">abs()</span></tt>, <t
 </div>
 </div>
 <div class="section" id="summary">
-<h2><a class="toc-backref" href="#id7">1.3.2.7. Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">1.3.2.7. Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p><strong>What do you need to know to get started?</strong></p>
 <ul>
 <li><p class="first">Know how to create arrays : <tt class="docutils literal"><span class="pre">array</span></tt>, <tt class="docutils literal"><span class="pre">arange</span></tt>, <tt class="docutils literal"><span class="pre">ones</span></tt>,

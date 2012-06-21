@@ -224,7 +224,7 @@ operations.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><cite>np.random</cite>: random numbers (Mersenne Twister PRNG):</p>
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">np.random</span></tt>: random numbers (Mersenne Twister PRNG):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>       <span class="c"># uniform in [0, 1]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([ 0.95799151,  0.14222247,  0.08777354,  0.51887998])</span>
@@ -333,7 +333,7 @@ are there.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>  <span class="c"># the tidy way</span>
 </pre></div>
 </div>
-<p>The recommended way of working is use <cite>IPython</cite>, started in <cite>pylab</cite> mode:</p>
+<p>The recommended way of working is use <tt class="xref py py-obj docutils literal"><span class="pre">IPython</span></tt>, started in <tt class="xref py py-obj docutils literal"><span class="pre">pylab</span></tt> mode:</p>
 <div class="highlight-python"><pre>$ ipython -pylab</pre>
 </div>
 <p><strong>1D plotting</strong></p>
@@ -422,7 +422,7 @@ In contrast, in Fortran or Matlab, indices begin at 1.</p>
 <p>Note that:</p>
 <ul class="simple">
 <li>In 2D, the first dimension corresponds to rows, the second to columns.</li>
-<li>for multidimensional <tt class="docutils literal"><span class="pre">a</span></tt>, <cite>a[0]</cite> is interpreted by
+<li>for multidimensional <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">a[0]</span></tt> is interpreted by
 taking all elements in the unspecified dimensions.</li>
 </ul>
 <p><strong>Slicing</strong> Arrays, like other Python sequences can also be sliced:</p>
@@ -438,8 +438,8 @@ taking all elements in the unspecified dimensions.</li>
 <span class="go">array([0, 1, 2, 3])</span>
 </pre></div>
 </div>
-<p>All three slice components are not required: by default, <cite>start</cite> is 0,
-<cite>end</cite> is the last and <cite>step</cite> is 1:</p>
+<p>All three slice components are not required: by default, <tt class="xref py py-obj docutils literal"><span class="pre">start</span></tt> is 0,
+<tt class="xref py py-obj docutils literal"><span class="pre">end</span></tt> is the last and <tt class="xref py py-obj docutils literal"><span class="pre">step</span></tt> is 1:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 <span class="go">array([1, 2])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
@@ -527,7 +527,7 @@ filled with True in the beginning:</p>
 </ul>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Skip <cite>j</cite> which are already known to not be primes</li>
+<li>Skip <tt class="xref py py-obj docutils literal"><span class="pre">j</span></tt> which are already known to not be primes</li>
 <li>The first number to cross out is <img class="math" src="../../_images/math/d9714cf77a92cb89757ce29264f51a9edac2a072.png" alt="j^2" style="vertical-align: -6px"/></li>
 </ol>
 </div></blockquote>
@@ -594,14 +594,15 @@ has the same shape than the array of integers:</p>
 <hr class="docutils" />
 <p>The image below illustrates various fancy indexing applications</p>
 <img alt="../../_images/numpy_fancy_indexing.png" class="align-center" src="../../_images/numpy_fancy_indexing.png" style="width: 100%;" />
-<p>We can even use fancy indexing and broadcasting at the same time:</p>
+<p>We can even use fancy indexing and <a class="reference internal" href="operations.html#broadcasting"><em>broadcasting</em></a> at
+the same time:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([[ 0,  1,  2,  3],</span>
 <span class="go">       [ 4,  5,  6,  7],</span>
 <span class="go">       [ 8,  9, 10, 11]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c"># same as a[i, 2*np.ones((2,2), dtype=int)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c"># same as a[i, 2*np.ones((2, 2), dtype=int)]</span>
 <span class="go">array([[ 2,  6],</span>
 <span class="go">       [ 6, 10]])</span>
 </pre></div>

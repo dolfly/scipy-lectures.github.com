@@ -185,7 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="numpy/elaborate_arrays.html">1.3.3. More elaborate arrays</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#more-data-types">1.3.3.1. More data types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#structured-data-types">1.3.3.2. Structured data types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#masked-arrays">1.3.3.3. Masked arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#maskedarray-dealing-with-propagation-of-missing-data">1.3.3.3. <tt class="docutils literal"><span class="pre">maskedarray</span></tt>: dealing with (propagation of) missing data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="numpy/elaborate_arrays.html#under-the-hood-the-memory-layout-of-a-numpy-array">1.3.3.4. Under the hood: the memory layout of a numpy array</a></li>
 </ul>
 </li>
@@ -207,10 +207,43 @@
 <li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#simple-plots">1.5.3. Simple Plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#properties">1.5.4. Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#text">1.5.5. Text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ticks">1.5.6. Ticks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#figures-subplots-and-axes">1.5.7. Figures, Subplots, and Axes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#other-types-of-plots">1.5.8. Other Types of Plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#the-class-library">1.5.9. The Class Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#ticks">1.5.6. Ticks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#where-and-what">1.5.6.1. Where and What</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#tick-locators">1.5.6.2. Tick Locators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#tick-formatters">1.5.6.3. Tick Formatters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#figures-subplots-and-axes">1.5.7. Figures, Subplots, and Axes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-hierarchy">1.5.7.1. The Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#figures">1.5.7.2. Figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#subplots">1.5.7.3. Subplots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#axes">1.5.7.4. Axes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#other-types-of-plots">1.5.8. Other Types of Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#many-more">1.5.8.1. Many More</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#bar-charts">1.5.8.2. Bar Charts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#horizontal-bar-charts">1.5.8.3. Horizontal Bar Charts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#box-and-whisker-plots">1.5.8.4. Box and Whisker Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#contour-plots">1.5.8.5. Contour Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#histograms">1.5.8.6. Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#loglog-plots">1.5.8.7. Loglog Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#pie-charts">1.5.8.8. Pie Charts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#polar-plots">1.5.8.9. Polar Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#arrow-plots">1.5.8.10. Arrow Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#scatter-plots">1.5.8.11. Scatter Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#sparsity-pattern-plots">1.5.8.12. Sparsity Pattern Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#stem-plots">1.5.8.13. Stem Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#date-plots">1.5.8.14. Date Plots</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib/matplotlib.html#the-class-library">1.5.9. The Class Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-figure-class">1.5.9.1. The Figure Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#the-classes-axes-and-subplot">1.5.9.2. The Classes Axes and Subplot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#other-classes">1.5.9.3. Other Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matplotlib/matplotlib.html#example">1.5.9.4. Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="scipy.html">1.6. Scipy : high-level scientific computing</a><ul>

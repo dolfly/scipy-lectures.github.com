@@ -102,92 +102,101 @@ object? -&gt; Details about 'object'. ?object also works, ?? prints more.
 Welcome to pylab, a matplotlib-based Python environment.
 For more information, type 'help(pylab)'.</pre>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go">In [1]:</span>
 </pre></div>
 </div>
 <p>Now we can make our first, really simple plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01AA26E8</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="gp">In [3]: </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">Out[3]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01AA26E8</span><span class="o">&gt;</span><span class="p">]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+<span class="go">In [4]:</span>
 </pre></div>
 </div>
 <p>The numbers form 0 through 9 are plotted:</p>
 <img alt="../../_images/simple.png" src="../../_images/simple.png" style="width: 50%;" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the following, we use the Python prompt &#8220;&gt;&gt;&gt;&#8221; rather than
+the IPython one, as it facilitates copy-pasting in IPython (using the
+<cite>%doctest_mode</cite>).</p>
+</div>
 <p>Now we can interactively add features to or plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;measured&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9D210</span><span class="o">&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;measured&#39;</span><span class="p">)</span>  
+<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;calculated&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9D918</span><span class="o">&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;calculated&#39;</span><span class="p">)</span> 
+<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Measured vs. calculated&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01A9DF80</span><span class="o">&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Measured vs. calculated&#39;</span><span class="p">)</span> <span class="o">+</span><span class="n">ELLIPSIS</span>
+<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We get a reference to our plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">my_plot</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">my_plot</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>and to our line we plotted, which is the first in the plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">line</span> <span class="o">=</span> <span class="n">my_plot</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">my_plot</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Now we can set properties using <tt class="docutils literal"><span class="pre">set_something</span></tt> methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or the <tt class="docutils literal"><span class="pre">setp</span></tt> function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">setp</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">setp</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
+<span class="go">[None]</span>
 </pre></div>
 </div>
 <p>To apply the new properties we need to redraw the screen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">draw</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>We can also add several lines to one plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">linear</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">square</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">square</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let&#8217;s add a legend:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">))</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">Legend</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BBC170</span><span class="o">&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">))</span>     
+<span class="go">&lt;matplotlib.legend.Legend instance at ...&gt;</span>
 </pre></div>
 </div>
-<p>This does not look particularly nice. We would rather like to have
-it at the left. So we clean the old graph:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">clf</span><span class="p">()</span>
+<p>This does not look particularly nice. We would rather like to have it at
+the left. So we clean the old graph (clf stands for &#8216;clear figure):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>and print it anew providing new line styles (a green dotted
 line with crosses for the linear and a red dashed line with
 circles for the square graph):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="s">&#39;g:+&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="s">&#39;r--o&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="s">&#39;g:+&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="s">&#39;r--o&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we add the legend at the upper left corner:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">l</span> <span class="o">=</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result looks like this:</p>
 <img alt="../../_images/legend.png" src="../../_images/legend.png" style="width: 50%;" />
+<div class="green topic">
+<p class="topic-title first">Exercises</p>
 <ol class="arabic simple">
 <li>Plot a simple graph of a sinus function in the range 0 to 3
 with a step size of 0.01.</li>
 <li>Make the line red. Add diamond-shaped markers with size of 5.</li>
 <li>Add a legend and a grid to the plot.</li>
 </ol>
+</div>
 </div>
 <div class="section" id="properties">
 <h2>1.5.4. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
@@ -443,11 +452,6 @@ the text properties:</p>
 </tr>
 </tbody>
 </table>
-<ol class="arabic simple">
-<li>Apply different line styles to a plot. Change line color and
-thickness as well as the size and the kind of the marker.
-Experiment with different styles.</li>
-</ol>
 </div>
 <div class="section" id="text">
 <h2>1.5.5. Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
@@ -455,12 +459,12 @@ Experiment with different styles.</li>
 <tt class="docutils literal"><span class="pre">ylabel</span></tt>, and <tt class="docutils literal"><span class="pre">title</span></tt>.</p>
 <p>There are two functions to put text at a defined position.
 <tt class="docutils literal"><span class="pre">text</span></tt> adds the text with data coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Text in the middle&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Text in the middle&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">figtext</span></tt> uses figure coordinates form 0 to 1:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">figtext</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Upper right text&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Upper right text&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/text.png" src="../../_images/text.png" style="width: 50%;" />
@@ -470,8 +474,9 @@ will show up as:</p>
 <p><img src="../../_images/math/9e3b96acac89497c17b8b482907419c707b76cf0.png" alt="\pi"/></p>
 </div><p>If you want to get more control over where the text goes, you
 use annotations:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="go">&lt;matplotlib.text.Annotation instance at ...&gt;</span>
 </pre></div>
 </div>
 <p>We will write the text at the position (1, 1) in terms of data.
@@ -515,25 +520,28 @@ the position of the text.  The arguments <tt class="docutils literal"><span clas
 <p>If we do not supply <tt class="docutils literal"><span class="pre">xycoords</span></tt>, the text will be written at <tt class="docutils literal"><span class="pre">xy</span></tt>.</p>
 <p>Furthermore, we can use an arrow whose appearance can also be described
 in detail:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BB15D0</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="o">...&gt;</span><span class="p">]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Annotation</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01BB1648</span><span class="o">&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> 
+<span class="go">&lt;matplotlib.text.Annotation instance at ...&gt;</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
-   <span class="o">....</span><span class="p">:</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>            <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
-<ol class="arabic simple">
-<li>Annotate a line at two places with text. Use green and red arrows
-and align it according to <tt class="docutils literal"><span class="pre">figure</span> <span class="pre">points</span></tt> and <tt class="docutils literal"><span class="pre">data</span></tt>.</li>
-</ol>
+<div class="green topic">
+<p class="topic-title first">Exercise</p>
+<p>Annotate a line at two places with text. Use green and red arrows
+and align it according to <tt class="docutils literal"><span class="pre">figure</span> <span class="pre">points</span></tt> and <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="ticks">
 <h2>1.5.6. Ticks<a class="headerlink" href="#ticks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="where-and-what">
+<h3>1.5.6.1. Where and What<a class="headerlink" href="#where-and-what" title="Permalink to this headline">¶</a></h3>
 <p>Well formatted ticks are an important part of publishing-ready
 figures. <tt class="docutils literal"><span class="pre">matplotlib</span></tt> provides a totally configurable system
 for ticks. There are tick locators to specify where ticks
@@ -541,6 +549,9 @@ should appear and tick formatters to make ticks look like the way you want.
 Major and minor ticks can be located and formatted independently from
 each other. Per default minor ticks are not shown, i.e. there is only
 an empty list for them because it is as <tt class="docutils literal"><span class="pre">NullLocator</span></tt> (see below).</p>
+</div>
+<div class="section" id="tick-locators">
+<h3>1.5.6.2. Tick Locators<a class="headerlink" href="#tick-locators" title="Permalink to this headline">¶</a></h3>
 <p>There are several locators for different kind of requirements:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -611,6 +622,9 @@ provides special locators in <tt class="docutils literal"><span class="pre">matp
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="tick-formatters">
+<h3>1.5.6.3. Tick Formatters<a class="headerlink" href="#tick-formatters" title="Permalink to this headline">¶</a></h3>
 <p>Similarly to locators, there are formatters:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -655,24 +669,21 @@ You can make your own formatter deriving from it.</p>
 <p>Now we set our major locator to 2 and the minor locator
 to 1. We also format the numbers as decimals using the
 <tt class="docutils literal"><span class="pre">FormatStrFormatter</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">major_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">major_formatter</span> <span class="o">=</span> <span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%5.2f</span><span class="s">&#39;</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">minor_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">major_locator</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">major_formatter</span><span class="p">)</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">draw</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">major_locator</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">major_formatter</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%5.2f</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">minor_locator</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">major_locator</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">major_formatter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>After we redraw the figure our x axis should look like this:</p>
 <img alt="../../_images/ticks.png" src="../../_images/ticks.png" style="width: 50%;" />
-<ol class="arabic simple">
+<div class="green topic">
+<p class="topic-title first">Exercises</p>
+<blockquote>
+<div><ol class="arabic simple">
 <li>Plot a graph with dates for one year with daily
 values at the x axis using the built-in module <tt class="docutils literal"><span class="pre">datetime</span></tt>.</li>
 <li>Format the dates in such a way that only the first day
@@ -680,9 +691,14 @@ of the month is shown.</li>
 <li>Display the dates with and without the year. Show the month
 as number and as first three letters of the month name.</li>
 </ol>
+</div></blockquote>
+</div>
+</div>
 </div>
 <div class="section" id="figures-subplots-and-axes">
 <h2>1.5.7. Figures, Subplots, and Axes<a class="headerlink" href="#figures-subplots-and-axes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-hierarchy">
+<h3>1.5.7.1. The Hierarchy<a class="headerlink" href="#the-hierarchy" title="Permalink to this headline">¶</a></h3>
 <p>So far we have used implicit figure and axes creation.
 This is handy for fast plots. We can have more control over
 the display using <tt class="docutils literal"><span class="pre">figure</span></tt>, <tt class="docutils literal"><span class="pre">subplot</span></tt>, and <tt class="docutils literal"><span class="pre">axes</span></tt> explicitly.
@@ -697,6 +713,9 @@ get the current axes and <tt class="docutils literal"><span class="pre">gca</spa
 get the current figure. If there is none it calls <tt class="docutils literal"><span class="pre">figure()</span></tt>
 to make one, strictly speaking, to make a <tt class="docutils literal"><span class="pre">subplot(111)</span></tt>.
 Let&#8217;s look at the details.</p>
+</div>
+<div class="section" id="figures">
+<h3>1.5.7.2. Figures<a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h3>
 <p>A <tt class="docutils literal"><span class="pre">figure</span></tt> is  the windows in the GUI that has &#8220;Figure #&#8221; as
 title. Figures are numbered starting from 1 as opposed to the
 normal Python way starting from 0. This is clearly MATLAB-style.
@@ -751,6 +770,9 @@ programmatically by calling <tt class="docutils literal"><span class="pre">close
 instance as argument), or (3) all figures (<tt class="docutils literal"><span class="pre">all</span></tt> as argument).</p>
 <p>As with other objects, you can set figure properties also <tt class="docutils literal"><span class="pre">setp</span></tt>
 or with the <tt class="docutils literal"><span class="pre">set_something</span></tt> methods.</p>
+</div>
+<div class="section" id="subplots">
+<h3>1.5.7.3. Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h3>
 <p>With <tt class="docutils literal"><span class="pre">subplot</span></tt> you can arrange plots in regular grid. You need to
 specify the number of rows and columns and the number of the plot.</p>
 <p>A plot with two rows and one column is created with
@@ -768,19 +790,25 @@ You can set the <tt class="docutils literal"><span class="pre">xticklabels</span
 list (<tt class="docutils literal"><span class="pre">[]</span></tt>). Every subplot defines the methods <tt class="docutils literal"><span class="pre">'is_first_row</span></tt>,
 <tt class="docutils literal"><span class="pre">is_first_col</span></tt>, <tt class="docutils literal"><span class="pre">is_last_row</span></tt>, <tt class="docutils literal"><span class="pre">is_last_col</span></tt>. These can help to
 set ticks and labels only for the outer pots.</p>
+</div>
+<div class="section" id="axes">
+<h3>1.5.7.4. Axes<a class="headerlink" href="#axes" title="Permalink to this headline">¶</a></h3>
 <p>Axes are very similar to subplots but allow placement of plots
 at any location in the figure.  So if we want to put a smaller
 plot inside a bigger one we do so with <tt class="docutils literal"><span class="pre">axes</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x02C9CE90</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+<span class="go">[&lt;matplotlib.lines.Line2D instance at ...&gt;]</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+<span class="go">[&lt;matplotlib.lines.Line2D instance at ...&gt;]</span>
 </pre></div>
 </div>
 <p>The result looks like this:</p>
 <img alt="../../_images/axes.png" src="../../_images/axes.png" style="width: 25%;" />
+<div class="green topic">
+<p class="topic-title first">Exercises</p>
 <ol class="arabic simple">
 <li>Draw two figures, one 5 by 5, one 10 by 10 inches.</li>
 <li>Add four subplots to one figure. Add labels and ticks only to
@@ -788,13 +816,20 @@ the outermost axes.</li>
 <li>Place a small plot in one bigger plot.</li>
 </ol>
 </div>
+</div>
+</div>
 <div class="section" id="other-types-of-plots">
 <h2>1.5.8. Other Types of Plots<a class="headerlink" href="#other-types-of-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="many-more">
+<h3>1.5.8.1. Many More<a class="headerlink" href="#many-more" title="Permalink to this headline">¶</a></h3>
 <p>So far we have used only line plots. <tt class="docutils literal"><span class="pre">matplotlib</span></tt> offers many more types
 of plots. We will have a brief look at some of them. All functions have many
 optional arguments that are not shown here.</p>
+</div>
+<div class="section" id="bar-charts">
+<h3>1.5.8.2. Bar Charts<a class="headerlink" href="#bar-charts" title="Permalink to this headline">¶</a></h3>
 <p>The function <tt class="docutils literal"><span class="pre">bar</span></tt> creates a new bar chart:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">bar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Now we have three bars starting at 1, 2, and 3 with height of
@@ -803,39 +838,48 @@ optional arguments that are not shown here.</p>
 <p>The default column width is 0.8. It can be changed with
 common methods by setting <tt class="docutils literal"><span class="pre">width</span></tt>. As it can be <tt class="docutils literal"><span class="pre">color</span></tt> and
 <tt class="docutils literal"><span class="pre">bottom</span></tt>, we can also set an error bar with <tt class="docutils literal"><span class="pre">yerr</span></tt> or <tt class="docutils literal"><span class="pre">xerr</span></tt>.</p>
+</div>
+<div class="section" id="horizontal-bar-charts">
+<h3>1.5.8.3. Horizontal Bar Charts<a class="headerlink" href="#horizontal-bar-charts" title="Permalink to this headline">¶</a></h3>
 <p>The function <tt class="docutils literal"><span class="pre">barh</span></tt> creates an vertical bar chart.
 Using the same data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">barh</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>We get:</p>
 <img alt="../../_images/barh.png" src="../../_images/barh.png" style="width: 25%;" />
+<div class="section" id="broken-horizontal-bar-charts">
+<h4>1.5.8.3.1. Broken Horizontal Bar Charts<a class="headerlink" href="#broken-horizontal-bar-charts" title="Permalink to this headline">¶</a></h4>
 <p>We can also have discontinuous vertical bars with <tt class="docutils literal"><span class="pre">broken_barh</span></tt>.
 We specify start and width of the range in y-direction and all
 start-width pairs in x-direction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">yrange</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">xranges</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">broken_barh</span><span class="p">(</span><span class="n">xranges</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yrange</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xranges</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">broken_barh</span><span class="p">(</span><span class="n">xranges</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We changes the extension of the y-axis to make plot look nicer:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">draw</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">(0, 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>and get this:</p>
 <img alt="../../_images/broken_barh.png" src="../../_images/broken_barh.png" style="width: 25%;" />
+</div>
+</div>
+<div class="section" id="box-and-whisker-plots">
+<h3>1.5.8.4. Box and Whisker Plots<a class="headerlink" href="#box-and-whisker-plots" title="Permalink to this headline">¶</a></h3>
 <p>We can draw box and whisker plots:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">boxplot</span><span class="p">((</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">boxplot</span><span class="p">((</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>We want to have the whiskers well within the plot and therefore
 increase the y axis:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ax</span> <span class="o">=</span> <span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">draw</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Our plot looks like this:</p>
@@ -844,183 +888,213 @@ increase the y axis:</p>
 argument <tt class="docutils literal"><span class="pre">whis</span></tt>, which defaults to 1.5. The range of
 the whiskers is between the most extreme data point
 within <tt class="docutils literal"><span class="pre">whis*(75%-25%)</span></tt> of the data.</p>
+</div>
+<div class="section" id="contour-plots">
+<h3>1.5.8.5. Contour Plots<a class="headerlink" href="#contour-plots" title="Permalink to this headline">¶</a></h3>
 <p>We can also do contour plots. We define arrays for the
 x and y coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and also a 2D array for z:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">z</span> <span class="o">=</span> <span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">z</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">z</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">z</span>
-<span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">7.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">array([[ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  3.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  7.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  4.,  1.,  1.],</span>
+<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.]])</span>
 </pre></div>
 </div>
 <p>Now we can make a simple contour plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Our plot looks like this:</p>
 <img alt="../../_images/contour.png" src="../../_images/contour.png" style="width: 25%;" />
 <p>We can also fill the area. We just use numbers form 0 to 9 for
 the values <tt class="docutils literal"><span class="pre">v</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="n">x</span>
-<span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now our plot area is filled:</p>
 <img alt="../../_images/contourf.png" src="../../_images/contourf.png" style="width: 25%;" />
+</div>
+<div class="section" id="histograms">
+<h3>1.5.8.6. Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
 <p>We can make histograms. Let&#8217;s get some normally distributed
 random numbers from <tt class="docutils literal"><span class="pre">numpy</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">N</span>
-<span class="n">r_numbers</span> <span class="o">=</span> <span class="n">N</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we make a simple histogram:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">hist</span><span class="p">(</span><span class="n">r_numbers</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">r_numbers</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>With 100 numbers our figure looks pretty good:</p>
 <img alt="../../_images/hist.png" src="../../_images/hist.png" style="width: 25%;" />
+</div>
+<div class="section" id="loglog-plots">
+<h3>1.5.8.7. Loglog Plots<a class="headerlink" href="#loglog-plots" title="Permalink to this headline">¶</a></h3>
 <p>Plots with logarithmic scales are easy:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">loglog</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>We set the mayor and minor grid:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;minor&#39;</span><span class="p">)</span>
+<p>We set the major and minor grid:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;minor&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we have loglog plot:</p>
 <img alt="../../_images/loglog.png" src="../../_images/loglog.png" style="width: 25%;" />
 <p>If we want only one axis with a logarithmic scale we can
 use <tt class="docutils literal"><span class="pre">semilogx</span></tt> or <tt class="docutils literal"><span class="pre">semilogy</span></tt>.</p>
+</div>
+<div class="section" id="pie-charts">
+<h3>1.5.8.8. Pie Charts<a class="headerlink" href="#pie-charts" title="Permalink to this headline">¶</a></h3>
 <p>Pie charts can also be created with a few lines:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cats&#39;</span><span class="p">,</span> <span class="s">&#39;dogs&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">]</span>
-<span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cats&#39;</span><span class="p">,</span> <span class="s">&#39;dogs&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result looks as expected:</p>
 <img alt="../../_images/pie.png" src="../../_images/pie.png" style="width: 25%;" />
+</div>
+<div class="section" id="polar-plots">
+<h3>1.5.8.9. Polar Plots<a class="headerlink" href="#polar-plots" title="Permalink to this headline">¶</a></h3>
 <p>Polar plots are also possible. Let&#8217;s define our <tt class="docutils literal"><span class="pre">r</span></tt> from
 0 to 360 and our <tt class="docutils literal"><span class="pre">theta</span></tt> from 0 to 360 degrees. We need to
 convert them to radians:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">pi</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">theta</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">pi</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now plot in polar coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">polar</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">polar</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We get a nice spiral:</p>
 <img alt="../../_images/polar.png" src="../../_images/polar.png" style="width: 25%;" />
+</div>
+<div class="section" id="arrow-plots">
+<h3>1.5.8.10. Arrow Plots<a class="headerlink" href="#arrow-plots" title="Permalink to this headline">¶</a></h3>
 <p>Plotting arrows in 2D plane can be achieved with <tt class="docutils literal"><span class="pre">quiver</span></tt>.
 We define the x and y coordinates of the arrow shafts:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The x and y components of the arrows are specified as 2D arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">u</span> <span class="o">=</span> <span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">u</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
 <p>Now we can plot the arrows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>All arrows point to the upper right, except two. The one
 at the location (4, 4) has 3 units in x-direction and the
 other at location (1, 1) has -1 unit in y direction:</p>
 <img alt="../../_images/quiver.png" src="../../_images/quiver.png" style="width: 25%;" />
+</div>
+<div class="section" id="scatter-plots">
+<h3>1.5.8.11. Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h3>
 <p>Scatter plots print x vs. y diagrams. We define <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
 and make some point in <tt class="docutils literal"><span class="pre">y</span></tt> random:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">y</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Now make a scatter plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The three different values for <tt class="docutils literal"><span class="pre">y</span></tt> break out of the line:</p>
 <img alt="../../_images/scatter.png" src="../../_images/scatter.png" style="width: 25%;" />
+</div>
+<div class="section" id="sparsity-pattern-plots">
+<h3>1.5.8.12. Sparsity Pattern Plots<a class="headerlink" href="#sparsity-pattern-plots" title="Permalink to this headline">¶</a></h3>
 <p>Working with sparse matrices, it is often of interest as
 how the matrix looks like in terms of sparsity.
 We take an identity matrix as an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="n">identity</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">i</span>
-<span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span>
+<span class="go">array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],</span>
+<span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]])</span>
 </pre></div>
 </div>
 <p>Now we look at it more visually:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">spy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/spy.png" src="../../_images/spy.png" style="width: 25%;" />
+</div>
+<div class="section" id="stem-plots">
+<h3>1.5.8.13. Stem Plots<a class="headerlink" href="#stem-plots" title="Permalink to this headline">¶</a></h3>
 <p>Stem plots vertical lines at the given x location up to
 the specified y location. Let&#8217;s reuse <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
 from our scatter (see above):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/stem.png" src="../../_images/stem.png" style="width: 25%;" />
+</div>
+<div class="section" id="date-plots">
+<h3>1.5.8.14. Date Plots<a class="headerlink" href="#date-plots" title="Permalink to this headline">¶</a></h3>
 <p>There is a function for creating date plots.
 Let&#8217;s define 10 dates starting at January 1st 2000
 at 15.day intervals:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">delta</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span>
-<span class="n">dates</span>
-<span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
- <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">delta</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span>
+<span class="go">[datetime.datetime(2000, 1, 1, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 1, 16, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 1, 31, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 2, 15, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 3, 1, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 3, 16, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 3, 31, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 4, 15, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 4, 30, 0, 0),</span>
+<span class="go"> datetime.datetime(2000, 5, 15, 0, 0)]</span>
 </pre></div>
 </div>
 <p>We reuse our data from the scatter plot (see above):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">y</span>
-<span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">array([0, 7, 2, 3, 2, 5, 6, 7, 3, 9])</span>
 </pre></div>
 </div>
 <p>Now we can plot the dates at the x axis:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/date.png" src="../../_images/date.png" style="width: 25%;" />
+</div>
 </div>
 <div class="section" id="the-class-library">
 <h2>1.5.9. The Class Library<a class="headerlink" href="#the-class-library" title="Permalink to this headline">¶</a></h2>
@@ -1028,6 +1102,8 @@ at 15.day intervals:</p>
 suggests it is just wrapper around the class library. All <tt class="docutils literal"><span class="pre">pylab</span></tt>
 commands can be invoked via the class library using an object-oriented
 approach.</p>
+<div class="section" id="the-figure-class">
+<h3>1.5.9.1. The Figure Class<a class="headerlink" href="#the-figure-class" title="Permalink to this headline">¶</a></h3>
 <p>The class <tt class="docutils literal"><span class="pre">Figure</span></tt> lives in the module <tt class="docutils literal"><span class="pre">matplotlib.figure</span></tt>.
 Its constructor takes these arguments:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -1049,6 +1125,9 @@ Also the method <tt class="docutils literal"><span class="pre">gca</span></tt> m
 <tt class="docutils literal"><span class="pre">set_edgecolor</span></tt> that will be called through <tt class="docutils literal"><span class="pre">pylab</span></tt> to set properties of
 the figure. <tt class="docutils literal"><span class="pre">Figure</span></tt> also implements <tt class="docutils literal"><span class="pre">get_something</span></tt> methods
 such as <tt class="docutils literal"><span class="pre">get_axes</span></tt> or <tt class="docutils literal"><span class="pre">get_facecolor</span></tt> to get properties of the figure.</p>
+</div>
+<div class="section" id="the-classes-axes-and-subplot">
+<h3>1.5.9.2. The Classes Axes and Subplot<a class="headerlink" href="#the-classes-axes-and-subplot" title="Permalink to this headline">¶</a></h3>
 <p>In the class  <tt class="docutils literal"><span class="pre">Axes</span></tt> we find most of the figure elements such as
 <tt class="docutils literal"><span class="pre">Axis</span></tt>, <tt class="docutils literal"><span class="pre">Tick</span></tt>, <tt class="docutils literal"><span class="pre">Line2D</span></tt>, or <tt class="docutils literal"><span class="pre">Text</span></tt>. It also sets the coordinate
 system. The class <tt class="docutils literal"><span class="pre">Subplot</span></tt> inherits from <tt class="docutils literal"><span class="pre">Axes</span></tt> and adds some
@@ -1057,9 +1136,15 @@ more functionality to arrange the plots in a grid.</p>
 and methods already encountered as functions in <tt class="docutils literal"><span class="pre">pylab</span></tt> such as
 <tt class="docutils literal"><span class="pre">annotate</span></tt>. In addition, <tt class="docutils literal"><span class="pre">Axes</span></tt> has methods for all types of plots
 shown in the previous section.</p>
+</div>
+<div class="section" id="other-classes">
+<h3>1.5.9.3. Other Classes<a class="headerlink" href="#other-classes" title="Permalink to this headline">¶</a></h3>
 <p>Other classes such as <tt class="docutils literal"><span class="pre">text</span></tt>, <tt class="docutils literal"><span class="pre">Legend</span></tt> or <tt class="docutils literal"><span class="pre">Ticker</span></tt> are setup very
 similarly. They can be understood mostly by comparing to the <tt class="docutils literal"><span class="pre">pylab</span></tt>
 interface.</p>
+</div>
+<div class="section" id="example">
+<h3>1.5.9.4. Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s look at an example for using the object-oriented API:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#file matplotlib/oo.py</span>
 
@@ -1131,10 +1216,14 @@ our figure we created above to be the current figure (<tt class="docutils litera
 and let <tt class="docutils literal"><span class="pre">pylab</span></tt> show the result (<tt class="docutils literal"><span class="pre">#24</span></tt>).
 The lower part of the figure might be cover by the toolbar.
 If so, please adjust the <tt class="docutils literal"><span class="pre">figsize</span></tt> for <tt class="docutils literal"><span class="pre">pylab</span></tt> accordingly.</p>
+<div class="green topic">
+<p class="topic-title first">Exercises</p>
 <ol class="arabic simple">
 <li>Use the object-oriented API of matplotlib to create a png-file
 with a plot of two lines, one linear and square with a legend in it.</li>
 </ol>
+</div>
+</div>
 </div>
 </div>
 
