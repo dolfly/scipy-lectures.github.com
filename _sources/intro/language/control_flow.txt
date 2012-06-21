@@ -260,9 +260,11 @@ List Comprehensions
 	In [16]: [i**2 for i in range(4)]
 	Out[16]: [0, 1, 4, 9]
 
+_____
 
 
 .. topic:: Exercise
+    :class: green
 
     Compute the decimals of Pi using the Wallis formula:
 
