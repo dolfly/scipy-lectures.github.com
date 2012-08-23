@@ -67,7 +67,7 @@
 <li>Get data (simulation, experiment control)</li>
 <li>Manipulate and process data.</li>
 <li>Visualize results... to understand what we are doing!</li>
-<li>Communicate on results: produce figures for reports or publications,
+<li>Communicate results: produce figures for reports or publications,
 write presentations.</li>
 </ul>
 </div>
@@ -78,30 +78,31 @@ write presentations.</li>
 numerical methods or basic actions: we don&#8217;t want to re-program the
 plotting of a curve, a Fourier transform or a fitting algorithm. Don&#8217;t
 reinvent the wheel!</li>
-<li>Easy to learn: computer science neither is our job nor our education. We
+<li>Easy to learn: computer science is neither our job nor our education. We
 want to be able to draw a curve, smooth a signal, do a Fourier transform
 in a few minutes.</li>
 <li>Easy communication with collaborators, students, customers, to make the code
-live within a labo or a company: the code should be as readable as a book.
+live within a lab or a company: the code should be as readable as a book.
 Thus, the language should contain as few syntax symbols or unneeded routines
-that would divert the reader from the mathematical or scientific understanding
-of the code.</li>
-<li>Efficient code that executes quickly... But needless to say that a very fast
-code becomes useless if we spend too much time writing it. So, we need both a   quick development time and a quick execution time.</li>
+as possible that would divert the reader from the mathematical or scientific
+understanding of the code.</li>
+<li>Efficient code that executes quickly... but needless to say that a very fast
+code becomes useless if we spend too much time writing it. So, we need both a
+quick development time and a quick execution time.</li>
 <li>A single environment/language for everything, if possible, to avoid learning
 a new software for each new problem.</li>
 </ul>
 </div>
 <div class="section" id="existing-solutions">
 <h3>1.1.1.3. Existing solutions<a class="headerlink" href="#existing-solutions" title="Permalink to this headline">¶</a></h3>
-<p>Which solutions do the scientists use to work?</p>
+<p>Which solutions do scientists use to work?</p>
 <p><strong>Compiled languages: C, C++, Fortran, etc.</strong></p>
 <ul class="simple">
 <li>Advantages:<ul>
 <li>Very fast. Very optimized compilers. For heavy computations, it&#8217;s difficult
 to outperform these languages.</li>
 <li>Some very optimized scientific libraries have been written for these
-languages. Ex: blas (vector/matrix operations)</li>
+languages. Example: BLAS (vector/matrix operations)</li>
 </ul>
 </li>
 <li>Drawbacks:<ul>
@@ -129,7 +130,7 @@ integrated editor, etc.</li>
 </ul>
 </li>
 </ul>
-<p><strong>Other script languages: Scilab, Octave, Igor, R, IDL, etc.</strong></p>
+<p><strong>Other scripting languages: Scilab, Octave, Igor, R, IDL, etc.</strong></p>
 <ul class="simple">
 <li>Advantages:<ul>
 <li>Open-source, free, or at least cheaper than Matlab.</li>
@@ -137,7 +138,7 @@ integrated editor, etc.</li>
 </ul>
 </li>
 <li>Drawbacks:<ul>
-<li>fewer available algorithms than in Matlab, and the language
+<li>Fewer available algorithms than in Matlab, and the language
 is not more advanced.</li>
 <li>Some software are dedicated to one domain. Ex: Gnuplot or xmgrace
 to draw curves. These programs are very powerful, but they are
@@ -150,8 +151,8 @@ restricted to a single type of usage, such as plotting.</li>
 <li>Advantages:<ul>
 <li>Very rich scientific computing libraries (a bit less than Matlab,
 though)</li>
-<li>Well-thought language, allowing to write very readable and well structured
-code: we &#8220;code what we think&#8221;.</li>
+<li>Well thought out language, allowing to write very readable and well
+structured code: we &#8220;code what we think&#8221;.</li>
 <li>Many libraries for other tasks than scientific computing (web server
 management, serial port access, etc.)</li>
 <li>Free and open-source software, widely spread, with a vibrant community.</li>
@@ -169,9 +170,9 @@ software or toolboxes.</li>
 </div>
 <div class="section" id="scientific-python-building-blocks">
 <h2>1.1.2. Scientific Python building blocks<a class="headerlink" href="#scientific-python-building-blocks" title="Permalink to this headline">¶</a></h2>
-<p>Unlike Matlab, scilab or R, Python does not come with a pre-bundled set
+<p>Unlike Matlab, Scilab or R, Python does not come with a pre-bundled set
 of modules for scientific computing. Below are the basic building blocks
-that can be combined to optain a scientific-computing environment:</p>
+that can be combined to obtain a scientific computing environment:</p>
 <ul>
 <li><p class="first"><strong>Python</strong>, a generic and modern computing language</p>
 <blockquote>
@@ -182,7 +183,7 @@ data collections (lists, dictionaries), patterns, etc.</li>
 <li>A large number of specialized modules or applications written in
 Python: web protocols, web framework, etc. ... and scientific
 computing.</li>
-<li>Development tools (automatic tests, documentation generation)</li>
+<li>Development tools (automatic testing, documentation generation)</li>
 </ul>
 </div></blockquote>
 <a class="reference internal image-reference" href="../_images/snapshot_ipython.png"><img alt="../_images/snapshot_ipython.png" class="align-right" src="../_images/snapshot_ipython.png" style="width: 316.0px; height: 158.0px;" /></a>
@@ -209,11 +210,11 @@ Optimization, regression, interpolation, etc <a class="reference external" href=
 <div style="clear: both"></div></div>
 <div class="section" id="the-interactive-workflow-ipython-and-a-text-editor">
 <h2>1.1.3. The interactive workflow: IPython and a text editor<a class="headerlink" href="#the-interactive-workflow-ipython-and-a-text-editor" title="Permalink to this headline">¶</a></h2>
-<p><strong>Interactive work to test and understand algorithm:</strong> In this section, we
+<p><strong>Interactive work to test and understand algorithms:</strong> In this section, we
 describe an interactive workflow with <a class="reference external" href="http://ipython.org">IPython</a> that is
 handy to explore and understand algorithms.</p>
 <p>Python is a general-purpose language. As such, there is not one blessed
-environement to work into, and not only one way of using it. Although
+environment to work in, and not only one way of using it. Although
 this makes it harder for beginners to find their way, it makes it
 possible for Python to be used to write programs, in web servers, or
 embedded devices.</p>
@@ -248,16 +249,16 @@ embedded devices.</p>
 </div>
 <div class="section" id="elaboration-of-the-algorithm-in-an-editor">
 <h3>1.1.3.2. Elaboration of the algorithm in an editor<a class="headerlink" href="#elaboration-of-the-algorithm-in-an-editor" title="Permalink to this headline">¶</a></h3>
-<p>Create a file <tt class="xref py py-obj docutils literal"><span class="pre">my_file.py</span></tt> in a text editor. Under EPD, you can use
-<tt class="xref py py-obj docutils literal"><span class="pre">Scite</span></tt>, available from the start menu. Under Python(x,y), you can use
-Spyder. Under Ubuntu, if you don&#8217;t already have your favorite editor, We
-would advise installing <tt class="xref py py-obj docutils literal"><span class="pre">Stani's</span> <span class="pre">Python</span> <span class="pre">editor</span></tt>. In the file, add the
-following lines:</p>
+<p>Create a file <tt class="xref py py-obj docutils literal"><span class="pre">my_file.py</span></tt> in a text editor. Under EPD (Enthought Python
+Distribution), you can use <tt class="xref py py-obj docutils literal"><span class="pre">Scite</span></tt>, available from the start menu. Under
+Python(x,y), you can use Spyder. Under Ubuntu, if you don&#8217;t already have your
+favorite editor, we would advise installing <tt class="xref py py-obj docutils literal"><span class="pre">Stani's</span> <span class="pre">Python</span> <span class="pre">editor</span></tt>. In the
+file, add the following lines:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Hello world&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, you can run it in ipython and explore the resulting variables:</p>
+<p>Now, you can run it in IPython and explore the resulting variables:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="o">%</span><span class="n">run</span> <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
 <span class="go">Hello word</span>
 

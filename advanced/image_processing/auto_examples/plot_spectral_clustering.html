@@ -43,8 +43,8 @@
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../../_downloads/plot_spectral_clustering.py"><tt class="xref download docutils literal"><span class="pre">plot_spectral_clustering.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
-<span class="kn">from</span> <span class="nn">scikits.learn.cluster</span> <span class="kn">import</span> <span class="n">spectral_clustering</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">spectral_clustering</span>
 
 <span class="c">################################################################################</span>
 <span class="n">l</span> <span class="o">=</span> <span class="mi">100</span>
@@ -80,7 +80,7 @@
 
 <span class="c"># Force the solver to be arpack, since amg is numerically</span>
 <span class="c"># unstable on this example</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">spectral_clustering</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;arpack&#39;</span><span class="p">)</span>
 <span class="n">label_im</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">label_im</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
 

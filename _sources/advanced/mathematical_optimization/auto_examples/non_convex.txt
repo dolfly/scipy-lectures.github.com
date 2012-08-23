@@ -1,0 +1,13 @@
+
+
+.. _example_non_convex.py:
+
+
+Demo non-convex problems
+
+
+**Python source code:** :download:`non_convex.py <non_convex.py>`
+
+.. literalinclude:: non_convex.py
+    :lines: 4-
+    
