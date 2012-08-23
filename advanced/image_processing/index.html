@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.7. Image manipulation and processing using Numpy and Scipy &mdash; Scipy lecture notes</title>
+    <title>2.6. Image manipulation and processing using Numpy and Scipy &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2012.2',
+        VERSION:     '2012.3 (EuroScipy 2012)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,18 +27,18 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
     <link rel="up" title="2. Advanced topics" href="../index.html" />
-    <link rel="next" title="2.8. Mathematical optimization" href="../mathematical_optimization/index.html" />
-    <link rel="prev" title="2.6.4. Other Interesting Packages" href="../scipy_sparse/other_packages.html" /> 
+    <link rel="next" title="2.7. Mathematical optimization" href="../mathematical_optimization/index.html" />
+    <link rel="prev" title="2.5.4. Other Interesting Packages" href="../scipy_sparse/other_packages.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../mathematical_optimization/index.html" title="2.8. Mathematical optimization"
+          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="../scipy_sparse/other_packages.html" title="2.6.4. Other Interesting Packages"
+          <a href="../scipy_sparse/other_packages.html" title="2.5.4. Other Interesting Packages"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">2. Advanced topics</a> &raquo;</li> 
@@ -50,7 +50,7 @@
           <div class="body">
             
   <div class="section" id="image-manipulation-and-processing-using-numpy-and-scipy">
-<h1>2.7. Image manipulation and processing using Numpy and Scipy<a class="headerlink" href="#image-manipulation-and-processing-using-numpy-and-scipy" title="Permalink to this headline">¶</a></h1>
+<h1>2.6. Image manipulation and processing using Numpy and Scipy<a class="headerlink" href="#image-manipulation-and-processing-using-numpy-and-scipy" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -126,7 +126,7 @@
 </ul>
 </div>
 <div class="section" id="opening-and-writing-to-image-files">
-<h2><a class="toc-backref" href="#id1">2.7.1. Opening and writing to image files</a><a class="headerlink" href="#opening-and-writing-to-image-files" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">2.6.1. Opening and writing to image files</a><a class="headerlink" href="#opening-and-writing-to-image-files" title="Permalink to this headline">¶</a></h2>
 <p>Writing an array to a file:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="n">l</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -174,7 +174,7 @@ bytes).</p>
 </div>
 </div>
 <div class="section" id="displaying-images">
-<h2><a class="toc-backref" href="#id2">2.7.2. Displaying images</a><a class="headerlink" href="#displaying-images" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">2.6.2. Displaying images</a><a class="headerlink" href="#displaying-images" title="Permalink to this headline">¶</a></h2>
 <p>Use <tt class="docutils literal"><span class="pre">matplotlib</span></tt> and <tt class="docutils literal"><span class="pre">imshow</span></tt> to display an image inside a
 <tt class="docutils literal"><span class="pre">matplotlib</span> <span class="pre">figure</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -231,7 +231,7 @@ Qt):</p>
 </div>
 </div>
 <div class="section" id="basic-manipulations">
-<h2><a class="toc-backref" href="#id3">2.7.3. Basic manipulations</a><a class="headerlink" href="#basic-manipulations" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">2.6.3. Basic manipulations</a><a class="headerlink" href="#basic-manipulations" title="Permalink to this headline">¶</a></h2>
 <p>Images are arrays: use the whole <tt class="docutils literal"><span class="pre">numpy</span></tt> machinery.</p>
 <a class="reference internal image-reference" href="../../_images/axis_convention.png"><img alt="../../_images/axis_convention.png" class="align-center" src="../../_images/axis_convention.png" style="width: 432.25px; height: 221.65px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -258,7 +258,7 @@ Qt):</p>
 </div>
 <p>[<a class="reference internal" href="auto_examples/plot_numpy_array.html#example-plot-numpy-array-py"><em>Python source code</em></a>]</p>
 <div class="section" id="statistical-information">
-<h3><a class="toc-backref" href="#id4">2.7.3.1. Statistical information</a><a class="headerlink" href="#statistical-information" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">2.6.3.1. Statistical information</a><a class="headerlink" href="#statistical-information" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="go">124.04678344726562</span>
@@ -269,7 +269,7 @@ Qt):</p>
 <p><tt class="docutils literal"><span class="pre">np.histogram</span></tt></p>
 </div>
 <div class="section" id="geometrical-transformations">
-<h3><a class="toc-backref" href="#id5">2.7.3.2. Geometrical transformations</a><a class="headerlink" href="#geometrical-transformations" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5">2.6.3.2. Geometrical transformations</a><a class="headerlink" href="#geometrical-transformations" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Cropping</span>
@@ -288,14 +288,14 @@ Qt):</p>
 </div>
 </div>
 <div class="section" id="image-filtering">
-<h2><a class="toc-backref" href="#id6">2.7.4. Image filtering</a><a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">2.6.4. Image filtering</a><a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h2>
 <p><strong>Local filters</strong>: replace the value of pixels by a function of the values of
 neighboring pixels.</p>
 <p>Neighbourhood: square (choose size), disk, or more complicated <em>structuring
 element</em>.</p>
 <img alt="../../_images/kernels.png" class="align-center" src="../../_images/kernels.png" />
 <div class="section" id="blurring-smoothing">
-<h3><a class="toc-backref" href="#id7">2.7.4.1. Blurring/smoothing</a><a class="headerlink" href="#blurring-smoothing" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">2.6.4.1. Blurring/smoothing</a><a class="headerlink" href="#blurring-smoothing" title="Permalink to this headline">¶</a></h3>
 <p><strong>Gaussian filter</strong> from <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -313,7 +313,7 @@ element</em>.</p>
 <p>[<a class="reference internal" href="auto_examples/plot_blur.html#example-plot-blur-py"><em>Python source code</em></a>]</p>
 </div>
 <div class="section" id="sharpening">
-<h3><a class="toc-backref" href="#id8">2.7.4.2. Sharpening</a><a class="headerlink" href="#sharpening" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">2.6.4.2. Sharpening</a><a class="headerlink" href="#sharpening" title="Permalink to this headline">¶</a></h3>
 <p>Sharpen a blurred image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -333,7 +333,7 @@ Laplacian:</p>
 <p>[<a class="reference internal" href="auto_examples/plot_sharpen.html#example-plot-sharpen-py"><em>Python source code</em></a>]</p>
 </div>
 <div class="section" id="denoising">
-<h3><a class="toc-backref" href="#id9">2.7.4.3. Denoising</a><a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">2.6.4.3. Denoising</a><a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h3>
 <p>Noisy lena:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -390,7 +390,7 @@ but for convenience we&#8217;ve shipped it as a <tt class="xref download docutil
 <p>[<a class="reference internal" href="auto_examples/plot_lena_tv_denoise.html#example-plot-lena-tv-denoise-py"><em>Python source code</em></a>]</p>
 </div>
 <div class="section" id="mathematical-morphology">
-<h3><a class="toc-backref" href="#id10">2.7.4.4. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">2.6.4.4. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Mathematical_morphology">http://en.wikipedia.org/wiki/Mathematical_morphology</a></p>
 <p>Probe an image with a simple shape (a <strong>structuring element</strong>), and
 modify this image according to how the shape locally fits or misses the
@@ -522,9 +522,9 @@ etc.</p>
 </div>
 </div>
 <div class="section" id="feature-extraction">
-<h2><a class="toc-backref" href="#id11">2.7.5. Feature extraction</a><a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">2.6.5. Feature extraction</a><a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="edge-detection">
-<h3><a class="toc-backref" href="#id12">2.7.5.1. Edge detection</a><a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">2.6.5.1. Edge detection</a><a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h3>
 <p>Synthetic data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[</span><span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -561,7 +561,7 @@ but for convenience we&#8217;ve shipped it as a <tt class="xref download docutil
 <p>Several parameters need to be adjusted... risk of overfitting</p>
 </div>
 <div class="section" id="segmentation">
-<h3><a class="toc-backref" href="#id13">2.7.5.2. Segmentation</a><a class="headerlink" href="#segmentation" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">2.6.5.2. Segmentation</a><a class="headerlink" href="#segmentation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Histogram-based</strong> segmentation (no spatial information)</li>
 </ul>
@@ -685,7 +685,7 @@ segmentation is more accurate.</p>
 </div>
 </div>
 <div class="section" id="measuring-objects-properties-ndimage-measurements">
-<h2><a class="toc-backref" href="#id14">2.7.6. Measuring objects properties: <tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></a><a class="headerlink" href="#measuring-objects-properties-ndimage-measurements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">2.6.6. Measuring objects properties: <tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></a><a class="headerlink" href="#measuring-objects-properties-ndimage-measurements" title="Permalink to this headline">¶</a></h2>
 <p>Synthetic data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">256</span>
@@ -830,10 +830,10 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../mathematical_optimization/index.html" title="2.8. Mathematical optimization"
+          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization"
              >next</a></li>
         <li class="right" >
-          <a href="../scipy_sparse/other_packages.html" title="2.6.4. Other Interesting Packages"
+          <a href="../scipy_sparse/other_packages.html" title="2.5.4. Other Interesting Packages"
              >previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >2. Advanced topics</a> &raquo;</li> 
