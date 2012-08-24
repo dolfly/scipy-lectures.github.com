@@ -1,8 +1,8 @@
 .. _mathematical_optimization:
 
-==========================
-Mathematical optimization
-==========================
+=======================================================
+Mathematical optimization: finding minima of functions
+=======================================================
 
 :authors: Gaël Varoquaux
 
@@ -37,6 +37,9 @@ used for more efficient, non black-box, optimization.
 
    * `Practical Methods of Optimization
      <http://www.amazon.com/gp/product/0471494631/ref=ox_sc_act_title_1?ie=UTF8&smid=ATVPDKIKX0DER>`_ by Fletcher: good at hand-waving explainations.
+
+.. include:: ../../includes/big_toc_css.rst
+
 
 .. contents:: Chapters contents
    :local:
@@ -812,8 +815,9 @@ Synthetic exercices
     :target: auto_examples/plot_exercise_flat_minimum.html
 
 .. image:: auto_examples/images/plot_exercise_ill_conditioned_1.png
-    :scale: 42%
+    :scale: 35%
     :target: auto_examples/plot_exercise_ill_conditioned.html
+    :align: right
 
 .. topic:: **Exercice: A simple (?) quadratic function**
     :class: green

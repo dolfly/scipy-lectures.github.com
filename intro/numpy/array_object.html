@@ -62,7 +62,8 @@
 <li><a class="reference internal" href="#basic-visualization" id="id5">Basic visualization</a></li>
 <li><a class="reference internal" href="#indexing-and-slicing" id="id6">Indexing and slicing</a></li>
 <li><a class="reference internal" href="#copies-and-views" id="id7">Copies and views</a></li>
-<li><a class="reference internal" href="#fancy-indexing" id="id8">Fancy indexing</a></li>
+<li><a class="reference internal" href="#adding-axes" id="id8">Adding Axes</a></li>
+<li><a class="reference internal" href="#fancy-indexing" id="id9">Fancy indexing</a></li>
 </ul>
 </div>
 <div class="section" id="what-are-numpy-and-numpy-arrays">
@@ -70,7 +71,7 @@
 <p><strong>Python</strong> has built-in:</p>
 <blockquote>
 <div><ul class="simple">
-<li>containers: lists (costless insertion and append), dictionnaries
+<li>containers: lists (costless insertion and append), dictionaries
 (fast lookup)</li>
 <li>high-level number objects: integers, floating point</li>
 </ul>
@@ -78,7 +79,7 @@
 <p><strong>Numpy</strong> is:</p>
 <blockquote>
 <div><ul class="simple">
-<li>extension package to Python for multidimensional arrays</li>
+<li>extension package to Python for multi-dimensional arrays</li>
 <li>closer to hardware (efficiency)</li>
 <li>designed for scientific computation (convenience)</li>
 </ul>
@@ -93,13 +94,14 @@
 <p class="topic-title first">For example:</p>
 <p>An array containing:</p>
 <ul class="simple">
-<li>discretized time of an experiment/simulation</li>
-<li>signal recorded by a measurement device</li>
-<li>pixels of an image</li>
+<li>values of an experiment/simulation at discrete time steps</li>
+<li>signal recorded by a measurement device, e.g. sound wave</li>
+<li>pixels of an image, grey-level or colour</li>
+<li>3-D data measured at different X-Y-Z positions, e.g. MRI scan</li>
 <li>...</li>
 </ul>
 </div>
-<p><strong>Why it is useful:</strong> Memory-efficient and fast container for numerical
+<p><strong>Why it is useful:</strong> Memory-efficient container that provides fast numerical
 operations.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">l</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
@@ -127,6 +129,13 @@ operations.</p>
 <span class="gp">...</span>
 </pre></div>
 </div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="err">?</span>
+<span class="go">String Form:&lt;built-in function array&gt;</span>
+<span class="go">Docstring:</span>
+<span class="go">array(object, dtype=None, copy=True, order=None, subok=False, ndmin=0, ...</span>
+<span class="go">...</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">Looking for something:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">lookfor</span><span class="p">(</span><span class="s">&#39;create array&#39;</span><span class="p">)</span>    
@@ -137,6 +146,13 @@ operations.</p>
 <span class="go">numpy.memmap</span>
 <span class="go">    Create a memory-map to an array stored in a *binary* file on disk.</span>
 <span class="gp">...</span>
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">np</span><span class="o">.</span><span class="n">con</span><span class="o">*</span><span class="err">?</span>
+<span class="go">np.concatenate</span>
+<span class="go">np.conj</span>
+<span class="go">np.conjugate</span>
+<span class="go">np.convolve</span>
 </pre></div>
 </div>
 </li>
@@ -255,6 +271,9 @@ operations.</p>
  [0. 0. 0. 0. 6.]]</pre>
 </div>
 <p>Par on course: 3 statements for each</p>
+<p><em>Hint</em>: Individual array elements can be accessed similarly to a list,
+e.g. <tt class="docutils literal"><span class="pre">a[1]</span></tt> or <tt class="docutils literal"><span class="pre">a[1,</span> <span class="pre">2]</span></tt>.</p>
+<p><em>Hint</em>: Examine the docstring for <tt class="docutils literal"><span class="pre">diag</span></tt>.</p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise: Tiling for array creation</p>
@@ -269,8 +288,9 @@ to construct the array:</p>
 </div>
 <div class="section" id="basic-data-types">
 <h2><a class="toc-backref" href="#id4">1.3.1.4. Basic data types</a><a class="headerlink" href="#basic-data-types" title="Permalink to this headline">¶</a></h2>
-<p>You probably noted the <tt class="docutils literal"><span class="pre">1</span></tt> and <tt class="docutils literal"><span class="pre">1.</span></tt> above. These are different
-data types:</p>
+<p>You may have noticed that, in some instances, array elements are displayed with
+a trailing dot (e.g. <tt class="docutils literal"><span class="pre">2.</span></tt> vs <tt class="docutils literal"><span class="pre">2</span></tt>). This is due to a difference in the
+data-type used:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
 <span class="go">dtype(&#39;int64&#39;)</span>
@@ -280,10 +300,11 @@ data types:</p>
 <span class="go">dtype(&#39;float64&#39;)</span>
 </pre></div>
 </div>
-<p>Much of the time you don&#8217;t necessarily need to care, but remember they
-are there.</p>
+<p>Different data-types allow us to store data more compactly in memory, but most
+of the time we simply work with floating point numbers.  Note that, in the
+example above, NumPy auto-detects the data-type from the input.</p>
 <hr class="docutils" />
-<p>You can also choose which one you want:</p>
+<p>You can explicitly specify which data-type you want:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">dtype</span>
 <span class="go">dtype(&#39;float64&#39;)</span>
@@ -330,12 +351,12 @@ are there.</p>
 <div class="section" id="basic-visualization">
 <h2><a class="toc-backref" href="#id5">1.3.1.5. Basic visualization</a><a class="headerlink" href="#basic-visualization" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have our first data arrays, we are going to visualize them.</p>
+<p>Start by launching <tt class="xref py py-obj docutils literal"><span class="pre">IPython</span></tt> in <tt class="xref py py-obj docutils literal"><span class="pre">pylab</span></tt> mode:</p>
+<div class="highlight-python"><pre>$ ipython --pylab</pre>
+</div>
 <p><strong>Matplotlib</strong> is a 2D plotting package. We can import its functions as below:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>  <span class="c"># the tidy way</span>
 </pre></div>
-</div>
-<p>The recommended way of working is use <tt class="xref py py-obj docutils literal"><span class="pre">IPython</span></tt>, started in <tt class="xref py py-obj docutils literal"><span class="pre">pylab</span></tt> mode:</p>
-<div class="highlight-python"><pre>$ ipython -pylab</pre>
 </div>
 <p><strong>1D plotting</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -366,20 +387,18 @@ are there.</p>
 </div>
 <p><strong>3D plotting</strong></p>
 <p>For 3D visualization, we can use another package: <strong>Mayavi</strong>. A quick example:
-start with <strong>relaunching iPython</strong> with these options:
-<strong>ipython -pylab -wthread</strong>  (or <strong>ipython &#8211;pylab=wx</strong> in IPython &gt;= 0.10).</p>
+start by <strong>relaunching iPython</strong> with these options: <strong>ipython &#8211;pylab=wx</strong>
+(or <strong>ipython -pylab -wthread</strong> in IPython &lt; 0.10).</p>
 <a class="reference internal image-reference" href="../../_images/surf1.png"><img alt="../../_images/surf1.png" class="align-right" src="../../_images/surf1.png" style="width: 238.8px; height: 189.6px;" /></a>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [59]: </span><span class="kn">from</span> <span class="nn">enthought.mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
-<span class="gp">In [60]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="go">Out[60]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xcb2677c</span><span class="o">&gt;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [58]: </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
 <span class="gp">In [61]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="go">Out[61]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xd0862fc</span><span class="o">&gt;</span>
+<span class="go">Out[61]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">Surface</span> <span class="nb">object</span> <span class="n">at</span> <span class="o">...&gt;</span>
 <span class="gp">In [62]: </span><span class="n">mlab</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-<span class="go">Out[62]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">Axes</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xd07892c</span><span class="o">&gt;</span>
+<span class="go">Out[62]: </span><span class="o">&lt;</span><span class="n">enthought</span><span class="o">.</span><span class="n">mayavi</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">Axes</span> <span class="nb">object</span> <span class="n">at</span> <span class="o">...&gt;</span>
 </pre></div>
 </div>
-<p>The mayavi/mlab window that opens is interactive : by clicking on the left mouse button
-you can rotate the image, zoom with the mouse wheel, etc.</p>
+<p>The mayavi/mlab window that opens is interactive: by clicking on the left mouse
+button you can rotate the image, zoom with the mouse wheel, etc.</p>
 <p>For more information on Mayavi :
 <a class="reference external" href="http://github.enthought.com/mayavi/mayavi">http://github.enthought.com/mayavi/mayavi</a></p>
 <div class="admonition-see-also admonition seealso">
@@ -536,13 +555,32 @@ filled with True in the beginning:</p>
 </ul>
 </div>
 </div>
+<div class="section" id="adding-axes">
+<h2><a class="toc-backref" href="#id8">1.3.1.8. Adding Axes</a><a class="headerlink" href="#adding-axes" title="Permalink to this headline">¶</a></h2>
+<p>Indexing with the <tt class="docutils literal"><span class="pre">np.newaxis</span></tt> object allows us to add an axis to an array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">array([1, 2, 3])</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="go">array([[1],</span>
+<span class="go">       [2],</span>
+<span class="go">       [3]])</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+<span class="go">array([[1, 2, 3]])</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="fancy-indexing">
-<h2><a class="toc-backref" href="#id8">1.3.1.8. Fancy indexing</a><a class="headerlink" href="#fancy-indexing" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">1.3.1.9. Fancy indexing</a><a class="headerlink" href="#fancy-indexing" title="Permalink to this headline">¶</a></h2>
 <p>Numpy arrays can be indexed with slices, but also with boolean or
 integer arrays (<strong>masks</strong>). This method is called <em>fancy indexing</em>. It
 creates <strong>copies not views</strong>.</p>
 <div class="section" id="using-boolean-masks">
-<h3>1.3.1.8.1. Using boolean masks<a class="headerlink" href="#using-boolean-masks" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.1.9.1. Using boolean masks<a class="headerlink" href="#using-boolean-masks" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -564,7 +602,7 @@ creates <strong>copies not views</strong>.</p>
 </div>
 </div>
 <div class="section" id="indexing-with-an-array-of-integers">
-<h3>1.3.1.8.2. Indexing with an array of integers<a class="headerlink" href="#indexing-with-an-array-of-integers" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.1.9.2. Indexing with an array of integers<a class="headerlink" href="#indexing-with-an-array-of-integers" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>

@@ -79,11 +79,6 @@ Examples
 
    :ref:`example_plot_gradient_descent.py`
 
-.. figure:: ./images/thumb/plot_leastsq.png
-   :target: ./plot_leastsq.html
-
-   :ref:`example_plot_leastsq.py`
-
 .. figure:: ./images/thumb/plot_noisy.png
    :target: ./plot_noisy.html
 

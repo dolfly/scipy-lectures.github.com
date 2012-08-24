@@ -126,11 +126,6 @@
 <span class="go">array([ True, False, False, False], dtype=bool)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For arrays: &#8220;<tt class="docutils literal"><span class="pre">np.logical_and</span></tt>&#8221; and &#8220;<tt class="docutils literal"><span class="pre">np.logical_or</span></tt>&#8221; for logical
-operations, not &#8220;<tt class="docutils literal"><span class="pre">and</span></tt>&#8221; and &#8220;<tt class="docutils literal"><span class="pre">or</span></tt>&#8221;.</p>
-</div>
 <p>Shape mismatches:</p>
 <div class="highlight-python"><pre>&gt;&gt;&gt; a = np.arange(4)
 &gt;&gt;&gt; a
@@ -156,10 +151,10 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape</pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p><strong>Linear algebra</strong></p>
-<p class="last">The sub-module <tt class="xref py py-obj docutils literal"><span class="pre">np.linalg</span></tt> implements basic linear algebra, such as
-eigenvalue decomposition, solving linear systems... However, it is
+<p class="last">The sub-module <tt class="xref py py-mod docutils literal"><span class="pre">np.linalg</span></tt> implements basic linear algebra, such as
+solving linear systems, singular value decomposition, etc. However, it is
 not guaranteed to be compiled using efficient routines, and thus we
-recommend to use <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11.dev)"><tt class="xref py py-obj docutils literal"><span class="pre">scipy.linalg</span></tt></a>, as detailed in section
+recommend the use of <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11.dev)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a>, as detailed in section
 <a class="reference internal" href="../scipy.html#scipy-linalg"><em>Linear algebra operations: scipy.linalg</em></a></p>
 </div>
 <div class="green topic">

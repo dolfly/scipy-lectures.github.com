@@ -137,7 +137,7 @@ class LoggingFunction(object):
         x_i, y_i = x0[:2]
         self.all_x_i.append(x_i)
         self.all_y_i.append(y_i)
-        f_i = self.function(x0)
+        f_i = self.function(np.asarray(x0))
         self.all_f_i.append(f_i)
         self.counter.append('f')
         self.counts.append(len(self.counter))

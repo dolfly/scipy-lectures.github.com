@@ -9,7 +9,7 @@
  *
  */
 @import url("basic.css");
-@import url("agogo.css");
+@import url("default.css");
 /* -- page layout ----------------------------------------------------------- */
  
 /* special colors for exercises */
@@ -36,3 +36,60 @@ table.docutils tr {
     border-width: 1px 0 1px 0;
     border-color: #AAAAAA;
 }
+
+div.contents {
+      background-color: #FFFFF6;
+}
+
+div.contents li {
+      list-style-type: none;
+      font-size: 110% ;
+      font-weight: bold;
+}
+
+div.contents p {
+    margin-bottom : 0px;
+    margin-top : 0px;
+}
+
+div.contents ul {
+    margin-bottom : 4px;
+    margin-top : 0px;
+}
+
+div.contents li li {
+      list-style-type: none;
+      list-style-type: square;
+      font-size: 90% ;
+      font-weight: normal;
+}
+
+
+li.toctree-l1 {
+    padding: 0 0 0.5em 0 ;
+    list-style-type: none;
+    font-size: 110% ;
+    font-weight: bold;
+    }
+
+li.toctree-l1 ul {
+    padding-left: 40px ;
+}
+
+li.toctree-l2 {
+    font-size: 80% ;
+    list-style-type: square;
+    font-weight: normal;
+    }
+
+
+div.toctree-wrapper ul {
+    padding-left: 4px;
+}
+
+li.toctree-l3 {
+    font-size: 90% ;
+    list-style-type: circle;
+    font-weight: normal;
+    }
+ 
