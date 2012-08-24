@@ -20,11 +20,13 @@ def gaussian_prime_prime(x):
 
 def mk_gauss(epsilon, ndim=2):
     def f(x):
+        x = np.asarray(x)
         y = x.copy()
         y *= np.power(epsilon, np.arange(ndim))
         return -gaussian(.5*y) + 1
 
     def f_prime(x):
+        x = np.asarray(x)
         y = x.copy()
         scaling = np.power(epsilon, np.arange(ndim))
         y *= scaling
@@ -32,6 +34,7 @@ def mk_gauss(epsilon, ndim=2):
 
     def hessian(x):
         epsilon = .07
+        x = np.asarray(x)
         y = x.copy()
         scaling = np.power(epsilon, np.arange(ndim))
         y *= .5*scaling
@@ -48,11 +51,13 @@ def mk_gauss(epsilon, ndim=2):
 
 def mk_quad(epsilon, ndim=2):
     def f(x):
+       x = np.asarray(x)
        y = x.copy()
        y *= np.power(epsilon, np.arange(ndim))
        return .33*np.sum(y**2)
 
     def f_prime(x):
+       x = np.asarray(x)
        y = x.copy()
        scaling = np.power(epsilon, np.arange(ndim))
        y *= scaling
