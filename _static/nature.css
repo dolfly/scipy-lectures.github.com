@@ -23,6 +23,11 @@ div.body h1, div.body h2 {
     font-weight: bold;
 }
 
+/* clear both after section titles */
+div.body h1, div.body h2, div.body h3, div.body h4 {
+    clear: both;
+}
+
 /* alternating colors in table rows */
 table.docutils tr:nth-child(even) {
     background-color: #F3F3FF;
@@ -93,3 +98,40 @@ li.toctree-l3 {
     font-weight: normal;
     }
  
+table.hlist td {
+    width: 50%;
+    vertical-align: top;
+}
+
+/* Admonition */
+
+div.hint {
+    line-height: 1.5em;
+    margin: 0;
+    padding:          3px 5px;
+    width:            260px;
+    border:     1px solid #cccccc;
+    background-color: #FFD;	
+}
+div.admonition p {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+div.admonition ul {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+div.admonition .first {
+    font-weight: bold;
+}
+
+div.sidebar ul {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+div.sidebar .first {
+    margin-bottom: 5px;
+}
+

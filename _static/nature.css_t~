@@ -23,6 +23,11 @@ div.body h1, div.body h2 {
     font-weight: bold;
 }
 
+/* clear both after section titles */
+div.body h1, div.body h2, div.body h3, div.body h4 {
+    clear: both;
+}
+
 /* alternating colors in table rows */
 table.docutils tr:nth-child(even) {
     background-color: #F3F3FF;
@@ -65,6 +70,10 @@ div.contents li li {
 }
 
 
+div.toctree-wrapper ul {
+    padding-left: 4px;
+}
+
 li.toctree-l1 {
     padding: 0 0 0.5em 0 ;
     list-style-type: none;
@@ -83,13 +92,51 @@ li.toctree-l2 {
     }
 
 
-div.toctree-wrapper ul {
-    padding-left: 4px;
-}
-
 li.toctree-l3 {
     font-size: 90% ;
     list-style-type: circle;
     font-weight: normal;
     }
  
+table.hlist td {
+    width: 50%;
+    vertical-align: top;
+}
+
+/* Admonition */
+
+div.hint {
+    line-height: 1.5em;
+    margin: 0;
+    padding:          3px 5px;
+    width:            260px;
+    border:     1px solid #cccccc;
+    background-color: #FFD;	
+}
+div.admonition p {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+div.admonition ul {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+div.admonition .first {
+    font-weight: bold;
+}
+
+div.sidebar ul {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+div.sidebar .first {
+    margin-bottom: 5px;
+}
+
+div.seealso {
+    background-color: #FFX;
+    border: 1px solid #FF6;
+    width:  100%;
+}

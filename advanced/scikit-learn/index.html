@@ -343,13 +343,13 @@ tone to several regions of fewer tones):</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c"># We need an (n_sample, n_feature) array</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
+<span class="go">KMeans(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">k_means</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">k_means</span><span class="o">.</span><span class="n">labels_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_compressed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_compressed</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">lena</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
-<p>KMeans(...)
-&gt;&gt;&gt; values = <a href="#id14"><span class="problematic" id="id15">k_means.cluster_centers_</span></a>.squeeze()
-&gt;&gt;&gt; labels = <a href="#id16"><span class="problematic" id="id17">k_means.labels_</span></a>
-&gt;&gt;&gt; lena_compressed = np.choose(labels, values)
-&gt;&gt;&gt; lena_compressed.shape = lena.shape</p>
 <table border="1" class="centered docutils">
 <colgroup>
 <col width="50%" />
@@ -564,6 +564,7 @@ appended to their name.</p>
 <p>On the diabetes dataset, find the optimal regularization parameter
 alpha.</p>
 </div>
+<p><div style="clear: both"></div></p>
 </div>
 </div>
 </div>

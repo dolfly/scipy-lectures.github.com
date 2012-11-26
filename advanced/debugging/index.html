@@ -634,10 +634,16 @@ segfault.py (12): print_big_array</pre>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">print_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
-    <span class="n">big_array</span> <span class="o">=</span> <span class="n">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">big_array</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
+    <span class="n">big_array</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">small_array</span><span class="p">,</span>
+                                         <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mf">2e6</span><span class="p">,</span> <span class="mf">2e6</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">big_array</span>
+
+<span class="k">def</span> <span class="nf">print_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
+    <span class="n">big_array</span> <span class="o">=</span> <span class="n">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>Thus the segfault happens when printing <tt class="xref py py-obj docutils literal"><span class="pre">big_array[-10:]</span></tt>. The reason is
@@ -721,6 +727,7 @@ but it does not work... Can you debug it?</p>
 </pre></div>
 </div>
 </div>
+<p><div style="clear: both"></div></p>
 </div>
 </div>
 

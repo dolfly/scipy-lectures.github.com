@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.5. Matplotlib &mdash; Scipy lecture notes</title>
+    <title>1.5. Matplotlib: plotting &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -49,52 +49,122 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="matplotlib">
-<span id="id1"></span><h1>1.5. Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="matplotlib-plotting">
+<span id="matplotlib"></span><h1>1.5. Matplotlib: plotting<a class="headerlink" href="#matplotlib-plotting" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Mike Müller</td>
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Nicolas Rougier, Mike Müller, Gaël Varoquaux</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="introduction">
-<h2>1.5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">matplotlib</span></tt> is probably the single most used Python package
-for 2D-graphics. It provides both a very quick way to visualize
-data from Python and publication-quality figures in many formats.
-We are going to explore matplotlib in interactive mode covering
-most common cases. We also look at the class library which is provided
-with an object-oriented interface.</p>
+<div class="sidebar">
+<p class="first sidebar-title"><strong>Thanks</strong></p>
+<p class="last">Many thanks to <strong>Bill Wing</strong> and <strong>Christoph Deil</strong> for review and
+corrections.</p>
 </div>
+<div class="contents local topic" id="chapters-contents">
+<p class="topic-title first">Chapters contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id3">Introduction</a><ul>
+<li><a class="reference internal" href="#ipython-and-the-pylab-mode" id="id4">IPython and the pylab mode</a></li>
+<li><a class="reference internal" href="#pylab" id="id5">pylab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simple-plot" id="id6">Simple plot</a><ul>
+<li><a class="reference internal" href="#using-defaults" id="id7">Using defaults</a></li>
+<li><a class="reference internal" href="#instantiating-defaults" id="id8">Instantiating defaults</a></li>
+<li><a class="reference internal" href="#changing-colors-and-line-widths" id="id9">Changing colors and line widths</a></li>
+<li><a class="reference internal" href="#setting-limits" id="id10">Setting limits</a></li>
+<li><a class="reference internal" href="#setting-ticks" id="id11">Setting ticks</a></li>
+<li><a class="reference internal" href="#setting-tick-labels" id="id12">Setting tick labels</a></li>
+<li><a class="reference internal" href="#moving-spines" id="id13">Moving spines</a></li>
+<li><a class="reference internal" href="#adding-a-legend" id="id14">Adding a legend</a></li>
+<li><a class="reference internal" href="#annotate-some-points" id="id15">Annotate some points</a></li>
+<li><a class="reference internal" href="#devil-is-in-the-details" id="id16">Devil is in the details</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#figures-subplots-axes-and-ticks" id="id17">Figures, Subplots, Axes and Ticks</a><ul>
+<li><a class="reference internal" href="#figures" id="id18">Figures</a></li>
+<li><a class="reference internal" href="#subplots" id="id19">Subplots</a></li>
+<li><a class="reference internal" href="#axes" id="id20">Axes</a></li>
+<li><a class="reference internal" href="#ticks" id="id21">Ticks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-types-of-plots-examples-and-exercises" id="id22">Other Types of Plots: examples and exercises</a><ul>
+<li><a class="reference internal" href="#regular-plots" id="id23">Regular Plots</a></li>
+<li><a class="reference internal" href="#scatter-plots" id="id24">Scatter Plots</a></li>
+<li><a class="reference internal" href="#bar-plots" id="id25">Bar Plots</a></li>
+<li><a class="reference internal" href="#contour-plots" id="id26">Contour Plots</a></li>
+<li><a class="reference internal" href="#imshow" id="id27">Imshow</a></li>
+<li><a class="reference internal" href="#pie-charts" id="id28">Pie Charts</a></li>
+<li><a class="reference internal" href="#quiver-plots" id="id29">Quiver Plots</a></li>
+<li><a class="reference internal" href="#grids" id="id30">Grids</a></li>
+<li><a class="reference internal" href="#multi-plots" id="id31">Multi Plots</a></li>
+<li><a class="reference internal" href="#polar-axis" id="id32">Polar Axis</a></li>
+<li><a class="reference internal" href="#d-plots" id="id33">3D Plots</a></li>
+<li><a class="reference internal" href="#text" id="id34">Text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#beyond-this-tutorial" id="id35">Beyond this tutorial</a><ul>
+<li><a class="reference internal" href="#tutorials" id="id36">Tutorials</a></li>
+<li><a class="reference internal" href="#matplotlib-documentation" id="id37">Matplotlib documentation</a></li>
+<li><a class="reference internal" href="#code-documentation" id="id38">Code documentation</a></li>
+<li><a class="reference internal" href="#galleries" id="id39">Galleries</a></li>
+<li><a class="reference internal" href="#mailing-lists" id="id40">Mailing lists</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quick-references" id="id41">Quick references</a><ul>
+<li><a class="reference internal" href="#line-properties" id="id42">Line properties</a></li>
+<li><a class="reference internal" href="#line-styles" id="id43">Line styles</a></li>
+<li><a class="reference internal" href="#markers" id="id44">Markers</a></li>
+<li><a class="reference internal" href="#colormaps" id="id45">Colormaps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id3">1.5.1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>matplotlib is probably the single most used Python package for 2D-graphics. It
+provides both a very quick way to visualize data from Python and
+publication-quality figures in many formats.  We are going to explore
+matplotlib in interactive mode covering most common cases.</p>
 <div class="section" id="ipython-and-the-pylab-mode">
-<h2>1.5.2. IPython and the pylab mode<a class="headerlink" href="#ipython-and-the-pylab-mode" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ipython">
-<h3>1.5.2.1. IPython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://ipython.org/">IPython</a> is an enhanced interactive Python shell
-that has lots of interesting features including named inputs and outputs,
-access to shell commands, improved debugging and many more. When we start
-it with the command line argument <tt class="docutils literal"><span class="pre">-pylab</span></tt> (<tt class="docutils literal"><span class="pre">--pylab</span></tt> since IPython
-version 0.12), it allows interactive <tt class="docutils literal"><span class="pre">matplotlib</span></tt> sessions that has
-Matlab/Mathematica-like functionality.</p>
+<h3><a class="toc-backref" href="#id4">1.5.1.1. IPython and the pylab mode</a><a class="headerlink" href="#ipython-and-the-pylab-mode" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://ipython.org/">IPython</a> is an enhanced interactive Python shell that
+has lots of interesting features including named inputs and outputs, access to
+shell commands, improved debugging and many more. When we start it with the
+command line argument -pylab (&#8211;pylab since IPython version 0.12), it allows
+interactive matplotlib sessions that have Matlab/Mathematica-like functionality.</p>
 </div>
 <div class="section" id="pylab">
-<h3>1.5.2.2. pylab<a class="headerlink" href="#pylab" title="Permalink to this headline">¶</a></h3>
-<p><tt class="docutils literal"><span class="pre">pylab</span></tt> provides a procedural interface to the <tt class="docutils literal"><span class="pre">matplotlib</span></tt>
-object-oriented plotting library. It is modeled closely
-after Matlab(TM). Therefore, the majority of plotting
-commands in <tt class="docutils literal"><span class="pre">pylab</span></tt> has Matlab(TM) analogs with similar arguments.
-Important commands are explained with interactive examples.</p>
+<h3><a class="toc-backref" href="#id5">1.5.1.2. pylab</a><a class="headerlink" href="#pylab" title="Permalink to this headline">¶</a></h3>
+<p>pylab provides a procedural interface to the matplotlib object-oriented
+plotting library. It is modeled closely after Matlab(TM). Therefore, the
+majority of plotting commands in pylab have Matlab(TM) analogs with similar
+arguments.  Important commands are explained with interactive examples.</p>
 </div>
 </div>
-<div class="section" id="simple-plots">
-<h2>1.5.3. Simple Plots<a class="headerlink" href="#simple-plots" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s start an interactive session:</p>
-<div class="highlight-python"><pre>$ ipython -pylab</pre>
+<div class="section" id="simple-plot">
+<h2><a class="toc-backref" href="#id6">1.5.2. Simple plot</a><a class="headerlink" href="#simple-plot" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we want to draw the cosine and sine functions on the same
+plot. Starting from the default settings, we&#8217;ll enrich the figure step by step
+to make it nicer.</p>
+<p>First step is to get the data for the sine and cosine functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">C</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>X is now a numpy array with 256 values ranging from -π to +π (included). C is
+the cosine (256 values) and S is the sine (256 values).</p>
+<p>To run the example, you can type them in an IPython interactive session:</p>
+<div class="highlight-python"><pre>$ ipython --pylab</pre>
 </div>
 <p>This brings us to the IPython prompt:</p>
-<div class="highlight-python"><pre>IPython 0.8.1 -- An enhanced Interactive Python.
+<div class="highlight-python"><pre>IPython 0.13 -- An enhanced Interactive Python.
 ?       -&gt; Introduction to IPython's features.
 %magic  -&gt; Information about IPython's 'magic' % functions.
 help    -&gt; Python's own help system.
@@ -103,630 +173,318 @@ object? -&gt; Details about 'object'. ?object also works, ?? prints more.
 Welcome to pylab, a matplotlib-based Python environment.
 For more information, type 'help(pylab)'.</pre>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go">In [1]:</span>
-</pre></div>
+<p>or you can download each of the examples and run it using regular python:</p>
+<div class="highlight-python"><pre>$ python exercice_1.py</pre>
 </div>
-<p>Now we can make our first, really simple plot:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="gp">In [3]: </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="go">Out[3]: </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="mh">0x01AA26E8</span><span class="o">&gt;</span><span class="p">]</span>
+<p>You can get source for each step by clicking on the corresponding figure.</p>
+<div class="section" id="using-defaults">
+<h3><a class="toc-backref" href="#id7">1.5.2.1. Using defaults</a><a class="headerlink" href="#using-defaults" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_1.html"><img alt="../../_images/plot_exercice_1_1.png" class="align-right" src="../../_images/plot_exercice_1_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/pyplot_tutorial.html">plot tutorial</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.plot">plot() command</a></li>
+</ul>
+</div>
+<p>Matplotlib comes with a set of default settings that allow customizing all
+kinds of properties. You can control the defaults of almost every property in
+matplotlib: figure size and dpi, line width, color and style, axes, axis and
+grid properties, text and font properties and so on. While matplotlib defaults
+are rather good in most cases, you may want to modify some properties for
+specific cases.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="go">In [4]:</span>
-</pre></div>
-</div>
-<p>The numbers form 0 through 9 are plotted:</p>
-<img alt="../../_images/simple.png" src="../../_images/simple.png" style="width: 50%;" />
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In the following, we use the Python prompt &#8220;&gt;&gt;&gt;&#8221; rather than
-the IPython one, as it facilitates copy-pasting in IPython (using the
-<tt class="xref py py-obj docutils literal"><span class="pre">%doctest_mode</span></tt>).</p>
-</div>
-<p>Now we can interactively add features to or plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;measured&#39;</span><span class="p">)</span>  
-<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">C</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;calculated&#39;</span><span class="p">)</span> 
-<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Measured vs. calculated&#39;</span><span class="p">)</span> <span class="o">+</span><span class="n">ELLIPSIS</span>
-<span class="go">&lt;matplotlib.text.Text instance at ...&gt;</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instantiating-defaults">
+<h3><a class="toc-backref" href="#id8">1.5.2.2. Instantiating defaults</a><a class="headerlink" href="#instantiating-defaults" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_2.html"><img alt="../../_images/plot_exercice_2_1.png" class="align-right" src="../../_images/plot_exercice_2_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/customizing.html">Customizing matplotlib</a></li>
+</ul>
+</div>
+<p>In the script below, we&#8217;ve instantiated (and commented) all the figure settings
+that influence the appearance of the plot. The settings have been explicitly
+set to their default values, but now you can interactively play with the values
+to explore their affect (see <a class="reference internal" href="#line-properties">Line properties</a> and <a class="reference internal" href="#line-styles">Line styles</a> below).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We get a reference to our plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">my_plot</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>and to our line we plotted, which is the first in the plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">my_plot</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Now we can set properties using <tt class="docutils literal"><span class="pre">set_something</span></tt> methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>or the <tt class="docutils literal"><span class="pre">setp</span></tt> function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">setp</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
-<span class="go">[None]</span>
-</pre></div>
-</div>
-<p>To apply the new properties we need to redraw the screen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>We can also add several lines to one plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c"># Create a figure of size 8x6 points, 80 dots per inch</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c"># Create a new subplot from a grid of 1x1</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">square</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">C</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Let&#8217;s add a legend:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">))</span>     
-<span class="go">&lt;matplotlib.legend.Legend instance at ...&gt;</span>
-</pre></div>
-</div>
-<p>This does not look particularly nice. We would rather like to have it at
-the left. So we clean the old graph (clf stands for &#8216;clear figure):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>and print it anew providing new line styles (a green dotted
-line with crosses for the linear and a red dashed line with
-circles for the square graph):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">linear</span><span class="p">,</span> <span class="s">&#39;g:+&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="s">&#39;r--o&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we add the legend at the upper left corner:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">legend</span><span class="p">((</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;square&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The result looks like this:</p>
-<img alt="../../_images/legend.png" src="../../_images/legend.png" style="width: 50%;" />
-<div class="green topic">
-<p class="topic-title first">Exercises</p>
-<ol class="arabic simple">
-<li>Plot a simple graph of a sinus function in the range 0 to 3
-with a step size of 0.01.</li>
-<li>Make the line red. Add diamond-shaped markers with size of 5.</li>
-<li>Add a legend and a grid to the plot.</li>
-</ol>
-</div>
-</div>
-<div class="section" id="properties">
-<h2>1.5.4. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
-<p>So far we have used properties for the lines.
-There are three possibilities to set them:</p>
-<ol class="arabic simple">
-<li>as keyword arguments at creation time:
-<tt class="docutils literal"><span class="pre">plot(x,</span> <span class="pre">linear,</span> <span class="pre">'g:+',</span> <span class="pre">x,</span> <span class="pre">square,</span> <span class="pre">'r--o')</span></tt>.</li>
-<li>with the function <tt class="docutils literal"><span class="pre">setp</span></tt>: <tt class="docutils literal"><span class="pre">setp(line,</span> <span class="pre">color='g')</span></tt>.</li>
-<li>using the <tt class="docutils literal"><span class="pre">set_something</span></tt> methods: <tt class="docutils literal"><span class="pre">line.set_marker('o')</span></tt></li>
-</ol>
-<p>Lines have several properties as shown in the following table:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Property</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>alpha</td>
-<td>alpha transparency on 0-1 scale</td>
-</tr>
-<tr class="row-odd"><td>antialiased</td>
-<td>True or False - use antialised rendering</td>
-</tr>
-<tr class="row-even"><td>color</td>
-<td>matplotlib color arg</td>
-</tr>
-<tr class="row-odd"><td>data_clipping</td>
-<td>whether to use numeric to clip data</td>
-</tr>
-<tr class="row-even"><td>label</td>
-<td>string optionally used for legend</td>
-</tr>
-<tr class="row-odd"><td>linestyle</td>
-<td>one of <tt class="docutils literal"><span class="pre">-</span></tt> <tt class="docutils literal"><span class="pre">:</span></tt> <tt class="docutils literal"><span class="pre">-.</span></tt> <tt class="docutils literal"><span class="pre">-</span></tt></td>
-</tr>
-<tr class="row-even"><td>linewidth</td>
-<td>float, the line width in points</td>
-</tr>
-<tr class="row-odd"><td>marker</td>
-<td>one of <tt class="docutils literal"><span class="pre">+</span></tt> <tt class="docutils literal"><span class="pre">,</span></tt> <tt class="docutils literal"><span class="pre">o</span></tt> <tt class="docutils literal"><span class="pre">.</span></tt> <tt class="docutils literal"><span class="pre">s</span></tt> <tt class="docutils literal"><span class="pre">v</span></tt> <tt class="docutils literal"><span class="pre">x</span></tt> <tt class="docutils literal"><span class="pre">&gt;</span></tt> <tt class="docutils literal"><span class="pre">&lt;</span></tt>, etc</td>
-</tr>
-<tr class="row-even"><td>markeredgewidth</td>
-<td>line width around the marker symbol</td>
-</tr>
-<tr class="row-odd"><td>markeredgecolor</td>
-<td>edge color if a marker is used</td>
-</tr>
-<tr class="row-even"><td>markerfacecolor</td>
-<td>face color if a marker is used</td>
-</tr>
-<tr class="row-odd"><td>markersize</td>
-<td>size of the marker in points</td>
-</tr>
-</tbody>
-</table>
-<p>There are many line styles that can be specified with symbols:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="22%" />
-<col width="78%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Symbol</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-</span></tt></td>
-<td>solid line</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">--</span></tt></td>
-<td>dashed line</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-.</span></tt></td>
-<td>dash-dot line</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">:</span></tt></td>
-<td>dotted line</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">.</span></tt></td>
-<td>points</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">,</span></tt></td>
-<td>pixels</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">o</span></tt></td>
-<td>circle symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">^</span></tt></td>
-<td>triangle up symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">v</span></tt></td>
-<td>triangle down symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
-<td>triangle left symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
-<td>triangle right symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">s</span></tt></td>
-<td>square symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">+</span></tt></td>
-<td>plus symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">x</span></tt></td>
-<td>cross symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">D</span></tt></td>
-<td>diamond symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">d</span></tt></td>
-<td>thin diamond symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">1</span></tt></td>
-<td>tripod down symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">2</span></tt></td>
-<td>tripod up symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">3</span></tt></td>
-<td>tripod left symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">4</span></tt></td>
-<td>tripod right symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">h</span></tt></td>
-<td>hexagon symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">H</span></tt></td>
-<td>rotated hexagon symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">p</span></tt></td>
-<td>pentagon symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">|</span></tt></td>
-<td>vertical line symbols</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">_</span></tt></td>
-<td>horizontal line symbols</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">steps</span></tt></td>
-<td>use gnuplot style &#8216;steps&#8217; # kwarg only</td>
-</tr>
-</tbody>
-</table>
-<p>Colors can be given in many ways: one-letter abbreviations, gray scale
-intensity from 0 to 1, RGB in hex and tuple format as well as
-any legal html color name.</p>
-<p>The one-letter abbreviations are very handy for quick work.
-With following you can get quite a few things done:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="57%" />
-<col width="43%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Abbreviation</th>
-<th class="head">Color</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>b</td>
-<td>blue</td>
-</tr>
-<tr class="row-odd"><td>g</td>
-<td>green</td>
-</tr>
-<tr class="row-even"><td>r</td>
-<td>red</td>
-</tr>
-<tr class="row-odd"><td>c</td>
-<td>cyan</td>
-</tr>
-<tr class="row-even"><td>m</td>
-<td>magenta</td>
-</tr>
-<tr class="row-odd"><td>y</td>
-<td>yellow</td>
-</tr>
-<tr class="row-even"><td>k</td>
-<td>black</td>
-</tr>
-<tr class="row-odd"><td>w</td>
-<td>white</td>
-</tr>
-</tbody>
-</table>
-<p>Other objects also have properties. The following table list
-the text properties:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="26%" />
-<col width="74%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Property</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>alpha</td>
-<td>alpha transparency on 0-1 scale</td>
-</tr>
-<tr class="row-odd"><td>color</td>
-<td>matplotlib color arg</td>
-</tr>
-<tr class="row-even"><td>family</td>
-<td>set the font family, eg sans-serif, cursive, fantasy</td>
-</tr>
-<tr class="row-odd"><td>fontangle</td>
-<td>the font slant, one of normal, italic, oblique</td>
-</tr>
-<tr class="row-even"><td>horizontalalignment</td>
-<td>left, right or center</td>
-</tr>
-<tr class="row-odd"><td>multialignment</td>
-<td>left, right or center only for multiline strings</td>
-</tr>
-<tr class="row-even"><td>name</td>
-<td>font name, eg, Sans, Courier, Helvetica</td>
-</tr>
-<tr class="row-odd"><td>position</td>
-<td>x,y location</td>
-</tr>
-<tr class="row-even"><td>variant</td>
-<td>font variant, eg normal, small-caps</td>
-</tr>
-<tr class="row-odd"><td>rotation</td>
-<td>angle in degrees for rotated text</td>
-</tr>
-<tr class="row-even"><td>size</td>
-<td>fontsize in points, eg, 8, 10, 12</td>
-</tr>
-<tr class="row-odd"><td>style</td>
-<td>font style, one of normal, italic, oblique</td>
-</tr>
-<tr class="row-even"><td>text</td>
-<td>set the text string itself</td>
-</tr>
-<tr class="row-odd"><td>verticalalignment</td>
-<td>top, bottom or center</td>
-</tr>
-<tr class="row-even"><td>weight</td>
-<td>font weight, e.g. normal, bold, heavy, light</td>
-</tr>
-</tbody>
-</table>
-<div class="green topic">
-<p class="topic-title first">Exercise</p>
-<p>Apply different line styles to a plot. Change line color and
-thickness as well as the size and the kind of the marker.
-Experiment with different styles.</p>
-</div>
-</div>
-<div class="section" id="text">
-<h2>1.5.5. Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
-<p>We&#8217;ve already used some commands to add text to our figure: <tt class="docutils literal"><span class="pre">xlabel</span></tt>
-<tt class="docutils literal"><span class="pre">ylabel</span></tt>, and <tt class="docutils literal"><span class="pre">title</span></tt>.</p>
-<p>There are two functions to put text at a defined position.
-<tt class="docutils literal"><span class="pre">text</span></tt> adds the text with data coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Text in the middle&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">figtext</span></tt> uses figure coordinates form 0 to 1:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s">&#39;Upper right text&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="../../_images/text.png" src="../../_images/text.png" style="width: 50%;" />
-<p><tt class="docutils literal"><span class="pre">matplotlib</span></tt> supports TeX mathematical expression. So <tt class="docutils literal"><span class="pre">r'$\pi$'</span></tt>
-will show up as:</p>
-<div class="math">
-<p><img src="../../_images/math/9e3b96acac89497c17b8b482907419c707b76cf0.png" alt="\pi"/></p>
-</div><p>If you want to get more control over where the text goes, you
-use annotations:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
-<span class="go">&lt;matplotlib.text.Annotation instance at ...&gt;</span>
-</pre></div>
-</div>
-<p>We will write the text at the position (1, 1) in terms of data.
-There are many optional arguments that help to customize
-the position of the text.  The arguments <tt class="docutils literal"><span class="pre">textcoords</span></tt> and
-<tt class="docutils literal"><span class="pre">xycoords</span></tt> specifies what <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> mean:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="28%" />
-<col width="72%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">argument</th>
-<th class="head">coordinate system</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>figure points</td>
-<td>points from the lower left corner of the figure</td>
-</tr>
-<tr class="row-odd"><td>figure pixels</td>
-<td>pixels from the lower left corner of the figure</td>
-</tr>
-<tr class="row-even"><td>figure fraction</td>
-<td>0,0 is lower left of figure and 1,1 is upper, right</td>
-</tr>
-<tr class="row-odd"><td>axes points</td>
-<td>points from lower left corner of axes</td>
-</tr>
-<tr class="row-even"><td>axes pixels</td>
-<td>pixels from lower left corner of axes</td>
-</tr>
-<tr class="row-odd"><td>axes fraction</td>
-<td>0,1 is lower left of axes and 1,1 is upper right</td>
-</tr>
-<tr class="row-even"><td>data</td>
-<td>use the axes data coordinate system</td>
-</tr>
-</tbody>
-</table>
-<p>If we do not supply <tt class="docutils literal"><span class="pre">xycoords</span></tt>, the text will be written at <tt class="docutils literal"><span class="pre">xy</span></tt>.</p>
-<p>Furthermore, we can use an arrow whose appearance can also be described
-in detail:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">Line2D</span> <span class="n">instance</span> <span class="n">at</span> <span class="o">...&gt;</span><span class="p">]</span>
+<span class="c"># Plot cosine with a blue continuous line of width 1 (pixels)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="c"># Plot sine with a green continuous line of width 1 (pixels)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> 
-<span class="go">&lt;matplotlib.text.Annotation instance at ...&gt;</span>
+<span class="c"># Set x limits</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">&#39;Here is something special&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
-<span class="gp">... </span>            <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s">&#39;r&#39;</span><span class="p">})</span> 
-<span class="go">&lt;matplotlib.text.Annotation instance at ...&gt;</span>
+<span class="c"># Set x ticks</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+
+<span class="c"># Set y limits</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c"># Set y ticks</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+
+<span class="c"># Save figure using 72 dots per inch</span>
+<span class="c"># savefig(&quot;exercice_2.png&quot;, dpi=72)</span>
+
+<span class="c"># Show result on screen</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="green topic">
-<p class="topic-title first">Exercise</p>
-<p>Annotate a line at two places with text. Use green and red arrows
-and align it according to <tt class="docutils literal"><span class="pre">figure</span> <span class="pre">points</span></tt> and <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
 </div>
+<div class="section" id="changing-colors-and-line-widths">
+<h3><a class="toc-backref" href="#id9">1.5.2.3. Changing colors and line widths</a><a class="headerlink" href="#changing-colors-and-line-widths" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_3.html"><img alt="../../_images/plot_exercice_3_1.png" class="align-right" src="../../_images/plot_exercice_3_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/pyplot_tutorial.html#controlling-line-properties">Controlling line properties</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.lines.Line2D">Line API</a></li>
+</ul>
 </div>
-<div class="section" id="ticks">
-<h2>1.5.6. Ticks<a class="headerlink" href="#ticks" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="where-and-what">
-<h3>1.5.6.1. Where and What<a class="headerlink" href="#where-and-what" title="Permalink to this headline">¶</a></h3>
-<p>Well formatted ticks are an important part of publishing-ready
-figures. <tt class="docutils literal"><span class="pre">matplotlib</span></tt> provides a totally configurable system
-for ticks. There are tick locators to specify where ticks
-should appear and tick formatters to make ticks look like the way you want.
-Major and minor ticks can be located and formatted independently from
-each other. Per default minor ticks are not shown, i.e. there is only
-an empty list for them because it is as <tt class="docutils literal"><span class="pre">NullLocator</span></tt> (see below).</p>
-</div>
-<div class="section" id="tick-locators">
-<h3>1.5.6.2. Tick Locators<a class="headerlink" href="#tick-locators" title="Permalink to this headline">¶</a></h3>
-<p>There are several locators for different kind of requirements:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="19%" />
-<col width="81%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Class</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>NullLocator</td>
-<td>no ticks</td>
-</tr>
-<tr class="row-odd"><td>IndexLocator</td>
-<td>locator for index plots (e.g. where <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">range(len(y)</span></tt>)</td>
-</tr>
-<tr class="row-even"><td>LinearLocator</td>
-<td>evenly spaced ticks from min to max</td>
-</tr>
-<tr class="row-odd"><td>LogLocator</td>
-<td>logarithmically ticks from min to max</td>
-</tr>
-<tr class="row-even"><td>MultipleLocator</td>
-<td>ticks and range are a multiple of base; either integer or float</td>
-</tr>
-<tr class="row-odd"><td>AutoLocator</td>
-<td>choose a MultipleLocator and dynamically reassign</td>
-</tr>
-</tbody>
-</table>
-<p>All of these locators derive from the base class <tt class="docutils literal"><span class="pre">matplotlib.ticker.Locator</span></tt>.
-You can make your own locator deriving from it.</p>
-<p>Handling dates as ticks can be especially tricky. Therefore, <tt class="docutils literal"><span class="pre">matplotlib</span></tt>
-provides special locators in <tt class="docutils literal"><span class="pre">matplotlib.dates</span></tt>:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="35%" />
-<col width="65%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Class</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>MinuteLocator</td>
-<td>locate minutes</td>
-</tr>
-<tr class="row-odd"><td>HourLocator</td>
-<td>locate hours</td>
-</tr>
-<tr class="row-even"><td>DayLocator</td>
-<td>locate specified days of the month</td>
-</tr>
-<tr class="row-odd"><td>WeekdayLocator</td>
-<td>locate days of the week, e.g. MO, TU</td>
-</tr>
-<tr class="row-even"><td>MonthLocator</td>
-<td>locate months, e.g. 10 for October</td>
-</tr>
-<tr class="row-odd"><td>YearLocator</td>
-<td>locate years that are multiples of base</td>
-</tr>
-<tr class="row-even"><td>RRuleLocator</td>
-<td>locate using a matplotlib.dates.rrule</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="tick-formatters">
-<h3>1.5.6.3. Tick Formatters<a class="headerlink" href="#tick-formatters" title="Permalink to this headline">¶</a></h3>
-<p>Similarly to locators, there are formatters:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="34%" />
-<col width="66%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Class</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>NullFormatter</td>
-<td>no labels on the ticks</td>
-</tr>
-<tr class="row-odd"><td>FixedFormatter</td>
-<td>set the strings manually for the labels</td>
-</tr>
-<tr class="row-even"><td>FuncFormatter</td>
-<td>user defined function sets the labels</td>
-</tr>
-<tr class="row-odd"><td>FormatStrFormatter</td>
-<td>use a sprintf format string</td>
-</tr>
-<tr class="row-even"><td>IndexFormatter</td>
-<td>cycle through fixed strings by tick position</td>
-</tr>
-<tr class="row-odd"><td>ScalarFormatter</td>
-<td>default formatter for scalars;
-autopick the fmt string</td>
-</tr>
-<tr class="row-even"><td>LogFormatter</td>
-<td>formatter for log axes</td>
-</tr>
-<tr class="row-odd"><td>DateFormatter</td>
-<td>use an strftime string to format the date</td>
-</tr>
-</tbody>
-</table>
-<p>All of these formatters derive from the base class <tt class="docutils literal"><span class="pre">matplotlib.ticker.Formatter</span></tt>.
-You can make your own formatter deriving from it.</p>
-<p>Now we set our major locator to 2 and the minor locator
-to 1. We also format the numbers as decimals using the
-<tt class="docutils literal"><span class="pre">FormatStrFormatter</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">major_locator</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">major_formatter</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%5.2f</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">minor_locator</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">major_locator</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">minor_locator</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">major_formatter</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<p>First step, we want to have the cosine in blue and the sine in red and a
+slighty thicker line for both of them. We&#8217;ll also slightly alter the figure
+size to make it more horizontal.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
-<p>After we redraw the figure our x axis should look like this:</p>
-<img alt="../../_images/ticks.png" src="../../_images/ticks.png" style="width: 50%;" />
-<div class="green topic">
-<p class="topic-title first">Exercises</p>
-<ol class="arabic simple">
-<li>Plot a graph with dates for one year with daily
-values at the x axis using the built-in module <tt class="docutils literal"><span class="pre">datetime</span></tt>.</li>
-<li>Format the dates in such a way that only the first day
-of the month is shown.</li>
-<li>Display the dates with and without the year. Show the month
-as number and as first three letters of the month name.</li>
-</ol>
+</div>
+<div class="section" id="setting-limits">
+<h3><a class="toc-backref" href="#id10">1.5.2.4. Setting limits</a><a class="headerlink" href="#setting-limits" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_4.html"><img alt="../../_images/plot_exercice_4_1.png" class="align-right" src="../../_images/plot_exercice_4_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.xlim">xlim() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.ylim">ylim() command</a></li>
+</ul>
+</div>
+<p>Current limits of the figure are a bit too tight and we want to make some space
+in order to clearly see all data points.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-ticks">
+<h3><a class="toc-backref" href="#id11">1.5.2.5. Setting ticks</a><a class="headerlink" href="#setting-ticks" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_5.html"><img alt="../../_images/plot_exercice_5_1.png" class="align-right" src="../../_images/plot_exercice_5_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.xticks">xticks() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.yticks">yticks() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/artists.html#axis-container">Tick container</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/ticker_api.html">Tick locating and formatting</a></li>
+</ul>
+</div>
+<p>Current ticks are not ideal because they do not show the interesting values
+(+/-π,+/-π/2) for sine and cosine. We&#8217;ll change them such that they show only
+these values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-tick-labels">
+<h3><a class="toc-backref" href="#id12">1.5.2.6. Setting tick labels</a><a class="headerlink" href="#setting-tick-labels" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_6.html"><img alt="../../_images/plot_exercice_6_1.png" class="align-right" src="../../_images/plot_exercice_6_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/index_text.html">Working with text</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.xticks">xticks() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.yticks">yticks() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html?#matplotlib.axes.Axes.set_xticklabels">set_xticklabels()</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html?#matplotlib.axes.Axes.set_yticklabels">set_yticklabels()</a></li>
+</ul>
+</div>
+<p>Ticks are now properly placed but their label is not very explicit. We could
+guess that 3.142 is π but it would be better to make it explicit. When we set
+tick values, we can also provide a corresponding label in the second argument
+list. Note that we&#8217;ll use latex to allow for nice rendering of the label.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span>
+          <span class="p">[</span><span class="s">r&#39;$-\pi$&#39;</span><span class="p">,</span> <span class="s">r&#39;$-\pi/2$&#39;</span><span class="p">,</span> <span class="s">r&#39;$0$&#39;</span><span class="p">,</span> <span class="s">r&#39;$+\pi/2$&#39;</span><span class="p">,</span> <span class="s">r&#39;$+\pi$&#39;</span><span class="p">])</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">],</span>
+          <span class="p">[</span><span class="s">r&#39;$-1$&#39;</span><span class="p">,</span> <span class="s">r&#39;$0$&#39;</span><span class="p">,</span> <span class="s">r&#39;$+1$&#39;</span><span class="p">])</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="moving-spines">
+<h3><a class="toc-backref" href="#id13">1.5.2.7. Moving spines</a><a class="headerlink" href="#moving-spines" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_7.html"><img alt="../../_images/plot_exercice_7_1.png" class="align-right" src="../../_images/plot_exercice_7_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/spines_api.html#matplotlib.spines">Spines</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/artists.html#axis-container">Axis container</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/transforms_tutorial.html">Transformations tutorial</a></li>
+</ul>
+</div>
+<p>Spines are the lines connecting the axis tick marks and noting the boundaries
+of the data area. They can be placed at arbitrary positions and until now, they
+were on the border of the axis. We&#8217;ll change that since we want to have them in
+the middle. Since there are four of them (top/bottom/left/right), we&#8217;ll discard
+the top and right by setting their color to none and we&#8217;ll move the bottom and
+left ones to coordinate 0 in data space coordinates.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>  <span class="c"># gca stands for &#39;get current axis&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-a-legend">
+<h3><a class="toc-backref" href="#id14">1.5.2.8. Adding a legend</a><a class="headerlink" href="#adding-a-legend" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_8.html"><img alt="../../_images/plot_exercice_8_1.png" class="align-right" src="../../_images/plot_exercice_8_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/legend_guide.html">Legend guide</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.legend">legend() command</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/legend_api.html#matplotlib.legend.Legend">Legend API</a></li>
+</ul>
+</div>
+<p>Let&#8217;s add a legend in the upper left corner. This only requires adding the
+keyword argument label (that will be used in the legend box) to the plot
+commands.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;cosine&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;sine&quot;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotate-some-points">
+<h3><a class="toc-backref" href="#id15">1.5.2.9. Annotate some points</a><a class="headerlink" href="#annotate-some-points" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_9.html"><img alt="../../_images/plot_exercice_9_1.png" class="align-right" src="../../_images/plot_exercice_9_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/annotations_guide.html">Annotating axis</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.annotate">annotate() command</a></li>
+</ul>
+</div>
+<p>Let&#8217;s annotate some interesting points using the annotate command. We chose the
+2π/3 value and we want to annotate both the sine and the cosine. We&#8217;ll first
+draw a marker on the curve as well as a straight dotted line. Then, we&#8217;ll use
+the annotate command to display some text with an arrow.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="p">],</span> <span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">r&#39;$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="o">+</span><span class="mi">30</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s">&quot;arc3,rad=.2&quot;</span><span class="p">))</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="p">],[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="p">],</span> <span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">r&#39;$cos(\frac{2\pi}{3})=-\frac{1}{2}$&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s">&quot;arc3,rad=.2&quot;</span><span class="p">))</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="devil-is-in-the-details">
+<h3><a class="toc-backref" href="#id16">1.5.2.10. Devil is in the details</a><a class="headerlink" href="#devil-is-in-the-details" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_10_1.html"><img alt="../../_images/plot_exercice_10_1.png" class="align-right" src="../../_images/plot_exercice_10_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Documentation</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/artist_api.html">Artists</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.text.Text.set_bbox">BBox</a></li>
+</ul>
+</div>
+<p>The tick labels are now hardly visible because of the blue and red lines. We can
+make them bigger and we can also adjust their properties such that they&#8217;ll be
+rendered on a semi-transparent white background. This will allow us to see both
+the data and the labels.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_bbox</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;None&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">))</span>
+<span class="o">...</span>
+</pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="figures-subplots-and-axes">
-<h2>1.5.7. Figures, Subplots, and Axes<a class="headerlink" href="#figures-subplots-and-axes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-hierarchy">
-<h3>1.5.7.1. The Hierarchy<a class="headerlink" href="#the-hierarchy" title="Permalink to this headline">¶</a></h3>
-<p>So far we have used implicit figure and axes creation.
-This is handy for fast plots. We can have more control over
-the display using <tt class="docutils literal"><span class="pre">figure</span></tt>, <tt class="docutils literal"><span class="pre">subplot</span></tt>, and <tt class="docutils literal"><span class="pre">axes</span></tt> explicitly.
-A <tt class="docutils literal"><span class="pre">figure</span></tt> in <tt class="docutils literal"><span class="pre">matplotlib</span></tt> means the whole window in the
-user interface. Within this <tt class="docutils literal"><span class="pre">figure</span></tt> there can be subplots.
-While <tt class="docutils literal"><span class="pre">subplot</span></tt> positions the plots in a regular grid, <tt class="docutils literal"><span class="pre">axes</span></tt>
-allows free placement within the <tt class="docutils literal"><span class="pre">figure</span></tt>. Both can
-be useful depending on your intention.
-We&#8217;ve already work with figures and subplots without explicitly
-calling them.  When we call <tt class="docutils literal"><span class="pre">plot</span></tt> <tt class="docutils literal"><span class="pre">matplotlib</span></tt> calls <tt class="docutils literal"><span class="pre">gca()</span></tt> to
-get the current axes and <tt class="docutils literal"><span class="pre">gca</span></tt> in turn calls <tt class="docutils literal"><span class="pre">gcf()</span></tt> to
-get the current figure. If there is none it calls <tt class="docutils literal"><span class="pre">figure()</span></tt>
-to make one, strictly speaking, to make a <tt class="docutils literal"><span class="pre">subplot(111)</span></tt>.
-Let&#8217;s look at the details.</p>
-</div>
+<div class="section" id="figures-subplots-axes-and-ticks">
+<h2><a class="toc-backref" href="#id17">1.5.3. Figures, Subplots, Axes and Ticks</a><a class="headerlink" href="#figures-subplots-axes-and-ticks" title="Permalink to this headline">¶</a></h2>
+<p>So far we have used implicit figure and axes creation. This is handy for fast
+plots. We can have more control over the display using figure, subplot, and
+axes explicitly. A figure in matplotlib means the whole window in the user
+interface. Within this figure there can be subplots. While subplot positions
+the plots in a regular grid, axes allows free placement within the figure. Both
+can be useful depending on your intention. We&#8217;ve already worked with figures
+and subplots without explicitly calling them. When we call plot, matplotlib
+calls gca() to get the current axes and gca in turn calls gcf() to get the
+current figure. If there is none it calls figure() to make one, strictly
+speaking, to make a subplot(111). Let&#8217;s look at the details.</p>
 <div class="section" id="figures">
-<h3>1.5.7.2. Figures<a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h3>
-<p>A <tt class="docutils literal"><span class="pre">figure</span></tt> is  the windows in the GUI that has &#8220;Figure #&#8221; as
-title. Figures are numbered starting from 1 as opposed to the
-normal Python way starting from 0. This is clearly MATLAB-style.
-There are several parameters that determine how the figure
-looks like:</p>
+<h3><a class="toc-backref" href="#id18">1.5.3.1. Figures</a><a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h3>
+<p>A figure is the windows in the GUI that has &#8220;Figure #&#8221; as title. Figures
+are numbered starting from 1 as opposed to the normal Python way starting
+from 0. This is clearly MATLAB-style.  There are several parameters that
+determine what the figure looks like:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -740,495 +498,561 @@ looks like:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">num</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">1</span></tt></td>
+<tr class="row-even"><td>num</td>
+<td>1</td>
 <td>number of figure</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">figsize</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">figure.figsize</span></tt></td>
+<tr class="row-odd"><td>figsize</td>
+<td>figure.figsize</td>
 <td>figure size in in inches (width, height)</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">dpi</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">figure.dpi</span></tt></td>
+<tr class="row-even"><td>dpi</td>
+<td>figure.dpi</td>
 <td>resolution in dots per inch</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">facecolor</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">figure.facecolor</span></tt></td>
+<tr class="row-odd"><td>facecolor</td>
+<td>figure.facecolor</td>
 <td>color of the drawing background</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">edgecolor</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">figure.edgecolor</span></tt></td>
+<tr class="row-even"><td>edgecolor</td>
+<td>figure.edgecolor</td>
 <td>color of edge around the drawing background</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">frameon</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">True</span></tt></td>
+<tr class="row-odd"><td>frameon</td>
+<td>True</td>
 <td>draw figure frame or not</td>
 </tr>
 </tbody>
 </table>
-<p>The defaults can be specified in the resource file and
-will be used most of the time. Only the number of the figure
-is frequently changed.</p>
-<p>When you work with the GUI you can close a figure by clicking on the
-x in the upper right corner. But you can close a figure
-programmatically by calling <tt class="docutils literal"><span class="pre">close</span></tt>. Depending on the argument it closes
-(1) the current figure (no argument), (2) a specific figure (figure number or figure
-instance as argument), or (3) all figures (<tt class="docutils literal"><span class="pre">all</span></tt> as argument).</p>
-<p>As with other objects, you can set figure properties also <tt class="docutils literal"><span class="pre">setp</span></tt>
-or with the <tt class="docutils literal"><span class="pre">set_something</span></tt> methods.</p>
+<p>The defaults can be specified in the resource file and will be used most of the
+time. Only the number of the figure is frequently changed.</p>
+<p>When you work with the GUI you can close a figure by clicking on the x in the
+upper right corner. But you can close a figure programmatically by calling
+close. Depending on the argument it closes (1) the current figure (no
+argument), (2) a specific figure (figure number or figure instance as
+argument), or (3) all figures (all as argument).</p>
+<p>As with other objects, you can set figure properties also setp or with the
+set_something methods.</p>
 </div>
 <div class="section" id="subplots">
-<h3>1.5.7.3. Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h3>
-<p>With <tt class="docutils literal"><span class="pre">subplot</span></tt> you can arrange plots in regular grid. You need to
-specify the number of rows and columns and the number of the plot.</p>
-<p>A plot with two rows and one column is created with
-<tt class="docutils literal"><span class="pre">subplot(211)</span></tt> and <tt class="docutils literal"><span class="pre">subplot(212)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_horizontal.png" src="../../_images/subplots_horizontal.png" style="width: 25%;" />
-<p>If you want two plots side by side, you create one row and two columns
-with <tt class="docutils literal"><span class="pre">subplot(121)</span></tt> and <tt class="docutils literal"><span class="pre">subplot(112)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_vertical.png" src="../../_images/subplots_vertical.png" style="width: 25%;" />
-<p>You can arrange as many figures as you want. A two-by-two arrangement can
-be created with <tt class="docutils literal"><span class="pre">subplot(221)</span></tt>,  <tt class="docutils literal"><span class="pre">subplot(222)</span></tt>, <tt class="docutils literal"><span class="pre">subplot(223)</span></tt>, and
-<tt class="docutils literal"><span class="pre">subplot(224)</span></tt>. The result looks like this:</p>
-<img alt="../../_images/subplots_four.png" src="../../_images/subplots_four.png" style="width: 25%;" />
-<p>Frequently, you don&#8217;t want all subplots to have ticks or labels.
-You can set the <tt class="docutils literal"><span class="pre">xticklabels</span></tt> or the <tt class="docutils literal"><span class="pre">yticklabels</span></tt> to an empty
-list (<tt class="docutils literal"><span class="pre">[]</span></tt>). Every subplot defines the methods <tt class="docutils literal"><span class="pre">'is_first_row</span></tt>,
-<tt class="docutils literal"><span class="pre">is_first_col</span></tt>, <tt class="docutils literal"><span class="pre">is_last_row</span></tt>, <tt class="docutils literal"><span class="pre">is_last_col</span></tt>. These can help to
-set ticks and labels only for the outer pots.</p>
+<h3><a class="toc-backref" href="#id19">1.5.3.2. Subplots</a><a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h3>
+<p>With subplot you can arrange plots in a regular grid. You need to specify the
+number of rows and columns and the number of the plot. Note that the <a class="reference external" href="http://matplotlib.sourceforge.net/users/gridspec.html">gridspec</a> command is a more
+powerful alternative.</p>
+<a class="reference external image-reference" href="auto_examples/plot_subplot-horizontal.html"><img alt="../../_images/plot_subplot-horizontal_1.png" src="../../_images/plot_subplot-horizontal_1.png" style="width: 168.0px; height: 112.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_subplot-vertical.html"><img alt="../../_images/plot_subplot-vertical_1.png" src="../../_images/plot_subplot-vertical_1.png" style="width: 168.0px; height: 112.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_subplot-grid.html"><img alt="../../_images/plot_subplot-grid_1.png" src="../../_images/plot_subplot-grid_1.png" style="width: 168.0px; height: 112.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_gridspec.html"><img alt="../../_images/plot_gridspec_1.png" src="../../_images/plot_gridspec_1.png" style="width: 168.0px; height: 112.0px;" /></a>
 </div>
 <div class="section" id="axes">
-<h3>1.5.7.4. Axes<a class="headerlink" href="#axes" title="Permalink to this headline">¶</a></h3>
-<p>Axes are very similar to subplots but allow placement of plots
-at any location in the figure.  So if we want to put a smaller
-plot inside a bigger one we do so with <tt class="docutils literal"><span class="pre">axes</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
-<span class="go">[&lt;matplotlib.lines.Line2D instance at ...&gt;]</span>
+<h3><a class="toc-backref" href="#id20">1.5.3.3. Axes</a><a class="headerlink" href="#axes" title="Permalink to this headline">¶</a></h3>
+<p>Axes are very similar to subplots but allow placement of plots at any location
+in the figure. So if we want to put a smaller plot inside a bigger one we do
+so with axes.</p>
+<a class="reference external image-reference" href="auto_examples/plot_axes.html"><img alt="../../_images/plot_axes_1.png" src="../../_images/plot_axes_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_axes-2.html"><img alt="../../_images/plot_axes-2_1.png" src="../../_images/plot_axes-2_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+</div>
+<div class="section" id="ticks">
+<h3><a class="toc-backref" href="#id21">1.5.3.4. Ticks</a><a class="headerlink" href="#ticks" title="Permalink to this headline">¶</a></h3>
+<p>Well formatted ticks are an important part of publishing-ready
+figures. Matplotlib provides a totally configurable system for ticks. There are
+tick locators to specify where ticks should appear and tick formatters to give
+ticks the appearance you want. Major and minor ticks can be located and
+formatted independently from each other. Per default minor ticks are not shown,
+i.e. there is only an empty list for them because it is as NullLocator (see
+below).</p>
+<div class="section" id="tick-locators">
+<h4>1.5.3.4.1. Tick Locators<a class="headerlink" href="#tick-locators" title="Permalink to this headline">¶</a></h4>
+<p>Tick locators control the positions of the ticks. They are set as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">locator</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>There are several locators for different kind of requirements:</p>
+<a class="reference external image-reference" href="auto_examples/plot_ticks.html"><img alt="../../_images/plot_ticks_1.png" src="../../_images/plot_ticks_1.png" style="width: 426.6px; height: 232.8px;" /></a>
+<p>All of these locators derive from the base class matplotlib.ticker.Locator.
+You can make your own locator deriving from it. Handling dates as ticks can be
+especially tricky. Therefore, matplotlib provides special locators in
+matplotlib.dates.</p>
+</div>
+</div>
+</div>
+<div class="section" id="other-types-of-plots-examples-and-exercises">
+<h2><a class="toc-backref" href="#id22">1.5.4. Other Types of Plots: examples and exercises</a><a class="headerlink" href="#other-types-of-plots-examples-and-exercises" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="#regular-plots"><img alt="../../_images/plot_plot_1.png" src="../../_images/plot_plot_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#scatter-plots"><img alt="../../_images/plot_scatter_1.png" src="../../_images/plot_scatter_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#bar-plots"><img alt="../../_images/plot_bar_1.png" src="../../_images/plot_bar_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#contour-plots"><img alt="../../_images/plot_contour_1.png" src="../../_images/plot_contour_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#imshow"><img alt="../../_images/plot_imshow_1.png" src="../../_images/plot_imshow_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#quiver-plots"><img alt="../../_images/plot_quiver_1.png" src="../../_images/plot_quiver_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#pie-charts"><img alt="../../_images/plot_pie_1.png" src="../../_images/plot_pie_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#grids"><img alt="../../_images/plot_grid_1.png" src="../../_images/plot_grid_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#multi-plots"><img alt="../../_images/plot_multiplot_1.png" src="../../_images/plot_multiplot_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#polar-axis"><img alt="../../_images/plot_polar_1.png" src="../../_images/plot_polar_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#d-plots"><img alt="../../_images/plot_plot3d_1.png" src="../../_images/plot_plot3d_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<a class="reference internal image-reference" href="#text"><img alt="../../_images/plot_text_1.png" src="../../_images/plot_text_1.png" style="width: 304.0px; height: 228.0px;" /></a>
+<div class="section" id="regular-plots">
+<h3><a class="toc-backref" href="#id23">1.5.4.1. Regular Plots</a><a class="headerlink" href="#regular-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_plot_ex.html"><img alt="../../_images/plot_plot_ex_1.png" class="align-right" src="../../_images/plot_plot_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to use the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.fill_between">fill_between</a>
+command.</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of filled areas:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
-<span class="go">[&lt;matplotlib.lines.Line2D instance at ...&gt;]</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.00</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.00</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The result looks like this:</p>
-<img alt="../../_images/axes.png" src="../../_images/axes.png" style="width: 25%;" />
-<div class="green topic">
-<p class="topic-title first">Exercises</p>
-<ol class="arabic simple">
-<li>Draw two figures, one 5 by 5, one 10 by 10 inches.</li>
-<li>Add four subplots to one figure. Add labels and ticks only to
-the outermost axes.</li>
-<li>Place a small plot in one bigger plot.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="section" id="other-types-of-plots">
-<h2>1.5.8. Other Types of Plots<a class="headerlink" href="#other-types-of-plots" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="many-more">
-<h3>1.5.8.1. Many More<a class="headerlink" href="#many-more" title="Permalink to this headline">¶</a></h3>
-<p>So far we have used only line plots. <tt class="docutils literal"><span class="pre">matplotlib</span></tt> offers many more types
-of plots. We will have a brief look at some of them. All functions have many
-optional arguments that are not shown here.</p>
-</div>
-<div class="section" id="bar-charts">
-<h3>1.5.8.2. Bar Charts<a class="headerlink" href="#bar-charts" title="Permalink to this headline">¶</a></h3>
-<p>The function <tt class="docutils literal"><span class="pre">bar</span></tt> creates a new bar chart:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>Now we have three bars starting at 1, 2, and 3 with height of
-4, 3, 7 respectively:</p>
-<img alt="../../_images/bar.png" src="../../_images/bar.png" style="width: 25%;" />
-<p>The default column width is 0.8. It can be changed with
-common methods by setting <tt class="docutils literal"><span class="pre">width</span></tt>. As it can be <tt class="docutils literal"><span class="pre">color</span></tt> and
-<tt class="docutils literal"><span class="pre">bottom</span></tt>, we can also set an error bar with <tt class="docutils literal"><span class="pre">yerr</span></tt> or <tt class="docutils literal"><span class="pre">xerr</span></tt>.</p>
-</div>
-<div class="section" id="horizontal-bar-charts">
-<h3>1.5.8.3. Horizontal Bar Charts<a class="headerlink" href="#horizontal-bar-charts" title="Permalink to this headline">¶</a></h3>
-<p>The function <tt class="docutils literal"><span class="pre">barh</span></tt> creates an vertical bar chart.
-Using the same data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>We get:</p>
-<img alt="../../_images/barh.png" src="../../_images/barh.png" style="width: 25%;" />
-<div class="section" id="broken-horizontal-bar-charts">
-<h4>1.5.8.3.1. Broken Horizontal Bar Charts<a class="headerlink" href="#broken-horizontal-bar-charts" title="Permalink to this headline">¶</a></h4>
-<p>We can also have discontinuous vertical bars with <tt class="docutils literal"><span class="pre">broken_barh</span></tt>.
-We specify start and width of the range in y-direction and all
-start-width pairs in x-direction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">yrange</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xranges</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">broken_barh</span><span class="p">(</span><span class="n">xranges</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We changes the extension of the y-axis to make plot look nicer:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="go">(0, 5)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>and get this:</p>
-<img alt="../../_images/broken_barh.png" src="../../_images/broken_barh.png" style="width: 25%;" />
-</div>
-</div>
-<div class="section" id="box-and-whisker-plots">
-<h3>1.5.8.4. Box and Whisker Plots<a class="headerlink" href="#box-and-whisker-plots" title="Permalink to this headline">¶</a></h3>
-<p>We can draw box and whisker plots:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">boxplot</span><span class="p">((</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
-</pre></div>
-</div>
-<p>We want to have the whiskers well within the plot and therefore
-increase the y axis:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Our plot looks like this:</p>
-<img alt="../../_images/boxplot.png" src="../../_images/boxplot.png" style="width: 25%;" />
-<p>The range of the whiskers can be determined with the
-argument <tt class="docutils literal"><span class="pre">whis</span></tt>, which defaults to 1.5. The range of
-the whiskers is between the most extreme data point
-within <tt class="docutils literal"><span class="pre">whis*(75%-25%)</span></tt> of the data.</p>
-</div>
-<div class="section" id="contour-plots">
-<h3>1.5.8.5. Contour Plots<a class="headerlink" href="#contour-plots" title="Permalink to this headline">¶</a></h3>
-<p>We can also do contour plots. We define arrays for the
-x and y coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>and also a 2D array for z:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
-<span class="go">array([[ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  3.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  7.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  4.,  1.,  1.],</span>
-<span class="go">       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.]])</span>
-</pre></div>
-</div>
-<p>Now we can make a simple contour plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Our plot looks like this:</p>
-<img alt="../../_images/contour.png" src="../../_images/contour.png" style="width: 25%;" />
-<p>We can also fill the area. We just use numbers form 0 to 9 for
-the values <tt class="docutils literal"><span class="pre">v</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now our plot area is filled:</p>
-<img alt="../../_images/contourf.png" src="../../_images/contourf.png" style="width: 25%;" />
-</div>
-<div class="section" id="histograms">
-<h3>1.5.8.6. Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
-<p>We can make histograms. Let&#8217;s get some normally distributed
-random numbers from <tt class="docutils literal"><span class="pre">numpy</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we make a simple histogram:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">r_numbers</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>With 100 numbers our figure looks pretty good:</p>
-<img alt="../../_images/hist.png" src="../../_images/hist.png" style="width: 25%;" />
-</div>
-<div class="section" id="loglog-plots">
-<h3>1.5.8.7. Loglog Plots<a class="headerlink" href="#loglog-plots" title="Permalink to this headline">¶</a></h3>
-<p>Plots with logarithmic scales are easy:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>We set the major and minor grid:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">&#39;minor&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we have loglog plot:</p>
-<img alt="../../_images/loglog.png" src="../../_images/loglog.png" style="width: 25%;" />
-<p>If we want only one axis with a logarithmic scale we can
-use <tt class="docutils literal"><span class="pre">semilogx</span></tt> or <tt class="docutils literal"><span class="pre">semilogy</span></tt>.</p>
-</div>
-<div class="section" id="pie-charts">
-<h3>1.5.8.8. Pie Charts<a class="headerlink" href="#pie-charts" title="Permalink to this headline">¶</a></h3>
-<p>Pie charts can also be created with a few lines:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cats&#39;</span><span class="p">,</span> <span class="s">&#39;dogs&#39;</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The result looks as expected:</p>
-<img alt="../../_images/pie.png" src="../../_images/pie.png" style="width: 25%;" />
-</div>
-<div class="section" id="polar-plots">
-<h3>1.5.8.9. Polar Plots<a class="headerlink" href="#polar-plots" title="Permalink to this headline">¶</a></h3>
-<p>Polar plots are also possible. Let&#8217;s define our <tt class="docutils literal"><span class="pre">r</span></tt> from
-0 to 360 and our <tt class="docutils literal"><span class="pre">theta</span></tt> from 0 to 360 degrees. We need to
-convert them to radians:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">theta</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">pi</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now plot in polar coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">polar</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>We get a nice spiral:</p>
-<img alt="../../_images/polar.png" src="../../_images/polar.png" style="width: 25%;" />
-</div>
-<div class="section" id="arrow-plots">
-<h3>1.5.8.10. Arrow Plots<a class="headerlink" href="#arrow-plots" title="Permalink to this headline">¶</a></h3>
-<p>Plotting arrows in 2D plane can be achieved with <tt class="docutils literal"><span class="pre">quiver</span></tt>.
-We define the x and y coordinates of the arrow shafts:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The x and y components of the arrows are specified as 2D arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-</pre></div>
-</div>
-<p>Now we can plot the arrows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>All arrows point to the upper right, except two. The one
-at the location (4, 4) has 3 units in x-direction and the
-other at location (1, 1) has -1 unit in y direction:</p>
-<img alt="../../_images/quiver.png" src="../../_images/quiver.png" style="width: 25%;" />
+<p>Click on the figure for solution.</p>
 </div>
 <div class="section" id="scatter-plots">
-<h3>1.5.8.11. Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h3>
-<p>Scatter plots print x vs. y diagrams. We define <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
-and make some point in <tt class="docutils literal"><span class="pre">y</span></tt> random:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-</pre></div>
+<h3><a class="toc-backref" href="#id24">1.5.4.2. Scatter Plots</a><a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_scatter_ex.html"><img alt="../../_images/plot_scatter_ex_1.png" class="align-right" src="../../_images/plot_scatter_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">Color is given by angle of (X,Y).</p>
 </div>
-<p>Now make a scatter plot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The three different values for <tt class="docutils literal"><span class="pre">y</span></tt> break out of the line:</p>
-<img alt="../../_images/scatter.png" src="../../_images/scatter.png" style="width: 25%;" />
-</div>
-<div class="section" id="sparsity-pattern-plots">
-<h3>1.5.8.12. Sparsity Pattern Plots<a class="headerlink" href="#sparsity-pattern-plots" title="Permalink to this headline">¶</a></h3>
-<p>Working with sparse matrices, it is often of interest as
-how the matrix looks like in terms of sparsity.
-We take an identity matrix as an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span>
-<span class="go">array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]])</span>
-</pre></div>
-</div>
-<p>Now we look at it more visually:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">spy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="../../_images/spy.png" src="../../_images/spy.png" style="width: 25%;" />
-</div>
-<div class="section" id="stem-plots">
-<h3>1.5.8.13. Stem Plots<a class="headerlink" href="#stem-plots" title="Permalink to this headline">¶</a></h3>
-<p>Stem plots vertical lines at the given x location up to
-the specified y location. Let&#8217;s reuse <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
-from our scatter (see above):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="../../_images/stem.png" src="../../_images/stem.png" style="width: 25%;" />
-</div>
-<div class="section" id="date-plots">
-<h3>1.5.8.14. Date Plots<a class="headerlink" href="#date-plots" title="Permalink to this headline">¶</a></h3>
-<p>There is a function for creating date plots.
-Let&#8217;s define 10 dates starting at January 1st 2000
-at 15.day intervals:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">delta</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span>
-<span class="go">[datetime.datetime(2000, 1, 1, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 1, 16, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 1, 31, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 2, 15, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 3, 1, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 3, 16, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 3, 31, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 4, 15, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 4, 30, 0, 0),</span>
-<span class="go"> datetime.datetime(2000, 5, 15, 0, 0)]</span>
-</pre></div>
-</div>
-<p>We reuse our data from the scatter plot (see above):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">array([0, 7, 2, 3, 2, 5, 6, 7, 3, 9])</span>
-</pre></div>
-</div>
-<p>Now we can plot the dates at the x axis:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<img alt="../../_images/date.png" src="../../_images/date.png" style="width: 25%;" />
-</div>
-</div>
-<div class="section" id="the-class-library">
-<h2>1.5.9. The Class Library<a class="headerlink" href="#the-class-library" title="Permalink to this headline">¶</a></h2>
-<p>So far we have used the <tt class="docutils literal"><span class="pre">pylab</span></tt> interface only. As the name
-suggests it is just wrapper around the class library. All <tt class="docutils literal"><span class="pre">pylab</span></tt>
-commands can be invoked via the class library using an object-oriented
-approach.</p>
-<div class="section" id="the-figure-class">
-<h3>1.5.9.1. The Figure Class<a class="headerlink" href="#the-figure-class" title="Permalink to this headline">¶</a></h3>
-<p>The class <tt class="docutils literal"><span class="pre">Figure</span></tt> lives in the module <tt class="docutils literal"><span class="pre">matplotlib.figure</span></tt>.
-Its constructor takes these arguments:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-<span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">subplotpars</span><span class="o">=</span><span class="bp">None</span>
-</pre></div>
-</div>
-<p>Comparing this with the arguments of <tt class="docutils literal"><span class="pre">figure</span></tt> in <tt class="docutils literal"><span class="pre">pylab</span></tt> shows
-significant overlap:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">num</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="bp">None</span>
-<span class="n">edgecolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">Figure</span></tt> provides lots of methods, many of them have equivalents in
-<tt class="docutils literal"><span class="pre">pylab</span></tt>. The methods <tt class="docutils literal"><span class="pre">add_axes</span></tt> and <tt class="docutils literal"><span class="pre">add_subplot</span></tt> are called if new
-axes or subplot are created with <tt class="docutils literal"><span class="pre">axes</span></tt> or <tt class="docutils literal"><span class="pre">subplot</span></tt> in <tt class="docutils literal"><span class="pre">pylab</span></tt>.
-Also the method <tt class="docutils literal"><span class="pre">gca</span></tt> maps directly to <tt class="docutils literal"><span class="pre">pylab</span></tt> as do <tt class="docutils literal"><span class="pre">legend</span></tt>,
-<tt class="docutils literal"><span class="pre">text</span></tt> and many others.</p>
-<p>There are also several <tt class="docutils literal"><span class="pre">set_something</span></tt> method such as <tt class="docutils literal"><span class="pre">set_facecolor</span></tt> or
-<tt class="docutils literal"><span class="pre">set_edgecolor</span></tt> that will be called through <tt class="docutils literal"><span class="pre">pylab</span></tt> to set properties of
-the figure. <tt class="docutils literal"><span class="pre">Figure</span></tt> also implements <tt class="docutils literal"><span class="pre">get_something</span></tt> methods
-such as <tt class="docutils literal"><span class="pre">get_axes</span></tt> or <tt class="docutils literal"><span class="pre">get_facecolor</span></tt> to get properties of the figure.</p>
-</div>
-<div class="section" id="the-classes-axes-and-subplot">
-<h3>1.5.9.2. The Classes Axes and Subplot<a class="headerlink" href="#the-classes-axes-and-subplot" title="Permalink to this headline">¶</a></h3>
-<p>In the class  <tt class="docutils literal"><span class="pre">Axes</span></tt> we find most of the figure elements such as
-<tt class="docutils literal"><span class="pre">Axis</span></tt>, <tt class="docutils literal"><span class="pre">Tick</span></tt>, <tt class="docutils literal"><span class="pre">Line2D</span></tt>, or <tt class="docutils literal"><span class="pre">Text</span></tt>. It also sets the coordinate
-system. The class <tt class="docutils literal"><span class="pre">Subplot</span></tt> inherits from <tt class="docutils literal"><span class="pre">Axes</span></tt> and adds some
-more functionality to arrange the plots in a grid.</p>
-<p>Analogous to <tt class="docutils literal"><span class="pre">Figure</span></tt>, it has methods to get and set properties
-and methods already encountered as functions in <tt class="docutils literal"><span class="pre">pylab</span></tt> such as
-<tt class="docutils literal"><span class="pre">annotate</span></tt>. In addition, <tt class="docutils literal"><span class="pre">Axes</span></tt> has methods for all types of plots
-shown in the previous section.</p>
-</div>
-<div class="section" id="other-classes">
-<h3>1.5.9.3. Other Classes<a class="headerlink" href="#other-classes" title="Permalink to this headline">¶</a></h3>
-<p>Other classes such as <tt class="docutils literal"><span class="pre">text</span></tt>, <tt class="docutils literal"><span class="pre">Legend</span></tt> or <tt class="docutils literal"><span class="pre">Ticker</span></tt> are setup very
-similarly. They can be understood mostly by comparing to the <tt class="docutils literal"><span class="pre">pylab</span></tt>
-interface.</p>
-</div>
-<div class="section" id="example">
-<h3>1.5.9.4. Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s look at an example for using the object-oriented API:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#file matplotlib/oo.py</span>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of marker size, color and transparency.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib.figure</span> <span class="kn">import</span> <span class="n">Figure</span>          <span class="c">#1</span>
-
-<span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>                              <span class="c">#2</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>                 <span class="c">#3</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                     <span class="c">#4</span>
-<span class="n">line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>                  <span class="c">#5</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Plotted with OO interface&#39;</span><span class="p">)</span>     <span class="c">#6</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;measured&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;calculated&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>                                 <span class="c">#7</span>
-<span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s">&#39;o&#39;</span><span class="p">)</span>                          <span class="c">#8</span>
-
-<span class="kn">from</span> <span class="nn">matplotlib.backends.backend_agg</span> <span class="kn">import</span> <span class="n">FigureCanvasAgg</span> <span class="c">#9</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">FigureCanvasAgg</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>                 <span class="c">#10</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="s">&quot;oo.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>         <span class="c">#11</span>
-
-
-<span class="kn">import</span> <span class="nn">Tkinter</span> <span class="kn">as</span> <span class="nn">Tk</span>                          <span class="c">#12</span>
-<span class="kn">from</span> <span class="nn">matplotlib.backends.backend_tkagg</span> <span class="kn">import</span> <span class="n">FigureCanvasTkAgg</span> <span class="c">#13</span>
-
-<span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>                                <span class="c">#14</span>
-<span class="n">canvas2</span> <span class="o">=</span> <span class="n">FigureCanvasTkAgg</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">master</span><span class="o">=</span><span class="n">root</span><span class="p">)</span> <span class="c">#15</span>
-<span class="n">canvas2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                <span class="c">#16</span>
-<span class="n">canvas2</span><span class="o">.</span><span class="n">get_tk_widget</span><span class="p">()</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">Tk</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">Tk</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c">#17</span>
-<span class="n">Tk</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>                                 <span class="c">#18</span>
-
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">_pylab_helpers</span>         <span class="c">#19</span>
-<span class="kn">import</span> <span class="nn">pylab</span>                                  <span class="c">#20</span>
-
-<span class="n">pylab_fig</span> <span class="o">=</span> <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>  <span class="c">#21</span>
-<span class="n">figManager</span> <span class="o">=</span> <span class="n">_pylab_helpers</span><span class="o">.</span><span class="n">Gcf</span><span class="o">.</span><span class="n">get_active</span><span class="p">()</span>  <span class="c">#22</span>
-<span class="n">figManager</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span>                <span class="c">#23</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                  <span class="c">#24</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Since we are not in the interactive pylab-mode, we
-need to import the class <tt class="docutils literal"><span class="pre">Figure</span></tt> explicitly (<tt class="docutils literal"><span class="pre">#1</span></tt>).</p>
-<p>We set the size of our figure to be 8 by 5 inches (<tt class="docutils literal"><span class="pre">#2</span></tt>).
-Now we initialize a new figure (<tt class="docutils literal"><span class="pre">#3</span></tt>) and add a subplot
-to the figure (<tt class="docutils literal"><span class="pre">#4</span></tt>). The <tt class="docutils literal"><span class="pre">111</span></tt> says one plot at
-position 1, 1 just as in MATLAB. We create a new plot with
-the numbers from 0 to 9 and at the same time get a reference
-to our line (<tt class="docutils literal"><span class="pre">#5</span></tt>). We can add several things to our plot.
-So we set a title and labels for the x and y axis (<tt class="docutils literal"><span class="pre">#6</span></tt>).</p>
-<p>We also want to see the grid (<tt class="docutils literal"><span class="pre">#7</span></tt>) and would like to have
-little filled circles as markers (<tt class="docutils literal"><span class="pre">#8</span></tt>).</p>
-<p>There are many different backends for rendering our figure.
-We use the Anti-Grain Geometry toolkit (<a class="reference external" href="http://www.antigrain.com">http://www.antigrain.com</a>)
-to render our figure. First, we import the backend (<tt class="docutils literal"><span class="pre">#9</span></tt>), then
-we create a new canvas that renders our figure (<tt class="docutils literal"><span class="pre">#10</span></tt>).
-We save our figure in a png-file with a resolution of 80 dpi (<tt class="docutils literal"><span class="pre">#11</span></tt>).</p>
-<p>We can use several GUI toolkits directly. So we import Tkinter (<tt class="docutils literal"><span class="pre">#12</span></tt>)
-as well as the corresponding backend (<tt class="docutils literal"><span class="pre">#13</span></tt>).
-Now we have to do some basic GUI programming work. We make a root
-object for our GUI (<tt class="docutils literal"><span class="pre">#14</span></tt>) and feed it together with our figure to
-the backend to get our canvas (<tt class="docutils literal"><span class="pre">15</span></tt>). We call the show method (<tt class="docutils literal"><span class="pre">#16</span></tt>),
-pack our widget (<tt class="docutils literal"><span class="pre">#17</span></tt>), and call the Tkinter mainloop to start
-the application (<tt class="docutils literal"><span class="pre">#18</span></tt>). You should see GUI window with the figure
-on your screen. After closing the screen, the next part, the script, will
-be executed.</p>
-<p>We would like to create a screen display just as we would use
-<tt class="docutils literal"><span class="pre">pylab</span></tt>. Therefore we import a helper (<tt class="docutils literal"><span class="pre">#19</span></tt>) and <tt class="docutils literal"><span class="pre">pylab</span></tt>
-itself (<tt class="docutils literal"><span class="pre">#20</span></tt>). We create a normal figure with <tt class="docutils literal"><span class="pre">pylab`</span> <span class="pre">(``21</span></tt>)
-and get the corresponding figure manager (<tt class="docutils literal"><span class="pre">#22</span></tt>). Now let&#8217;s set
-our figure we created above to be the current figure (<tt class="docutils literal"><span class="pre">#23</span></tt>)
-and let <tt class="docutils literal"><span class="pre">pylab</span></tt> show the result (<tt class="docutils literal"><span class="pre">#24</span></tt>).
-The lower part of the figure might be cover by the toolbar.
-If so, please adjust the <tt class="docutils literal"><span class="pre">figsize</span></tt> for <tt class="docutils literal"><span class="pre">pylab</span></tt> accordingly.</p>
-<div class="green topic">
-<p class="topic-title first">Exercises</p>
-<ol class="arabic simple">
-<li>Use the object-oriented API of matplotlib to create a png-file
-with a plot of two lines, one linear and square with a legend in it.</li>
-</ol>
+<p>Click on figure for solution.</p>
 </div>
+<div class="section" id="bar-plots">
+<h3><a class="toc-backref" href="#id25">1.5.4.3. Bar Plots</a><a class="headerlink" href="#bar-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_bar_ex.html"><img alt="../../_images/plot_bar_ex_1.png" class="align-right" src="../../_images/plot_bar_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to take care of text alignment.</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right by
+adding labels for red bars.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">Y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">X</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">Y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">X</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">+</span><span class="n">Y1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;#9999ff&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="n">Y2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;#ff9999&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y1</span><span class="p">):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">y</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.25</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="contour-plots">
+<h3><a class="toc-backref" href="#id26">1.5.4.4. Contour Plots</a><a class="headerlink" href="#contour-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_contour_ex.html"><img alt="../../_images/plot_contour_ex_1.png" class="align-right" src="../../_images/plot_contour_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to use the <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.clabel">clabel</a>
+command.</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of the colormap (see <a class="reference internal" href="#colormaps">Colormaps</a> below).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">&#39;jet&#39;</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="imshow">
+<h3><a class="toc-backref" href="#id27">1.5.4.5. Imshow</a><a class="headerlink" href="#imshow" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_imshow_ex.html"><img alt="../../_images/plot_imshow_ex_1.png" class="align-right" src="../../_images/plot_imshow_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to take care of the <tt class="docutils literal"><span class="pre">origin</span></tt> of the image in the imshow command and
+use a <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.colorbar">colorbar</a></p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of colormap, image interpolation and origin.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Click on the figure for the solution.</p>
+</div>
+<div class="section" id="pie-charts">
+<h3><a class="toc-backref" href="#id28">1.5.4.6. Pie Charts</a><a class="headerlink" href="#pie-charts" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_pie_ex.html"><img alt="../../_images/plot_pie_ex_1.png" class="align-right" src="../../_images/plot_pie_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to modify Z.</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of colors and slices size.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on the figure for the solution.</p>
+</div>
+<div class="section" id="quiver-plots">
+<h3><a class="toc-backref" href="#id29">1.5.4.7. Quiver Plots</a><a class="headerlink" href="#quiver-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_quiver_ex.html"><img alt="../../_images/plot_quiver_ex_1.png" class="align-right" src="../../_images/plot_quiver_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to draw arrows twice.</p>
+</div>
+<p>Starting from the code above, try to reproduce the graphic on the right taking
+care of colors and orientations.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="grids">
+<h3><a class="toc-backref" href="#id30">1.5.4.8. Grids</a><a class="headerlink" href="#grids" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_grid_ex.html"><img alt="../../_images/plot_grid_ex_1.png" class="align-right" src="../../_images/plot_grid_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<p>Starting from the code below, try to reproduce the graphic on the right taking
+care of line styles.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">axes</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="multi-plots">
+<h3><a class="toc-backref" href="#id31">1.5.4.9. Multi Plots</a><a class="headerlink" href="#multi-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_multiplot_ex.html"><img alt="../../_images/plot_multiplot_ex_1.png" class="align-right" src="../../_images/plot_multiplot_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You can use several subplots with different partition.</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="polar-axis">
+<h3><a class="toc-backref" href="#id32">1.5.4.10. Polar Axis</a><a class="headerlink" href="#polar-axis" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_polar_ex.html"><img alt="../../_images/plot_polar_ex_1.png" class="align-right" src="../../_images/plot_polar_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You only need to modify the <tt class="docutils literal"><span class="pre">axes</span></tt> line</p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pl</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">radii</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">radii</span><span class="p">,</span> <span class="n">bars</span><span class="p">):</span>
+    <span class="n">bar</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">))</span>
+    <span class="n">bar</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+</div>
+<div class="section" id="d-plots">
+<h3><a class="toc-backref" href="#id33">1.5.4.11. 3D Plots</a><a class="headerlink" href="#d-plots" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_plot3d_ex.html"><img alt="../../_images/plot_plot3d_ex_1.png" class="align-right" src="../../_images/plot_plot3d_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">You need to use <a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.contourf">contourf</a></p>
+</div>
+<p>Starting from the code below, try to reproduce the graphic on the right.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">Axes3D</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">&#39;hot&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on figure for solution.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../../advanced/3d_plotting/index.html#mayavi-label"><em>3D plotting with Mayavi</em></a></p>
+</div>
+</div>
+<div class="section" id="text">
+<h3><a class="toc-backref" href="#id34">1.5.4.12. Text</a><a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_text_ex.html"><img alt="../../_images/plot_text_ex_1.png" class="align-right" src="../../_images/plot_text_ex_1.png" style="width: 280.0px; height: 210.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Hints</p>
+<p class="last">Have a look at the <a class="reference external" href="http://matplotlib.sourceforge.net/examples/api/logo2.html">matplotlib logo</a>.</p>
+</div>
+<p>Try to do the same from scratch !</p>
+<p>Click on figure for solution.</p>
+</div>
+</div>
+<div class="section" id="beyond-this-tutorial">
+<h2><a class="toc-backref" href="#id35">1.5.5. Beyond this tutorial</a><a class="headerlink" href="#beyond-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Matplotlib benefits from extensive documentation as well as a large
+community of users and developpers. Here are some links of interest:</p>
+<div class="section" id="tutorials">
+<h3><a class="toc-backref" href="#id36">1.5.5.1. Tutorials</a><a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h3>
+<table class="hlist"><tr><td><ul class="simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/pyplot_tutorial.html">Pyplot tutorial</a><ul>
+<li>Introduction</li>
+<li>Controlling line properties</li>
+<li>Working with multiple figures and axes</li>
+<li>Working with text</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/image_tutorial.html">Image tutorial</a><ul>
+<li>Startup commands</li>
+<li>Importing image data into Numpy arrays</li>
+<li>Plotting numpy arrays as images</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/index_text.html">Text tutorial</a><ul>
+<li>Text introduction</li>
+<li>Basic text commands</li>
+<li>Text properties and layout</li>
+<li>Writing mathematical expressions</li>
+<li>Text rendering With LaTeX</li>
+<li>Annotating text</li>
+</ul>
+</li>
+</ul>
+</td><td><ul class="simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/artists.html">Artist tutorial</a><ul>
+<li>Introduction</li>
+<li>Customizing your objects</li>
+<li>Object containers</li>
+<li>Figure container</li>
+<li>Axes container</li>
+<li>Axis containers</li>
+<li>Tick containers</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/path_tutorial.html">Path tutorial</a><ul>
+<li>Introduction</li>
+<li>Bézier example</li>
+<li>Compound paths</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/transforms_tutorial.html">Transforms tutorial</a><ul>
+<li>Introduction</li>
+<li>Data coordinates</li>
+<li>Axes coordinates</li>
+<li>Blended transformations</li>
+<li>Using offset transforms to create a shadow effect</li>
+<li>The transformation pipeline</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+</div>
+<div class="section" id="matplotlib-documentation">
+<h3><a class="toc-backref" href="#id37">1.5.5.2. Matplotlib documentation</a><a class="headerlink" href="#matplotlib-documentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/index.html">User guide</a></li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/faq/index.html">FAQ</a><ul>
+<li>Installation</li>
+<li>Usage</li>
+<li>How-To</li>
+<li>Troubleshooting</li>
+<li>Environment Variables</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://matplotlib.sourceforge.net/users/screenshots.html">Screenshots</a></li>
+</ul>
+</div>
+<div class="section" id="code-documentation">
+<h3><a class="toc-backref" href="#id38">1.5.5.3. Code documentation</a><a class="headerlink" href="#code-documentation" title="Permalink to this headline">¶</a></h3>
+<p>The code is well documented and you can quickly access a specific command
+from within a python session:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+<span class="go">Help on function plot in module matplotlib.pyplot:</span>
+
+<span class="go">plot(*args, **kwargs)</span>
+<span class="go">   Plot lines and/or markers to the</span>
+<span class="go">   :class:`~matplotlib.axes.Axes`.  *args* is a variable length</span>
+<span class="go">   argument, allowing for multiple *x*, *y* pairs with an</span>
+<span class="go">   optional format string.  For example, each of the following is</span>
+<span class="go">   legal::</span>
+
+<span class="go">       plot(x, y)         # plot x and y using default line style and color</span>
+<span class="go">       plot(x, y, &#39;bo&#39;)   # plot x and y using blue circle markers</span>
+<span class="go">       plot(y)            # plot y using x as index array 0..N-1</span>
+<span class="go">       plot(y, &#39;r+&#39;)      # ditto, but with red plusses</span>
+
+<span class="go">   If *x* and/or *y* is 2-dimensional, then the corresponding columns</span>
+<span class="go">   will be plotted.</span>
+<span class="go">   ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="galleries">
+<h3><a class="toc-backref" href="#id39">1.5.5.4. Galleries</a><a class="headerlink" href="#galleries" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://matplotlib.sourceforge.net/gallery.html">matplotlib gallery</a> is
+also incredibly useful when you search how to render a given graphic. Each
+example comes with its source.</p>
+<p>A smaller gallery is also available <a class="reference external" href="http://www.loria.fr/~rougier/coding/gallery/">here</a>.</p>
+</div>
+<div class="section" id="mailing-lists">
+<h3><a class="toc-backref" href="#id40">1.5.5.5. Mailing lists</a><a class="headerlink" href="#mailing-lists" title="Permalink to this headline">¶</a></h3>
+<p>Finally, there is a <a class="reference external" href="https://lists.sourceforge.net/lists/listinfo/matplotlib-users">user mailing list</a> where you can
+ask for help and a <a class="reference external" href="https://lists.sourceforge.net/lists/listinfo/matplotlib-devel">developers mailing list</a> that is more
+technical.</p>
+</div>
+</div>
+<div class="section" id="quick-references">
+<h2><a class="toc-backref" href="#id41">1.5.6. Quick references</a><a class="headerlink" href="#quick-references" title="Permalink to this headline">¶</a></h2>
+<p>Here is a set of tables that show main properties and styles.</p>
+<div class="section" id="line-properties">
+<h3><a class="toc-backref" href="#id42">1.5.6.1. Line properties</a><a class="headerlink" href="#line-properties" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Description</th>
+<th class="head">Appearance</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>alpha (or a)</td>
+<td>alpha transparency on 0-1 scale</td>
+<td><img alt="../../_images/plot_alpha_1.png" class="first last" src="../../_images/plot_alpha_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>antialiased</td>
+<td>True or False - use antialised rendering</td>
+<td><img alt="../../_images/plot_aliased_1.png" class="first" src="../../_images/plot_aliased_1.png" />
+<img alt="../../_images/plot_antialiased_1.png" class="last" src="../../_images/plot_antialiased_1.png" />
+</td>
+</tr>
+<tr class="row-even"><td>color (or c)</td>
+<td>matplotlib color arg</td>
+<td><img alt="../../_images/plot_color_1.png" class="first last" src="../../_images/plot_color_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>linestyle (or ls)</td>
+<td>see <a class="reference internal" href="#line-properties">Line properties</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>linewidth (or lw)</td>
+<td>float, the line width in points</td>
+<td><img alt="../../_images/plot_linewidth_1.png" class="first last" src="../../_images/plot_linewidth_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>solid_capstyle</td>
+<td>Cap style for solid lines</td>
+<td><img alt="../../_images/plot_solid_capstyle_1.png" class="first last" src="../../_images/plot_solid_capstyle_1.png" />
+</td>
+</tr>
+<tr class="row-even"><td>solid_joinstyle</td>
+<td>Join style for solid lines</td>
+<td><img alt="../../_images/plot_solid_joinstyle_1.png" class="first last" src="../../_images/plot_solid_joinstyle_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>dash_capstyle</td>
+<td>Cap style for dashes</td>
+<td><img alt="../../_images/plot_dash_capstyle_1.png" class="first last" src="../../_images/plot_dash_capstyle_1.png" />
+</td>
+</tr>
+<tr class="row-even"><td>dash_joinstyle</td>
+<td>Join style for dashes</td>
+<td><img alt="../../_images/plot_dash_joinstyle_1.png" class="first last" src="../../_images/plot_dash_joinstyle_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>marker</td>
+<td>see <a class="reference internal" href="#markers">Markers</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>markeredgewidth (mew)</td>
+<td>line width around the marker symbol</td>
+<td><img alt="../../_images/plot_mew_1.png" class="first last" src="../../_images/plot_mew_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>markeredgecolor (mec)</td>
+<td>edge color if a marker is used</td>
+<td><img alt="../../_images/plot_mec_1.png" class="first last" src="../../_images/plot_mec_1.png" />
+</td>
+</tr>
+<tr class="row-even"><td>markerfacecolor (mfc)</td>
+<td>face color if a marker is used</td>
+<td><img alt="../../_images/plot_mfc_1.png" class="first last" src="../../_images/plot_mfc_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>markersize (ms)</td>
+<td>size of the marker in points</td>
+<td><img alt="../../_images/plot_ms_1.png" class="first last" src="../../_images/plot_ms_1.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="line-styles">
+<h3><a class="toc-backref" href="#id43">1.5.6.2. Line styles</a><a class="headerlink" href="#line-styles" title="Permalink to this headline">¶</a></h3>
+<img alt="../../_images/plot_linestyles_1.png" src="../../_images/plot_linestyles_1.png" />
+</div>
+<div class="section" id="markers">
+<h3><a class="toc-backref" href="#id44">1.5.6.3. Markers</a><a class="headerlink" href="#markers" title="Permalink to this headline">¶</a></h3>
+<img alt="../../_images/plot_markers_1.png" src="../../_images/plot_markers_1.png" />
+</div>
+<div class="section" id="colormaps">
+<h3><a class="toc-backref" href="#id45">1.5.6.4. Colormaps</a><a class="headerlink" href="#colormaps" title="Permalink to this headline">¶</a></h3>
+<p>All colormaps can be reversed by appending <tt class="docutils literal"><span class="pre">_r</span></tt>. For instance, <tt class="docutils literal"><span class="pre">gray_r</span></tt> is
+the reverse of <tt class="docutils literal"><span class="pre">gray</span></tt>.</p>
+<p>If you want to know more about colormaps, checks <a class="reference external" href="https://gist.github.com/2719900">Documenting the matplotlib
+colormaps</a>.</p>
+<img alt="../../_images/plot_colormaps_1.png" src="../../_images/plot_colormaps_1.png" />
+<p><div style="clear: both"></div></p>
 </div>
 </div>
 </div>

@@ -481,8 +481,8 @@ is assigned under the original name.</p>
 possible to achieve the same effect by assigning the function or class
 object to a temporary variable and then invoking the decorator
 explicitly and then assigning the return value to the name of the
-function. This sound like more typing, and it is, and also the name of
-the decorated function dubbling as a temporary variable must be used
+function. This sounds like more typing, and it is, and also the name of
+the decorated function doubling as a temporary variable must be used
 at least three times, which is prone to errors. Nevertheless, the
 example above is equivalent to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>                  <span class="c"># ①</span>
@@ -511,7 +511,7 @@ decorator can exploit the fact that function and class objects are
 mutable and add attributes, e.g. add a docstring to a class. A
 decorator might do something useful even without modifying the object,
 for example register the decorated class in a global registry. In the
-second case, virtually anything is possible: when a something
+second case, virtually anything is possible: when something
 different is substituted for the original function or class, the new
 object can be completely different. Nevertheless, such behaviour is
 not the purpose of decorators: they are intended to tweak the
@@ -706,7 +706,7 @@ itself cannot be set as an attribute. This means that
 confusing for the user of the function. An effective but ugly way
 around this problem is to create the wrapper dynamically, using
 <tt class="docutils literal"><span class="pre">eval</span></tt>. This can be automated by using the external <tt class="docutils literal"><span class="pre">decorator</span></tt>
-module. It provides support the <tt class="docutils literal"><span class="pre">decorator</span></tt> decorator, which takes a
+module. It provides support for the <tt class="docutils literal"><span class="pre">decorator</span></tt> decorator, which takes a
 wrapper and turns it into a decorator which preserves the function
 signature.</p>
 <p>To sum things up, decorators should always use <tt class="docutils literal"><span class="pre">functools.update_wrapper</span></tt>
@@ -1162,6 +1162,7 @@ shorter and simpler.</p>
 </pre></div>
 </div>
 <p>Here we use a decorator to turn generator functions into context managers!</p>
+<p><div style="clear: both"></div></p>
 </div>
 </div>
 </div>

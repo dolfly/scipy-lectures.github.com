@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Contents &mdash; Scipy lecture notes</title>
+    <title>Modifying &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,12 +25,20 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="index.html" /> 
+    <link rel="top" title="Scipy lecture notes" href="index.html" />
+    <link rel="next" title="How to contribute" href="guide/index.html" />
+    <link rel="prev" title="What’s new" href="CHANGES.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guide/index.html" title="How to contribute"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="CHANGES.html" title="What’s new"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Scipy lecture notes</a> &raquo;</li> 
       </ul>
     </div>  
@@ -39,17 +47,15 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
-<p>This repository gathers some lecture notes on the scientific Python ecosystem.
-They have been initially used in the intro (and some advanced) tutorials at
-Euroscipy 2010, but have now grown to a full course of scientific
-computing with Python.</p>
+  <p>This repository gathers some lecture notes on the scientific Python
+ecosystem that can be used for a full course of scientific computing with
+Python.</p>
 <p>These documents are written with the rest markup language (.rst
 extension) and built using Sphinx: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a>.</p>
-</div>
+<div class="section" id="modifying">
+<h1>Modifying<a class="headerlink" href="#modifying" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="reusing-and-distributing">
-<h1>Reusing and distributing<a class="headerlink" href="#reusing-and-distributing" title="Permalink to this headline">¶</a></h1>
+<h2>Reusing and distributing<a class="headerlink" href="#reusing-and-distributing" title="Permalink to this headline">¶</a></h2>
 <p>As stated in the LICENSE.txt file, this material comes with no strings
 attached. Feel free to reuse and modify for your own teaching purposes.</p>
 <p>However, we would like this reference material to be improved over time,
@@ -57,19 +63,21 @@ thus we encourage people to contribute back changes. These will be
 reviewed and edited by the original authors.</p>
 </div>
 <div class="section" id="building-instructions">
-<h1>Building instructions<a class="headerlink" href="#building-instructions" title="Permalink to this headline">¶</a></h1>
+<h2>Building instructions<a class="headerlink" href="#building-instructions" title="Permalink to this headline">¶</a></h2>
 <p>To generate the html output for on-screen display, Type:</p>
 <div class="highlight-python"><pre>make html</pre>
 </div>
 <p>the generated html files can be found in <tt class="docutils literal"><span class="pre">build/html</span></tt></p>
+<p>The first build takes a long time, but information is cached and
+subsequent builds will be faster.</p>
 <p>To generate the pdf file for printing:</p>
 <div class="highlight-python"><pre>make pdf</pre>
 </div>
-<p>The pdf builder is a pointy and you might have some TeX errors. Tweaking
+<p>The pdf builder is a bit pointy and you might have some TeX errors. Tweaking
 the layout in the rst files is usually enough to work around these
 problems.</p>
 <div class="section" id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <p><em>probably incomplete</em></p>
 <ul class="simple">
 <li>make</li>
@@ -82,9 +90,9 @@ problems.</p>
 </div>
 </div>
 <div class="section" id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="editorial-policy">
-<h2>Editorial policy<a class="headerlink" href="#editorial-policy" title="Permalink to this headline">¶</a></h2>
+<h3>Editorial policy<a class="headerlink" href="#editorial-policy" title="Permalink to this headline">¶</a></h3>
 <p>The goal of this material is to provide a concise text useful to
 learning the main features of the scipy ecosystem. If you want
 to contribute to reference material, we suggest that you contribute
@@ -105,8 +113,8 @@ combined to build a course on scientific computing with Python. Second,
 people&#8217;s attention span does not go much beyond an hour or two, whether
 they are reading a tutorial or following it in a class room.</p>
 </div>
-<div class="section" id="modifying">
-<h2>Modifying<a class="headerlink" href="#modifying" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Modifying<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way to make your own version of this teaching material
 is to fork it under Github, and use the git version control system to
 maintain your own fork. For this, all you have to do is create an account
@@ -118,7 +126,7 @@ changes. If you want to contribute the changes back, just fill a
 necessary.</p>
 </div>
 <div class="section" id="figures-and-code-examples">
-<h2>Figures and code examples<a class="headerlink" href="#figures-and-code-examples" title="Permalink to this headline">¶</a></h2>
+<h3>Figures and code examples<a class="headerlink" href="#figures-and-code-examples" title="Permalink to this headline">¶</a></h3>
 <p>The figure should be generated from Python source files. The policy is
 to create an <tt class="docutils literal"><span class="pre">examples</span></tt> directory, in which you put the corresponding
 Python files. Any files with a name starting with <tt class="docutils literal"><span class="pre">plot_</span></tt> will be run
@@ -129,6 +137,27 @@ in the document as figures. To display the code snippet, you can use the
 should be included in the same directory. NB: the code to provide this style of
 plot inclusion was adopted from the scikits.learn project and can be found in
 <tt class="docutils literal"><span class="pre">sphinxext/gen_rst.py</span></tt>.</p>
+<div class="topic">
+<p class="topic-title first">Contributing guide and chapter example</p>
+<p>The directory <cite>guide</cite> contains an example chapter with specific
+instructions on how to contribute:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/index.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#id1">How to contribute ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#figures-and-code-examples">Figures and code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#linking-to-package-documentations">Linking to package documentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#chapter-section-subsection-paragraph">Chapter, section, subsection, paragraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#admonitions">Admonitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#clearing-floats">Clearing floats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p><div style="clear: both"></div></p>
+</div>
 </div>
 </div>
 
@@ -140,6 +169,12 @@ plot inclusion was adopted from the scikits.learn project and can be found in
     <div class="related">
       <h3>Navigation</h3>
       <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guide/index.html" title="How to contribute"
+             >next</a></li>
+        <li class="right" >
+          <a href="CHANGES.html" title="What’s new"
+             >previous</a> |</li>
         <li><a href="index.html">Scipy lecture notes</a> &raquo;</li> 
       </ul>
     </div>
