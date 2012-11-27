@@ -31,7 +31,7 @@ div.body h1, div.body h2, div.body h3, div.body h4 {
 /* pre */
 div.body pre {
     font-weight: 500;
-    font-family: "Droid Sans Mono", "Liberation Mono", Courier, monospace;
+    font-family: "Liberation Mono", Courier, monospace;
     color: black;
     margin-top: 3px;
     /* The following lines ensure that no horizontal scrolling is
