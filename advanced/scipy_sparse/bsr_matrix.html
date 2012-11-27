@@ -115,26 +115,26 @@ sparse matrices with dense sub-matrices</p>
 <ul>
 <li><p class="first">create empty BSR matrix with (1, 1) block size (like CSR...):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
-<span class="go">&lt;3x4 sparse matrix of type &#39;&lt;type &#39;numpy.int8&#39;&gt;&#39;</span>
-<span class="go">        with 0 stored elements (blocksize = 1x1) in Block Sparse Row format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[0, 0, 0, 0],</span>
-<span class="go">        [0, 0, 0, 0],</span>
-<span class="go">        [0, 0, 0, 0]], dtype=int8)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
+<div class="newline"></div><span class="go">&lt;3x4 sparse matrix of type &#39;&lt;type &#39;numpy.int8&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">        with 0 stored elements (blocksize = 1x1) in Block Sparse Row format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0]], dtype=int8)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">create empty BSR matrix with (3, 2) block size:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">blocksize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
-<span class="go">&lt;3x4 sparse matrix of type &#39;&lt;type &#39;numpy.int8&#39;&gt;&#39;</span>
-<span class="go">        with 0 stored elements (blocksize = 3x2) in Block Sparse Row format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[0, 0, 0, 0],</span>
-<span class="go">        [0, 0, 0, 0],</span>
-<span class="go">        [0, 0, 0, 0]], dtype=int8)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
+<div class="newline"></div><span class="go">&lt;3x4 sparse matrix of type &#39;&lt;type &#39;numpy.int8&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">        with 0 stored elements (blocksize = 3x2) in Block Sparse Row format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0]], dtype=int8)</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>a bug?</li>
@@ -142,66 +142,66 @@ sparse matrices with dense sub-matrices</p>
 </li>
 <li><p class="first">create using <tt class="xref py py-obj docutils literal"><span class="pre">(data,</span> <span class="pre">ij)</span></tt> tuple with (1, 1) block size (like CSR...):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
-<span class="go">&lt;3x3 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
-<span class="go">        with 6 stored elements (blocksize = 1x1) in Block Sparse Row format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[1, 0, 2],</span>
-<span class="go">        [0, 0, 3],</span>
-<span class="go">        [4, 5, 6]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">data</span>
-<span class="go">array([[[1]],</span>
-
-<span class="go">       [[2]],</span>
-
-<span class="go">       [[3]],</span>
-
-<span class="go">       [[4]],</span>
-
-<span class="go">       [[5]],</span>
-
-<span class="go">       [[6]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">indices</span>
-<span class="go">array([0, 2, 2, 0, 1, 2], dtype=int32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">indptr</span>
-<span class="go">array([0, 2, 3, 6], dtype=int32)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
+<div class="newline"></div><span class="go">&lt;3x3 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">        with 6 stored elements (blocksize = 1x1) in Block Sparse Row format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[1, 0, 2],</span>
+<div class="newline"></div><span class="go">        [0, 0, 3],</span>
+<div class="newline"></div><span class="go">        [4, 5, 6]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">data</span>
+<div class="newline"></div><span class="go">array([[[1]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[2]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[3]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[4]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[5]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[6]]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">indices</span>
+<div class="newline"></div><span class="go">array([0, 2, 2, 0, 1, 2], dtype=int32)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">indptr</span>
+<div class="newline"></div><span class="go">array([0, 2, 3, 6], dtype=int32)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">create using <tt class="xref py py-obj docutils literal"><span class="pre">(data,</span> <span class="pre">indices,</span> <span class="pre">indptr)</span></tt> tuple with (2, 2) block size:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[1, 1, 0, 0, 2, 2],</span>
-<span class="go">        [1, 1, 0, 0, 2, 2],</span>
-<span class="go">        [0, 0, 0, 0, 3, 3],</span>
-<span class="go">        [0, 0, 0, 0, 3, 3],</span>
-<span class="go">        [4, 4, 5, 5, 6, 6],</span>
-<span class="go">        [4, 4, 5, 5, 6, 6]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
-<span class="go">array([[[1, 1],</span>
-<span class="go">        [1, 1]],</span>
-
-<span class="go">       [[2, 2],</span>
-<span class="go">        [2, 2]],</span>
-
-<span class="go">       [[3, 3],</span>
-<span class="go">        [3, 3]],</span>
-
-<span class="go">       [[4, 4],</span>
-<span class="go">        [4, 4]],</span>
-
-<span class="go">       [[5, 5],</span>
-<span class="go">        [5, 5]],</span>
-
-<span class="go">       [[6, 6],</span>
-<span class="go">        [6, 6]]])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[1, 1, 0, 0, 2, 2],</span>
+<div class="newline"></div><span class="go">        [1, 1, 0, 0, 2, 2],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0, 3, 3],</span>
+<div class="newline"></div><span class="go">        [0, 0, 0, 0, 3, 3],</span>
+<div class="newline"></div><span class="go">        [4, 4, 5, 5, 6, 6],</span>
+<div class="newline"></div><span class="go">        [4, 4, 5, 5, 6, 6]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<div class="newline"></div><span class="go">array([[[1, 1],</span>
+<div class="newline"></div><span class="go">        [1, 1]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[2, 2],</span>
+<div class="newline"></div><span class="go">        [2, 2]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[3, 3],</span>
+<div class="newline"></div><span class="go">        [3, 3]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[4, 4],</span>
+<div class="newline"></div><span class="go">        [4, 4]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[5, 5],</span>
+<div class="newline"></div><span class="go">        [5, 5]],</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">       [[6, 6],</span>
+<div class="newline"></div><span class="go">        [6, 6]]])</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>

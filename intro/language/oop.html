@@ -63,17 +63,17 @@
 gathering several custom functions (<strong>methods</strong>) and variables (<strong>attributes</strong>),
 we will be able to use:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_major</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">major</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">major</span> <span class="o">=</span> <span class="n">major</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">&#39;anna&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_major</span><span class="p">(</span><span class="s">&#39;physics&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">def</span> <span class="nf">set_major</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">major</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">major</span> <span class="o">=</span> <span class="n">major</span>
+<div class="newline"></div><span class="gp">...</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s">&#39;anna&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">anna</span><span class="o">.</span><span class="n">set_major</span><span class="p">(</span><span class="s">&#39;physics&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>In the previous example, the Student class has <tt class="docutils literal"><span class="pre">__init__</span></tt>, <tt class="docutils literal"><span class="pre">set_age</span></tt> and
 <tt class="docutils literal"><span class="pre">set_major</span></tt> methods. Its attributes are <tt class="docutils literal"><span class="pre">name</span></tt>, <tt class="docutils literal"><span class="pre">age</span></tt> and <tt class="docutils literal"><span class="pre">major</span></tt>. We
@@ -86,15 +86,15 @@ methods and attributes as the previous one, but with an additional
 <tt class="docutils literal"><span class="pre">internship</span></tt> attribute. We won&#8217;t copy the previous class, but
 <strong>inherit</strong> from it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MasterStudent</span><span class="p">(</span><span class="n">Student</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">internship</span> <span class="o">=</span> <span class="s">&#39;mandatory, from March to June&#39;</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span> <span class="o">=</span> <span class="n">MasterStudent</span><span class="p">(</span><span class="s">&#39;james&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">internship</span>
-<span class="go">&#39;mandatory, from March to June&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">age</span>
-<span class="go">23</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>    <span class="n">internship</span> <span class="o">=</span> <span class="s">&#39;mandatory, from March to June&#39;</span>
+<div class="newline"></div><span class="gp">...</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">james</span> <span class="o">=</span> <span class="n">MasterStudent</span><span class="p">(</span><span class="s">&#39;james&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">internship</span>
+<div class="newline"></div><span class="go">&#39;mandatory, from March to June&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">set_age</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">james</span><span class="o">.</span><span class="n">age</span>
+<div class="newline"></div><span class="go">23</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The MasterStudent class inherited from the Student attributes and methods.</p>
 <p>Thanks to classes and object-oriented programming, we can organize code

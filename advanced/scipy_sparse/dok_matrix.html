@@ -97,37 +97,37 @@
 <ul>
 <li><p class="first">create a DOK matrix element by element:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">dok_matrix</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>     
-<span class="go">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
-<span class="go">        with 0 stored elements in Dictionary Of Keys format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">ic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="n">mtx</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ic</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">ir</span> <span class="o">!=</span> <span class="n">ic</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>     
-<span class="go">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
-<span class="go">        with 20 stored elements in Dictionary Of Keys format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[ 0.,  1.,  1.,  1.,  1.],</span>
-<span class="go">        [ 1.,  0.,  1.,  1.,  1.],</span>
-<span class="go">        [ 1.,  1.,  0.,  1.,  1.],</span>
-<span class="go">        [ 1.,  1.,  1.,  0.,  1.],</span>
-<span class="go">        [ 1.,  1.,  1.,  1.,  0.]])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>     
+<div class="newline"></div><span class="go">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">        with 0 stored elements in Dictionary Of Keys format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">for</span> <span class="n">ic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="n">mtx</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ic</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">ir</span> <span class="o">!=</span> <span class="n">ic</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>     
+<div class="newline"></div><span class="go">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">        with 20 stored elements in Dictionary Of Keys format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[ 0.,  1.,  1.,  1.,  1.],</span>
+<div class="newline"></div><span class="go">        [ 1.,  0.,  1.,  1.,  1.],</span>
+<div class="newline"></div><span class="go">        [ 1.,  1.,  0.,  1.,  1.],</span>
+<div class="newline"></div><span class="go">        [ 1.,  1.,  1.,  0.,  1.],</span>
+<div class="newline"></div><span class="go">        [ 1.,  1.,  1.,  1.,  0.]])</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">slicing and indexing:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>     
-<span class="go">&lt;1x2 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
-<span class="go">      with 1 stored elements in Dictionary Of Keys format&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
-<span class="go">matrix([[ 0.,  1.]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span> 
-<span class="gt">Traceback (most recent call last):</span>
- <span class="c">...</span>
-<span class="gr">NotImplementedError</span>: <span class="n">fancy indexing supported over one axis only</span>
-</pre></div>
+<div class="newline"></div><span class="go">0.0</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>     
+<div class="newline"></div><span class="go">&lt;1x2 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<div class="newline"></div><span class="go">      with 1 stored elements in Dictionary Of Keys format&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="newline"></div><span class="go">matrix([[ 0.,  1.]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span> 
+<div class="newline"></div><span class="gt">Traceback (most recent call last):</span>
+<div class="newline"></div> <span class="c">...</span>
+<div class="newline"></div><span class="gr">NotImplementedError</span>: <span class="n">fancy indexing supported over one axis only</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>

@@ -136,26 +136,26 @@ create an iterator object is the most straightforward way to get hold
 of an iterator. The <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#iter" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">iter</span></tt></a> function does that for us, saving a few
 keystrokes.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>      <span class="c"># note that ... varies: these are different objects</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>                           
-<span class="go">&lt;listiterator object at ...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span><span class="o">.</span><span class="n">__iter__</span><span class="p">()</span>                      
-<span class="go">&lt;listiterator object at ...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span><span class="o">.</span><span class="n">__reversed__</span><span class="p">()</span>                  
-<span class="go">&lt;listreverseiterator object at ...&gt;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>                           
+<div class="newline"></div><span class="go">&lt;listiterator object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span><span class="o">.</span><span class="n">__iter__</span><span class="p">()</span>                      
+<div class="newline"></div><span class="go">&lt;listiterator object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span><span class="o">.</span><span class="n">__reversed__</span><span class="p">()</span>                  
+<div class="newline"></div><span class="go">&lt;listreverseiterator object at ...&gt;</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>            <span class="c"># next(obj) simply calls obj.next()</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="go">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">StopIteration</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>            <span class="c"># next(obj) simply calls obj.next()</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<div class="newline"></div><span class="go">2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<div class="newline"></div><span class="go">3</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<div class="newline"></div><span class="gt">Traceback (most recent call last):</span>
+<div class="newline"></div>  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<div class="newline"></div><span class="gr">StopIteration</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>When used in a loop, <a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.StopIteration" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">StopIteration</span></tt></a> is
 swallowed and causes the loop to finish. But with explicit invocation,
@@ -172,9 +172,9 @@ all sequences and unordered containers in the standard library allow
 this. The concept is also stretched to other things:
 e.g. <tt class="docutils literal"><span class="pre">file</span></tt> objects support iteration over lines.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/etc/fstab&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="ow">is</span> <span class="n">f</span><span class="o">.</span><span class="n">__iter__</span><span class="p">()</span>
-<span class="go">True</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="ow">is</span> <span class="n">f</span><span class="o">.</span><span class="n">__iter__</span><span class="p">()</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">file</span></tt> is an iterator itself and it&#8217;s <tt class="docutils literal"><span class="pre">__iter__</span></tt> method
 doesn&#8217;t create a separate object: only a single thread of sequential
@@ -189,12 +189,12 @@ parentheses or an expression. If round parentheses are used, then a
 generator iterator is created.  If rectangular parentheses are used,
 the process is short-circuited and we get a <tt class="docutils literal"><span class="pre">list</span></tt>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">)</span>                    
-<span class="go">&lt;generator object &lt;genexpr&gt; at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
-<span class="go">[1, 2, 3]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">)</span>
-<span class="go">[1, 2, 3]</span>
-</pre></div>
+<div class="newline"></div><span class="go">&lt;generator object &lt;genexpr&gt; at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
+<div class="newline"></div><span class="go">[1, 2, 3]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">)</span>
+<div class="newline"></div><span class="go">[1, 2, 3]</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>In Python 2.7 and 3.x the list comprehension syntax was extended to
 <strong>dictionary and set comprehensions</strong>.
@@ -202,18 +202,18 @@ A <tt class="docutils literal"><span class="pre">set</span></tt> is created when
 braces. A <tt class="docutils literal"><span class="pre">dict</span></tt> is created when the generator expression contains
 &#8220;pairs&#8221; of the form <tt class="docutils literal"><span class="pre">key:value</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>   
-<span class="go">set([0, 1, 2])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>   
-<span class="go">{0: 0, 1: 1, 2: 4}</span>
-</pre></div>
+<div class="newline"></div><span class="go">set([0, 1, 2])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)}</span>   
+<div class="newline"></div><span class="go">{0: 0, 1: 1, 2: 4}</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>If you are stuck at some previous Python version, the syntax is only a
 bit worse:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">&#39;abc&#39;</span><span class="p">)</span>
-<span class="go">set([&#39;a&#39;, &#39;c&#39;, &#39;b&#39;])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">&#39;abc&#39;</span><span class="p">)</span>
-<span class="go">{&#39;a&#39;: 97, &#39;c&#39;: 99, &#39;b&#39;: 98}</span>
-</pre></div>
+<div class="newline"></div><span class="go">set([&#39;a&#39;, &#39;c&#39;, &#39;b&#39;])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">&#39;abc&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">{&#39;a&#39;: 97, &#39;c&#39;: 99, &#39;b&#39;: 98}</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Generator expression are fairly simple, not much to say here. Only one
 <em>gotcha</em> should be mentioned: in old Pythons the index variable
@@ -261,24 +261,24 @@ StopIteration</pre>
 <p>Let&#8217;s go over the life of the single invocation of the generator
 function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-<span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- start --&quot;</span><span class="p">)</span>
-<span class="gp">... </span>  <span class="k">yield</span> <span class="mi">3</span>
-<span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- middle --&quot;</span><span class="p">)</span>
-<span class="gp">... </span>  <span class="k">yield</span> <span class="mi">4</span>
-<span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- finished --&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">f</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
-<span class="go">-- start --</span>
-<span class="go">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
-<span class="go">-- middle --</span>
-<span class="go">4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>                            
-<span class="go">-- finished --</span>
-<span class="gt">Traceback (most recent call last):</span>
- <span class="c">...</span>
-<span class="gr">StopIteration</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- start --&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">yield</span> <span class="mi">3</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- middle --&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">yield</span> <span class="mi">4</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;-- finished --&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">f</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+<div class="newline"></div><span class="go">-- start --</span>
+<div class="newline"></div><span class="go">3</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+<div class="newline"></div><span class="go">-- middle --</span>
+<div class="newline"></div><span class="go">4</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>                            
+<div class="newline"></div><span class="go">-- finished --</span>
+<div class="newline"></div><span class="gt">Traceback (most recent call last):</span>
+<div class="newline"></div> <span class="c">...</span>
+<div class="newline"></div><span class="gr">StopIteration</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Contrary to a normal function, where executing <tt class="docutils literal"><span class="pre">f()</span></tt> would
 immediately cause the first <tt class="docutils literal"><span class="pre">print</span></tt> to be executed, <tt class="docutils literal"><span class="pre">gen</span></tt> is
@@ -335,7 +335,7 @@ fact, <tt class="docutils literal"><span class="pre">g.next()</span></tt> and <t
 <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.throw" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">throw(type,</span> <span class="pre">value=None,</span> <span class="pre">traceback=None)</span></tt></a>
 which is equivalent to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 <p>at the point of the <tt class="docutils literal"><span class="pre">yield</span></tt> statement.</p>
 <p>Unlike <a class="reference external" href="http://docs.python.org/2.7/reference/simple_stmts.html#raise">raise</a> (which immediately raises an exception from the
@@ -358,36 +358,36 @@ method to destroy objects holding the state of generator.</p>
 <p>Let&#8217;s define a generator which just prints what is passed in through
 send and throw.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;--start--&#39;</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
-<span class="gp">... </span>        <span class="k">print</span> <span class="s">&#39;--yielding </span><span class="si">%i</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">i</span>
-<span class="gp">... </span>        <span class="k">try</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="n">ans</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
-<span class="gp">... </span>        <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--closing--&#39;</span>
-<span class="gp">... </span>            <span class="k">raise</span>
-<span class="gp">... </span>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--yield raised </span><span class="si">%r</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">e</span>
-<span class="gp">... </span>        <span class="k">else</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--yield returned </span><span class="si">%s</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">ans</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">g</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-<span class="go">--start--</span>
-<span class="go">--yielding 0--</span>
-<span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-<span class="go">--yield returned 11--</span>
-<span class="go">--yielding 1--</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">IndexError</span><span class="p">)</span>
-<span class="go">--yield raised IndexError()--</span>
-<span class="go">--yielding 2--</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="go">--closing--</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;--start--&#39;</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">print</span> <span class="s">&#39;--yielding </span><span class="si">%i</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">i</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>            <span class="n">ans</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--closing--&#39;</span>
+<div class="newline"></div><span class="gp">... </span>            <span class="k">raise</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--yield raised </span><span class="si">%r</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">e</span>
+<div class="newline"></div><span class="gp">... </span>        <span class="k">else</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>            <span class="k">print</span> <span class="s">&#39;--yield returned </span><span class="si">%s</span><span class="s">--&#39;</span> <span class="o">%</span> <span class="n">ans</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">g</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<div class="newline"></div><span class="go">--start--</span>
+<div class="newline"></div><span class="go">--yielding 0--</span>
+<div class="newline"></div><span class="go">0</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<div class="newline"></div><span class="go">--yield returned 11--</span>
+<div class="newline"></div><span class="go">--yielding 1--</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">IndexError</span><span class="p">)</span>
+<div class="newline"></div><span class="go">--yield raised IndexError()--</span>
+<div class="newline"></div><span class="go">--yielding 2--</span>
+<div class="newline"></div><span class="go">2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div><span class="go">--closing--</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -420,9 +420,9 @@ values generated by a second generator, a <strong>subgenerator</strong>.
 If yielding of values is the only concern, this can be performed
 without much difficulty using a loop such as</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">subgen</span> <span class="o">=</span> <span class="n">some_other_generator</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">subgen</span><span class="p">:</span>
-    <span class="k">yield</span> <span class="n">v</span>
-</pre></div>
+<div class="newline"></div><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">subgen</span><span class="p">:</span>
+<div class="newline"></div>    <span class="k">yield</span> <span class="n">v</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>However, if the subgenerator is to interact properly with the caller
 in the case of calls to <tt class="docutils literal"><span class="pre">send()</span></tt>, <tt class="docutils literal"><span class="pre">throw()</span></tt> and <tt class="docutils literal"><span class="pre">close()</span></tt>,
@@ -459,9 +459,9 @@ syntax, i.e. an at-symbol and the name of the decorating function.</p>
 <p>Function can be decorated by using the decorator syntax for
 functions:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@decorator</span>             <span class="c"># ②</span>
-<span class="k">def</span> <span class="nf">function</span><span class="p">():</span>        <span class="c"># ①</span>
-    <span class="k">pass</span>
-</pre></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>        <span class="c"># ①</span>
+<div class="newline"></div>    <span class="k">pass</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>A function is defined in the standard way. ①</li>
@@ -486,9 +486,9 @@ the decorated function doubling as a temporary variable must be used
 at least three times, which is prone to errors. Nevertheless, the
 example above is equivalent to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>                  <span class="c"># ①</span>
-    <span class="k">pass</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>   <span class="c"># ②</span>
-</pre></div>
+<div class="newline"></div>    <span class="k">pass</span>
+<div class="newline"></div><span class="n">function</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>   <span class="c"># ②</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Decorators can be stacked &#8212; the order of application is
 bottom-to-top, or inside-out. The semantics are such that the originally
@@ -538,57 +538,57 @@ etc.), but is only possible when no arguments are needed to customise
 the decorator. Decorators written as functions can be used in those
 two cases:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;doing decoration&quot;</span>
-<span class="gp">... </span>  <span class="k">return</span> <span class="n">function</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@simple_decorator</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
-<span class="go">doing decoration</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
-<span class="go">inside function</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;doing decoration&quot;</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">return</span> <span class="n">function</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@simple_decorator</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
+<div class="newline"></div><span class="go">doing decoration</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
+<div class="newline"></div><span class="go">inside function</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">decorator_with_arguments</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># in this inner function, arg is available too</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="n">function</span>
-<span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@decorator_with_arguments</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
-<span class="go">defining the decorator</span>
-<span class="go">doing decoration, abc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
-<span class="go">inside function</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># in this inner function, arg is available too</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="n">function</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@decorator_with_arguments</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
+<div class="newline"></div><span class="go">defining the decorator</span>
+<div class="newline"></div><span class="go">doing decoration, abc</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
+<div class="newline"></div><span class="go">inside function</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The two trivial decorators above fall into the category of decorators
 which return the original function. If they were to return a new
 function, an extra level of nestedness would be required.
 In the worst case, three levels of nested functions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">replacing_decorator_with_args</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># in this inner function, arg is available too</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
-<span class="gp">... </span>      <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>          <span class="k">print</span> <span class="s">&quot;inside wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="gp">... </span>          <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="n">_wrapper</span>
-<span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@replacing_decorator_with_args</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;inside function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="mi">14</span>
-<span class="go">defining the decorator</span>
-<span class="go">doing decoration, abc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="go">inside wrapper, (11, 12) {}</span>
-<span class="go">inside function, (11, 12) {}</span>
-<span class="go">14</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># in this inner function, arg is available too</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>          <span class="k">print</span> <span class="s">&quot;inside wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="gp">... </span>          <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="n">_wrapper</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@replacing_decorator_with_args</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;inside function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="mi">14</span>
+<div class="newline"></div><span class="go">defining the decorator</span>
+<div class="newline"></div><span class="go">doing decoration, abc</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<div class="newline"></div><span class="go">inside wrapper, (11, 12) {}</span>
+<div class="newline"></div><span class="go">inside function, (11, 12) {}</span>
+<div class="newline"></div><span class="go">14</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">_wrapper</span></tt> function is defined to accept all positional and
 keyword arguments. In general we cannot know what arguments the
@@ -606,23 +606,23 @@ which is not very useful. Therefore it&#8217;s enough to discuss class-based
 decorators where arguments are given in the decorator expression and
 the decorator <tt class="docutils literal"><span class="pre">__init__</span></tt> method is used for decorator construction.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">decorator_class</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># this method is called in the decorator expression</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator init,&quot;</span><span class="p">,</span> <span class="n">arg</span>
-<span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># this method is called to do the job</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator call,&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="n">function</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">deco_instance</span> <span class="o">=</span> <span class="n">decorator_class</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">in decorator init, foo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@deco_instance</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;in function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="go">in decorator call, foo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
-<span class="go">in function, () {}</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># this method is called in the decorator expression</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator init,&quot;</span><span class="p">,</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># this method is called to do the job</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator call,&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="n">function</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">deco_instance</span> <span class="o">=</span> <span class="n">decorator_class</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">in decorator init, foo</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@deco_instance</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;in function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="go">in decorator call, foo</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">()</span>
+<div class="newline"></div><span class="go">in function, () {}</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Contrary to normal rules (<span class="target" id="index-5"></span><a class="pep reference external" href="http://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>) decorators written as classes
 behave more like functions and therefore their name often starts with a
@@ -632,28 +632,28 @@ have a decorator which returns the original function. Objects are
 supposed to hold state, and such decorators are more useful when the
 decorator returns a new object.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">replacing_decorator_class</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># this method is called in the decorator expression</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator init,&quot;</span><span class="p">,</span> <span class="n">arg</span>
-<span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="c"># this method is called to do the job</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator call,&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg</span>
-<span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapper</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in the wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">deco_instance</span> <span class="o">=</span> <span class="n">replacing_decorator_class</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">in decorator init, foo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@deco_instance</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;in function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="go">in decorator call, foo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="go">in the wrapper, (11, 12) {}</span>
-<span class="go">in function, (11, 12) {}</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># this method is called in the decorator expression</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator init,&quot;</span><span class="p">,</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="c"># this method is called to do the job</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in decorator call,&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapper</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;in the wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">deco_instance</span> <span class="o">=</span> <span class="n">replacing_decorator_class</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">in decorator init, foo</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@deco_instance</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;in function,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="go">in decorator call, foo</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<div class="newline"></div><span class="go">in the wrapper, (11, 12) {}</span>
+<div class="newline"></div><span class="go">in function, (11, 12) {}</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>A decorator like this can do pretty much anything, since it can modify
 the original function object and mangle the arguments, call the
@@ -675,27 +675,27 @@ automatically by using <a class="reference external" href="http://docs.python.or
 <p class="last">&#8220;Update a wrapper function to look like the wrapped function.&#8221;</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">functools</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">better_replacing_decorator_with_args</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
-<span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
-<span class="gp">... </span>      <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">... </span>          <span class="k">print</span> <span class="s">&quot;inside wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
-<span class="gp">... </span>          <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="gp">... </span>      <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">_wrapper</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
-<span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@better_replacing_decorator_with_args</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="s">&quot;extensive documentation&quot;</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="mi">14</span>
-<span class="go">defining the decorator</span>
-<span class="go">doing decoration, abc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">function</span>                           
-<span class="go">&lt;function function at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">function</span><span class="o">.</span><span class="n">__doc__</span>
-<span class="go">extensive documentation</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">better_replacing_decorator_with_args</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;defining the decorator&quot;</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">print</span> <span class="s">&quot;doing decoration,&quot;</span><span class="p">,</span> <span class="n">arg</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>          <span class="k">print</span> <span class="s">&quot;inside wrapper,&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span>
+<div class="newline"></div><span class="gp">... </span>          <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span>      <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">_wrapper</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">return</span> <span class="n">_decorator</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nd">@better_replacing_decorator_with_args</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">... </span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="s">&quot;extensive documentation&quot;</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;inside function&quot;</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="mi">14</span>
+<div class="newline"></div><span class="go">defining the decorator</span>
+<div class="newline"></div><span class="go">doing decoration, abc</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">function</span>                           
+<div class="newline"></div><span class="go">&lt;function function at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">function</span><span class="o">.</span><span class="n">__doc__</span>
+<div class="newline"></div><span class="go">extensive documentation</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>One important thing is missing from the list of attributes which can
 be copied to the replacement function: the argument list. The default
@@ -728,14 +728,14 @@ as the first parameter, often called <tt class="docutils literal"><span class="p
 they don&#8217;t pollute the module&#8217;s namespace. Class methods can be used
 to provide alternative constructors:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Array</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">fromfile</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="nd">@classmethod</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">fromfile</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+<div class="newline"></div>        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>This is cleaner then using a multitude of flags to <tt class="docutils literal"><span class="pre">__init__</span></tt>.</p>
 </li>
@@ -750,15 +750,15 @@ despite an implementation which doesn&#8217;t require this.</p>
 and setters. A method decorated with <tt class="docutils literal"><span class="pre">property</span></tt> becomes a getter
 which is automatically called on attribute access.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nd">@property</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="s">&quot;an important attribute&quot;</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="s">&quot;a value&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">a</span>                                   
-<span class="go">&lt;property object at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">()</span><span class="o">.</span><span class="n">a</span>
-<span class="go">&#39;a value&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="nd">@property</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="s">&quot;an important attribute&quot;</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="s">&quot;a value&quot;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">a</span>                                   
+<div class="newline"></div><span class="go">&lt;property object at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">()</span><span class="o">.</span><span class="n">a</span>
+<div class="newline"></div><span class="go">&#39;a value&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>In this example, <tt class="docutils literal"><span class="pre">A.a</span></tt> is an read-only attribute. It is also
 documented: <tt class="docutils literal"><span class="pre">help(A)</span></tt> includes the docstring for attribute <tt class="docutils literal"><span class="pre">a</span></tt>
@@ -768,21 +768,21 @@ read-only, because no setter is defined.</p>
 <p>To have a setter and a getter, two methods are required,
 obviously. Since Python 2.6 the following syntax is preferred:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">edge</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computed area.</span>
-
-<span class="sd">        Setting this updates the edge length to the proper value.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">**</span><span class="mi">2</span>
-
-    <span class="nd">@area.setter</span>
-    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">area</span> <span class="o">**</span> <span class="mf">0.5</span>
-</pre></div>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">edge</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="nd">@property</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div>        <span class="sd">&quot;&quot;&quot;Computed area.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">        Setting this updates the edge length to the proper value.</span>
+<div class="newline"></div><span class="sd">        &quot;&quot;&quot;</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">**</span><span class="mi">2</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="nd">@area.setter</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">area</span> <span class="o">**</span> <span class="mf">0.5</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The way that this works, is that the <tt class="docutils literal"><span class="pre">property</span></tt> decorator replaces
 the getter method with a property object. This object in turn has
@@ -800,36 +800,36 @@ access, assignment, or deletion, the job is delegated to the methods
 of the property object.</p>
 <p>To make everything crystal clear, let&#8217;s define a &#8220;debug&#8221; example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="nd">@property</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;getting&quot;</span><span class="p">,</span> <span class="mi">1</span>
-<span class="gp">... </span>     <span class="k">return</span> <span class="mi">1</span>
-<span class="gp">... </span>   <span class="nd">@a.setter</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;setting&quot;</span><span class="p">,</span> <span class="n">value</span>
-<span class="gp">... </span>   <span class="nd">@a.deleter</span>
-<span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;deleting&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span>                                    
-<span class="go">&lt;property object at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fget</span>                               
-<span class="go">&lt;function a at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fset</span>                               
-<span class="go">&lt;function a at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fdel</span>                               
-<span class="go">&lt;function a at 0x...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>               <span class="c"># ... varies, this is not the same `a` function</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span>
-<span class="go">getting 1</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="go">setting 2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">d</span><span class="o">.</span><span class="n">a</span>
-<span class="go">deleting</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span>
-<span class="go">getting 1</span>
-<span class="go">1</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>   <span class="nd">@property</span>
+<div class="newline"></div><span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;getting&quot;</span><span class="p">,</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">... </span>     <span class="k">return</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">... </span>   <span class="nd">@a.setter</span>
+<div class="newline"></div><span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;setting&quot;</span><span class="p">,</span> <span class="n">value</span>
+<div class="newline"></div><span class="gp">... </span>   <span class="nd">@a.deleter</span>
+<div class="newline"></div><span class="gp">... </span>   <span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>     <span class="k">print</span> <span class="s">&quot;deleting&quot;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span>                                    
+<div class="newline"></div><span class="go">&lt;property object at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fget</span>                               
+<div class="newline"></div><span class="go">&lt;function a at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fset</span>                               
+<div class="newline"></div><span class="go">&lt;function a at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">fdel</span>                               
+<div class="newline"></div><span class="go">&lt;function a at 0x...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>               <span class="c"># ... varies, this is not the same `a` function</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span>
+<div class="newline"></div><span class="go">getting 1</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="newline"></div><span class="go">setting 2</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">d</span><span class="o">.</span><span class="n">a</span>
+<div class="newline"></div><span class="go">deleting</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">a</span>
+<div class="newline"></div><span class="go">getting 1</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Properties are a bit of a stretch for the decorator syntax. One of the
 premises of the decorator syntax &#8212; that the name is not duplicated
@@ -855,43 +855,43 @@ based on a single available one (Python 2.7).</li>
 first invocation of a function we don&#8217;t like anymore. If we don&#8217;t want
 to modify the function, we can use a decorator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">deprecated</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Print a deprecation warning once on first use of the function.</span>
-
-<span class="sd">    &gt;&gt;&gt; @deprecated()                    # doctest: +SKIP</span>
-<span class="sd">    ... def f():</span>
-<span class="sd">    ...     pass</span>
-<span class="sd">    &gt;&gt;&gt; f()                              # doctest: +SKIP</span>
-<span class="sd">    f is deprecated</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapper</span>
-    <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s">&#39;is deprecated&#39;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="sd">&quot;&quot;&quot;Print a deprecation warning once on first use of the function.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">    &gt;&gt;&gt; @deprecated()                    # doctest: +SKIP</span>
+<div class="newline"></div><span class="sd">    ... def f():</span>
+<div class="newline"></div><span class="sd">    ...     pass</span>
+<div class="newline"></div><span class="sd">    &gt;&gt;&gt; f()                              # doctest: +SKIP</span>
+<div class="newline"></div><span class="sd">    f is deprecated</span>
+<div class="newline"></div><span class="sd">    &quot;&quot;&quot;</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapper</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<div class="newline"></div>            <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s">&#39;is deprecated&#39;</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>It can also be implemented as a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">deprecated</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Print a deprecation warning once on first use of the function.</span>
-
-<span class="sd">    &gt;&gt;&gt; @deprecated                      # doctest: +SKIP</span>
-<span class="sd">    ... def f():</span>
-<span class="sd">    ...     pass</span>
-<span class="sd">    &gt;&gt;&gt; f()                              # doctest: +SKIP</span>
-<span class="sd">    f is deprecated</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">print</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s">&#39;is deprecated&#39;</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">wrapper</span>
-</pre></div>
+<div class="newline"></div>    <span class="sd">&quot;&quot;&quot;Print a deprecation warning once on first use of the function.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">    &gt;&gt;&gt; @deprecated                      # doctest: +SKIP</span>
+<div class="newline"></div><span class="sd">    ... def f():</span>
+<div class="newline"></div><span class="sd">    ...     pass</span>
+<div class="newline"></div><span class="sd">    &gt;&gt;&gt; f()                              # doctest: +SKIP</span>
+<div class="newline"></div><span class="sd">    f is deprecated</span>
+<div class="newline"></div><span class="sd">    &quot;&quot;&quot;</span>
+<div class="newline"></div>    <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div>        <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<div class="newline"></div>            <span class="k">print</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s">&#39;is deprecated&#39;</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">wrapper</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="a-while-loop-removing-decorator">
@@ -900,14 +900,14 @@ to modify the function, we can use a decorator:</p>
 list created by running a loop. If we don&#8217;t know how many objects will
 be needed, the standard way to do this is something like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find_answers</span><span class="p">():</span>
-    <span class="n">answers</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">ans</span> <span class="o">=</span> <span class="n">look_for_next_answer</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="n">answers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">answers</span>
-</pre></div>
+<div class="newline"></div>    <span class="n">answers</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="newline"></div>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<div class="newline"></div>        <span class="n">ans</span> <span class="o">=</span> <span class="n">look_for_next_answer</span><span class="p">()</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<div class="newline"></div>            <span class="k">break</span>
+<div class="newline"></div>        <span class="n">answers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">answers</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>This is fine, as long as the body of the loop is fairly compact. Once
 it becomes more complicated, as often happens in real code, this
@@ -916,20 +916,20 @@ statements, but then the user would have to explicitly call
 <tt class="docutils literal"><span class="pre">list(find_answers())</span></tt>.</p>
 <p>We can define a decorator which constructs the list for us:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">vectorized</span><span class="p">(</span><span class="n">generator_func</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">generator_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">generator_func</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">generator_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">generator_func</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Our function then becomes:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@vectorized</span>
-<span class="k">def</span> <span class="nf">find_answers</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">ans</span> <span class="o">=</span> <span class="n">look_for_next_answer</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">yield</span> <span class="n">ans</span>
-</pre></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">find_answers</span><span class="p">():</span>
+<div class="newline"></div>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<div class="newline"></div>        <span class="n">ans</span> <span class="o">=</span> <span class="n">look_for_next_answer</span><span class="p">()</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<div class="newline"></div>            <span class="k">break</span>
+<div class="newline"></div>        <span class="k">yield</span> <span class="n">ans</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="a-plugin-registration-system">
@@ -938,21 +938,21 @@ statements, but then the user would have to explicitly call
 puts it in a global registry. It falls into the category of decorators
 returning the original object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">WordProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">PLUGINS</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="n">plugin</span><span class="p">()</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">text</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">plugin</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
-        <span class="n">cls</span><span class="o">.</span><span class="n">PLUGINS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
-
-<span class="nd">@WordProcessor.plugin</span>
-<span class="k">class</span> <span class="nc">CleanMdashesExtension</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;&amp;mdash;&#39;</span><span class="p">,</span> <span class="s">u&#39;</span><span class="se">\N{em dash}</span><span class="s">&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<div class="newline"></div>        <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">PLUGINS</span><span class="p">:</span>
+<div class="newline"></div>            <span class="n">text</span> <span class="o">=</span> <span class="n">plugin</span><span class="p">()</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="n">text</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="nd">@classmethod</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">plugin</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">plugin</span><span class="p">):</span>
+<div class="newline"></div>        <span class="n">cls</span><span class="o">.</span><span class="n">PLUGINS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="nd">@WordProcessor.plugin</span>
+<div class="newline"></div><span class="k">class</span> <span class="nc">CleanMdashesExtension</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<div class="newline"></div>        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;&amp;mdash;&#39;</span><span class="p">,</span> <span class="s">u&#39;</span><span class="se">\N{em dash}</span><span class="s">&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Here we use a decorator to decentralise the registration of
 plugins. We call our decorator with a noun, instead of a verb, because
@@ -989,17 +989,17 @@ the source of a program.</p>
 <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__exit__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__exit__</span></tt></a> methods which can be used in the <a class="reference external" href="http://docs.python.org/2.7/reference/compound_stmts.html#with">with</a>
 statement:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">manager</span> <span class="k">as</span> <span class="n">var</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="n">do_something</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>is in the simplest case
 equivalent to</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">__enter__</span><span class="p">()</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="n">manager</span><span class="o">.</span><span class="n">__exit__</span><span class="p">()</span>
-</pre></div>
+<div class="newline"></div><span class="k">try</span><span class="p">:</span>
+<div class="newline"></div>    <span class="n">do_something</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+<div class="newline"></div><span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div>    <span class="n">manager</span><span class="o">.</span><span class="n">__exit__</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>In other words, the context manager protocol defined in <span class="target" id="index-8"></span><a class="pep reference external" href="http://www.python.org/dev/peps/pep-0343"><strong>PEP 343</strong></a>
 permits the extraction of the boring part of a
@@ -1024,15 +1024,15 @@ like in a <tt class="docutils literal"><span class="pre">finally</span></tt> cla
 <p>Let&#8217;s say we want to make sure that a file is closed immediately after
 we are done writing to it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">closing</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span>
-<span class="gp">... </span>  <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/file&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;the contents</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/file&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;the contents</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Here we have made sure that the <tt class="docutils literal"><span class="pre">f.close()</span></tt> is called when the
 <tt class="docutils literal"><span class="pre">with</span></tt> block is exited. Since closing files is such a common
@@ -1040,8 +1040,8 @@ operation, the support for this is already present in the <tt class="docutils li
 class. It has an <tt class="docutils literal"><span class="pre">__exit__</span></tt> method which calls <tt class="docutils literal"><span class="pre">close</span></tt> and can be
 used as a context manager itself:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/file&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="gp">... </span>  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;more contents</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;more contents</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The common use for <tt class="docutils literal"><span class="pre">try..finally</span></tt> is releasing resources. Various
 different cases are implemented similarly: in the <tt class="docutils literal"><span class="pre">__enter__</span></tt>
@@ -1091,21 +1091,21 @@ rethrown after <tt class="docutils literal"><span class="pre">__exit__</span></t
 classic example comes from unit-tests &#8212; we want to make sure that
 some code throws the right kind of exception:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">assert_raises</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="c"># based on pytest and unittest.TestCase</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
-    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;exception expected&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">True</span> <span class="c"># swallow the expected exception</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;wrong exception type&#39;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">assert_raises</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
-    <span class="p">{}[</span><span class="s">&#39;foo&#39;</span><span class="p">]</span>
-</pre></div>
+<div class="newline"></div>    <span class="c"># based on pytest and unittest.TestCase</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+<div class="newline"></div>        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="newline"></div>        <span class="k">pass</span>
+<div class="newline"></div>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<div class="newline"></div>            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;exception expected&#39;</span><span class="p">)</span>
+<div class="newline"></div>        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">):</span>
+<div class="newline"></div>            <span class="k">return</span> <span class="bp">True</span> <span class="c"># swallow the expected exception</span>
+<div class="newline"></div>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;wrong exception type&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">with</span> <span class="n">assert_raises</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+<div class="newline"></div>    <span class="p">{}[</span><span class="s">&#39;foo&#39;</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="using-generators-to-define-context-managers">
@@ -1120,13 +1120,13 @@ generator. We would like to implement context managers as special
 generator functions. In fact, the generator protocol was designed to
 support this use case.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@contextlib.contextmanager</span>
-<span class="k">def</span> <span class="nf">some_generator</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">):</span>
-    <span class="o">&lt;</span><span class="n">setup</span><span class="o">&gt;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="o">&lt;</span><span class="n">cleanup</span><span class="o">&gt;</span>
-</pre></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">some_generator</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">):</span>
+<div class="newline"></div>    <span class="o">&lt;</span><span class="n">setup</span><span class="o">&gt;</span>
+<div class="newline"></div>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">yield</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<div class="newline"></div>    <span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div>        <span class="o">&lt;</span><span class="n">cleanup</span><span class="o">&gt;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The <a class="reference external" href="http://docs.python.org/2.7/library/contextlib.html#contextlib.contextmanager" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">contextlib.contextmanager</span></tt></a> helper takes a generator and turns it
 into a context manager. The generator has to obey some rules which are
@@ -1141,25 +1141,25 @@ statement. Through the use of generators, the context manager is
 shorter and simpler.</p>
 <p>Let&#8217;s rewrite the <tt class="docutils literal"><span class="pre">closing</span></tt> example as a generator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@contextlib.contextmanager</span>
-<span class="k">def</span> <span class="nf">closing</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">obj</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">closing</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="newline"></div>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">yield</span> <span class="n">obj</span>
+<div class="newline"></div>    <span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div>        <span class="n">obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Let&#8217;s rewrite the <tt class="docutils literal"><span class="pre">assert_raises</span></tt> example as a generator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@contextlib.contextmanager</span>
-<span class="k">def</span> <span class="nf">assert_raises</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span>
-    <span class="k">except</span> <span class="nb">type</span><span class="p">:</span>
-        <span class="k">return</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">value</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;wrong exception type&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;exception expected&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">assert_raises</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<div class="newline"></div>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">yield</span>
+<div class="newline"></div>    <span class="k">except</span> <span class="nb">type</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">return</span>
+<div class="newline"></div>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">value</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;wrong exception type&#39;</span><span class="p">)</span>
+<div class="newline"></div>    <span class="k">else</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s">&#39;exception expected&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Here we use a decorator to turn generator functions into context managers!</p>
 <p><div style="clear: both"></div></p>

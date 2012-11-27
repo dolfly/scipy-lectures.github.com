@@ -86,15 +86,15 @@ Gaussian functions.</p>
 <span id="first-step"></span><h2>1.6.11.14.2. Loading and visualization<a class="headerlink" href="#loading-and-visualization" title="Permalink to this headline">¶</a></h2>
 <p>Load the first waveform using:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">waveform_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;data/waveform_1.npy&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">waveform_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;data/waveform_1.npy&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>and visualize it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform_1</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform_1</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform_1</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform_1</span><span class="p">)</span> 
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+<div class="newline"></div></pre></div>
 </div>
 <img alt="../../_images/waveform_1.png" class="align-center" src="../../_images/waveform_1.png" />
 <p>As you can notice, this waveform is a 80-bin-length signal with a single peak.</p>
@@ -116,8 +116,8 @@ function, we must:</p>
 <p><img src="../../_images/math/e767135f848071cb6d4e204c15e1b66d03872303.png" alt="B + A \exp\left\{-\left(\frac{t-\mu}{\sigma}\right)^2\right\}"/></p>
 </div><p>can be defined in python by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="k">return</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>   <span class="k">return</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="p">((</span><span class="n">t</span><span class="o">-</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>where</p>
 <ul class="simple">
@@ -132,7 +132,7 @@ function, we must:</p>
 <p>An approximative initial solution that we can find from looking at the graph is
 for instance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="fit">
@@ -141,8 +141,8 @@ for instance:</p>
 an argument. Basically, the function to minimize is the residuals (the
 difference between the data and the model):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">residuals</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="n">model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="n">model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>So let&#8217;s get our solution by calling <tt class="docutils literal"><span class="pre">scipy.optimize.leastsq</span></tt> with the
 following arguments:</p>
@@ -152,16 +152,16 @@ following arguments:</p>
 <li>the additional arguments to pass to the function</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">waveform_1</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
-<span class="go">[  2.70363341  27.82020742  15.47924562   3.05636228]</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">waveform_1</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<div class="newline"></div><span class="go">[  2.70363341  27.82020742  15.47924562   3.05636228]</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>And visualize the solution:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform_1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;waveform&#39;</span><span class="p">,</span> <span class="s">&#39;model&#39;</span><span class="p">])</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;waveform&#39;</span><span class="p">,</span> <span class="s">&#39;model&#39;</span><span class="p">])</span> 
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+<div class="newline"></div></pre></div>
 </div>
 <p><em>Remark:</em> from scipy v0.8 and above, you should rather use <tt class="docutils literal"><span class="pre">scipy.optimize.curve_fit</span></tt> which takes the model and the data as arguments, so you don&#8217;t need to define the residuals any more.</p>
 </div>
@@ -186,7 +186,7 @@ enables to overcome such limitations. An example of <em>a priori</em> knowledge 
 add is the sign of our variables (which are all positive).</p>
 <p>With the following initial solution:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 <p>compare the result of <tt class="docutils literal"><span class="pre">scipy.optimize.leastsq</span></tt> and what you can get with
 <tt class="docutils literal"><span class="pre">scipy.optimize.fmin_slsqp</span></tt> when adding boundary constraints.</p>

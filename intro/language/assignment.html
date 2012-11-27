@@ -69,36 +69,36 @@ r.h.s. object</li>
 <li><p class="first">a single object can have several names bound to it:</p>
 <blockquote>
 <div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [2]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="gp">In [3]: </span><span class="n">a</span>
-<span class="go">Out[3]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [4]: </span><span class="n">b</span>
-<span class="go">Out[4]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [5]: </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
-<span class="go">Out[5]: </span><span class="bp">True</span>
-<span class="gp">In [6]: </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hi!&#39;</span>
-<span class="gp">In [7]: </span><span class="n">a</span>
-<span class="go">Out[7]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;hi!&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</pre></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">a</span>
+<div class="newline"></div><span class="go">Out[3]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">b</span>
+<div class="newline"></div><span class="go">Out[4]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<div class="newline"></div><span class="go">Out[5]: </span><span class="bp">True</span>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;hi!&#39;</span>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="n">a</span>
+<div class="newline"></div><span class="go">Out[7]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;hi!&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first">to change a list <em>in place</em>, use indexing/slices:</p>
 <blockquote>
 <div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [3]: </span><span class="n">a</span>
-<span class="go">Out[3]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [4]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span> <span class="c"># Creates another object.</span>
-<span class="gp">In [5]: </span><span class="n">a</span>
-<span class="go">Out[5]: </span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
-<span class="gp">In [6]: </span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="go">Out[6]: </span><span class="mi">138641676</span>
-<span class="gp">In [7]: </span><span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c"># Modifies object in place.</span>
-<span class="gp">In [8]: </span><span class="n">a</span>
-<span class="go">Out[8]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [9]: </span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="go">Out[9]: </span><span class="mi">138641676</span> <span class="c"># Same as in Out[6], yours will differ...</span>
-</pre></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">a</span>
+<div class="newline"></div><span class="go">Out[3]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span> <span class="c"># Creates another object.</span>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">a</span>
+<div class="newline"></div><span class="go">Out[5]: </span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Out[6]: </span><span class="mi">138641676</span>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c"># Modifies object in place.</span>
+<div class="newline"></div><span class="gp">In [8]: </span><span class="n">a</span>
+<div class="newline"></div><span class="go">Out[8]: </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">In [9]: </span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Out[9]: </span><span class="mi">138641676</span> <span class="c"># Same as in Out[6], yours will differ...</span>
+<div class="newline"></div></pre></div>
 </div>
 </div></blockquote>
 </li>

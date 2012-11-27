@@ -67,34 +67,34 @@
 <h3>1.3.3.1.1. Casting<a class="headerlink" href="#casting" title="Permalink to this headline">¶</a></h3>
 <p>&#8220;Bigger&#8221; type wins in mixed-type operations:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="mf">1.5</span>
-<span class="go">array([ 2.5,  3.5,  4.5])</span>
-</pre></div>
+<div class="newline"></div><span class="go">array([ 2.5,  3.5,  4.5])</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Assignment never changes the type!</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
-<span class="go">dtype(&#39;int64&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.9</span>     <span class="c"># &lt;-- float is truncated to integer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([1, 2, 3])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+<div class="newline"></div><span class="go">dtype(&#39;int64&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.9</span>     <span class="c"># &lt;-- float is truncated to integer</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([1, 2, 3])</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Forced casts:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c"># &lt;-- truncates to integer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
-<span class="go">array([1, 1, 1])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c"># &lt;-- truncates to integer</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<div class="newline"></div><span class="go">array([1, 1, 1])</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Rounding:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>                    <span class="c"># still floating-point</span>
-<span class="go">array([ 1., 2., 2., 2., 4., 4.])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
-<span class="go">array([ 1, 2, 2, 2, 4, 4])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>                    <span class="c"># still floating-point</span>
+<div class="newline"></div><span class="go">array([ 1., 2., 2., 2., 4., 4.])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<div class="newline"></div><span class="go">array([ 1, 2, 2, 2, 4, 4])</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="different-data-type-sizes">
@@ -121,12 +121,12 @@
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span>
-<span class="go">dtype(&#39;int64&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="go">(2147483647, 2147483647)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">63</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="go">(9223372036854775807, 9223372036854775807L)</span>
-</pre></div>
+<div class="newline"></div><span class="go">dtype(&#39;int64&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="newline"></div><span class="go">(2147483647, 2147483647)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">63</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="newline"></div><span class="go">(9223372036854775807, 9223372036854775807L)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Unsigned integers:</p>
 <table border="1" class="docutils">
@@ -150,10 +150,10 @@
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="go">(4294967295, 4294967295)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="go">(18446744073709551615L, 18446744073709551615L)</span>
-</pre></div>
+<div class="newline"></div><span class="go">(4294967295, 4294967295)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="newline"></div><span class="go">(18446744073709551615L, 18446744073709551615L)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Floating-point numbers:</p>
 <table border="1" class="docutils">
@@ -180,16 +180,16 @@
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
-<span class="go">1.1920929e-07</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
-<span class="go">2.2204460492503131e-16</span>
-</pre></div>
+<div class="newline"></div><span class="go">1.1920929e-07</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+<div class="newline"></div><span class="go">2.2204460492503131e-16</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-<span class="go">False</span>
-</pre></div>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<div class="newline"></div><span class="go">False</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Complex floating-point numbers:</p>
 <table border="1" class="docutils">
@@ -221,15 +221,15 @@
 </li>
 <li><p class="first">Half the memory bandwidth required (may be a bit faster in some operations)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mf">1e6</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-
-<span class="gp">In [2]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mf">1e6</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-
-<span class="gp">In [3]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span>
-<span class="go">1000 loops, best of 3: 1.78 ms per loop</span>
-
-<span class="gp">In [4]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span>
-<span class="go">1000 loops, best of 3: 1.07 ms per loop</span>
-</pre></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mf">1e6</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span>
+<div class="newline"></div><span class="go">1000 loops, best of 3: 1.78 ms per loop</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="o">%</span><span class="n">timeit</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span>
+<div class="newline"></div><span class="go">1000 loops, best of 3: 1.07 ms per loop</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">But: bigger rounding errors &#8212; sometimes in surprising places
@@ -259,49 +259,49 @@
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;sensor_code&#39;</span><span class="p">,</span> <span class="s">&#39;S4&#39;</span><span class="p">),</span>
-<span class="gp">... </span>                                <span class="p">(</span><span class="s">&#39;position&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">ndim</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(6,)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
-<span class="go">(&#39;sensor_code&#39;, &#39;position&#39;, &#39;value&#39;)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>                                <span class="p">(</span><span class="s">&#39;position&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">ndim</span>
+<div class="newline"></div><span class="go">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="go">(6,)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
+<div class="newline"></div><span class="go">(&#39;sensor_code&#39;, &#39;position&#39;, &#39;value&#39;)</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;BETA&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>   <span class="mf">0.13</span><span class="p">),</span>
-<span class="gp">... </span>              <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span>
-<span class="go">array([(&#39;ALFA&#39;, 1.0, 0.37), (&#39;BETA&#39;, 1.0, 0.11), (&#39;TAU&#39;, 1.0, 0.13),</span>
-<span class="go">       (&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11), (&#39;TAU&#39;, 1.2, 0.13)],</span>
-<span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>              <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span>
+<div class="newline"></div><span class="go">array([(&#39;ALFA&#39;, 1.0, 0.37), (&#39;BETA&#39;, 1.0, 0.11), (&#39;TAU&#39;, 1.0, 0.13),</span>
+<div class="newline"></div><span class="go">       (&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11), (&#39;TAU&#39;, 1.2, 0.13)],</span>
+<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Field access works by indexing with field names:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="s">&#39;sensor_code&#39;</span><span class="p">]</span>
-<span class="go">array([&#39;ALFA&#39;, &#39;BETA&#39;, &#39;TAU&#39;, &#39;ALFA&#39;, &#39;ALFA&#39;, &#39;TAU&#39;],</span>
-<span class="go">      dtype=&#39;|S4&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">]</span>
-<span class="go">array([ 0.37,  0.11,  0.13,  0.37,  0.11,  0.13])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">(&#39;ALFA&#39;, 1.0, 0.37)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;sensor_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;TAU&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">(&#39;TAU&#39;, 1.0, 0.37)</span>
-</pre></div>
+<div class="newline"></div><span class="go">array([&#39;ALFA&#39;, &#39;BETA&#39;, &#39;TAU&#39;, &#39;ALFA&#39;, &#39;ALFA&#39;, &#39;TAU&#39;],</span>
+<div class="newline"></div><span class="go">      dtype=&#39;|S4&#39;)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="go">array([ 0.37,  0.11,  0.13,  0.37,  0.11,  0.13])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div><span class="go">(&#39;ALFA&#39;, 1.0, 0.37)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;sensor_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;TAU&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div><span class="go">(&#39;TAU&#39;, 1.0, 0.37)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Multiple fields at once:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[[</span><span class="s">&#39;position&#39;</span><span class="p">,</span> <span class="s">&#39;value&#39;</span><span class="p">]]</span>
-<span class="go">array([(1.0, 0.37), (1.0, 0.11), (1.0, 0.13), (1.5, 0.37), (3.0, 0.11),</span>
-<span class="go">       (1.2, 0.13)],</span>
-<span class="go">      dtype=[(&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
-</pre></div>
+<div class="newline"></div><span class="go">array([(1.0, 0.37), (1.0, 0.11), (1.0, 0.13), (1.5, 0.37), (3.0, 0.11),</span>
+<div class="newline"></div><span class="go">       (1.2, 0.13)],</span>
+<div class="newline"></div><span class="go">      dtype=[(&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Fancy indexing works, as usual:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="s">&#39;sensor_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ALFA&#39;</span><span class="p">]</span>
-<span class="go">array([(&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11)],</span>
-<span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
-</pre></div>
+<div class="newline"></div><span class="go">array([(&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11)],</span>
+<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -315,26 +315,26 @@ and <a class="reference external" href="http://docs.scipy.org/doc/numpy/referenc
 <ul>
 <li><p class="first">For floats one could use NaN&#8217;s, but masks work for all types:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
-<span class="go">masked_array(data = [1 -- 3 --],</span>
-<span class="go">             mask = [False  True False  True],</span>
-<span class="go">       fill_value = 999999)</span>
-
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-<span class="go">masked_array(data = [2 -- -- --],</span>
-<span class="go">             mask = [False  True  True  True],</span>
-<span class="go">       fill_value = 999999)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<div class="newline"></div><span class="go">masked_array(data = [1 -- 3 --],</span>
+<div class="newline"></div><span class="go">             mask = [False  True False  True],</span>
+<div class="newline"></div><span class="go">       fill_value = 999999)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<div class="newline"></div><span class="go">masked_array(data = [2 -- -- --],</span>
+<div class="newline"></div><span class="go">             mask = [False  True  True  True],</span>
+<div class="newline"></div><span class="go">       fill_value = 999999)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Masking versions of common functions:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-<span class="go">masked_array(data = [1.0 -- 1.41421356237 --],</span>
-<span class="go">             mask = [False  True False  True],</span>
-<span class="go">       fill_value = 1e+20)</span>
-</pre></div>
+<div class="newline"></div><span class="go">masked_array(data = [1.0 -- 1.41421356237 --],</span>
+<div class="newline"></div><span class="go">             mask = [False  True False  True],</span>
+<div class="newline"></div><span class="go">       fill_value = 1e+20)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>
@@ -358,45 +358,45 @@ and <a class="reference external" href="http://docs.scipy.org/doc/numpy/referenc
 <div class="section" id="block-of-memory">
 <h3>1.3.3.4.1. Block of memory<a class="headerlink" href="#block-of-memory" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span>      
-<span class="go">&lt;read-write buffer for ..., size 16, offset 0 at ...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">&#39;\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span>      
+<div class="newline"></div><span class="go">&lt;read-write buffer for ..., size 16, offset 0 at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&#39;\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Memory address of the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
-<span class="go">159755776</span>
-</pre></div>
+<div class="newline"></div><span class="go">159755776</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Reminder: two <tt class="xref py py-class docutils literal"><span class="pre">ndarrays</span></tt> may share the same memory:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">array([9, 2, 3, 4])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
-<span class="go">True</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<div class="newline"></div><span class="go">array([9, 2, 3, 4])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Memory does not need to be owned by an <tt class="xref py py-class docutils literal"><span class="pre">ndarray</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\x01\x02\x03\x04</span><span class="s">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">array([1, 2, 3, 4], dtype=int8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">data</span>  
-<span class="go">&lt;read-only buffer for ..., size 4, offset 0 at ...&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">flags</span>
-<span class="go">  C_CONTIGUOUS : True</span>
-<span class="go">  F_CONTIGUOUS : True</span>
-<span class="go">  OWNDATA : False</span>
-<span class="go">  WRITEABLE : False</span>
-<span class="go">  ALIGNED : True</span>
-<span class="go">  UPDATEIFCOPY : False</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<div class="newline"></div><span class="go">array([1, 2, 3, 4], dtype=int8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">data</span>  
+<div class="newline"></div><span class="go">&lt;read-only buffer for ..., size 4, offset 0 at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">flags</span>
+<div class="newline"></div><span class="go">  C_CONTIGUOUS : True</span>
+<div class="newline"></div><span class="go">  F_CONTIGUOUS : True</span>
+<div class="newline"></div><span class="go">  OWNDATA : False</span>
+<div class="newline"></div><span class="go">  WRITEABLE : False</span>
+<div class="newline"></div><span class="go">  ALIGNED : True</span>
+<div class="newline"></div><span class="go">  UPDATEIFCOPY : False</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">owndata</span></tt> and <tt class="docutils literal"><span class="pre">writeable</span></tt> flags indicate status of the memory
 block.</p>
@@ -406,11 +406,11 @@ block.</p>
 <p><strong>The question</strong></p>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">&#39;\x01\x02\x03\x04\x05\x06\x07\x08\t&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&#39;\x01\x02\x03\x04\x05\x06\x07\x08\t&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>At which byte in <tt class="docutils literal"><span class="pre">x.data</span></tt> does the item <tt class="docutils literal"><span class="pre">x[1,</span> <span class="pre">2]</span></tt> begin?</p>
 </div></blockquote>
@@ -421,13 +421,13 @@ block.</p>
 <li>1 stride per dimension</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(3, 1)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">byte_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="mi">2</span>   <span class="c"># to find x[1, 2]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">byte_offset</span><span class="p">]</span>
-<span class="go">&#39;\x06&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="go">6</span>
-</pre></div>
+<div class="newline"></div><span class="go">(3, 1)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">byte_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="mi">2</span>   <span class="c"># to find x[1, 2]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">byte_offset</span><span class="p">]</span>
+<div class="newline"></div><span class="go">&#39;\x06&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div><span class="go">6</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>simple, <strong>flexible</strong></li>
@@ -435,24 +435,24 @@ block.</p>
 </div></blockquote>
 <p class="rubric">C and Fortran order</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;C&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(6, 2)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">&#39;\x01\x00\x02\x00\x03\x00\x04\x00\x05\x00\x06\x00\x07\x00\x08\x00\t\x00&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;C&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(6, 2)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&#39;\x01\x00\x02\x00\x03\x00\x04\x00\x05\x00\x06\x00\x07\x00\x08\x00\t\x00&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>Need to jump 6 bytes to find the next row</li>
 <li>Need to jump 2 bytes to find the next column</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(2, 6)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">&#39;\x01\x00\x04\x00\x07\x00\x02\x00\x05\x00\x08\x00\x03\x00\x06\x00\t\x00&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(2, 6)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&#39;\x01\x00\x04\x00\x07\x00\x02\x00\x05\x00\x08\x00\x03\x00\x06\x00\t\x00&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>Need to jump 2 bytes to find the next row</li>
@@ -481,54 +481,54 @@ and possibly adjusting the <tt class="docutils literal"><span class="pre">data</
 <li>Never makes copies of the data</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<span class="go">array([6, 5, 4, 3, 2, 1], dtype=int32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(-4,)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<div class="newline"></div><span class="go">array([6, 5, 4, 3, 2, 1], dtype=int32)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(-4,)</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">8</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div><span class="go">8</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(800, 80, 8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">3</span><span class="p">,::</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(1600, 240, 32)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(800, 80, 8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">3</span><span class="p">,::</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(1600, 240, 32)</span>
+<div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
 <li>Similarly, transposes never make copies (it just swaps strides)</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(800, 80, 8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(8, 80, 800)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(800, 80, 8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(8, 80, 800)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p class="rubric">Reshaping</p>
 <p>But: not all reshaping operations can be represented by playing with
 strides.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">strides</span>
-<span class="go">(1, 2)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">strides</span>
+<div class="newline"></div><span class="go">(1, 2)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>So far, so good. However:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="go">&#39;\x00\x01\x02\x03\x04\x05&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
-<span class="go">array([[0, 2, 4],</span>
-<span class="go">       [1, 3, 5]], dtype=int8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
-<span class="go">array([0, 2, 4, 1, 3, 5], dtype=int8)</span>
-</pre></div>
+<div class="newline"></div><span class="go">&#39;\x00\x01\x02\x03\x04\x05&#39;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<div class="newline"></div><span class="go">array([[0, 2, 4],</span>
+<div class="newline"></div><span class="go">       [1, 3, 5]], dtype=int8)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<div class="newline"></div><span class="go">array([0, 2, 4, 1, 3, 5], dtype=int8)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Here, there is no way to represent the array <tt class="docutils literal"><span class="pre">c</span></tt> given one stride
 and the block of memory for <tt class="docutils literal"><span class="pre">a</span></tt>. Therefore, the <tt class="docutils literal"><span class="pre">reshape</span></tt>

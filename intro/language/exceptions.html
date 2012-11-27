@@ -62,29 +62,29 @@ error types.</p>
 <h2>1.2.9.1. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
 <p>Exceptions are raised by errors in Python:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">ZeroDivisionError: integer division or modulo by zero</span>
-
-<span class="gp">In [2]: </span><span class="mi">1</span> <span class="o">+</span> <span class="s">&#39;e&#39;</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
-
-<span class="gp">In [3]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
-
-<span class="gp">In [4]: </span><span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">KeyError: 3</span>
-
-<span class="gp">In [5]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="gp">In [6]: </span><span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">IndexError: list index out of range</span>
-
-<span class="gp">In [7]: </span><span class="n">l</span><span class="o">.</span><span class="n">foobar</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">AttributeError: &#39;list&#39; object has no attribute &#39;foobar&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">ZeroDivisionError: integer division or modulo by zero</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="mi">1</span> <span class="o">+</span> <span class="s">&#39;e&#39;</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">d</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">KeyError: 3</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">l</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">IndexError: list index out of range</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="n">l</span><span class="o">.</span><span class="n">foobar</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">AttributeError: &#39;list&#39; object has no attribute &#39;foobar&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p><strong>Different types of exceptions for different errors.</strong></p>
 </div>
@@ -93,58 +93,58 @@ error types.</p>
 <div class="section" id="try-except">
 <h3>1.2.9.2.1. try/except<a class="headerlink" href="#try-except" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<span class="go"> ....:     try:</span>
-<span class="go"> ....:         x = int(raw_input(&#39;Please enter a number: &#39;))</span>
-<span class="go"> ....:         break</span>
-<span class="go"> ....:     except ValueError:</span>
-<span class="go"> ....:         print(&#39;That was no valid number.  Try again...&#39;)</span>
-<span class="go"> ....:</span>
-<span class="go"> ....:</span>
-<span class="go">Please enter a number: a</span>
-<span class="go">That was no valid number.  Try again...</span>
-<span class="go">Please enter a number: 1</span>
-
-<span class="gp">In [9]: </span><span class="n">x</span>
-<span class="go">Out[9]: </span><span class="mi">1</span>
-</pre></div>
+<div class="newline"></div><span class="go"> ....:     try:</span>
+<div class="newline"></div><span class="go"> ....:         x = int(raw_input(&#39;Please enter a number: &#39;))</span>
+<div class="newline"></div><span class="go"> ....:         break</span>
+<div class="newline"></div><span class="go"> ....:     except ValueError:</span>
+<div class="newline"></div><span class="go"> ....:         print(&#39;That was no valid number.  Try again...&#39;)</span>
+<div class="newline"></div><span class="go"> ....:</span>
+<div class="newline"></div><span class="go"> ....:</span>
+<div class="newline"></div><span class="go">Please enter a number: a</span>
+<div class="newline"></div><span class="go">That was no valid number.  Try again...</span>
+<div class="newline"></div><span class="go">Please enter a number: 1</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [9]: </span><span class="n">x</span>
+<div class="newline"></div><span class="go">Out[9]: </span><span class="mi">1</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="try-finally">
 <h3>1.2.9.2.2. try/finally<a class="headerlink" href="#try-finally" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="k">try</span><span class="p">:</span>
-<span class="go"> ....:    x = int(raw_input(&#39;Please enter a number: &#39;))</span>
-<span class="go"> ....: finally:</span>
-<span class="go"> ....:    print(&#39;Thank you for your input&#39;)</span>
-<span class="go"> ....:</span>
-<span class="go"> ....:</span>
-<span class="go">Please enter a number: a</span>
-<span class="go">Thank you for your input</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">ValueError: invalid literal for int() with base 10: &#39;a&#39;</span>
-</pre></div>
+<div class="newline"></div><span class="go"> ....:    x = int(raw_input(&#39;Please enter a number: &#39;))</span>
+<div class="newline"></div><span class="go"> ....: finally:</span>
+<div class="newline"></div><span class="go"> ....:    print(&#39;Thank you for your input&#39;)</span>
+<div class="newline"></div><span class="go"> ....:</span>
+<div class="newline"></div><span class="go"> ....:</span>
+<div class="newline"></div><span class="go">Please enter a number: a</span>
+<div class="newline"></div><span class="go">Thank you for your input</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">ValueError: invalid literal for int() with base 10: &#39;a&#39;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Important for resource management (e.g. closing a file)</p>
 </div>
 <div class="section" id="easier-to-ask-for-forgiveness-than-for-permission">
 <h3>1.2.9.2.3. Easier to ask for forgiveness than for permission<a class="headerlink" href="#easier-to-ask-for-forgiveness-than-for-permission" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">print_sorted</span><span class="p">(</span><span class="n">collection</span><span class="p">):</span>
-<span class="gp">   ....:</span>     <span class="k">try</span><span class="p">:</span>
-<span class="gp">   ....:</span>         <span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="gp">   ....:</span>     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="gp">   ....:</span>         <span class="k">pass</span>
-<span class="gp">   ....:</span>     <span class="k">print</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
-<span class="gp">   ....:</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [12]: </span><span class="n">print_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="go">[1, 2, 3]</span>
-
-<span class="gp">In [13]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="go">set([1, 2, 3])</span>
-
-<span class="gp">In [14]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="s">&#39;132&#39;</span><span class="p">)</span>
-<span class="go">132</span>
-</pre></div>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="k">pass</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">print</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [12]: </span><span class="n">print_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="newline"></div><span class="go">[1, 2, 3]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [13]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<div class="newline"></div><span class="go">set([1, 2, 3])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [14]: </span><span class="n">print_sorted</span><span class="p">(</span><span class="s">&#39;132&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">132</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 </div>
@@ -153,47 +153,47 @@ error types.</p>
 <ul>
 <li><p class="first">Capturing and reraising an exception:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">filter_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-<span class="gp">   ....:</span>    <span class="k">try</span><span class="p">:</span>
-<span class="gp">   ....:</span>        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
-<span class="gp">   ....:</span>    <span class="k">except</span> <span class="ne">UnicodeError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
-<span class="gp">   ....:</span>        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#39;Gaël&#39;</span><span class="p">:</span>
-<span class="gp">   ....:</span>            <span class="k">print</span><span class="p">(</span><span class="s">&#39;OK, Gaël&#39;</span><span class="p">)</span>
-<span class="gp">   ....:</span>        <span class="k">else</span><span class="p">:</span>
-<span class="gp">   ....:</span>            <span class="k">raise</span> <span class="n">e</span>
-<span class="gp">   ....:</span>    <span class="k">return</span> <span class="n">name</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [16]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s">&#39;Gaël&#39;</span><span class="p">)</span>
-<span class="go">OK, Gaël</span>
-<span class="go">Out[16]: </span><span class="s">&#39;Ga</span><span class="se">\xc3\xab</span><span class="s">l&#39;</span>
-
-<span class="gp">In [17]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s">&#39;Stéfan&#39;</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xc3 in position 2: ordinal not in range(128)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="k">except</span> <span class="ne">UnicodeError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#39;Gaël&#39;</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>            <span class="k">print</span><span class="p">(</span><span class="s">&#39;OK, Gaël&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>        <span class="k">else</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>            <span class="k">raise</span> <span class="n">e</span>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="k">return</span> <span class="n">name</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [16]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s">&#39;Gaël&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">OK, Gaël</span>
+<div class="newline"></div><span class="go">Out[16]: </span><span class="s">&#39;Ga</span><span class="se">\xc3\xab</span><span class="s">l&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [17]: </span><span class="n">filter_name</span><span class="p">(</span><span class="s">&#39;Stéfan&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">UnicodeDecodeError: &#39;ascii&#39; codec can&#39;t decode byte 0xc3 in position 2: ordinal not in range(128)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Exceptions to pass messages between parts of the code:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [17]: </span><span class="k">def</span> <span class="nf">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">   ....:</span>    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">:</span>
-<span class="gp">   ....:</span>        <span class="k">raise</span> <span class="ne">StopIteration</span>
-<span class="gp">   ....:</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
-<span class="gp">   ....:</span>    <span class="k">return</span> <span class="n">x</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [18]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="gp">In [19]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<span class="gp">   ....:</span>     <span class="k">try</span><span class="p">:</span>
-<span class="gp">   ....:</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">   ....:</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="gp">   ....:</span>         <span class="k">break</span>
-<span class="gp">   ....:</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [20]: </span><span class="n">x</span>
-<span class="go">Out[20]: </span><span class="mf">0.9990234375</span>
-</pre></div>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-3</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>        <span class="k">raise</span> <span class="ne">StopIteration</span>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span>
+<div class="newline"></div><span class="gp">   ....:</span>    <span class="k">return</span> <span class="n">x</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [18]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [19]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">achilles_arrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="k">break</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="n">x</span>
+<div class="newline"></div><span class="go">Out[20]: </span><span class="mf">0.9990234375</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>

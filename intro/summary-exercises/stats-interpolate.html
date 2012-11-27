@@ -86,18 +86,18 @@ of the 2% quantile.</p>
 the numpy format in the file <a class="reference download internal" href="../../_downloads/max-speeds.npy"><tt class="xref download docutils literal"><span class="pre">examples/max-speeds.npy</span></tt></a>, thus they will be loaded
 by using numpy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">max_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;intro/summary-exercises/examples/max-speeds.npy&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">years_nb</span> <span class="o">=</span> <span class="n">max_speeds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">max_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;intro/summary-exercises/examples/max-speeds.npy&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">years_nb</span> <span class="o">=</span> <span class="n">max_speeds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Following the cumulative probability definition <tt class="docutils literal"><span class="pre">p_i</span></tt> from the previous
 section, the corresponding values will be:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cprob</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">years_nb</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">years_nb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 <p>and they are assumed to fit the given wind speeds:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sorted_max_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">max_speeds</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="prediction-with-univariatespline">
@@ -118,27 +118,27 @@ are also provided for simpler use (see <tt class="docutils literal"><span class=
 <p>For the Sprogø maxima wind speeds, the <tt class="docutils literal"><span class="pre">UnivariateSpline</span></tt> will be
 used because a spline of degree 3 seems to correctly fit the data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">UnivariateSpline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quantile_func</span> <span class="o">=</span> <span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">cprob</span><span class="p">,</span> <span class="n">sorted_max_speeds</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">quantile_func</span> <span class="o">=</span> <span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">cprob</span><span class="p">,</span> <span class="n">sorted_max_speeds</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The quantile function is now going to be evaluated from the full range
 of probabilities:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nprob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fitted_max_speeds</span> <span class="o">=</span> <span class="n">quantile_func</span><span class="p">(</span><span class="n">nprob</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">fitted_max_speeds</span> <span class="o">=</span> <span class="n">quantile_func</span><span class="p">(</span><span class="n">nprob</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>2%</p>
 <p>In the current model, the maximum wind speed occurring every 50 years is
 defined as the upper 2% quantile. As a result, the cumulative probability
 value will be:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_prob</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="mf">0.02</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 <p>So the storm wind speed occurring every 50 years can be guessed by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span> <span class="o">=</span> <span class="n">quantile_func</span><span class="p">(</span><span class="n">fifty_prob</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span>      
-<span class="go">32.97989825...</span>
-</pre></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">fifty_wind</span>      
+<div class="newline"></div><span class="go">32.97989825...</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The results are now gathered on a Matplotlib figure:</p>
 <div class="figure align-center">

@@ -303,48 +303,48 @@ inspect runtime, it is often more efficient to use the debugger.</p>
 <p>Here we debug the file <a class="reference download internal" href="../../_downloads/index_error.py"><tt class="xref download docutils literal"><span class="pre">index_error.py</span></tt></a>. When running it, an
 <tt class="xref py py-obj docutils literal"><span class="pre">IndexError</span></tt> is raised. Type <tt class="docutils literal"><span class="pre">%debug</span></tt> and drop into the debugger.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">index_error</span><span class="o">.</span><span class="n">py</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">IndexError                                Traceback (most recent call last)</span>
-<span class="go">/home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py in &lt;module&gt;()</span>
-<span class="go">      6</span>
-<span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
-<span class="go">----&gt; 8     index_error()</span>
-<span class="go">      9</span>
-
-<span class="go">/home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py in index_error()</span>
-<span class="go">      3 def index_error():</span>
-<span class="go">      4     lst = list(&#39;foobar&#39;)</span>
-<span class="go">----&gt; 5     print lst[len(lst)]</span>
-<span class="go">      6</span>
-<span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
-
-<span class="go">IndexError: list index out of range</span>
-
-<span class="gp">In [2]: </span><span class="o">%</span><span class="n">debug</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py(5)index_error()</span>
-<span class="go">      4     lst = list(&#39;foobar&#39;)</span>
-<span class="go">----&gt; 5     print lst[len(lst)]</span>
-<span class="go">      6</span>
-
-<span class="go">ipdb&gt; list</span>
-<span class="go">      1 &quot;&quot;&quot;Small snippet to raise an IndexError.&quot;&quot;&quot;</span>
-<span class="go">      2</span>
-<span class="go">      3 def index_error():</span>
-<span class="go">      4     lst = list(&#39;foobar&#39;)</span>
-<span class="go">----&gt; 5     print lst[len(lst)]</span>
-<span class="go">      6</span>
-<span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
-<span class="go">      8     index_error()</span>
-<span class="go">      9</span>
-
-<span class="go">ipdb&gt; len(lst)</span>
-<span class="go">6</span>
-<span class="go">ipdb&gt; print lst[len(lst)-1]</span>
-<span class="go">r</span>
-<span class="go">ipdb&gt; quit</span>
-
-<span class="go">In [3]:</span>
-</pre></div>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">IndexError                                Traceback (most recent call last)</span>
+<div class="newline"></div><span class="go">/home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py in &lt;module&gt;()</span>
+<div class="newline"></div><span class="go">      6</span>
+<div class="newline"></div><span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
+<div class="newline"></div><span class="go">----&gt; 8     index_error()</span>
+<div class="newline"></div><span class="go">      9</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">/home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py in index_error()</span>
+<div class="newline"></div><span class="go">      3 def index_error():</span>
+<div class="newline"></div><span class="go">      4     lst = list(&#39;foobar&#39;)</span>
+<div class="newline"></div><span class="go">----&gt; 5     print lst[len(lst)]</span>
+<div class="newline"></div><span class="go">      6</span>
+<div class="newline"></div><span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">IndexError: list index out of range</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="o">%</span><span class="n">debug</span>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py(5)index_error()</span>
+<div class="newline"></div><span class="go">      4     lst = list(&#39;foobar&#39;)</span>
+<div class="newline"></div><span class="go">----&gt; 5     print lst[len(lst)]</span>
+<div class="newline"></div><span class="go">      6</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt; list</span>
+<div class="newline"></div><span class="go">      1 &quot;&quot;&quot;Small snippet to raise an IndexError.&quot;&quot;&quot;</span>
+<div class="newline"></div><span class="go">      2</span>
+<div class="newline"></div><span class="go">      3 def index_error():</span>
+<div class="newline"></div><span class="go">      4     lst = list(&#39;foobar&#39;)</span>
+<div class="newline"></div><span class="go">----&gt; 5     print lst[len(lst)]</span>
+<div class="newline"></div><span class="go">      6</span>
+<div class="newline"></div><span class="go">      7 if __name__ == &#39;__main__&#39;:</span>
+<div class="newline"></div><span class="go">      8     index_error()</span>
+<div class="newline"></div><span class="go">      9</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt; len(lst)</span>
+<div class="newline"></div><span class="go">6</span>
+<div class="newline"></div><span class="go">ipdb&gt; print lst[len(lst)-1]</span>
+<div class="newline"></div><span class="go">r</span>
+<div class="newline"></div><span class="go">ipdb&gt; quit</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">In [3]:</span>
+<div class="newline"></div></pre></div>
 </div>
 <div class="topic">
 <p class="topic-title first">Post-mortem debugging without IPython</p>
@@ -384,71 +384,71 @@ Indeed the code runs, but the filtering does not work well.</p>
 <ul>
 <li><p class="first">Run the script with the debugger:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
-<span class="go">*** Blank or comment</span>
-<span class="go">*** Blank or comment</span>
-<span class="go">*** Blank or comment</span>
-<span class="go">Breakpoint 1 at /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py:4</span>
-<span class="go">NOTE: Enter &#39;c&#39; at the ipdb&gt;  prompt to start your script.</span>
-<span class="go">&gt; &lt;string&gt;(1)&lt;module&gt;()</span>
-</pre></div>
+<div class="newline"></div><span class="go">*** Blank or comment</span>
+<div class="newline"></div><span class="go">*** Blank or comment</span>
+<div class="newline"></div><span class="go">*** Blank or comment</span>
+<div class="newline"></div><span class="go">Breakpoint 1 at /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py:4</span>
+<div class="newline"></div><span class="go">NOTE: Enter &#39;c&#39; at the ipdb&gt;  prompt to start your script.</span>
+<div class="newline"></div><span class="go">&gt; &lt;string&gt;(1)&lt;module&gt;()</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Enter the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file and set a break point at line
 34:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; n</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(4)&lt;module&gt;()</span>
-<span class="go">      3</span>
-<span class="go">1---&gt; 4 import numpy as np</span>
-<span class="go">      5 import scipy as sp</span>
-
-<span class="go">ipdb&gt; b 34</span>
-<span class="go">Breakpoint 2 at /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py:34</span>
-</pre></div>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(4)&lt;module&gt;()</span>
+<div class="newline"></div><span class="go">      3</span>
+<div class="newline"></div><span class="go">1---&gt; 4 import numpy as np</span>
+<div class="newline"></div><span class="go">      5 import scipy as sp</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt; b 34</span>
+<div class="newline"></div><span class="go">Breakpoint 2 at /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py:34</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Continue execution to next breakpoint with <tt class="docutils literal"><span class="pre">c(ont(inue))</span></tt>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; c</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(34)iterated_wiener()</span>
-<span class="go">     33     &quot;&quot;&quot;</span>
-<span class="go">2--&gt; 34     noisy_img = noisy_img</span>
-<span class="go">     35     denoised_img = local_mean(noisy_img, size=size)</span>
-</pre></div>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(34)iterated_wiener()</span>
+<div class="newline"></div><span class="go">     33     &quot;&quot;&quot;</span>
+<div class="newline"></div><span class="go">2--&gt; 34     noisy_img = noisy_img</span>
+<div class="newline"></div><span class="go">     35     denoised_img = local_mean(noisy_img, size=size)</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Step into code with <tt class="docutils literal"><span class="pre">n(ext)</span></tt> and <tt class="docutils literal"><span class="pre">s(tep)</span></tt>: <tt class="docutils literal"><span class="pre">next</span></tt> jumps to the next
 statement in the current execution context, while <tt class="docutils literal"><span class="pre">step</span></tt> will go across
 execution contexts, i.e. enable exploring inside function calls:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; s</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(35)iterated_wiener()</span>
-<span class="go">2    34     noisy_img = noisy_img</span>
-<span class="go">---&gt; 35     denoised_img = local_mean(noisy_img, size=size)</span>
-<span class="go">     36     l_var = local_var(noisy_img, size=size)</span>
-
-<span class="go">ipdb&gt; n</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(36)iterated_wiener()</span>
-<span class="go">     35     denoised_img = local_mean(noisy_img, size=size)</span>
-<span class="go">---&gt; 36     l_var = local_var(noisy_img, size=size)</span>
-<span class="go">     37     for i in range(3):</span>
-</pre></div>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(35)iterated_wiener()</span>
+<div class="newline"></div><span class="go">2    34     noisy_img = noisy_img</span>
+<div class="newline"></div><span class="go">---&gt; 35     denoised_img = local_mean(noisy_img, size=size)</span>
+<div class="newline"></div><span class="go">     36     l_var = local_var(noisy_img, size=size)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt; n</span>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(36)iterated_wiener()</span>
+<div class="newline"></div><span class="go">     35     denoised_img = local_mean(noisy_img, size=size)</span>
+<div class="newline"></div><span class="go">---&gt; 36     l_var = local_var(noisy_img, size=size)</span>
+<div class="newline"></div><span class="go">     37     for i in range(3):</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 <li><p class="first">Step a few lines and explore the local variables:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; n</span>
-<span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(37)iterated_wiener()</span>
-<span class="go">     36     l_var = local_var(noisy_img, size=size)</span>
-<span class="go">---&gt; 37     for i in range(3):</span>
-<span class="go">     38         res = noisy_img - denoised_img</span>
-<span class="go">ipdb&gt; print l_var</span>
-<span class="go">[[5868 5379 5316 ..., 5071 4799 5149]</span>
-<span class="go"> [5013  363  437 ...,  346  262 4355]</span>
-<span class="go"> [5379  410  344 ...,  392  604 3377]</span>
-<span class="go"> ...,</span>
-<span class="go"> [ 435  362  308 ...,  275  198 1632]</span>
-<span class="go"> [ 548  392  290 ...,  248  263 1653]</span>
-<span class="go"> [ 466  789  736 ..., 1835 1725 1940]]</span>
-<span class="go">ipdb&gt; print l_var.min()</span>
-<span class="go">0</span>
-</pre></div>
+<div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(37)iterated_wiener()</span>
+<div class="newline"></div><span class="go">     36     l_var = local_var(noisy_img, size=size)</span>
+<div class="newline"></div><span class="go">---&gt; 37     for i in range(3):</span>
+<div class="newline"></div><span class="go">     38         res = noisy_img - denoised_img</span>
+<div class="newline"></div><span class="go">ipdb&gt; print l_var</span>
+<div class="newline"></div><span class="go">[[5868 5379 5316 ..., 5071 4799 5149]</span>
+<div class="newline"></div><span class="go"> [5013  363  437 ...,  346  262 4355]</span>
+<div class="newline"></div><span class="go"> [5379  410  344 ...,  392  604 3377]</span>
+<div class="newline"></div><span class="go"> ...,</span>
+<div class="newline"></div><span class="go"> [ 435  362  308 ...,  275  198 1632]</span>
+<div class="newline"></div><span class="go"> [ 548  392  290 ...,  248  263 1653]</span>
+<div class="newline"></div><span class="go"> [ 466  789  736 ..., 1835 1725 1940]]</span>
+<div class="newline"></div><span class="go">ipdb&gt; print l_var.min()</span>
+<div class="newline"></div><span class="go">0</span>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>
@@ -459,16 +459,16 @@ doing integer arithmetic.</p>
 <p>When we run the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file, the following
 warnings are raised:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="o">%</span><span class="n">run</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
-<span class="go">Warning: divide by zero encountered in divide</span>
-<span class="go">Warning: divide by zero encountered in divide</span>
-<span class="go">Warning: divide by zero encountered in divide</span>
-</pre></div>
+<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
+<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
+<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>We can turn these warnings in exception, which enables us to do
 post-mortem debugging on them, and find our problem more quickly:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s">&#39;raise&#39;</span><span class="p">)</span>
-<span class="go">Out[3]: </span><span class="p">{</span><span class="s">&#39;divide&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;invalid&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;over&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;under&#39;</span><span class="p">:</span> <span class="s">&#39;ignore&#39;</span><span class="p">}</span>
-</pre></div>
+<div class="newline"></div><span class="go">Out[3]: </span><span class="p">{</span><span class="s">&#39;divide&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;invalid&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;over&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;under&#39;</span><span class="p">:</span> <span class="s">&#39;ignore&#39;</span><span class="p">}</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 </div>
@@ -493,7 +493,7 @@ pass <tt class="xref py py-obj docutils literal"><span class="pre">--ipdb</span>
 <li><p class="first"><strong>Calling the debugger explicitly</strong></p>
 <p>Insert the following line where you want to drop in the debugger:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
-</pre></div>
+<div class="newline"></div></pre></div>
 </div>
 </li>
 </ul>
@@ -638,13 +638,13 @@ segfault.py (12): print_big_array</pre>
 5
 6
 7</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
-    <span class="n">big_array</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">small_array</span><span class="p">,</span>
-                                         <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mf">2e6</span><span class="p">,</span> <span class="mf">2e6</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">big_array</span>
-
-<span class="k">def</span> <span class="nf">print_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
-    <span class="n">big_array</span> <span class="o">=</span> <span class="n">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div>    <span class="n">big_array</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">small_array</span><span class="p">,</span>
+<div class="newline"></div>                                         <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mf">2e6</span><span class="p">,</span> <span class="mf">2e6</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">big_array</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">print_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">big_array</span> <span class="o">=</span> <span class="n">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </td></tr></table></div>
 <p>Thus the segfault happens when printing <tt class="xref py py-obj docutils literal"><span class="pre">big_array[-10:]</span></tt>. The reason is
 simply that <tt class="xref py py-obj docutils literal"><span class="pre">big_array</span></tt> has been allocated with its end outside the
@@ -662,69 +662,69 @@ seeks to answer a problem of actual interest for numerical computing,
 but it does not work... Can you debug it?</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/to_debug.py"><tt class="xref download docutils literal"><span class="pre">to_debug.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">A script to compare different root-finding algorithms.</span>
-
-<span class="sd">This version of the script is buggy and does not execute. It is your task</span>
-<span class="sd">to find an fix these bugs.</span>
-
-<span class="sd">The output of the script sould look like:</span>
-
-<span class="sd">    Benching 1D root-finder optimizers from scipy.optimize:</span>
-<span class="sd">                brenth:   604678 total function calls</span>
-<span class="sd">                brentq:   594454 total function calls</span>
-<span class="sd">                ridder:   778394 total function calls</span>
-<span class="sd">                bisect:  2148380 total function calls</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
-
-<span class="n">FUNCTIONS</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">,</span>  <span class="c"># Dilating map</span>
-             <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span> <span class="c"># Contracting map</span>
-             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="c"># Almost null gradient at the root</span>
-             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c"># Non monotonous function</span>
-             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c"># Fonction with several local maxima</span>
-            <span class="p">)</span>
-
-<span class="n">OPTIMIZERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">optimize</span><span class="o">.</span><span class="n">brenth</span><span class="p">,</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">,</span> <span class="n">optimize</span><span class="o">.</span><span class="n">ridder</span><span class="p">,</span>
-              <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">apply_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Return the number of function calls given an root-finding optimizer, </span>
-<span class="sd">        a function and upper and lower bounds.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">optimizer</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">function_calls</span><span class="p">,</span>
-
-
-<span class="k">def</span> <span class="nf">bench_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Find roots for all the functions, and upper and lower bounds</span>
-<span class="sd">        given and return the total number of function calls.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">apply_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-               <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">compare_optimizers</span><span class="p">(</span><span class="n">optimizers</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Compare all the optimizers given on a grid of a few different</span>
-<span class="sd">        functions all admitting a signle root in zero and a upper and</span>
-<span class="sd">        lower bounds.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">random_a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">random_b</span> <span class="o">=</span>   <span class="o">.</span><span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">param_grid</span> <span class="o">=</span> <span class="n">product</span><span class="p">(</span><span class="n">FUNCTIONS</span><span class="p">,</span> <span class="n">random_a</span><span class="p">,</span> <span class="n">random_b</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;Benching 1D root-finder optimizers from scipy.optimize:&quot;</span>
-    <span class="k">for</span> <span class="n">optimizer</span> <span class="ow">in</span> <span class="n">OPTIMIZERS</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;</span><span class="si">% 20s</span><span class="s">: </span><span class="si">% 8i</span><span class="s"> total function calls&#39;</span> <span class="o">%</span> <span class="p">(</span>
-                    <span class="n">optimizer</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> 
-                    <span class="n">bench_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">)</span>
-                <span class="p">)</span>
-
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">compare_optimizers</span><span class="p">(</span><span class="n">OPTIMIZERS</span><span class="p">)</span>
-</pre></div>
+<div class="newline"></div><span class="sd">A script to compare different root-finding algorithms.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">This version of the script is buggy and does not execute. It is your task</span>
+<div class="newline"></div><span class="sd">to find an fix these bugs.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">The output of the script sould look like:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="sd">    Benching 1D root-finder optimizers from scipy.optimize:</span>
+<div class="newline"></div><span class="sd">                brenth:   604678 total function calls</span>
+<div class="newline"></div><span class="sd">                brentq:   594454 total function calls</span>
+<div class="newline"></div><span class="sd">                ridder:   778394 total function calls</span>
+<div class="newline"></div><span class="sd">                bisect:  2148380 total function calls</span>
+<div class="newline"></div><span class="sd">&quot;&quot;&quot;</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">FUNCTIONS</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">,</span>  <span class="c"># Dilating map</span>
+<div class="newline"></div>             <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span> <span class="c"># Contracting map</span>
+<div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="c"># Almost null gradient at the root</span>
+<div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c"># Non monotonous function</span>
+<div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c"># Fonction with several local maxima</span>
+<div class="newline"></div>            <span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">OPTIMIZERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">optimize</span><span class="o">.</span><span class="n">brenth</span><span class="p">,</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">,</span> <span class="n">optimize</span><span class="o">.</span><span class="n">ridder</span><span class="p">,</span>
+<div class="newline"></div>              <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">apply_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="newline"></div>    <span class="sd">&quot;&quot;&quot; Return the number of function calls given an root-finding optimizer, </span>
+<div class="newline"></div><span class="sd">        a function and upper and lower bounds.</span>
+<div class="newline"></div><span class="sd">    &quot;&quot;&quot;</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">optimizer</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">function_calls</span><span class="p">,</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">bench_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">):</span>
+<div class="newline"></div>    <span class="sd">&quot;&quot;&quot; Find roots for all the functions, and upper and lower bounds</span>
+<div class="newline"></div><span class="sd">        given and return the total number of function calls.</span>
+<div class="newline"></div><span class="sd">    &quot;&quot;&quot;</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">apply_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="newline"></div>               <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">compare_optimizers</span><span class="p">(</span><span class="n">optimizers</span><span class="p">):</span>
+<div class="newline"></div>    <span class="sd">&quot;&quot;&quot; Compare all the optimizers given on a grid of a few different</span>
+<div class="newline"></div><span class="sd">        functions all admitting a signle root in zero and a upper and</span>
+<div class="newline"></div><span class="sd">        lower bounds.</span>
+<div class="newline"></div><span class="sd">    &quot;&quot;&quot;</span>
+<div class="newline"></div>    <span class="n">random_a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">random_b</span> <span class="o">=</span>   <span class="o">.</span><span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">param_grid</span> <span class="o">=</span> <span class="n">product</span><span class="p">(</span><span class="n">FUNCTIONS</span><span class="p">,</span> <span class="n">random_a</span><span class="p">,</span> <span class="n">random_b</span><span class="p">)</span>
+<div class="newline"></div>    <span class="k">print</span> <span class="s">&quot;Benching 1D root-finder optimizers from scipy.optimize:&quot;</span>
+<div class="newline"></div>    <span class="k">for</span> <span class="n">optimizer</span> <span class="ow">in</span> <span class="n">OPTIMIZERS</span><span class="p">:</span>
+<div class="newline"></div>        <span class="k">print</span> <span class="s">&#39;</span><span class="si">% 20s</span><span class="s">: </span><span class="si">% 8i</span><span class="s"> total function calls&#39;</span> <span class="o">%</span> <span class="p">(</span>
+<div class="newline"></div>                    <span class="n">optimizer</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> 
+<div class="newline"></div>                    <span class="n">bench_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">)</span>
+<div class="newline"></div>                <span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="newline"></div>    <span class="n">compare_optimizers</span><span class="p">(</span><span class="n">OPTIMIZERS</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
 </div>
 </div>
 <p><div style="clear: both"></div></p>
