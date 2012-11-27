@@ -30,7 +30,7 @@ div.body h1, div.body h2, div.body h3, div.body h4 {
 
 /* pre */
 div.body pre {
-    font-weight: 600;
+    font-weight: 500;
     font-family: "Droid Sans Mono", "Liberation Mono", Courier, monospace;
     color: black;
     margin-top: 3px;
@@ -43,13 +43,13 @@ div.body pre {
     padding-left: 3.6em;
     text-indent: -3.5em;
 }
-
-
+/* Hack to have indented line wraps */
 pre div.newline {
-    margin-right: -3.5em;
+    margin-right: -4.5em;
+    padding-left: 1em;
     display: inline;
+    visibility: hidden;
 }
-
 
 div.body p {
     margin-bottom : .3em;
