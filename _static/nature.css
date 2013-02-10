@@ -37,17 +37,14 @@ div.body pre {
     /* The following lines ensure that no horizontal scrolling is
      * necessary to see code lines */
     overflow: visible;
-    text-overflow: ellipsis;
-}
-
-div.highlight pre {
-    /* Hack to have indented line wraps */
     white-space: pre-wrap;
+    text-overflow: ellipsis;
+    /* Hack to have indented line wraps */
     padding-left: 3.6em;
     text-indent: -3.5em;
 }
 /* Hack to have indented line wraps */
-div.highlight pre div.newline {
+pre div.newline {
     margin-right: -4.5em;
     padding-left: 1em;
     display: inline-block;

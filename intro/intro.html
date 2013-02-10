@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2012.3 (EuroScipy 2012)',
+        VERSION:     '2013.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -55,7 +55,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Fernando Perez, Emmanuelle Gouillart, Gaël Varoquaux</td>
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Fernando Perez, Emmanuelle Gouillart, Gaël Varoquaux, Valentin Haenel</td>
 </tr>
 </tbody>
 </table>
@@ -232,7 +232,7 @@ embedded devices.</p>
 <div class="newline"></div><span class="go">Hello world</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Getting help:</p>
+<p>Getting help by using the <strong>?</strong> operator after an object:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="k">print</span><span class="err">?</span>
 <div class="newline"></div><span class="go">Type:               builtin_function_or_method</span>
 <div class="newline"></div><span class="go">Base Class:         &lt;type &#39;builtin_function_or_method&#39;&gt;</span>
@@ -261,16 +261,16 @@ file, add the following lines:</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>Now, you can run it in IPython and explore the resulting variables:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="o">%</span><span class="n">run</span> <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
-<div class="newline"></div><span class="go">Hello word</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
+<div class="newline"></div><span class="go">Hello world</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="gp">In [4]: </span><span class="n">s</span>
-<div class="newline"></div><span class="go">Out[4]: </span><span class="s">&#39;Hello word&#39;</span>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">s</span>
+<div class="newline"></div><span class="gr">Out[2]: </span><span class="s">&#39;Hello world&#39;</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="gp">In [5]: </span><span class="o">%</span><span class="n">whos</span>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="o">%</span><span class="n">whos</span>
 <div class="newline"></div><span class="go">Variable   Type    Data/Info</span>
 <div class="newline"></div><span class="go">----------------------------</span>
-<div class="newline"></div><span class="go">s          str     Hello word</span>
+<div class="newline"></div><span class="go">s          str     Hello world</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="topic">
@@ -283,6 +283,133 @@ the script to a set of functions:</p>
 <li>Thinking in terms of functions helps breaking the problem in small
 blocks.</li>
 </ul>
+</div>
+</div>
+<div class="section" id="ipython-tips-and-tricks">
+<h3>1.1.3.3. IPython Tips and Tricks<a class="headerlink" href="#ipython-tips-and-tricks" title="Permalink to this headline">¶</a></h3>
+<p>The IPython user manual contains a wealth of information about using IPython,
+but to get you started we want to give you a quick introduction to three useful
+features: <em>history</em>, <em>magic functions</em>, <em>aliases</em> and <em>tab completion</em>.</p>
+<p>Like a UNIX shell, IPython supports command history. Type <em>up</em> and <em>down</em> to
+navigate previously typed commands:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="o">&lt;</span><span class="n">UP</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>IPython supports so called <em>magic</em> functions by prefixing a command with the
+<tt class="docutils literal"><span class="pre">%</span></tt> character. For example, the <tt class="docutils literal"><span class="pre">run</span></tt> and <tt class="docutils literal"><span class="pre">whos</span></tt> functions from the
+previous section are magic functions. Note that, the setting <tt class="docutils literal"><span class="pre">automagic</span></tt>,
+which is enabled by default, allows you to omit the preceding <tt class="docutils literal"><span class="pre">%</span></tt> sign. Thus,
+you can just type the magic function and it will work.</p>
+<p>Other useful magic functions are:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%cd</span></tt> to change the current directory.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+<div class="newline"></div><span class="go">/tmp</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%timeit</span></tt> allows you to time the execution of short snippets using the
+<tt class="docutils literal"><span class="pre">timeit</span></tt> module from the standard library:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">timeit</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 39 ns per loop</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%cpaste</span></tt> allows you to paste code, especially code from websites which has
+been prefixed with the standard python prompt (e.g. <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt>) or with an ipython
+prompt, (e.g. <tt class="docutils literal"><span class="pre">in</span> <span class="pre">[3]</span></tt>):</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">cpaste</span>
+<div class="newline"></div><span class="go">Pasting code; enter &#39;--&#39; alone on the line to stop or use Ctrl-D.</span>
+<div class="newline"></div><span class="go">:In [3]: timeit x = 10</span>
+<div class="newline"></div><span class="go">:--</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 85.9 ns per loop</span>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">cpaste</span>
+<div class="newline"></div><span class="go">Pasting code; enter &#39;--&#39; alone on the line to stop or use Ctrl-D.</span>
+<div class="newline"></div><span class="go">:&gt;&gt;&gt; timeit x = 10</span>
+<div class="newline"></div><span class="go">:--</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 86 ns per loop</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%debug</span></tt> allows you to enter post-mortem debugging. That is to say, if the
+code you try to execute, raises an exception, using <tt class="docutils literal"><span class="pre">%debug</span></tt> will enter the
+debugger at the point where the exception was thrown.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [7]: </span><span class="n">x</span> <span class="o">===</span> <span class="mi">10</span>
+<div class="newline"></div><span class="go">  File &quot;&lt;ipython-input-6-12fd421b5f28&gt;&quot;, line 1</span>
+<div class="newline"></div><span class="go">    x === 10</span>
+<div class="newline"></div><span class="go">        ^</span>
+<div class="newline"></div><span class="go">SyntaxError: invalid syntax</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [8]: </span><span class="n">debug</span>
+<div class="newline"></div><span class="go">&gt; /home/esc/anaconda/lib/python2.7/site-packages/IPython/core/compilerop.py(87)ast_parse()</span>
+<div class="newline"></div><span class="go">     86         and are passed to the built-in compile function.&quot;&quot;&quot;</span>
+<div class="newline"></div><span class="go">---&gt; 87         return compile(source, filename, symbol, self.flags | PyCF_ONLY_AST, 1)</span>
+<div class="newline"></div><span class="go">     88</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt;locals()</span>
+<div class="newline"></div><span class="go">{&#39;source&#39;: u&#39;x === 10\n&#39;, &#39;symbol&#39;: &#39;exec&#39;, &#39;self&#39;:</span>
+<div class="newline"></div><span class="go">&lt;IPython.core.compilerop.CachingCompiler instance at 0x2ad8ef0&gt;,</span>
+<div class="newline"></div><span class="go">&#39;filename&#39;: &#39;&lt;ipython-input-6-12fd421b5f28&gt;&#39;}</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The built-in IPython cheat-sheet is accessible via the <tt class="docutils literal"><span class="pre">%quickref</span></tt> magic
+function.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A list of all available magic functions is shown when typing <tt class="docutils literal"><span class="pre">%magic</span></tt>.</p>
+</div>
+<p>Furthermore IPython ships with various <em>aliases</em> which emulate common UNIX
+command line tools such as <tt class="docutils literal"><span class="pre">ls</span></tt> to list files, <tt class="docutils literal"><span class="pre">cp</span></tt> to copy files and <tt class="docutils literal"><span class="pre">rm</span></tt> to
+remove files. A list of aliases is shown when typing <tt class="docutils literal"><span class="pre">alias</span></tt>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">alias</span>
+<div class="newline"></div><span class="go">Total number of aliases: 16</span>
+<div class="newline"></div><span class="go">Out[1]:</span>
+<div class="newline"></div><span class="go">[(&#39;cat&#39;, &#39;cat&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;clear&#39;, &#39;clear&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;cp&#39;, &#39;cp -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ldir&#39;, &#39;ls -F -o --color %l | grep /$&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;less&#39;, &#39;less&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lf&#39;, &#39;ls -F -o --color %l | grep ^-&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lk&#39;, &#39;ls -F -o --color %l | grep ^l&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ll&#39;, &#39;ls -F -o --color&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ls&#39;, &#39;ls -F --color&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lx&#39;, &#39;ls -F -o --color %l | grep ^-..x&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;man&#39;, &#39;man&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;mkdir&#39;, &#39;mkdir&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;more&#39;, &#39;more&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;mv&#39;, &#39;mv -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;rm&#39;, &#39;rm -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;rmdir&#39;, &#39;rmdir&#39;)]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Lastly, we would like to mention the <em>tab completion</em> feature, whose
+description we cite directly from the IPython manual:</p>
+<p><em>Tab completion, especially for attributes, is a convenient way to explore the
+structure of any object you’re dealing with. Simply type object_name.&lt;TAB&gt; to
+view the object’s attributes. Besides Python objects and keywords, tab
+completion also works on file and directory names.</em></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">x</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="go">x.bit_length   x.conjugate    x.denominator  x.imag         x.numerator</span>
+<div class="newline"></div><span class="go">x.real</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span>
+<div class="newline"></div><span class="go">x.real.bit_length   x.real.denominator  x.real.numerator</span>
+<div class="newline"></div><span class="go">x.real.conjugate    x.real.imag         x.real.real</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span>
+<div class="newline"></div></pre></div>
 </div>
 <p><div style="clear: both"></div></p>
 </div>
@@ -308,7 +435,7 @@ blocks.</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012.
+        &copy; Copyright 2012,2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

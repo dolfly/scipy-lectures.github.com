@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Modifying &mdash; Scipy lecture notes</title>
+    <title>Scipy-Lecture-Notes &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2012.3 (EuroScipy 2012)',
+        VERSION:     '2013.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -47,20 +47,21 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <p>This repository gathers some lecture notes on the scientific Python
+  <div class="section" id="scipy-lecture-notes">
+<h1>Scipy-Lecture-Notes<a class="headerlink" href="#scipy-lecture-notes" title="Permalink to this headline">¶</a></h1>
+<p>This repository gathers some lecture notes on the scientific Python
 ecosystem that can be used for a full course of scientific computing with
 Python.</p>
-<p>These documents are written with the rest markup language (.rst
+<p>These documents are written with the rest markup language (<tt class="docutils literal"><span class="pre">.rst</span></tt>
 extension) and built using Sphinx: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a>.</p>
-<div class="section" id="modifying">
-<h1>Modifying<a class="headerlink" href="#modifying" title="Permalink to this headline">¶</a></h1>
+<p>You can view the online version at: <a class="reference external" href="http://scipy-lectures.github.com">http://scipy-lectures.github.com</a></p>
 <div class="section" id="reusing-and-distributing">
 <h2>Reusing and distributing<a class="headerlink" href="#reusing-and-distributing" title="Permalink to this headline">¶</a></h2>
-<p>As stated in the LICENSE.txt file, this material comes with no strings
+<p>As stated in the <tt class="docutils literal"><span class="pre">LICENSE.txt</span></tt> file, this material comes with no strings
 attached. Feel free to reuse and modify for your own teaching purposes.</p>
 <p>However, we would like this reference material to be improved over time,
 thus we encourage people to contribute back changes. These will be
-reviewed and edited by the original authors.</p>
+reviewed and edited by the original authors and the editors.</p>
 </div>
 <div class="section" id="building-instructions">
 <h2>Building instructions<a class="headerlink" href="#building-instructions" title="Permalink to this headline">¶</a></h2>
@@ -74,7 +75,7 @@ subsequent builds will be faster.</p>
 <div class="highlight-python"><pre>make pdf</pre>
 </div>
 <p>The pdf builder is a bit pointy and you might have some TeX errors. Tweaking
-the layout in the rst files is usually enough to work around these
+the layout in the <tt class="docutils literal"><span class="pre">*.rst</span></tt> files is usually enough to work around these
 problems.</p>
 <div class="section" id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
@@ -91,63 +92,20 @@ problems.</p>
 </div>
 <div class="section" id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="editorial-policy">
-<h3>Editorial policy<a class="headerlink" href="#editorial-policy" title="Permalink to this headline">¶</a></h3>
-<p>The goal of this material is to provide a concise text useful to
-learning the main features of the scipy ecosystem. If you want
-to contribute to reference material, we suggest that you contribute
-to the documentation of the specific packages that you are
-interested in.</p>
-<p>The HTML output can be used for displaying on screen while
-teaching. The goal is to have the same material displayed as
-in the notes. This is why the HTML version should be kept concise, with
-bullet-lists rather than full-blown paragraphs and sentences.
-In the long run, we would like to build more elaborate discussions. For this,
-the policy is to use the:</p>
-<div class="highlight-python"><pre>.. only:: pdf</pre>
-</div>
-<p>sphinx directive.</p>
-<p>Each chapter should be kept reasonably short: 1 to 2 hours of tutorial.
-The reason is two-fold. First these chapters are atoms that can be
-combined to build a course on scientific computing with Python. Second,
-people&#8217;s attention span does not go much beyond an hour or two, whether
-they are reading a tutorial or following it in a class room.</p>
-</div>
-<div class="section" id="id1">
-<h3>Modifying<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The easiest way to make your own version of this teaching material
-is to fork it under Github, and use the git version control system to
-maintain your own fork. For this, all you have to do is create an account
-on github (this site) and click on the <em>fork</em> button, on the top right of this
-page. You can use git to pull from your <em>fork</em>, and push back to it the
-changes. If you want to contribute the changes back, just fill a
-<em>pull request</em>, using the button on the top of your fork&#8217;s page.</p>
-<p>Please refrain from modifying the Makefile unless it is absolutely
-necessary.</p>
-</div>
-<div class="section" id="figures-and-code-examples">
-<h3>Figures and code examples<a class="headerlink" href="#figures-and-code-examples" title="Permalink to this headline">¶</a></h3>
-<p>The figure should be generated from Python source files. The policy is
-to create an <tt class="docutils literal"><span class="pre">examples</span></tt> directory, in which you put the corresponding
-Python files. Any files with a name starting with <tt class="docutils literal"><span class="pre">plot_</span></tt> will be run
-during the build process, and figures created by matplotlib will be saved
-as images in an <tt class="docutils literal"><span class="pre">auto_examples</span></tt> directory. You can use these to include
-in the document as figures. To display the code snippet, you can use the
-<tt class="docutils literal"><span class="pre">literal-include</span></tt> directive. Any additional data needed by the plotting script
-should be included in the same directory. NB: the code to provide this style of
-plot inclusion was adopted from the scikits.learn project and can be found in
-<tt class="docutils literal"><span class="pre">sphinxext/gen_rst.py</span></tt>.</p>
 <div class="topic">
 <p class="topic-title first">Contributing guide and chapter example</p>
-<p>The directory <cite>guide</cite> contains an example chapter with specific
-instructions on how to contribute:</p>
+<p>The directory <tt class="docutils literal"><span class="pre">guide</span></tt> contains an example chapter with specific
+instructions on how to contribute.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="guide/index.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#id1">How to contribute ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#keeping-it-concise">Keeping it concise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#figures-and-code-examples">Figures and code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#using-markup">Using Markup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#linking-to-package-documentations">Linking to package documentations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#chapter-section-subsection-paragraph">Chapter, section, subsection, paragraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#using-github">Using Github</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#admonitions">Admonitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#clearing-floats">Clearing floats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide/index.html#references">References</a></li>
@@ -157,7 +115,6 @@ instructions on how to contribute:</p>
 </div>
 </div>
 <p><div style="clear: both"></div></p>
-</div>
 </div>
 </div>
 
@@ -179,7 +136,7 @@ instructions on how to contribute:</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012.
+        &copy; Copyright 2012,2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

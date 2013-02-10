@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2012.3 (EuroScipy 2012)',
+        VERSION:     '2013.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -69,7 +69,6 @@ that we will employ are tailored to its needs.</p>
 <li>Numpy</li>
 <li>IPython</li>
 <li>nosetests (<a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">http://readthedocs.org/docs/nose/en/latest/</a>)</li>
-<li>line_profiler (<a class="reference external" href="http://packages.python.org/line_profiler/">http://packages.python.org/line_profiler/</a>)</li>
 <li>pyflakes (<a class="reference external" href="http://pypi.python.org/pypi/pyflakes">http://pypi.python.org/pypi/pyflakes</a>)</li>
 <li>gdb for the C-debugging part.</li>
 </ul>
@@ -77,33 +76,36 @@ that we will employ are tailored to its needs.</p>
 <div class="contents local topic" id="chapters-contents">
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#avoiding-bugs" id="id1">Avoiding bugs</a><ul>
-<li><a class="reference internal" href="#coding-best-practices-to-avoid-getting-in-trouble" id="id2">Coding best practices to avoid getting in trouble</a></li>
-<li><a class="reference internal" href="#pyflakes-fast-static-analysis" id="id3">pyflakes: fast static analysis</a><ul>
-<li><a class="reference internal" href="#running-pyflakes-on-the-current-edited-file" id="id4">Running pyflakes on the current edited file</a></li>
-<li><a class="reference internal" href="#a-type-as-go-spell-checker-like-integration" id="id5">A type-as-go spell-checker like integration</a></li>
+<li><a class="reference internal" href="#avoiding-bugs" id="id2">Avoiding bugs</a><ul>
+<li><a class="reference internal" href="#coding-best-practices-to-avoid-getting-in-trouble" id="id3">Coding best practices to avoid getting in trouble</a></li>
+<li><a class="reference internal" href="#pyflakes-fast-static-analysis" id="id4">pyflakes: fast static analysis</a><ul>
+<li><a class="reference internal" href="#running-pyflakes-on-the-current-edited-file" id="id5">Running pyflakes on the current edited file</a></li>
+<li><a class="reference internal" href="#a-type-as-go-spell-checker-like-integration" id="id6">A type-as-go spell-checker like integration</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugging-workflow" id="id6">Debugging workflow</a></li>
-<li><a class="reference internal" href="#using-the-python-debugger" id="id7">Using the Python debugger</a><ul>
-<li><a class="reference internal" href="#invoking-the-debugger" id="id8">Invoking the debugger</a><ul>
-<li><a class="reference internal" href="#postmortem" id="id9">Postmortem</a></li>
-<li><a class="reference internal" href="#step-by-step-execution" id="id10">Step-by-step execution</a></li>
-<li><a class="reference internal" href="#other-ways-of-starting-a-debugger" id="id11">Other ways of starting a debugger</a></li>
+<li><a class="reference internal" href="#debugging-workflow" id="id7">Debugging workflow</a></li>
+<li><a class="reference internal" href="#using-the-python-debugger" id="id8">Using the Python debugger</a><ul>
+<li><a class="reference internal" href="#invoking-the-debugger" id="id9">Invoking the debugger</a><ul>
+<li><a class="reference internal" href="#postmortem" id="id10">Postmortem</a></li>
+<li><a class="reference internal" href="#step-by-step-execution" id="id11">Step-by-step execution</a></li>
+<li><a class="reference internal" href="#other-ways-of-starting-a-debugger" id="id12">Other ways of starting a debugger</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugger-commands-and-interaction" id="id12">Debugger commands and interaction</a></li>
+<li><a class="reference internal" href="#debugger-commands-and-interaction" id="id13">Debugger commands and interaction</a><ul>
+<li><a class="reference internal" href="#getting-help-when-in-the-debugger" id="id14">Getting help when in the debugger</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugging-segmentation-faults-using-gdb" id="id13">Debugging segmentation faults using gdb</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging-segmentation-faults-using-gdb" id="id15">Debugging segmentation faults using gdb</a></li>
 </ul>
 </div>
 <div class="section" id="avoiding-bugs">
-<h2><a class="toc-backref" href="#id1">2.3.1. Avoiding bugs</a><a class="headerlink" href="#avoiding-bugs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">2.3.1. Avoiding bugs</a><a class="headerlink" href="#avoiding-bugs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="coding-best-practices-to-avoid-getting-in-trouble">
-<h3><a class="toc-backref" href="#id2">2.3.1.1. Coding best practices to avoid getting in trouble</a><a class="headerlink" href="#coding-best-practices-to-avoid-getting-in-trouble" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">2.3.1.1. Coding best practices to avoid getting in trouble</a><a class="headerlink" href="#coding-best-practices-to-avoid-getting-in-trouble" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Brian Kernighan</p>
 <p class="last"><em>“Everyone knows that debugging is twice as hard as writing a
@@ -129,22 +131,29 @@ mathematics names)</li>
 </ul>
 </div>
 <div class="section" id="pyflakes-fast-static-analysis">
-<h3><a class="toc-backref" href="#id3">2.3.1.2. pyflakes: fast static analysis</a><a class="headerlink" href="#pyflakes-fast-static-analysis" title="Permalink to this headline">¶</a></h3>
-<p>They are several static analysis tools in Python; to name a few:
-<a class="reference external" href="http://www.logilab.org/857">pylint</a>,
-<a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a>, and
-<a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a>.
-Here we focus on pyflakes, which is the simplest tool.</p>
+<h3><a class="toc-backref" href="#id4">2.3.1.2. pyflakes: fast static analysis</a><a class="headerlink" href="#pyflakes-fast-static-analysis" title="Permalink to this headline">¶</a></h3>
+<p>They are several static analysis tools in Python; to name a few:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.logilab.org/857">pylint</a></li>
+<li><a class="reference external" href="http://pychecker.sourceforge.net/">pychecker</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/pep8">pep8</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/flake8">flake8</a></li>
+</ul>
+<p>Here we focus on <tt class="xref py py-obj docutils literal"><span class="pre">pyflakes</span></tt>, which is the simplest tool.</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>Fast, simple</strong></li>
 <li>Detects syntax errors, missing imports, typos on names.</li>
 </ul>
 </div></blockquote>
-<p>Integrating pyflakes in your editor is highly recommended, it <strong>does
-yield productivity gains</strong>.</p>
+<p>Another good recommendation is the <tt class="xref py py-obj docutils literal"><span class="pre">flake8</span></tt> tool which is a combination of
+pyflakes and pep8. Thus, in addition to the types of errors that pyflakes
+catches, flake8 detects violations of the recommendation in <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP8</a> style guide.</p>
+<p>Integrating pyflakes (or flake8) in your editor or IDE is highly
+recommended, it <strong>does yield productivity gains</strong>.</p>
 <div class="section" id="running-pyflakes-on-the-current-edited-file">
-<h4><a class="toc-backref" href="#id4">2.3.1.2.1. Running pyflakes on the current edited file</a><a class="headerlink" href="#running-pyflakes-on-the-current-edited-file" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id5">2.3.1.2.1. Running pyflakes on the current edited file</a><a class="headerlink" href="#running-pyflakes-on-the-current-edited-file" title="Permalink to this headline">¶</a></h4>
 <p>You can bind a key to run pyflakes in the current buffer.</p>
 <ul>
 <li><p class="first"><strong>In kate</strong>
@@ -200,17 +209,25 @@ In your <tt class="xref py py-obj docutils literal"><span class="pre">emacs</spa
 </ul>
 </div>
 <div class="section" id="a-type-as-go-spell-checker-like-integration">
-<h4><a class="toc-backref" href="#id5">2.3.1.2.2. A type-as-go spell-checker like integration</a><a class="headerlink" href="#a-type-as-go-spell-checker-like-integration" title="Permalink to this headline">¶</a></h4>
-<img alt="../../_images/vim_pyflakes.png" class="align-right" src="../../_images/vim_pyflakes.png" />
+<h4><a class="toc-backref" href="#id6">2.3.1.2.2. A type-as-go spell-checker like integration</a><a class="headerlink" href="#a-type-as-go-spell-checker-like-integration" title="Permalink to this headline">¶</a></h4>
 <ul>
-<li><p class="first"><strong>In vim</strong>
-Use the pyflakes.vim plugin:</p>
+<li><p class="first"><strong>In vim</strong></p>
+<ul>
+<li><p class="first">Use the pyflakes.vim plugin:</p>
 <ol class="arabic simple">
 <li>download the zip file from
 <a class="reference external" href="http://www.vim.org/scripts/script.php?script_id=2441">http://www.vim.org/scripts/script.php?script_id=2441</a></li>
-<li>extract the files in <tt class="xref py py-obj docutils literal"><span class="pre">vim/ftplugin/python</span></tt></li>
-<li>make sure your vimrc has &#8220;filetype plugin indent on&#8221;</li>
+<li>extract the files in <tt class="docutils literal"><span class="pre">~/.vim/ftplugin/python</span></tt></li>
+<li>make sure your vimrc has <tt class="docutils literal"><span class="pre">filetype</span> <span class="pre">plugin</span> <span class="pre">indent</span> <span class="pre">on</span></tt></li>
 </ol>
+<img alt="../../_images/vim_pyflakes.png" src="../../_images/vim_pyflakes.png" />
+</li>
+<li><p class="first">Alternatively: use the <a class="reference external" href="https://github.com/scrooloose/syntastic">syntastic</a>
+plugin. This can be configured to use <tt class="docutils literal"><span class="pre">flake8</span></tt> too and also handles
+on-the-fly checking for many other languages.</p>
+<img alt="../../_images/vim_syntastic.png" src="../../_images/vim_syntastic.png" />
+</li>
+</ul>
 </li>
 <li><p class="first"><strong>In emacs</strong>
 Use the flymake mode with pyflakes, documented on
@@ -236,7 +253,7 @@ your .emacs file:</p>
 </div>
 </div>
 <div class="section" id="debugging-workflow">
-<h2><a class="toc-backref" href="#id6">2.3.2. Debugging workflow</a><a class="headerlink" href="#debugging-workflow" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">2.3.2. Debugging workflow</a><a class="headerlink" href="#debugging-workflow" title="Permalink to this headline">¶</a></h2>
 <p>I you do have a non trivial bug, this is when debugging strategies kick
 in. There is no silver bullet. Yet, strategies help:</p>
 <blockquote>
@@ -271,7 +288,7 @@ the corresponding code to your test suite.</p>
 </div>
 </div>
 <div class="section" id="using-the-python-debugger">
-<h2><a class="toc-backref" href="#id7">2.3.3. Using the Python debugger</a><a class="headerlink" href="#using-the-python-debugger" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">2.3.3. Using the Python debugger</a><a class="headerlink" href="#using-the-python-debugger" title="Permalink to this headline">¶</a></h2>
 <p>The python debugger, <tt class="docutils literal"><span class="pre">pdb</span></tt>: <a class="reference external" href="http://docs.python.org/library/pdb.html">http://docs.python.org/library/pdb.html</a>,
 allows you to inspect your code interactively.</p>
 <p>Specifically it allows you to:</p>
@@ -290,7 +307,7 @@ allows you to inspect your code interactively.</p>
 inspect runtime, it is often more efficient to use the debugger.</p>
 </div>
 <div class="section" id="invoking-the-debugger">
-<h3><a class="toc-backref" href="#id8">2.3.3.1. Invoking the debugger</a><a class="headerlink" href="#invoking-the-debugger" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">2.3.3.1. Invoking the debugger</a><a class="headerlink" href="#invoking-the-debugger" title="Permalink to this headline">¶</a></h3>
 <p>Ways to launch the debugger:</p>
 <ol class="arabic simple">
 <li>Postmortem, launch debugger after module errors.</li>
@@ -298,10 +315,10 @@ inspect runtime, it is often more efficient to use the debugger.</p>
 <li>Call the debugger inside the module</li>
 </ol>
 <div class="section" id="postmortem">
-<h4><a class="toc-backref" href="#id9">2.3.3.1.1. Postmortem</a><a class="headerlink" href="#postmortem" title="Permalink to this headline">¶</a></h4>
-<p><strong>Situation</strong>: You&#8217;re working in ipython and you get a traceback.</p>
+<h4><a class="toc-backref" href="#id10">2.3.3.1.1. Postmortem</a><a class="headerlink" href="#postmortem" title="Permalink to this headline">¶</a></h4>
+<p><strong>Situation</strong>: You&#8217;re working in IPython and you get a traceback.</p>
 <p>Here we debug the file <a class="reference download internal" href="../../_downloads/index_error.py"><tt class="xref download docutils literal"><span class="pre">index_error.py</span></tt></a>. When running it, an
-<tt class="xref py py-obj docutils literal"><span class="pre">IndexError</span></tt> is raised. Type <tt class="docutils literal"><span class="pre">%debug</span></tt> and drop into the debugger.</p>
+<tt class="xref py py-class docutils literal"><span class="pre">IndexError</span></tt> is raised. Type <tt class="docutils literal"><span class="pre">%debug</span></tt> and drop into the debugger.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">index_error</span><span class="o">.</span><span class="n">py</span>
 <div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
 <div class="newline"></div><span class="go">IndexError                                Traceback (most recent call last)</span>
@@ -350,7 +367,7 @@ inspect runtime, it is often more efficient to use the debugger.</p>
 <p class="topic-title first">Post-mortem debugging without IPython</p>
 <p>In some situations you cannot use IPython, for instance to debug a
 script that wants to be called from the command line. In this case,
-you can call the script with <tt class="xref py py-obj docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pdb</span> <span class="pre">script.py</span></tt>:</p>
+you can call the script with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pdb</span> <span class="pre">script.py</span></tt>:</p>
 <div class="highlight-python"><pre>$ python -m pdb index_error.py
 &gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/index_error.py(1)&lt;module&gt;()
 -&gt; """Small snippet to raise an IndexError."""
@@ -377,12 +394,13 @@ Running 'cont' or 'step' will restart the program
 </div>
 </div>
 <div class="section" id="step-by-step-execution">
-<h4><a class="toc-backref" href="#id10">2.3.3.1.2. Step-by-step execution</a><a class="headerlink" href="#step-by-step-execution" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">2.3.3.1.2. Step-by-step execution</a><a class="headerlink" href="#step-by-step-execution" title="Permalink to this headline">¶</a></h4>
 <p><strong>Situation</strong>: You believe a bug exists in a module but are not sure where.</p>
 <p>For instance we are trying to debug <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a>.
 Indeed the code runs, but the filtering does not work well.</p>
 <ul>
-<li><p class="first">Run the script with the debugger:</p>
+<li><p class="first">Run the script in IPython with the debugger using <tt class="docutils literal"><span class="pre">%run</span> <span class="pre">-d</span>
+<span class="pre">wiener_filtering.p</span></tt> :</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
 <div class="newline"></div><span class="go">*** Blank or comment</span>
 <div class="newline"></div><span class="go">*** Blank or comment</span>
@@ -393,8 +411,7 @@ Indeed the code runs, but the filtering does not work well.</p>
 <div class="newline"></div></pre></div>
 </div>
 </li>
-<li><p class="first">Enter the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file and set a break point at line
-34:</p>
+<li><p class="first">Set a break point at line 34 using <tt class="docutils literal"><span class="pre">b</span> <span class="pre">34</span></tt>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">ipdb&gt; n</span>
 <div class="newline"></div><span class="go">&gt; /home/varoquau/dev/scipy-lecture-notes/advanced/debugging_optimizing/wiener_filtering.py(4)&lt;module&gt;()</span>
 <div class="newline"></div><span class="go">      3</span>
@@ -459,36 +476,58 @@ doing integer arithmetic.</p>
 <p>When we run the <a class="reference download internal" href="../../_downloads/wiener_filtering.py"><tt class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></tt></a> file, the following
 warnings are raised:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="o">%</span><span class="n">run</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
-<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
-<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
-<div class="newline"></div><span class="go">Warning: divide by zero encountered in divide</span>
+<div class="newline"></div><span class="go">wiener_filtering.py:40: RuntimeWarning: divide by zero encountered in divide</span>
+<div class="newline"></div><span class="go">    noise_level = (1 - noise/l_var )</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>We can turn these warnings in exception, which enables us to do
 post-mortem debugging on them, and find our problem more quickly:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s">&#39;raise&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="go">Out[3]: </span><span class="p">{</span><span class="s">&#39;divide&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;invalid&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;over&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;under&#39;</span><span class="p">:</span> <span class="s">&#39;ignore&#39;</span><span class="p">}</span>
+<div class="newline"></div><span class="gr">Out[3]: </span><span class="p">{</span><span class="s">&#39;divide&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;invalid&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;over&#39;</span><span class="p">:</span> <span class="s">&#39;print&#39;</span><span class="p">,</span> <span class="s">&#39;under&#39;</span><span class="p">:</span> <span class="s">&#39;ignore&#39;</span><span class="p">}</span>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="o">%</span><span class="n">run</span> <span class="n">wiener_filtering</span><span class="o">.</span><span class="n">py</span>
+<div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">FloatingPointError                        Traceback (most recent call last)</span>
+<div class="newline"></div><span class="go">/home/esc/anaconda/lib/python2.7/site-packages/IPython/utils/py3compat.pyc in execfile(fname, *where)</span>
+<div class="newline"></div><span class="go">    176             else:</span>
+<div class="newline"></div><span class="go">    177                 filename = fname</span>
+<div class="newline"></div><span class="go">--&gt; 178             __builtin__.execfile(filename, *where)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">/home/esc/physique-cuso-python-2013/scipy-lecture-notes/advanced/debugging/wiener_filtering.py in &lt;module&gt;()</span>
+<div class="newline"></div><span class="go">     55 pl.matshow(noisy_lena[cut], cmap=pl.cm.gray)</span>
+<div class="newline"></div><span class="go">     56</span>
+<div class="newline"></div><span class="go">---&gt; 57 denoised_lena = iterated_wiener(noisy_lena)</span>
+<div class="newline"></div><span class="go">     58 pl.matshow(denoised_lena[cut], cmap=pl.cm.gray)</span>
+<div class="newline"></div><span class="go">     59</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">/home/esc/physique-cuso-python-2013/scipy-lecture-notes/advanced/debugging/wiener_filtering.py in iterated_wiener(noisy_img, size)</span>
+<div class="newline"></div><span class="go">     38         res = noisy_img - denoised_img</span>
+<div class="newline"></div><span class="go">     39         noise = (res**2).sum()/res.size</span>
+<div class="newline"></div><span class="go">---&gt; 40         noise_level = (1 - noise/l_var )</span>
+<div class="newline"></div><span class="go">     41         noise_level[noise_level&lt;0] = 0</span>
+<div class="newline"></div><span class="go">     42         denoised_img += noise_level*res</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">FloatingPointError: divide by zero encountered in divide</span>
 <div class="newline"></div></pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="other-ways-of-starting-a-debugger">
-<h4><a class="toc-backref" href="#id11">2.3.3.1.3. Other ways of starting a debugger</a><a class="headerlink" href="#other-ways-of-starting-a-debugger" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">2.3.3.1.3. Other ways of starting a debugger</a><a class="headerlink" href="#other-ways-of-starting-a-debugger" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first"><strong>Raising an exception as a poor man break point</strong></p>
 <p>If you find it tedious to note the line number to set a break point,
 you can simply raise an exception at the point that you want to
-inspect and use ipython&#8217;s <tt class="xref py py-obj docutils literal"><span class="pre">%debug</span></tt>. Note that in this case you cannot
+inspect and use IPython&#8217;s <tt class="docutils literal"><span class="pre">%debug</span></tt>. Note that in this case you cannot
 step or continue the execution.</p>
 </li>
 <li><p class="first"><strong>Debugging test failures using nosetests</strong></p>
-<p>You can run <tt class="xref py py-obj docutils literal"><span class="pre">nosetests</span> <span class="pre">--pdb</span></tt> to drop in post-mortem debugging on
-exceptions, and <tt class="xref py py-obj docutils literal"><span class="pre">nosetests</span> <span class="pre">--pdb-failure</span></tt> to inspect test failures
+<p>You can run <tt class="docutils literal"><span class="pre">nosetests</span> <span class="pre">--pdb</span></tt> to drop in post-mortem debugging on
+exceptions, and <tt class="docutils literal"><span class="pre">nosetests</span> <span class="pre">--pdb-failure</span></tt> to inspect test failures
 using the debugger.</p>
 <p>In addition, you can use the IPython interface for the debugger in nose
 by installing the nose plugin
 <a class="reference external" href="http://pypi.python.org/pypi/ipdbplugin">ipdbplugin</a>. You can than
-pass <tt class="xref py py-obj docutils literal"><span class="pre">--ipdb</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">--ipdb-failure</span></tt> options to nosetests.</p>
+pass <tt class="docutils literal"><span class="pre">--ipdb</span></tt> and <tt class="docutils literal"><span class="pre">--ipdb-failure</span></tt> options to nosetests.</p>
 </li>
 <li><p class="first"><strong>Calling the debugger explicitly</strong></p>
 <p>Insert the following line where you want to drop in the debugger:</p>
@@ -499,22 +538,26 @@ pass <tt class="xref py py-obj docutils literal"><span class="pre">--ipdb</span>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">When running <tt class="xref py py-obj docutils literal"><span class="pre">nosetests</span></tt>, the output is captured, and thus it seems
-that the debugger does not work. Simply run the nosetests with the <tt class="xref py py-obj docutils literal"><span class="pre">-s</span></tt>
+<p class="last">When running <tt class="docutils literal"><span class="pre">nosetests</span></tt>, the output is captured, and thus it seems
+that the debugger does not work. Simply run the nosetests with the <tt class="docutils literal"><span class="pre">-s</span></tt>
 flag.</p>
 </div>
 <div class="topic">
-<p class="topic-title first">Graphical debuggers</p>
-<p>For stepping through code and inspecting variables, you might find it
+<p class="topic-title first">Graphical debuggers and alternatives</p>
+<ul class="simple">
+<li>For stepping through code and inspecting variables, you might find it
 more convenient to use a graphical debugger such as
-<a class="reference external" href="http://winpdb.org/">winpdb</a>.</p>
-<p>Alternatively, <a class="reference external" href="http://pypi.python.org/pypi/pudb">pudb</a> is a good
-semi-graphical debugger with a text user interface in the console.</p>
+<a class="reference external" href="http://winpdb.org/">winpdb</a>.</li>
+<li>Alternatively, <a class="reference external" href="http://pypi.python.org/pypi/pudb">pudb</a> is a good
+semi-graphical debugger with a text user interface in the console.</li>
+<li>Also, the <a class="reference external" href="http://code.google.com/p/pydbgr/">pydbgr</a> project is probably
+worth looking at.</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="section" id="debugger-commands-and-interaction">
-<h3><a class="toc-backref" href="#id12">2.3.3.2. Debugger commands and interaction</a><a class="headerlink" href="#debugger-commands-and-interaction" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">2.3.3.2. Debugger commands and interaction</a><a class="headerlink" href="#debugger-commands-and-interaction" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -543,7 +586,7 @@ semi-graphical debugger with a text user interface in the console.</p>
 <td>Print the local variables</td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">!command</span></tt></td>
-<td>Exectute the given <strong>Python</strong> command (by opposition to pdb commands</td>
+<td>Execute the given <strong>Python</strong> command (by opposition to pdb commands</td>
 </tr>
 </tbody>
 </table>
@@ -555,89 +598,112 @@ you cannot override the variables in the current frame with the same
 name: <strong>use different names then your local variable when typing code
 in the debugger</strong>.</p>
 </div>
+<div class="section" id="getting-help-when-in-the-debugger">
+<h4><a class="toc-backref" href="#id14">2.3.3.2.1. Getting help when in the debugger</a><a class="headerlink" href="#getting-help-when-in-the-debugger" title="Permalink to this headline">¶</a></h4>
+<p>Type <tt class="docutils literal"><span class="pre">h</span></tt> or <tt class="docutils literal"><span class="pre">help</span></tt> to access the interactive help:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">ipdb&gt; help</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">Documented commands (type help &lt;topic&gt;):</span>
+<div class="newline"></div><span class="go">========================================</span>
+<div class="newline"></div><span class="go">EOF    bt         cont      enable  jump  pdef   r        tbreak   w</span>
+<div class="newline"></div><span class="go">a      c          continue  exit    l     pdoc   restart  u        whatis</span>
+<div class="newline"></div><span class="go">alias  cl         d         h       list  pinfo  return   unalias  where</span>
+<div class="newline"></div><span class="go">args   clear      debug     help    n     pp     run      unt</span>
+<div class="newline"></div><span class="go">b      commands   disable   ignore  next  q      s        until</span>
+<div class="newline"></div><span class="go">break  condition  down      j       p     quit   step     up</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">Miscellaneous help topics:</span>
+<div class="newline"></div><span class="go">==========================</span>
+<div class="newline"></div><span class="go">exec  pdb</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">Undocumented commands:</span>
+<div class="newline"></div><span class="go">======================</span>
+<div class="newline"></div><span class="go">retval  rv</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="debugging-segmentation-faults-using-gdb">
-<h2><a class="toc-backref" href="#id13">2.3.4. Debugging segmentation faults using gdb</a><a class="headerlink" href="#debugging-segmentation-faults-using-gdb" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">2.3.4. Debugging segmentation faults using gdb</a><a class="headerlink" href="#debugging-segmentation-faults-using-gdb" title="Permalink to this headline">¶</a></h2>
 <p>If you have a segmentation fault, you cannot debug it with pdb, as it
 crashes the Python interpreter before it can drop in the debugger.
 Similarly, if you have a bug in C code embedded in Python, pdb is
 useless. For this we turn to the gnu debugger,
 <a class="reference external" href="http://www.gnu.org/s/gdb/">gdb</a>, available on Linux.</p>
 <p>Before we start with gdb, let us add a few Python-specific tools to it.
-For this we add a few macros to our <tt class="xref py py-obj docutils literal"><span class="pre">gbdinit</span></tt>. The optimal choice of
+For this we add a few macros to our <tt class="docutils literal"><span class="pre">~/.gbdinit</span></tt>. The optimal choice of
 macro depends on your Python version and your gdb version. I have added a
 simplified version in <a class="reference download internal" href="../../_downloads/gdbinit"><tt class="xref download docutils literal"><span class="pre">gdbinit</span></tt></a>, but feel free to read
 <a class="reference external" href="http://wiki.python.org/moin/DebuggingWithGdb">DebuggingWithGdb</a>.</p>
 <p>To debug with gdb the Python script <a class="reference download internal" href="../../_downloads/segfault.py"><tt class="xref download docutils literal"><span class="pre">segfault.py</span></tt></a>, we can run the
-script in gdb as follows:</p>
-<div class="highlight-python"><pre>$ gdb python
-...
-(gdb) run segfault.py
-Starting program: /usr/bin/python segfault.py
-[Thread debugging using libthread_db enabled]
-
-Program received signal SIGSEGV, Segmentation fault.
-_strided_byte_copy (dst=0x8537478 "\360\343G", outstrides=4, src=
-    0x86c0690 &lt;Address 0x86c0690 out of bounds&gt;, instrides=32, N=3,
-    elsize=4)
-        at numpy/core/src/multiarray/ctors.c:365
-365            _FAST_MOVE(Int32);
-(gdb)</pre>
+script in gdb as follows</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gdb python
+<div class="newline"></div><span class="go">...</span>
+<div class="newline"></div><span class="go">(gdb) run segfault.py</span>
+<div class="newline"></div><span class="go">Starting program: /usr/bin/python segfault.py</span>
+<div class="newline"></div><span class="go">[Thread debugging using libthread_db enabled]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">Program received signal SIGSEGV, Segmentation fault.</span>
+<div class="newline"></div><span class="go">_strided_byte_copy (dst=0x8537478 &quot;\360\343G&quot;, outstrides=4, src=</span>
+<div class="newline"></div><span class="go">    0x86c0690 &lt;Address 0x86c0690 out of bounds&gt;, instrides=32, N=3,</span>
+<div class="newline"></div><span class="go">    elsize=4)</span>
+<div class="newline"></div><span class="go">        at numpy/core/src/multiarray/ctors.c:365</span>
+<div class="newline"></div><span class="go">365            _FAST_MOVE(Int32);</span>
+<div class="newline"></div><span class="go">(gdb)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>We get a segfault, and gdb captures it for post-mortem debugging in the C
 level stack (not the Python call stack). We can debug the C call stack
 using gdb&#8217;s commands:</p>
-<div class="highlight-python"><pre>(gdb) up
-#1  0x004af4f5 in _copy_from_same_shape (dest=&lt;value optimized out&gt;,
-    src=&lt;value optimized out&gt;, myfunc=0x496780 &lt;_strided_byte_copy&gt;,
-    swap=0)
-at numpy/core/src/multiarray/ctors.c:748
-748         myfunc(dit-&gt;dataptr, dest-&gt;strides[maxaxis],</pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">(gdb) up</span>
+<div class="newline"></div><span class="gp">#</span>1  0x004af4f5 in _copy_from_same_shape <span class="o">(</span><span class="nv">dest</span><span class="o">=</span>&lt;value optimized out&gt;,
+<div class="newline"></div><span class="go">    src=&lt;value optimized out&gt;, myfunc=0x496780 &lt;_strided_byte_copy&gt;,</span>
+<div class="newline"></div><span class="go">    swap=0)</span>
+<div class="newline"></div><span class="go">at numpy/core/src/multiarray/ctors.c:748</span>
+<div class="newline"></div><span class="go">748         myfunc(dit-&gt;dataptr, dest-&gt;strides[maxaxis],</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>As you can see, right now, we are in the C code of numpy. We would like
 to know what is the Python code that triggers this segfault, so we go up
 the stack until we hit the Python execution loop:</p>
-<div class="highlight-python"><pre>(gdb) up
-#8  0x080ddd23 in call_function (f=
-    Frame 0x85371ec, for file /home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py, line 156, in _leading_trailing (a=&lt;numpy.ndarray at remote 0x85371b0&gt;, _nc=&lt;module at remote 0xb7f93a64&gt;), throwflag=0)
-    at ../Python/ceval.c:3750
-3750    ../Python/ceval.c: No such file or directory.
-        in ../Python/ceval.c
-
-(gdb) up
-#9  PyEval_EvalFrameEx (f=
-    Frame 0x85371ec, for file /home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py, line 156, in _leading_trailing (a=&lt;numpy.ndarray at remote 0x85371b0&gt;, _nc=&lt;module at remote 0xb7f93a64&gt;), throwflag=0)
-    at ../Python/ceval.c:2412
-2412    in ../Python/ceval.c
-(gdb)</pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">(gdb) up</span>
+<div class="newline"></div><span class="gp">#</span>8  0x080ddd23 in call_function <span class="o">(</span><span class="nv">f</span><span class="o">=</span>
+<div class="newline"></div><span class="go">    Frame 0x85371ec, for file /home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py, line 156, in _leading_trailing (a=&lt;numpy.ndarray at remote 0x85371b0&gt;, _nc=&lt;module at remote 0xb7f93a64&gt;), throwflag=0)</span>
+<div class="newline"></div><span class="go">    at ../Python/ceval.c:3750</span>
+<div class="newline"></div><span class="go">3750    ../Python/ceval.c: No such file or directory.</span>
+<div class="newline"></div><span class="go">        in ../Python/ceval.c</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">(gdb) up</span>
+<div class="newline"></div><span class="gp">#</span>9  PyEval_EvalFrameEx <span class="o">(</span><span class="nv">f</span><span class="o">=</span>
+<div class="newline"></div><span class="go">    Frame 0x85371ec, for file /home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py, line 156, in _leading_trailing (a=&lt;numpy.ndarray at remote 0x85371b0&gt;, _nc=&lt;module at remote 0xb7f93a64&gt;), throwflag=0)</span>
+<div class="newline"></div><span class="go">    at ../Python/ceval.c:2412</span>
+<div class="newline"></div><span class="go">2412    in ../Python/ceval.c</span>
+<div class="newline"></div><span class="go">(gdb)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>Once we are in the Python execution loop, we can use our special Python
 helper function. For instance we can find the corresponding Python code:</p>
-<div class="highlight-python"><pre>(gdb) pyframe
-/home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py (158): _leading_trailing
-(gdb)</pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">(gdb) pyframe</span>
+<div class="newline"></div><span class="go">/home/varoquau/usr/lib/python2.6/site-packages/numpy/core/arrayprint.py (158): _leading_trailing</span>
+<div class="newline"></div><span class="go">(gdb)</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>This is numpy code, we need to go up until we find code that we have
 written:</p>
-<div class="highlight-python"><pre>(gdb) up
-...
-(gdb) up
-#34 0x080dc97a in PyEval_EvalFrameEx (f=
-    Frame 0x82f064c, for file segfault.py, line 11, in print_big_array (small_array=&lt;numpy.ndarray at remote 0x853ecf0&gt;, big_array=&lt;numpy.ndarray at remote 0x853ed20&gt;), throwflag=0) at ../Python/ceval.c:1630
-1630    ../Python/ceval.c: No such file or directory.
-        in ../Python/ceval.c
-(gdb) pyframe
-segfault.py (12): print_big_array</pre>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">(gdb) up</span>
+<div class="newline"></div><span class="go">...</span>
+<div class="newline"></div><span class="go">(gdb) up</span>
+<div class="newline"></div><span class="gp">#</span>34 0x080dc97a in PyEval_EvalFrameEx <span class="o">(</span><span class="nv">f</span><span class="o">=</span>
+<div class="newline"></div><span class="go">    Frame 0x82f064c, for file segfault.py, line 11, in print_big_array (small_array=&lt;numpy.ndarray at remote 0x853ecf0&gt;, big_array=&lt;numpy.ndarray at remote 0x853ed20&gt;), throwflag=0) at ../Python/ceval.c:1630</span>
+<div class="newline"></div><span class="go">1630    ../Python/ceval.c: No such file or directory.</span>
+<div class="newline"></div><span class="go">        in ../Python/ceval.c</span>
+<div class="newline"></div><span class="go">(gdb) pyframe</span>
+<div class="newline"></div><span class="go">segfault.py (12): print_big_array</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>The corresponding code is:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
+<div class="highlight-py"><div class="highlight"><pre><span class="k">def</span> <span class="nf">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
 <div class="newline"></div>    <span class="n">big_array</span> <span class="o">=</span> <span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span><span class="n">small_array</span><span class="p">,</span>
 <div class="newline"></div>                                         <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mf">2e6</span><span class="p">,</span> <span class="mf">2e6</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
 <div class="newline"></div>    <span class="k">return</span> <span class="n">big_array</span>
@@ -645,9 +711,9 @@ segfault.py (12): print_big_array</pre>
 <div class="newline"></div><span class="k">def</span> <span class="nf">print_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">):</span>
 <div class="newline"></div>    <span class="n">big_array</span> <span class="o">=</span> <span class="n">make_big_array</span><span class="p">(</span><span class="n">small_array</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
-</td></tr></table></div>
-<p>Thus the segfault happens when printing <tt class="xref py py-obj docutils literal"><span class="pre">big_array[-10:]</span></tt>. The reason is
-simply that <tt class="xref py py-obj docutils literal"><span class="pre">big_array</span></tt> has been allocated with its end outside the
+</div>
+<p>Thus the segfault happens when printing <tt class="docutils literal"><span class="pre">big_array[-10:]</span></tt>. The reason is
+simply that <tt class="docutils literal"><span class="pre">big_array</span></tt> has been allocated with its end outside the
 program memory.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -750,7 +816,7 @@ but it does not work... Can you debug it?</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012.
+        &copy; Copyright 2012,2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

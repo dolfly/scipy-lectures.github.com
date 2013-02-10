@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.6. Scipy : high-level scientific computing &mdash; Scipy lecture notes</title>
+    <title>1.5. Scipy : high-level scientific computing &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2012.3 (EuroScipy 2012)',
+        VERSION:     '2013.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,18 +27,18 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../index.html" />
     <link rel="up" title="1. Getting started with Python for science" href="index.html" />
-    <link rel="next" title="1.6.11.13. Maximum wind speed prediction at the Sprogø station" href="summary-exercises/stats-interpolate.html" />
-    <link rel="prev" title="1.5. Matplotlib: plotting" href="matplotlib/matplotlib.html" /> 
+    <link rel="next" title="1.5.11.13. Maximum wind speed prediction at the Sprogø station" href="summary-exercises/stats-interpolate.html" />
+    <link rel="prev" title="1.4. Matplotlib: plotting" href="matplotlib/matplotlib.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="summary-exercises/stats-interpolate.html" title="1.6.11.13. Maximum wind speed prediction at the Sprogø station"
+          <a href="summary-exercises/stats-interpolate.html" title="1.5.11.13. Maximum wind speed prediction at the Sprogø station"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="matplotlib/matplotlib.html" title="1.5. Matplotlib: plotting"
+          <a href="matplotlib/matplotlib.html" title="1.4. Matplotlib: plotting"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">1. Getting started with Python for science</a> &raquo;</li> 
@@ -50,7 +50,7 @@
           <div class="body">
             
   <div class="section" id="scipy-high-level-scientific-computing">
-<h1>1.6. Scipy : high-level scientific computing<a class="headerlink" href="#scipy-high-level-scientific-computing" title="Permalink to this headline">¶</a></h1>
+<h1>1.5. Scipy : high-level scientific computing<a class="headerlink" href="#scipy-high-level-scientific-computing" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -86,23 +86,12 @@ and tested, and should therefore be used when possible.</p>
 <li><a class="reference internal" href="#linear-algebra-operations-scipy-linalg" id="id3">Linear algebra operations: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a></a></li>
 <li><a class="reference internal" href="#fast-fourier-transforms-scipy-fftpack" id="id4">Fast Fourier transforms: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html#scipy.fftpack" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.fftpack</span></tt></a></a></li>
 <li><a class="reference internal" href="#optimization-and-fit-scipy-optimize" id="id5">Optimization and fit: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#scipy.optimize" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt></a></a></li>
-<li><a class="reference internal" href="#statistics-and-random-numbers-scipy-stats" id="id6">Statistics and random numbers: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#scipy.stats" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></tt></a></a><ul>
-<li><a class="reference internal" href="#histogram-and-probability-density-function" id="id7">Histogram and probability density function</a></li>
-<li><a class="reference internal" href="#percentiles" id="id8">Percentiles</a></li>
-<li><a class="reference internal" href="#statistical-tests" id="id9">Statistical tests</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#interpolation-scipy-interpolate" id="id10">Interpolation: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#scipy.interpolate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></tt></a></a></li>
-<li><a class="reference internal" href="#numerical-integration-scipy-integrate" id="id11">Numerical integration: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html#scipy.integrate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.integrate</span></tt></a></a></li>
-<li><a class="reference internal" href="#signal-processing-scipy-signal" id="id12">Signal processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a></a></li>
-<li><a class="reference internal" href="#image-processing-scipy-ndimage" id="id13">Image processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a></a><ul>
-<li><a class="reference internal" href="#geometrical-transformations-on-images" id="id14">Geometrical transformations on images</a></li>
-<li><a class="reference internal" href="#image-filtering" id="id15">Image filtering</a></li>
-<li><a class="reference internal" href="#mathematical-morphology" id="id16">Mathematical morphology</a></li>
-<li><a class="reference internal" href="#measurements-on-images" id="id17">Measurements on images</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#summary-exercises-on-scientific-computing" id="id18">Summary exercises on scientific computing</a></li>
+<li><a class="reference internal" href="#statistics-and-random-numbers-scipy-stats" id="id6">Statistics and random numbers: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#scipy.stats" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></tt></a></a></li>
+<li><a class="reference internal" href="#interpolation-scipy-interpolate" id="id7">Interpolation: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#scipy.interpolate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></tt></a></a></li>
+<li><a class="reference internal" href="#numerical-integration-scipy-integrate" id="id8">Numerical integration: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html#scipy.integrate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.integrate</span></tt></a></a></li>
+<li><a class="reference internal" href="#signal-processing-scipy-signal" id="id9">Signal processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a></a></li>
+<li><a class="reference internal" href="#image-processing-scipy-ndimage" id="id10">Image processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a></a></li>
+<li><a class="reference internal" href="#summary-exercises-on-scientific-computing" id="id11">Summary exercises on scientific computing</a></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -112,7 +101,7 @@ As enumerating the different submodules and functions in scipy would
 be very boring, we concentrate instead on a few examples to give a
 general idea of how to use <tt class="docutils literal"><span class="pre">scipy</span></tt> for scientific computing.</p>
 </div>
-<p><tt class="xref py py-obj docutils literal"><span class="pre">scipy</span></tt> is composed of task-specific sub-modules:</p>
+<p><tt class="xref py py-mod docutils literal"><span class="pre">scipy</span></tt> is composed of task-specific sub-modules:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -176,7 +165,7 @@ standard way of importing Numpy and these Scipy modules is:</p>
 numpy functions (try <tt class="docutils literal"><span class="pre">scipy.cos</span> <span class="pre">is</span> <span class="pre">np.cos</span></tt>). Those are exposed for historical
 reasons only; there&#8217;s usually no reason to use <tt class="docutils literal"><span class="pre">import</span> <span class="pre">scipy</span></tt> in your code.</p>
 <div class="section" id="file-input-output-scipy-io">
-<h2><a class="toc-backref" href="#id1">1.6.1. File input/output: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/io.html#scipy.io" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.io</span></tt></a></a><a class="headerlink" href="#file-input-output-scipy-io" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">1.5.1. File input/output: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/io.html#scipy.io" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.io</span></tt></a></a><a class="headerlink" href="#file-input-output-scipy-io" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Loading and saving matlab files:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">spio</span>
@@ -212,7 +201,7 @@ reasons only; there&#8217;s usually no reason to use <tt class="docutils literal
 </div></blockquote>
 </div>
 <div class="section" id="special-functions-scipy-special">
-<h2><a class="toc-backref" href="#id2">1.6.2. Special functions: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/special.html#scipy.special" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.special</span></tt></a></a><a class="headerlink" href="#special-functions-scipy-special" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">1.5.2. Special functions: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/special.html#scipy.special" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.special</span></tt></a></a><a class="headerlink" href="#special-functions-scipy-special" title="Permalink to this headline">¶</a></h2>
 <p>Special functions are transcendental functions. The docstring of the
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/special.html#scipy.special" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.special</span></tt></a> module is well-written, so we won&#8217;t list all
 functions here. Frequently used ones are:</p>
@@ -230,7 +219,7 @@ will give the log of Gamma to a higher numerical precision.</li>
 </div></blockquote>
 </div>
 <div class="section" id="linear-algebra-operations-scipy-linalg">
-<span id="scipy-linalg"></span><h2><a class="toc-backref" href="#id3">1.6.3. Linear algebra operations: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a></a><a class="headerlink" href="#linear-algebra-operations-scipy-linalg" title="Permalink to this headline">¶</a></h2>
+<span id="scipy-linalg"></span><h2><a class="toc-backref" href="#id3">1.5.3. Linear algebra operations: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a></a><a class="headerlink" href="#linear-algebra-operations-scipy-linalg" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a> module provides standard linear algebra
 operations, relying on an underlying efficient implementation (BLAS,
 LAPACK).</p>
@@ -302,7 +291,7 @@ for linear systems, are available in <a class="reference external" href="http://
 </ul>
 </div>
 <div class="section" id="fast-fourier-transforms-scipy-fftpack">
-<h2><a class="toc-backref" href="#id4">1.6.4. Fast Fourier transforms: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html#scipy.fftpack" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.fftpack</span></tt></a></a><a class="headerlink" href="#fast-fourier-transforms-scipy-fftpack" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">1.5.4. Fast Fourier transforms: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html#scipy.fftpack" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.fftpack</span></tt></a></a><a class="headerlink" href="#fast-fourier-transforms-scipy-fftpack" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html#scipy.fftpack" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.fftpack</span></tt></a> module allows to compute fast Fourier transforms.
 As an illustration, a (noisy) input signal may look like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">time_step</span> <span class="o">=</span> <span class="mf">0.02</span>
@@ -349,7 +338,8 @@ signal:</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>The result can be viewed with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_vec</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_vec</span><span class="p">,</span> <span class="n">main_sig</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time [s]&#39;</span><span class="p">)</span>
@@ -388,7 +378,7 @@ should be preferred, as it uses more efficient underlying implementations.</p>
 <li>Examine the provided image moonlanding.png, which is heavily
 contaminated with periodic noise. In this exercise, we aim to clean up
 the noise using the Fast Fourier Transform.</li>
-<li>Load the image using <tt class="xref py py-obj docutils literal"><span class="pre">plt.imread</span></tt>.</li>
+<li>Load the image using <tt class="xref py py-func docutils literal"><span class="pre">pylab.imread()</span></tt>.</li>
 <li>Find and use the 2-D FFT function in <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html#scipy.fftpack" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.fftpack</span></tt></a>, and plot the
 spectrum (Fourier transform of) the image. Do you have any trouble
 visualising the spectrum? If so, why?</li>
@@ -400,7 +390,7 @@ those components to zero (use array slicing).</li>
 </div>
 </div>
 <div class="section" id="optimization-and-fit-scipy-optimize">
-<h2><a class="toc-backref" href="#id5">1.6.5. Optimization and fit: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#scipy.optimize" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt></a></a><a class="headerlink" href="#optimization-and-fit-scipy-optimize" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">1.5.5. Optimization and fit: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#scipy.optimize" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt></a></a><a class="headerlink" href="#optimization-and-fit-scipy-optimize" title="Permalink to this headline">¶</a></h2>
 <p>Optimization is the problem of finding a numerical solution to a
 minimization or equality.</p>
 <p>The <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#scipy.optimize" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt></a> module provides useful algorithms for function
@@ -556,7 +546,7 @@ function.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Variables can be restricted to <tt class="docutils literal"><span class="pre">-2</span> <span class="pre">&lt;</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">2</span></tt> and <tt class="docutils literal"><span class="pre">-1</span> <span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">&lt;</span> <span class="pre">1</span></tt>.</li>
-<li>Use <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.meshgrid.html#numpy.meshgrid" title="(in NumPy v1.6)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.meshgrid()</span></tt></a> and <tt class="xref py py-obj docutils literal"><span class="pre">plt.imshow</span></tt> to find visually the
+<li>Use <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.meshgrid.html#numpy.meshgrid" title="(in NumPy v1.6)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.meshgrid()</span></tt></a> and <tt class="xref py py-func docutils literal"><span class="pre">pylab.imshow()</span></tt> to find visually the
 regions.</li>
 <li>Use <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_bfgs.html#scipy.optimize.fmin_bfgs" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></tt></a> or another multi-dimensional
 minimizer.</li>
@@ -570,12 +560,12 @@ points?  What happens for an initial guess of <tt class="docutils literal"><span
 advanced example.</p>
 </div>
 <div class="section" id="statistics-and-random-numbers-scipy-stats">
-<h2><a class="toc-backref" href="#id6">1.6.6. Statistics and random numbers: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#scipy.stats" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></tt></a></a><a class="headerlink" href="#statistics-and-random-numbers-scipy-stats" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">1.5.6. Statistics and random numbers: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#scipy.stats" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></tt></a></a><a class="headerlink" href="#statistics-and-random-numbers-scipy-stats" title="Permalink to this headline">¶</a></h2>
 <p>The module <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#scipy.stats" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></tt></a> contains statistical tools and probabilistic
 descriptions of random processes. Random number generators for various
 random process can be found in <tt class="xref py py-mod docutils literal"><span class="pre">numpy.random</span></tt>.</p>
 <div class="section" id="histogram-and-probability-density-function">
-<h3><a class="toc-backref" href="#id7">1.6.6.1. Histogram and probability density function</a><a class="headerlink" href="#histogram-and-probability-density-function" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.6.1. Histogram and probability density function<a class="headerlink" href="#histogram-and-probability-density-function" title="Permalink to this headline">¶</a></h3>
 <p>Given observations of a random process, their histogram is an estimator of
 the random process&#8217;s PDF (probability density function):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -619,7 +609,7 @@ variates?</p>
 </div>
 </div>
 <div class="section" id="percentiles">
-<h3><a class="toc-backref" href="#id8">1.6.6.2. Percentiles</a><a class="headerlink" href="#percentiles" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.6.2. Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">¶</a></h3>
 <p>The median is the value with half of the observations below, and half
 above:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     
@@ -641,7 +631,7 @@ below it:</p>
 function.</p>
 </div>
 <div class="section" id="statistical-tests">
-<h3><a class="toc-backref" href="#id9">1.6.6.3. Statistical tests</a><a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.6.3. Statistical tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h3>
 <p>A statistical test is a decision indicator. For instance, if we have two
 sets of observations, that we assume are generated from Gaussian
 processes, we can use a
@@ -668,7 +658,7 @@ have different means.</li>
 </div>
 </div>
 <div class="section" id="interpolation-scipy-interpolate">
-<h2><a class="toc-backref" href="#id10">1.6.7. Interpolation: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#scipy.interpolate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></tt></a></a><a class="headerlink" href="#interpolation-scipy-interpolate" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">1.5.7. Interpolation: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#scipy.interpolate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></tt></a></a><a class="headerlink" href="#interpolation-scipy-interpolate" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#scipy.interpolate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></tt></a> is useful for fitting a function from experimental
 data and thus evaluating points where no measure exists. The module is based
 on the <a class="reference external" href="http://www.netlib.org/dierckx/index.html">FITPACK Fortran subroutines</a> from the <a class="reference external" href="http://www.netlib.org">netlib</a> project.</p>
@@ -707,7 +697,7 @@ time range. See the summary exercise on
 interpolation example.</p>
 </div>
 <div class="section" id="numerical-integration-scipy-integrate">
-<h2><a class="toc-backref" href="#id11">1.6.8. Numerical integration: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html#scipy.integrate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.integrate</span></tt></a></a><a class="headerlink" href="#numerical-integration-scipy-integrate" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">1.5.8. Numerical integration: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html#scipy.integrate" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.integrate</span></tt></a></a><a class="headerlink" href="#numerical-integration-scipy-integrate" title="Permalink to this headline">¶</a></h2>
 <p>The most generic integration routine is <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html#scipy.integrate.quad" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.integrate.quad()</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
@@ -726,7 +716,7 @@ Ordinary Differential equations with Automatic method switching
 for stiff and non-stiff problems), see the <a class="reference external" href="http://people.sc.fsu.edu/~jburkardt/f77_src/odepack/odepack.html">ODEPACK Fortran library</a>
 for more details.</p>
 <p><tt class="docutils literal"><span class="pre">odeint</span></tt> solves first-order ODE systems of the form:</p>
-<div class="highlight-python"><pre>``dy/dt = rhs(y1, y2, .., t0,...)``</pre>
+<div class="highlight-python"><pre>dy/dt = rhs(y1, y2, .., t0,...)</pre>
 </div>
 <p>As an introduction, let us solve the ODE <tt class="docutils literal"><span class="pre">dy/dt</span> <span class="pre">=</span> <span class="pre">-2y</span></tt> between <tt class="docutils literal"><span class="pre">t</span> <span class="pre">=</span>
 <span class="pre">0..4</span></tt>, with the  initial condition <tt class="docutils literal"><span class="pre">y(t=0)</span> <span class="pre">=</span> <span class="pre">1</span></tt>. First the function
@@ -808,7 +798,7 @@ be convenient to define <tt class="docutils literal"><span class="pre">nu</span>
 Some Python packages for solving PDE&#8217;s are available, such as <a class="reference external" href="http://www.ctcms.nist.gov/fipy/">fipy</a> or <a class="reference external" href="http://code.google.com/p/sfepy/">SfePy</a>.</p>
 </div>
 <div class="section" id="signal-processing-scipy-signal">
-<h2><a class="toc-backref" href="#id12">1.6.9. Signal processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a></a><a class="headerlink" href="#signal-processing-scipy-signal" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">1.5.9. Signal processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a></a><a class="headerlink" href="#signal-processing-scipy-signal" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -835,25 +825,25 @@ Some Python packages for solving PDE&#8217;s are available, such as <a class="re
 <p>[<a class="reference external" href="../plot_directive/pyplots/demo_resample.py">source code</a>, <a class="reference external" href="../plot_directive/pyplots/demo_resample.hires.png">hires.png</a>, <a class="reference external" href="../plot_directive/pyplots/demo_resample.pdf">pdf</a>]</p>
 <a class="reference internal image-reference" href="../_images/demo_resample.png"><img alt="../_images/demo_resample.png" src="../_images/demo_resample.png" style="width: 308.0px; height: 252.0px;" /></a>
 </li>
-<li><p class="first">Signal has many window function: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hamming.html#scipy.signal.hamming" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.hamming()</span></tt></a>,
+<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a> has many window functions: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hamming.html#scipy.signal.hamming" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.hamming()</span></tt></a>,
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.bartlett.html#scipy.signal.bartlett" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.bartlett()</span></tt></a>, <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.blackman.html#scipy.signal.blackman" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.blackman()</span></tt></a>...</p>
 </li>
-<li><p class="first">Signal has filtering (median filter <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.medfilt.html#scipy.signal.medfilt" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.medfilt()</span></tt></a>,
+<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a> has filtering (median filter <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.medfilt.html#scipy.signal.medfilt" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.medfilt()</span></tt></a>,
 Wiener <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.wiener.html#scipy.signal.wiener" title="(in SciPy v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.signal.wiener()</span></tt></a>), but we will
-discuss this in the image paragraph.</p>
+discuss this in the image section.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="image-processing-scipy-ndimage">
-<h2><a class="toc-backref" href="#id13">1.6.10. Image processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a></a><a class="headerlink" href="#image-processing-scipy-ndimage" title="Permalink to this headline">¶</a></h2>
-<p>The submodule dedicated to image processing in scipy is <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-obj docutils literal"><span class="pre">scipy.ndimage</span></tt></a>.</p>
+<h2><a class="toc-backref" href="#id10">1.5.10. Image processing: <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a></a><a class="headerlink" href="#image-processing-scipy-ndimage" title="Permalink to this headline">¶</a></h2>
+<p>The submodule dedicated to image processing in scipy is <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Image processing routines may be sorted according to the category of
 processing they perform.</p>
 <div class="section" id="geometrical-transformations-on-images">
-<h3><a class="toc-backref" href="#id14">1.6.10.1. Geometrical transformations on images</a><a class="headerlink" href="#geometrical-transformations-on-images" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.10.1. Geometrical transformations on images<a class="headerlink" href="#geometrical-transformations-on-images" title="Permalink to this headline">¶</a></h3>
 <p>Changing orientation, resolution, ..</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -866,22 +856,22 @@ processing they perform.</p>
 <div class="newline"></div><span class="go">(1024, 1024)</span>
 <div class="newline"></div></pre></div>
 </div>
-<img alt="../_images/lena_transforms.png" class="align-center" src="../_images/lena_transforms.png" />
+<a class="reference internal image-reference" href="../_images/lena_transforms.png"><img alt="../_images/lena_transforms.png" class="align-center" src="../_images/lena_transforms.png" style="width: 903.0px; height: 186.2px;" /></a>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [35]: </span><span class="n">subplot</span><span class="p">(</span><span class="mi">151</span><span class="p">)</span>
-<div class="newline"></div><span class="go">Out[35]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x925f46c</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="gr">Out[35]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x925f46c</span><span class="o">&gt;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [36]: </span><span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">shifted_lena</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<div class="newline"></div><span class="go">Out[36]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x9593f6c</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="gr">Out[36]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x9593f6c</span><span class="o">&gt;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [37]: </span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="go">Out[37]: </span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">511.5</span><span class="p">,</span> <span class="mf">511.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="newline"></div><span class="gr">Out[37]: </span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">511.5</span><span class="p">,</span> <span class="mf">511.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [39]: </span><span class="c"># etc.</span>
 <div class="newline"></div></pre></div>
 </div>
 </div>
 <div class="section" id="image-filtering">
-<h3><a class="toc-backref" href="#id15">1.6.10.2. Image filtering</a><a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.10.2. Image filtering<a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -893,8 +883,8 @@ processing they perform.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">wiener_lena</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">wiener</span><span class="p">(</span><span class="n">blurred_lena</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <div class="newline"></div></pre></div>
 </div>
-<img alt="../_images/filtered_lena.png" class="align-center" src="../_images/filtered_lena.png" />
-<p>Many other filters in <tt class="docutils literal"><span class="pre">scipy.ndimage.filters</span></tt> and <tt class="docutils literal"><span class="pre">scipy.signal</span></tt>
+<a class="reference internal image-reference" href="../_images/filtered_lena.png"><img alt="../_images/filtered_lena.png" class="align-center" src="../_images/filtered_lena.png" style="width: 923.2px; height: 249.6px;" /></a>
+<p>Many other filters in <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.filters" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.filters</span></tt></a> and <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a>
 can be applied to images.</p>
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
@@ -903,7 +893,7 @@ can be applied to images.</p>
 </div>
 </div>
 <div class="section" id="mathematical-morphology">
-<h3><a class="toc-backref" href="#id16">1.6.10.3. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.10.3. Mathematical morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
 <p>Mathematical morphology is a mathematical theory that stems from set
 theory. It characterizes and transforms geometrical structures. Binary
 (black and white) images, in particular, can be transformed using this
@@ -915,9 +905,9 @@ in order to modify other geometrical structures.</p>
 <p>Let us first generate a structuring element</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">el</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">generate_binary_structure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">el</span>
-<div class="newline"></div><span class="go">array([[False,  True, False],</span>
-<div class="newline"></div><span class="go">       [ True,  True,  True],</span>
-<div class="newline"></div><span class="go">       [False,  True, False]], dtype=bool)</span>
+<div class="newline"></div><span class="go">array([[False, True, False],</span>
+<div class="newline"></div><span class="go">       [True, True, True],</span>
+<div class="newline"></div><span class="go">       [False, True, False]], dtype=bool)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">el</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <div class="newline"></div><span class="go">array([[0, 1, 0],</span>
 <div class="newline"></div><span class="go">       [1, 1, 1],</span>
@@ -1019,7 +1009,7 @@ image.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">closed_mask</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">opened_mask</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<img alt="../_images/morpho.png" class="align-center" src="../_images/morpho.png" />
+<a class="reference internal image-reference" href="../_images/morpho.png"><img alt="../_images/morpho.png" class="align-center" src="../_images/morpho.png" style="width: 924.0px; height: 240.0px;" /></a>
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
 <blockquote>
@@ -1027,7 +1017,7 @@ image.</p>
 than the area of the initial square. (The opposite would occur if the
 closing step was performed <em>before</em> the opening).</div></blockquote>
 </div>
-<p>For <strong>gray-valued</strong> images, eroding (resp. dilating) amounts to replacing
+<p>For <em>gray-valued</em> images, eroding (resp. dilating) amounts to replacing
 a pixel by the minimal (resp. maximal) value among pixels covered by the
 structuring element centered on the pixel of interest.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
@@ -1053,7 +1043,7 @@ structuring element centered on the pixel of interest.</p>
 </div>
 </div>
 <div class="section" id="measurements-on-images">
-<h3><a class="toc-backref" href="#id17">1.6.10.4. Measurements on images</a><a class="headerlink" href="#measurements-on-images" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.10.4. Measurements on images<a class="headerlink" href="#measurements-on-images" title="Permalink to this headline">¶</a></h3>
 <p>Let us first generate a nice synthetic binary image.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
@@ -1085,7 +1075,7 @@ advanced example.</p>
 </div>
 </div>
 <div class="section" id="summary-exercises-on-scientific-computing">
-<h2><a class="toc-backref" href="#id18">1.6.11. Summary exercises on scientific computing</a><a class="headerlink" href="#summary-exercises-on-scientific-computing" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">1.5.11. Summary exercises on scientific computing</a><a class="headerlink" href="#summary-exercises-on-scientific-computing" title="Permalink to this headline">¶</a></h2>
 <p>The summary exercises use mainly Numpy, Scipy and Matplotlib. They provide some
 real-life examples of scientific computing with Python. Now that the basics of
 working with Numpy and Scipy have been introduced, the interested user is
@@ -1093,15 +1083,15 @@ invited to try these exercises.</p>
 <p>Exercises:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.6.11.13. Maximum wind speed prediction at the Sprogø station</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.6.11.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary-exercises/image-processing.html">1.6.11.15. Image processing application: counting bubbles and unmolten grains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.5.11.13. Maximum wind speed prediction at the Sprogø station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary-exercises/optimize-fit.html">1.5.11.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary-exercises/image-processing.html">1.5.11.15. Image processing application: counting bubbles and unmolten grains</a></li>
 </ul>
 </div>
 <p>Proposed solutions:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.6.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.5.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
 </ul>
 </div>
 <p><div style="clear: both"></div></p>
@@ -1117,17 +1107,17 @@ invited to try these exercises.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="summary-exercises/stats-interpolate.html" title="1.6.11.13. Maximum wind speed prediction at the Sprogø station"
+          <a href="summary-exercises/stats-interpolate.html" title="1.5.11.13. Maximum wind speed prediction at the Sprogø station"
              >next</a></li>
         <li class="right" >
-          <a href="matplotlib/matplotlib.html" title="1.5. Matplotlib: plotting"
+          <a href="matplotlib/matplotlib.html" title="1.4. Matplotlib: plotting"
              >previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="index.html" >1. Getting started with Python for science</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012.
+        &copy; Copyright 2012,2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2012.3 (EuroScipy 2012)',
+        VERSION:     '2013.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -58,7 +58,6 @@
 <li><a class="reference internal" href="#more-data-types" id="id1">More data types</a></li>
 <li><a class="reference internal" href="#structured-data-types" id="id2">Structured data types</a></li>
 <li><a class="reference internal" href="#maskedarray-dealing-with-propagation-of-missing-data" id="id3"><tt class="xref py py-class docutils literal"><span class="pre">maskedarray</span></tt>: dealing with (propagation of) missing data</a></li>
-<li><a class="reference internal" href="#under-the-hood-the-memory-layout-of-a-numpy-array" id="id4">Under the hood: the memory layout of a numpy array</a></li>
 </ul>
 </div>
 <div class="section" id="more-data-types">
@@ -90,10 +89,10 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>                    <span class="c"># still floating-point</span>
-<div class="newline"></div><span class="go">array([ 1., 2., 2., 2., 4., 4.])</span>
+<div class="newline"></div><span class="go">array([ 1.,  2.,  2.,  2.,  4.,  4.])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
-<div class="newline"></div><span class="go">array([ 1, 2, 2, 2, 4, 4])</span>
+<div class="newline"></div><span class="go">array([1, 2, 2, 2, 4, 4])</span>
 <div class="newline"></div></pre></div>
 </div>
 </div>
@@ -183,9 +182,8 @@
 <div class="newline"></div><span class="go">1.1920929e-07</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
 <div class="newline"></div><span class="go">2.2204460492503131e-16</span>
-<div class="newline"></div></pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <div class="newline"></div><span class="go">True</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <div class="newline"></div><span class="go">False</span>
@@ -243,18 +241,18 @@
 <h2><a class="toc-backref" href="#id2">1.3.3.2. Structured data types</a><a class="headerlink" href="#structured-data-types" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="95%" />
-<col width="5%" />
+<col width="42%" />
+<col width="58%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sensor_code</span></tt> (4-character string)</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">sensor_code</span></tt></td>
+<td>(4-character string)</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">position</span></tt> (float)</td>
-<td>&nbsp;</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">position</span></tt></td>
+<td>(float)</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">value</span></tt> (float)</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">value</span></tt></td>
+<td>(float)</td>
 </tr>
 </tbody>
 </table>
@@ -266,14 +264,13 @@
 <div class="newline"></div><span class="go">(6,)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
 <div class="newline"></div><span class="go">(&#39;sensor_code&#39;, &#39;position&#39;, &#39;value&#39;)</span>
-<div class="newline"></div></pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;BETA&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>   <span class="mf">0.13</span><span class="p">),</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;BETA&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>   <span class="mf">0.13</span><span class="p">),</span>
 <div class="newline"></div><span class="gp">... </span>              <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ALFA&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;TAU&#39;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span>
 <div class="newline"></div><span class="go">array([(&#39;ALFA&#39;, 1.0, 0.37), (&#39;BETA&#39;, 1.0, 0.11), (&#39;TAU&#39;, 1.0, 0.13),</span>
 <div class="newline"></div><span class="go">       (&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11), (&#39;TAU&#39;, 1.2, 0.13)],</span>
-<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
+<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Field access works by indexing with field names:</p>
@@ -300,7 +297,7 @@
 <p>Fancy indexing works, as usual:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="s">&#39;sensor_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;ALFA&#39;</span><span class="p">]</span>
 <div class="newline"></div><span class="go">array([(&#39;ALFA&#39;, 1.5, 0.37), (&#39;ALFA&#39;, 3.0, 0.11)],</span>
-<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;|S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
+<div class="newline"></div><span class="go">      dtype=[(&#39;sensor_code&#39;, &#39;S4&#39;), (&#39;position&#39;, &#39;&lt;f8&#39;), (&#39;value&#39;, &#39;&lt;f8&#39;)])</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="admonition note">
@@ -342,210 +339,6 @@ and <a class="reference external" href="http://docs.scipy.org/doc/numpy/referenc
 <p class="first admonition-title">Note</p>
 <p class="last">There are other useful <a class="reference internal" href="../../advanced/advanced_numpy/index.html#array-siblings"><em>array siblings</em></a></p>
 </div>
-</div>
-<div class="section" id="under-the-hood-the-memory-layout-of-a-numpy-array">
-<span id="memory-layout"></span><h2><a class="toc-backref" href="#id4">1.3.3.4. Under the hood: the memory layout of a numpy array</a><a class="headerlink" href="#under-the-hood-the-memory-layout-of-a-numpy-array" title="Permalink to this headline">¶</a></h2>
-<p>A numpy array is:</p>
-<blockquote>
-<div><p>block of memory + indexing scheme + data type descriptor</p>
-<ul class="simple">
-<li>raw data</li>
-<li>how to locate an element</li>
-<li>how to interpret an element</li>
-</ul>
-</div></blockquote>
-<img alt="../../_images/threefundamental1.png" src="../../_images/threefundamental1.png" />
-<div class="section" id="block-of-memory">
-<h3>1.3.3.4.1. Block of memory<a class="headerlink" href="#block-of-memory" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span>      
-<div class="newline"></div><span class="go">&lt;read-write buffer for ..., size 16, offset 0 at ...&gt;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<div class="newline"></div><span class="go">&#39;\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00&#39;</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Memory address of the data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
-<div class="newline"></div><span class="go">159755776</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Reminder: two <tt class="xref py py-class docutils literal"><span class="pre">ndarrays</span></tt> may share the same memory:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<div class="newline"></div><span class="go">array([9, 2, 3, 4])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
-<div class="newline"></div><span class="go">True</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Memory does not need to be owned by an <tt class="xref py py-class docutils literal"><span class="pre">ndarray</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\x01\x02\x03\x04</span><span class="s">&#39;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<div class="newline"></div><span class="go">array([1, 2, 3, 4], dtype=int8)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">data</span>  
-<div class="newline"></div><span class="go">&lt;read-only buffer for ..., size 4, offset 0 at ...&gt;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">x</span>
-<div class="newline"></div><span class="go">True</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">flags</span>
-<div class="newline"></div><span class="go">  C_CONTIGUOUS : True</span>
-<div class="newline"></div><span class="go">  F_CONTIGUOUS : True</span>
-<div class="newline"></div><span class="go">  OWNDATA : False</span>
-<div class="newline"></div><span class="go">  WRITEABLE : False</span>
-<div class="newline"></div><span class="go">  ALIGNED : True</span>
-<div class="newline"></div><span class="go">  UPDATEIFCOPY : False</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>The <tt class="docutils literal"><span class="pre">owndata</span></tt> and <tt class="docutils literal"><span class="pre">writeable</span></tt> flags indicate status of the memory
-block.</p>
-</div>
-<div class="section" id="indexing-scheme-strides">
-<h3>1.3.3.4.2. Indexing scheme: strides<a class="headerlink" href="#indexing-scheme-strides" title="Permalink to this headline">¶</a></h3>
-<p><strong>The question</strong></p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<div class="newline"></div><span class="go">&#39;\x01\x02\x03\x04\x05\x06\x07\x08\t&#39;</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>At which byte in <tt class="docutils literal"><span class="pre">x.data</span></tt> does the item <tt class="docutils literal"><span class="pre">x[1,</span> <span class="pre">2]</span></tt> begin?</p>
-</div></blockquote>
-<p><strong>The answer</strong> (in Numpy)</p>
-<blockquote>
-<div><ul class="simple">
-<li><strong>strides</strong>: the number of bytes to jump to find the next element</li>
-<li>1 stride per dimension</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(3, 1)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">byte_offset</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="mi">2</span>   <span class="c"># to find x[1, 2]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">byte_offset</span><span class="p">]</span>
-<div class="newline"></div><span class="go">&#39;\x06&#39;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<div class="newline"></div><span class="go">6</span>
-<div class="newline"></div></pre></div>
-</div>
-<ul class="simple">
-<li>simple, <strong>flexible</strong></li>
-</ul>
-</div></blockquote>
-<p class="rubric">C and Fortran order</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-<div class="newline"></div><span class="gp">... </span>              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;C&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(6, 2)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<div class="newline"></div><span class="go">&#39;\x01\x00\x02\x00\x03\x00\x04\x00\x05\x00\x06\x00\x07\x00\x08\x00\t\x00&#39;</span>
-<div class="newline"></div></pre></div>
-</div>
-<ul class="simple">
-<li>Need to jump 6 bytes to find the next row</li>
-<li>Need to jump 2 bytes to find the next column</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&#39;F&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(2, 6)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<div class="newline"></div><span class="go">&#39;\x01\x00\x04\x00\x07\x00\x02\x00\x05\x00\x08\x00\x03\x00\x06\x00\t\x00&#39;</span>
-<div class="newline"></div></pre></div>
-</div>
-<ul class="simple">
-<li>Need to jump 2 bytes to find the next row</li>
-<li>Need to jump 6 bytes to find the next column</li>
-</ul>
-<ul>
-<li><p class="first">Similarly to higher dimensions:</p>
-<ul class="simple">
-<li>C: last dimensions vary fastest (= smaller strides)</li>
-<li>F: first dimensions vary fastest</li>
-</ul>
-<div class="math">
-<p><img src="../../_images/math/95ec125db02dd68e18b6eea77903b79254ccbc1f.png" alt="\mathrm{shape} &amp;= (d_1, d_2, ..., d_n)
-\\
-\mathrm{strides} &amp;= (s_1, s_2, ..., s_n)
-\\
-s_j^C &amp;= d_{j+1} d_{j+2} ... d_{n} \times \mathrm{itemsize}
-\\
-s_j^F &amp;= d_{1} d_{2} ... d_{j-1} \times \mathrm{itemsize}"/></p>
-</div></li>
-</ul>
-<p class="rubric">Slicing</p>
-<ul class="simple">
-<li><em>Everything</em> can be represented by changing only <tt class="docutils literal"><span class="pre">shape</span></tt>, <tt class="docutils literal"><span class="pre">strides</span></tt>,
-and possibly adjusting the <tt class="docutils literal"><span class="pre">data</span></tt> pointer!</li>
-<li>Never makes copies of the data</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
-<div class="newline"></div><span class="go">array([6, 5, 4, 3, 2, 1], dtype=int32)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(-4,)</span>
-<div class="newline"></div></pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<div class="newline"></div><span class="go">8</span>
-<div class="newline"></div></pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(800, 80, 8)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">3</span><span class="p">,::</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(1600, 240, 32)</span>
-<div class="newline"></div></pre></div>
-</div>
-<ul class="simple">
-<li>Similarly, transposes never make copies (it just swaps strides)</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(800, 80, 8)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(8, 80, 800)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p class="rubric">Reshaping</p>
-<p>But: not all reshaping operations can be represented by playing with
-strides.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">strides</span>
-<div class="newline"></div><span class="go">(1, 2)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>So far, so good. However:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<div class="newline"></div><span class="go">&#39;\x00\x01\x02\x03\x04\x05&#39;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
-<div class="newline"></div><span class="go">array([[0, 2, 4],</span>
-<div class="newline"></div><span class="go">       [1, 3, 5]], dtype=int8)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
-<div class="newline"></div><span class="go">array([0, 2, 4, 1, 3, 5], dtype=int8)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Here, there is no way to represent the array <tt class="docutils literal"><span class="pre">c</span></tt> given one stride
-and the block of memory for <tt class="docutils literal"><span class="pre">a</span></tt>. Therefore, the <tt class="docutils literal"><span class="pre">reshape</span></tt>
-operation needs to make a copy here.</p>
-</div>
-<div class="section" id="summary">
-<h3>1.3.3.4.3. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Numpy array: block of memory + indexing scheme + data type description</p>
-</li>
-<li><p class="first">Indexing: strides</p>
-<p><tt class="docutils literal"><span class="pre">byte_position</span> <span class="pre">=</span> <span class="pre">np.sum(arr.strides</span> <span class="pre">*</span> <span class="pre">indices)</span></tt></p>
-</li>
-<li><p class="first">Various tricks can you do by playing with the strides (stuff for an
-advanced tutorial it is)</p>
-</li>
-</ul>
 <hr class="docutils" />
 <p>While it is off topic in a chapter on numpy, let&#8217;s take a moment to
 recall good coding practice, which really do pay off in the long run:</p>
@@ -569,7 +362,6 @@ manage help strings).</p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
-</div>
 
 
           </div>
@@ -591,7 +383,7 @@ manage help strings).</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012.
+        &copy; Copyright 2012,2013.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
