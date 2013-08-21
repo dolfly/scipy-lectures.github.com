@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,12 +23,74 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
     <link rel="up" title="1.2. The Python language" href="python_language.html" />
     <link rel="next" title="1.2.6. Input and Output" href="io.html" />
     <link rel="prev" title="1.2.4. Defining functions" href="functions.html" /> 
   </head>
   <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +102,21 @@
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
-          <li><a href="python_language.html" accesskey="U">1.2. The Python language</a> &raquo;</li> 
+          <li><a href="python_language.html" accesskey="U">1.2. The Python language</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>  
 
@@ -60,20 +134,26 @@ highlighting for Python), or the editor that comes with the Scientific
 Python Suite you may be using (e.g., Scite with Python(x,y)).</p>
 <div class="section" id="scripts">
 <h2>1.2.5.1. Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
-<p>Let us first write a <em>script</em>, that is a file with a sequence of
-instructions that are executed each time the script is called.</p>
-<p>Instructions may be e.g. copied-and-pasted from the interpreter
-(but take care to respect indentation rules!). The extension for Python
-files is <tt class="docutils literal"><span class="pre">.py</span></tt>. Write or copy-and-paste the following lines in a file
-called <tt class="docutils literal"><span class="pre">test.py</span></tt></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Let us first write a <em>script</em>, that is a file with a sequence of
+instructions that are executed each time the script is called.
+Instructions may be e.g. copied-and-pasted from the interpreter (but
+take care to respect indentation rules!).</p>
+</div>
+<p>The extension for Python files is <tt class="docutils literal"><span class="pre">.py</span></tt>. Write or copy-and-paste the
+following lines in a file called <tt class="docutils literal"><span class="pre">test.py</span></tt></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Hello how are you?&quot;</span>
 <div class="newline"></div><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
 <div class="newline"></div>    <span class="k">print</span> <span class="n">word</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Let us now execute the script interactively, that is inside the Ipython
-interpreter. This is maybe the most common use of scripts in scientific
-computing.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Let us now execute the script interactively, that is inside the
+Ipython interpreter. This is maybe the most common use of scripts in
+scientific computing.</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">in Ipython, the syntax to execute a script is <tt class="docutils literal"><span class="pre">%run</span> <span class="pre">script.py</span></tt>. For
@@ -92,8 +172,11 @@ example,</p>
 <p>The script has been executed. Moreover the variables defined in the
 script (such as <tt class="docutils literal"><span class="pre">message</span></tt>) are now available inside the interpeter&#8217;s
 namespace.</p>
-<p>Other interpreters also offer the possibility to execute scripts (e.g.,
-<tt class="docutils literal"><span class="pre">execfile</span></tt> in the plain Python interpreter, etc.).</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Other interpreters also offer the possibility to execute scripts
+(e.g., <tt class="docutils literal"><span class="pre">execfile</span></tt> in the plain Python interpreter, etc.).</p>
+</div>
 <p>It is also possible In order to execute this script as a <em>standalone
 program</em>, by executing the script inside a shell terminal (Linux/Mac
 console or cmd Windows console). For example, if we are in the same
@@ -105,6 +188,8 @@ directory as the test.py file, we can execute this in a console:</p>
 <div class="newline"></div>you?
 <div class="newline"></div></pre></div>
 </div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
 <p>Standalone scripts may also take command-line arguments</p>
 <p>In <tt class="docutils literal"><span class="pre">file.py</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
@@ -115,10 +200,11 @@ directory as the test.py file, we can execute this in a console:</p>
 <div class="newline"></div><span class="o">[</span><span class="s1">&#39;file.py&#39;</span>, <span class="s1">&#39;test&#39;</span>, <span class="s1">&#39;arguments&#39;</span><span class="o">]</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="last admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">Don&#8217;t implement option parsing yourself. Use modules such as
 <tt class="docutils literal"><span class="pre">optparse</span></tt> or <tt class="docutils literal"><span class="pre">argparse</span></tt> .</p>
+</div>
 </div>
 </div>
 <div class="section" id="importing-objects-from-modules">
@@ -126,7 +212,7 @@ directory as the test.py file, we can execute this in a console:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">os</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [2]: </span><span class="n">os</span>
-<div class="newline"></div><span class="gr">Out[2]: </span><span class="o">&lt;</span><span class="n">module</span> <span class="s">&#39;os&#39;</span> <span class="kn">from</span> <span class="err">&#39;/</span><span class="nn">usr</span><span class="err">/</span><span class="nn">lib</span><span class="err">/</span><span class="nn">python2.6</span><span class="err">/</span><span class="nn">os.pyc</span><span class="err">&#39;&gt;</span>
+<div class="newline"></div><span class="gr">Out[2]: </span><span class="o">&lt;</span><span class="n">module</span> <span class="s">&#39;os&#39;</span> <span class="kn">from</span> <span class="s">&#39;/usr/lib/python2.6/os.pyc&#39;</span><span class="o">&gt;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [3]: </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="go">Out[3]:</span>
@@ -169,13 +255,16 @@ usefully from tab completion.</li>
 symbols.</li>
 </ul>
 </div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
 <p>Modules are thus a good way to organize code in a hierarchical way. Actually,
 all the scientific computing tools we are going to use are modules:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> <span class="c"># data arrays</span>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> <span class="c"># data arrays</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <div class="newline"></div><span class="go">array([  0.,   2.,   4.,   6.,   8.,  10.])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="c"># scientific computing</span>
 <div class="newline"></div></pre></div>
+</div>
 </div>
 <p>In Python(x,y), Ipython(x,y) executes the following imports at startup:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
@@ -188,10 +277,13 @@ all the scientific computing tools we are going to use are modules:</p>
 </div>
 <div class="section" id="creating-modules">
 <h2>1.2.5.3. Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
-<p>If we want to write larger and better organized programs (compared to
-simple scripts), where some objects are defined, (variables, functions,
-classes) and that we want to reuse several times, we have to create our
-own <em>modules</em>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If we want to write larger and better organized programs (compared to
+simple scripts), where some objects are defined, (variables,
+functions, classes) and that we want to reuse several times, we have
+to create our own <em>modules</em>.</p>
+</div>
 <p>Let us create a module <tt class="docutils literal"><span class="pre">demo</span></tt> contained in the file <tt class="docutils literal"><span class="pre">demo.py</span></tt>:</p>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span class="s">&quot;A demo module.&quot;</span>
@@ -210,11 +302,14 @@ own <em>modules</em>.</p>
 <div class="newline"></div></pre></div>
 </div>
 </div></blockquote>
-<p>In this file, we defined two functions <tt class="docutils literal"><span class="pre">print_a</span></tt> and <tt class="docutils literal"><span class="pre">print_b</span></tt>. Suppose
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">In this file, we defined two functions <tt class="docutils literal"><span class="pre">print_a</span></tt> and <tt class="docutils literal"><span class="pre">print_b</span></tt>. Suppose
 we want to call the <tt class="docutils literal"><span class="pre">print_a</span></tt> function from the interpreter. We could
 execute the file as a script, but since we just want to have access to
 the function <tt class="docutils literal"><span class="pre">print_a</span></tt>, we are rather going to <strong>import it as a module</strong>.
 The syntax is as follows.</p>
+</div>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">demo</span>
 <div class="newline"></div>
 <div class="newline"></div>
@@ -345,11 +440,9 @@ module is imported in the different scripts (do not copy-and-paste
 your functions in the different scripts!).</li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>How to import a module from a remote directory?</p>
-<p>Many solutions exist, depending mainly on your operating system. When
-the <tt class="docutils literal"><span class="pre">import</span> <span class="pre">mymodule</span></tt> statement is executed, the module <tt class="docutils literal"><span class="pre">mymodule</span></tt>
+<div class="section" id="how-module-are-found-and-imported">
+<h3>1.2.5.5.1. How module are found and imported<a class="headerlink" href="#how-module-are-found-and-imported" title="Permalink to this headline">¶</a></h3>
+<p>When the <tt class="docutils literal"><span class="pre">import</span> <span class="pre">mymodule</span></tt> statement is executed, the module <tt class="docutils literal"><span class="pre">mymodule</span></tt>
 is searched in a given list of directories. This list includes a list
 of installation-dependent default path (e.g., <tt class="docutils literal"><span class="pre">/usr/lib/python</span></tt>) as
 well as the list of directories specified by the environment variable
@@ -361,40 +454,35 @@ variable</p>
 <div class="newline"></div><span class="gp">In [2]: </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
 <div class="newline"></div><span class="go">Out[2]:</span>
 <div class="newline"></div><span class="go">[&#39;&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/bin&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/local/include/enthought.traits-1.1.0&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/plat-linux2&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/lib-tk&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/lib-old&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/lib-dynload&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/dist-packages&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/pymodules/python2.6&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/pymodules/python2.6/gtk-2.0&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/dist-packages/wx-2.8-gtk2-unicode&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/local/lib/python2.6/dist-packages&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.6/dist-packages&#39;,</span>
-<div class="newline"></div><span class="go"> &#39;/usr/lib/pymodules/python2.6/IPython/Extensions&#39;,</span>
-<div class="newline"></div><span class="go"> u&#39;/home/gouillar/.ipython&#39;]</span>
+<div class="newline"></div><span class="go"> &#39;/home/varoquau/.local/bin&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.7&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/home/varoquau/.local/lib/python2.7/site-packages&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/usr/lib/python2.7/dist-packages&#39;,</span>
+<div class="newline"></div><span class="go"> &#39;/usr/local/lib/python2.7/dist-packages&#39;,</span>
+<div class="newline"></div><span class="go"> ...]</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Modules must be located in the search path, therefore you can:</p>
-<ul class="simple">
-<li>write your own modules within directories already defined in the
-search path (e.g. <tt class="docutils literal"><span class="pre">/usr/local/lib/python2.6/dist-packages</span></tt>). You
-may use symbolic links (on Linux) to keep the code somewhere else.</li>
-<li>modify the environment variable <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> to include the
-directories containing the user-defined modules. On Linux/Unix, add
-the following line to a file read by the shell at startup (e.g.
-/etc/profile, .profile)</li>
-</ul>
+<ul>
+<li><p class="first">write your own modules within directories already defined in the
+search path (e.g. <tt class="docutils literal"><span class="pre">$HOME/.local/lib/python2.7/dist-packages</span></tt>). You
+may use symbolic links (on Linux) to keep the code somewhere else.</p>
+</li>
+<li><p class="first">modify the environment variable <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> to include the
+directories containing the user-defined modules.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>On Linux/Unix, add the following line to a file read by the shell at
+startup (e.g. /etc/profile, .profile)</p>
 <div class="highlight-python"><pre>export PYTHONPATH=$PYTHONPATH:/home/emma/user_defined_modules</pre>
 </div>
-<p>On Windows, <a class="reference external" href="http://support.microsoft.com/kb/310519">http://support.microsoft.com/kb/310519</a> explains how to
+<p class="last">On Windows, <a class="reference external" href="http://support.microsoft.com/kb/310519">http://support.microsoft.com/kb/310519</a> explains how to
 handle environment variables.</p>
-<ul class="simple">
-<li>or modify the <tt class="docutils literal"><span class="pre">sys.path</span></tt> variable itself within a Python script.</li>
-</ul>
+</div>
+</li>
+<li><p class="first">or modify the <tt class="docutils literal"><span class="pre">sys.path</span></tt> variable itself within a Python script.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 <div class="newline"></div><span class="n">new_path</span> <span class="o">=</span> <span class="s">&#39;/home/emma/user_defined_modules&#39;</span>
 <div class="newline"></div><span class="k">if</span> <span class="n">new_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
@@ -403,11 +491,14 @@ handle environment variables.</p>
 </div>
 <p class="last">This method is not very robust, however, because it makes the code
 less portable (user-dependent path) and because you have to add the
-directory to your sys.path each time you want to import from a module in
-this directory.</p>
+directory to your sys.path each time you want to import from a module
+in this directory.</p>
 </div>
+</li>
+</ul>
 <p>See <a class="reference external" href="http://docs.python.org/tutorial/modules.html">http://docs.python.org/tutorial/modules.html</a> for more information
 about modules.</p>
+</div>
 </div>
 <div class="section" id="packages">
 <h2>1.2.5.6. Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
@@ -478,12 +569,12 @@ imported.</p>
 </div>
 <div class="section" id="good-practices">
 <h2>1.2.5.7. Good practices<a class="headerlink" href="#good-practices" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p><strong>Good practices</strong></p>
-<ul class="simple">
-<li><strong>Indentation: no choice!</strong></li>
-</ul>
+<ul>
+<li><p class="first">Use <strong>meaningful</strong> object <strong>names</strong></p>
+</li>
+<li><p class="first"><strong>Indentation: no choice!</strong></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
 <p>Indenting is compulsory in Python! Every command block following a
 colon bears an additional indentation level with respect to the
 previous line with a colon. One must therefore indent after
@@ -497,22 +588,20 @@ languages. Improper indentation leads to errors such as</p>
 <div class="newline"></div><span class="go">IndentationError: unexpected indent (test.py, line 2)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>All this indentation business can be a bit confusing in the
+<p class="last">All this indentation business can be a bit confusing in the
 beginning. However, with the clear indentation, and in the absence of
 extra characters, the resulting code is very nice to read compared to
 other languages.</p>
-<ul class="simple">
-<li><strong>Indentation depth</strong>:</li>
-</ul>
-<p>Inside your text editor, you may choose to
+</div>
+</li>
+<li><p class="first"><strong>Indentation depth</strong>: Inside your text editor, you may choose to
 indent with any positive number of spaces (1, 2, 3, 4, ...). However,
 it is considered good practice to <strong>indent with 4 spaces</strong>. You may
 configure your editor to map the <tt class="docutils literal"><span class="pre">Tab</span></tt> key to a 4-space
-indentation. In Python(x,y), the editor <tt class="docutils literal"><span class="pre">Scite</span></tt> is already
+indentation. In Python(x,y), the editor is already
 configured this way.</p>
-<ul class="simple">
-<li><strong>Style guidelines</strong></li>
-</ul>
+</li>
+<li><p class="first"><strong>Style guidelines</strong></p>
 <p><strong>Long lines</strong>: you should not write very long lines that span over more
 than (e.g.) 80 characters. Long lines can be broken with the <tt class="docutils literal"><span class="pre">\</span></tt>
 character</p>
@@ -531,10 +620,8 @@ operators, etc.:</p>
 for writing &#8220;beautiful&#8221; code (and more importantly using the same
 conventions as anybody else!) are given in the <a class="reference external" href="http://www.python.org/dev/peps/pep-0008">Style Guide for Python
 Code</a>.</p>
-<ul class="last simple">
-<li>Use <strong>meaningful</strong> object <strong>names</strong></li>
+</li>
 </ul>
-</div>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -555,12 +642,26 @@ Code</a>.</p>
              >previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
           <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
-          <li><a href="python_language.html" >1.2. The Python language</a> &raquo;</li> 
+          <li><a href="python_language.html" >1.2. The Python language</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

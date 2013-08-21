@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,11 +23,73 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
     <link rel="up" title="2. Advanced topics" href="../index.html" />
     <link rel="prev" title="2.11. scikit-learn: machine learning in Python" href="../scikit-learn/index.html" /> 
   </head>
   <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -37,7 +97,21 @@
           <a href="../scikit-learn/index.html" title="2.11. scikit-learn: machine learning in Python"
              accesskey="P">previous</a></li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">2. Advanced topics</a> &raquo;</li> 
+          <li><a href="../index.html" accesskey="U">2. Advanced topics</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>  
 
@@ -287,8 +361,10 @@ returns a resulting new array.</p>
 <div class="newline"></div>
 <div class="newline"></div>    <span class="n">PyArrayObject</span> <span class="o">*</span><span class="n">in_array</span><span class="p">;</span>
 <div class="newline"></div>    <span class="n">PyObject</span>      <span class="o">*</span><span class="n">out_array</span><span class="p">;</span>
-<div class="newline"></div>    <span class="n">PyArrayIterObject</span> <span class="o">*</span><span class="n">in_iter</span><span class="p">;</span>
-<div class="newline"></div>    <span class="n">PyArrayIterObject</span> <span class="o">*</span><span class="n">out_iter</span><span class="p">;</span>
+<div class="newline"></div>    <span class="n">NpyIter</span> <span class="o">*</span><span class="n">in_iter</span><span class="p">;</span>
+<div class="newline"></div>    <span class="n">NpyIter</span> <span class="o">*</span><span class="n">out_iter</span><span class="p">;</span>
+<div class="newline"></div>    <span class="n">NpyIter_IterNextFunc</span> <span class="o">*</span><span class="n">in_iternext</span><span class="p">;</span>
+<div class="newline"></div>    <span class="n">NpyIter_IterNextFunc</span> <span class="o">*</span><span class="n">out_iternext</span><span class="p">;</span>
 <div class="newline"></div>
 <div class="newline"></div>    <span class="cm">/*  parse single numpy array argument */</span>
 <div class="newline"></div>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">PyArg_ParseTuple</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s">&quot;O!&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">PyArray_Type</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">in_array</span><span class="p">))</span>
@@ -300,37 +376,42 @@ returns a resulting new array.</p>
 <div class="newline"></div>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <div class="newline"></div>
 <div class="newline"></div>    <span class="cm">/*  create the iterators */</span>
-<div class="newline"></div>    <span class="cm">/* TODO: this iterator API is deprecated since 1.6</span>
-<div class="newline"></div><span class="cm">     *       replace in favour of the new NpyIter API */</span>
-<div class="newline"></div>    <span class="n">in_iter</span>  <span class="o">=</span> <span class="p">(</span><span class="n">PyArrayIterObject</span> <span class="o">*</span><span class="p">)</span><span class="n">PyArray_IterNew</span><span class="p">((</span><span class="n">PyObject</span><span class="o">*</span><span class="p">)</span><span class="n">in_array</span><span class="p">);</span>
-<div class="newline"></div>    <span class="n">out_iter</span> <span class="o">=</span> <span class="p">(</span><span class="n">PyArrayIterObject</span> <span class="o">*</span><span class="p">)</span><span class="n">PyArray_IterNew</span><span class="p">(</span><span class="n">out_array</span><span class="p">);</span>
-<div class="newline"></div>    <span class="k">if</span> <span class="p">(</span><span class="n">in_iter</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">out_iter</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">in_iter</span> <span class="o">=</span> <span class="n">NpyIter_New</span><span class="p">(</span><span class="n">in_array</span><span class="p">,</span> <span class="n">NPY_ITER_READONLY</span><span class="p">,</span> <span class="n">NPY_KEEPORDER</span><span class="p">,</span>
+<div class="newline"></div>                             <span class="n">NPY_NO_CASTING</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<div class="newline"></div>    <span class="k">if</span> <span class="p">(</span><span class="n">in_iter</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
 <div class="newline"></div>        <span class="k">goto</span> <span class="n">fail</span><span class="p">;</span>
 <div class="newline"></div>
-<div class="newline"></div>    <span class="cm">/*  iterate over the arrays */</span>
-<div class="newline"></div>    <span class="k">while</span> <span class="p">(</span><span class="n">in_iter</span><span class="o">-&gt;</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">in_iter</span><span class="o">-&gt;</span><span class="n">size</span>
-<div class="newline"></div>            <span class="o">&amp;&amp;</span> <span class="n">out_iter</span><span class="o">-&gt;</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">out_iter</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
-<div class="newline"></div>        <span class="cm">/* get the datapointers */</span>
-<div class="newline"></div>        <span class="kt">double</span> <span class="o">*</span> <span class="n">in_dataptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span> <span class="o">*</span><span class="p">)</span><span class="n">in_iter</span><span class="o">-&gt;</span><span class="n">dataptr</span><span class="p">;</span>
-<div class="newline"></div>        <span class="kt">double</span> <span class="o">*</span> <span class="n">out_dataptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span> <span class="o">*</span><span class="p">)</span><span class="n">out_iter</span><span class="o">-&gt;</span><span class="n">dataptr</span><span class="p">;</span>
-<div class="newline"></div>        <span class="cm">/* cosine of input into output */</span>
-<div class="newline"></div>        <span class="o">*</span><span class="n">out_dataptr</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="o">*</span><span class="n">in_dataptr</span><span class="p">);</span>
-<div class="newline"></div>        <span class="cm">/* update the iterator */</span>
-<div class="newline"></div>        <span class="n">PyArray_ITER_NEXT</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
-<div class="newline"></div>        <span class="n">PyArray_ITER_NEXT</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
+<div class="newline"></div>    <span class="n">out_iter</span> <span class="o">=</span> <span class="n">NpyIter_New</span><span class="p">((</span><span class="n">PyArrayObject</span> <span class="o">*</span><span class="p">)</span><span class="n">out_array</span><span class="p">,</span> <span class="n">NPY_ITER_READWRITE</span><span class="p">,</span>
+<div class="newline"></div>                          <span class="n">NPY_KEEPORDER</span><span class="p">,</span> <span class="n">NPY_NO_CASTING</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<div class="newline"></div>    <span class="k">if</span> <span class="p">(</span><span class="n">out_iter</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<div class="newline"></div>        <span class="n">NpyIter_Deallocate</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
+<div class="newline"></div>        <span class="k">goto</span> <span class="n">fail</span><span class="p">;</span>
 <div class="newline"></div>    <span class="p">}</span>
 <div class="newline"></div>
+<div class="newline"></div>    <span class="n">in_iternext</span> <span class="o">=</span> <span class="n">NpyIter_GetIterNext</span><span class="p">(</span><span class="n">in_iter</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<div class="newline"></div>    <span class="n">out_iternext</span> <span class="o">=</span> <span class="n">NpyIter_GetIterNext</span><span class="p">(</span><span class="n">out_iter</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<div class="newline"></div>    <span class="k">if</span> <span class="p">(</span><span class="n">in_iternext</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">out_iternext</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<div class="newline"></div>        <span class="n">NpyIter_Deallocate</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
+<div class="newline"></div>        <span class="n">NpyIter_Deallocate</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
+<div class="newline"></div>        <span class="k">goto</span> <span class="n">fail</span><span class="p">;</span>
+<div class="newline"></div>    <span class="p">}</span>
+<div class="newline"></div>    <span class="kt">double</span> <span class="o">**</span> <span class="n">in_dataptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span> <span class="o">**</span><span class="p">)</span> <span class="n">NpyIter_GetDataPtrArray</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
+<div class="newline"></div>    <span class="kt">double</span> <span class="o">**</span> <span class="n">out_dataptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span> <span class="o">**</span><span class="p">)</span> <span class="n">NpyIter_GetDataPtrArray</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="cm">/*  iterate over the arrays */</span>
+<div class="newline"></div>    <span class="k">do</span> <span class="p">{</span>
+<div class="newline"></div>        <span class="o">**</span><span class="n">out_dataptr</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="o">**</span><span class="n">in_dataptr</span><span class="p">);</span>
+<div class="newline"></div>    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="n">in_iternext</span><span class="p">(</span><span class="n">in_iter</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">out_iternext</span><span class="p">(</span><span class="n">out_iter</span><span class="p">));</span>
+<div class="newline"></div>
 <div class="newline"></div>    <span class="cm">/*  clean up and return the result */</span>
-<div class="newline"></div>    <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
-<div class="newline"></div>    <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
+<div class="newline"></div>    <span class="n">NpyIter_Deallocate</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
+<div class="newline"></div>    <span class="n">NpyIter_Deallocate</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
 <div class="newline"></div>    <span class="n">Py_INCREF</span><span class="p">(</span><span class="n">out_array</span><span class="p">);</span>
 <div class="newline"></div>    <span class="k">return</span> <span class="n">out_array</span><span class="p">;</span>
 <div class="newline"></div>
 <div class="newline"></div>    <span class="cm">/*  in case bad things happen */</span>
 <div class="newline"></div>    <span class="nl">fail:</span>
 <div class="newline"></div>        <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">out_array</span><span class="p">);</span>
-<div class="newline"></div>        <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">in_iter</span><span class="p">);</span>
-<div class="newline"></div>        <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">out_iter</span><span class="p">);</span>
 <div class="newline"></div>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <div class="newline"></div><span class="p">}</span>
 <div class="newline"></div>
@@ -344,7 +425,6 @@ returns a resulting new array.</p>
 <div class="newline"></div>
 <div class="newline"></div><span class="cm">/* module initialization */</span>
 <div class="newline"></div><span class="n">PyMODINIT_FUNC</span>
-<div class="newline"></div>
 <div class="newline"></div><span class="nf">initcos_module_np</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <div class="newline"></div><span class="p">{</span>
 <div class="newline"></div>     <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">Py_InitModule</span><span class="p">(</span><span class="s">&quot;cos_module_np&quot;</span><span class="p">,</span> <span class="n">CosMethods</span><span class="p">);</span>
@@ -490,7 +570,7 @@ an input and an output array, computes the cosine of the input array and
 stores the result in the output_array.</p>
 <p>The library consists of the following header file (although this is not
 strictly needed for this example, we list it for completeness):</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>The function implementation resides in the following C source file:</p>
@@ -498,7 +578,7 @@ strictly needed for this example, we list it for completeness):</p>
 <div class="newline"></div>
 <div class="newline"></div><span class="cm">/*  Compute the cosine of each element in in_array, storing the result in</span>
 <div class="newline"></div><span class="cm"> *  out_array. */</span>
-<div class="newline"></div><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
+<div class="newline"></div><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
 <div class="newline"></div>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 <div class="newline"></div>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 <div class="newline"></div>        <span class="n">out_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">in_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
@@ -561,7 +641,7 @@ must use a combination of <tt class="docutils literal"><span class="pre">make</s
 <li>Note the inherent limitation of contiguous single dimensional Numpy arrays,
 since the C functions requires this kind of buffer.</li>
 <li>Also note that the output array must be preallocated, for example with
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.6)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></tt></a> and the function will write into it&#8217;s buffer.</li>
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.7)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></tt></a> and the function will write into it&#8217;s buffer.</li>
 <li>Although the original signature of the <tt class="docutils literal"><span class="pre">cos_doubles</span></tt> function is <tt class="docutils literal"><span class="pre">ARRAY,</span>
 <span class="pre">ARRAY,</span> <span class="pre">int</span></tt> the final <tt class="docutils literal"><span class="pre">cos_doubles_func</span></tt> takes only two Numpy arrays as
 arguments.</li>
@@ -613,29 +693,29 @@ the wrapping process, may be a bit tricky to understand.</p>
 been written in <tt class="docutils literal"><span class="pre">c</span></tt> and consists of the source file <tt class="docutils literal"><span class="pre">cos_module.c</span></tt>:</p>
 <div class="highlight-c"><div class="highlight"><pre><span class="cp">#include &lt;math.h&gt;</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="kt">double</span> <span class="n">cos_func</span><span class="p">(</span><span class="kt">double</span> <span class="n">arg</span><span class="p">){</span>
+<div class="newline"></div><span class="kt">double</span> <span class="nf">cos_func</span><span class="p">(</span><span class="kt">double</span> <span class="n">arg</span><span class="p">){</span>
 <div class="newline"></div>    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
 <div class="newline"></div><span class="p">}</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>and the header file <tt class="docutils literal"><span class="pre">cos_module.h</span></tt>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">double</span> <span class="n">cos_func</span><span class="p">(</span><span class="kt">double</span> <span class="n">arg</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">double</span> <span class="nf">cos_func</span><span class="p">(</span><span class="kt">double</span> <span class="n">arg</span><span class="p">);</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>And our goal is to expose the <tt class="docutils literal"><span class="pre">cos_func</span></tt> to Python. To achieve this with
 SWIG, we must write an <em>interface file</em> which contains the instructions for SWIG.</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cm">/*  Example of wrapping cos function from math.h using SWIG. */</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="o">%</span><span class="n">module</span> <span class="n">cos_module</span>
-<div class="newline"></div><span class="o">%</span><span class="p">{</span>
-<div class="newline"></div>    <span class="cm">/* the resulting C file should be built as a python extension */</span>
-<div class="newline"></div>    <span class="cp">#define SWIG_FILE_WITH_INIT</span>
-<div class="newline"></div>    <span class="cm">/*  Includes the header in the wrapper code */</span>
-<div class="newline"></div>    <span class="cp">#include &quot;cos_module.h&quot;</span>
-<div class="newline"></div><span class="o">%</span><span class="p">}</span>
-<div class="newline"></div><span class="cm">/*  Parse the header file to generate wrappers */</span>
-<div class="newline"></div><span class="o">%</span><span class="n">include</span> <span class="s">&quot;cos_module.h&quot;</span>
-<div class="newline"></div></pre></div>
+<div class="highlight-c"><pre>/*  Example of wrapping cos function from math.h using SWIG. */
+
+%module cos_module
+%{
+    /* the resulting C file should be built as a python extension */
+    #define SWIG_FILE_WITH_INIT
+    /*  Includes the header in the wrapper code */
+    #include "cos_module.h"
+%}
+/*  Parse the header file to generate wrappers */
+%include "cos_module.h"
+</pre>
 </div>
 <p>As you can see, not too much code is needed here. For this simple example it is
 enough to simply include the header file in the interface file, to expose the
@@ -733,14 +813,14 @@ file. This interface file defines various so-called <em>typemaps</em> which supp
 conversion between Numpy arrays and C-Arrays. In the following example we will
 take a quick look at how such typemaps work in practice.</p>
 <p>We have the same <tt class="docutils literal"><span class="pre">cos_doubles</span></tt> function as in the ctypes example:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="highlight-c"><div class="highlight"><pre><span class="cp">#include &lt;math.h&gt;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="cm">/*  Compute the cosine of each element in in_array, storing the result in</span>
 <div class="newline"></div><span class="cm"> *  out_array. */</span>
-<div class="newline"></div><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
+<div class="newline"></div><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
 <div class="newline"></div>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 <div class="newline"></div>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 <div class="newline"></div>        <span class="n">out_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">in_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
@@ -750,37 +830,37 @@ take a quick look at how such typemaps work in practice.</p>
 </div>
 <p>This is wrapped as <tt class="docutils literal"><span class="pre">cos_doubles_func</span></tt> using the following SWIG interface
 file:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cm">/*  Example of wrapping a C function that takes a C double array as input using</span>
-<div class="newline"></div><span class="cm"> *  numpy typemaps for SWIG. */</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="o">%</span><span class="n">module</span> <span class="n">cos_doubles</span>
-<div class="newline"></div><span class="o">%</span><span class="p">{</span>
-<div class="newline"></div>    <span class="cm">/* the resulting C file should be built as a python extension */</span>
-<div class="newline"></div>    <span class="cp">#define SWIG_FILE_WITH_INIT</span>
-<div class="newline"></div>    <span class="cm">/*  Includes the header in the wrapper code */</span>
-<div class="newline"></div>    <span class="cp">#include &quot;cos_doubles.h&quot;</span>
-<div class="newline"></div><span class="o">%</span><span class="p">}</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="cm">/*  include the numpy typemaps */</span>
-<div class="newline"></div><span class="o">%</span><span class="n">include</span> <span class="s">&quot;numpy.i&quot;</span>
-<div class="newline"></div><span class="cm">/*  need this for correct module initialization */</span>
-<div class="newline"></div><span class="o">%</span><span class="n">init</span> <span class="o">%</span><span class="p">{</span>
-<div class="newline"></div>    <span class="n">import_array</span><span class="p">();</span>
-<div class="newline"></div><span class="o">%</span><span class="p">}</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="cm">/*  typemaps for the two arrays, the second will be modified in-place */</span>
-<div class="newline"></div><span class="o">%</span><span class="n">apply</span> <span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">IN_ARRAY1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">DIM1</span><span class="p">)</span> <span class="p">{(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size_in</span><span class="p">)}</span>
-<div class="newline"></div><span class="o">%</span><span class="n">apply</span> <span class="p">(</span><span class="kt">double</span><span class="o">*</span> <span class="n">INPLACE_ARRAY1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">DIM1</span><span class="p">)</span> <span class="p">{(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size_out</span><span class="p">)}</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="cm">/*  Wrapper for cos_doubles that massages the types */</span>
-<div class="newline"></div><span class="o">%</span><span class="kr">inline</span> <span class="o">%</span><span class="p">{</span>
-<div class="newline"></div>    <span class="cm">/*  takes as input two numpy arrays */</span>
-<div class="newline"></div>    <span class="kt">void</span> <span class="n">cos_doubles_func</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size_in</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size_out</span><span class="p">)</span> <span class="p">{</span>
-<div class="newline"></div>        <span class="cm">/*  calls the original funcion, providing only the size of the first */</span>
-<div class="newline"></div>        <span class="n">cos_doubles</span><span class="p">(</span><span class="n">in_array</span><span class="p">,</span> <span class="n">out_array</span><span class="p">,</span> <span class="n">size_in</span><span class="p">);</span>
-<div class="newline"></div>    <span class="p">}</span>
-<div class="newline"></div><span class="o">%</span><span class="p">}</span>
-<div class="newline"></div></pre></div>
+<div class="highlight-c"><pre>/*  Example of wrapping a C function that takes a C double array as input using
+ *  numpy typemaps for SWIG. */
+
+%module cos_doubles
+%{
+    /* the resulting C file should be built as a python extension */
+    #define SWIG_FILE_WITH_INIT
+    /*  Includes the header in the wrapper code */
+    #include "cos_doubles.h"
+%}
+
+/*  include the numpy typemaps */
+%include "numpy.i"
+/*  need this for correct module initialization */
+%init %{
+    import_array();
+%}
+
+/*  typemaps for the two arrays, the second will be modified in-place */
+%apply (double* IN_ARRAY1, int DIM1) {(double * in_array, int size_in)}
+%apply (double* INPLACE_ARRAY1, int DIM1) {(double * out_array, int size_out)}
+
+/*  Wrapper for cos_doubles that massages the types */
+%inline %{
+    /*  takes as input two numpy arrays */
+    void cos_doubles_func(double * in_array, int size_in, double * out_array, int size_out) {
+        /*  calls the original funcion, providing only the size of the first */
+        cos_doubles(in_array, out_array, size_in);
+    }
+%}
+</pre>
 </div>
 <ul class="simple">
 <li>To use the Numpy typemaps, we need include the <tt class="docutils literal"><span class="pre">numpy.i</span></tt> file.</li>
@@ -986,14 +1066,14 @@ want to pass Numpy arrays as C arrays to your Cython wrapped C functions, there
 is a section about this in the <a class="reference external" href="http://wiki.cython.org/tutorials/NumpyPointerToC">Cython wiki</a>.</p>
 <p>In the following example, we will show how to wrap the familiar <tt class="docutils literal"><span class="pre">cos_doubles</span></tt>
 function using Cython.</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="highlight-c"><div class="highlight"><pre><span class="cp">#include &lt;math.h&gt;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="cm">/*  Compute the cosine of each element in in_array, storing the result in</span>
 <div class="newline"></div><span class="cm"> *  out_array. */</span>
-<div class="newline"></div><span class="kt">void</span> <span class="n">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
+<div class="newline"></div><span class="kt">void</span> <span class="nf">cos_doubles</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span> <span class="n">in_array</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span> <span class="n">out_array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">){</span>
 <div class="newline"></div>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 <div class="newline"></div>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 <div class="newline"></div>        <span class="n">out_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">in_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
@@ -1228,12 +1308,26 @@ you, thus making it more like the Numpy-C-API example.</li>
           <a href="../scikit-learn/index.html" title="2.11. scikit-learn: machine learning in Python"
              >previous</a></li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../index.html" >2. Advanced topics</a> &raquo;</li> 
+          <li><a href="../index.html" >2. Advanced topics</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

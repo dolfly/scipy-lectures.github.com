@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,12 +23,74 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../index.html" />
     <link rel="up" title="1. Getting started with Python for science" href="../index.html" />
     <link rel="next" title="1.5. Scipy : high-level scientific computing" href="../scipy.html" />
-    <link rel="prev" title="1.3.4. Advanced operations" href="../numpy/advanced_operations.html" /> 
+    <link rel="prev" title="1.3.5. Some exercises" href="../numpy/exercises.html" /> 
   </head>
   <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -38,10 +98,24 @@
           <a href="../scipy.html" title="1.5. Scipy : high-level scientific computing"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="../numpy/advanced_operations.html" title="1.3.4. Advanced operations"
+          <a href="../numpy/exercises.html" title="1.3.5. Some exercises"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">1. Getting started with Python for science</a> &raquo;</li> 
+          <li><a href="../index.html" accesskey="U">1. Getting started with Python for science</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>  
 
@@ -73,7 +147,7 @@ corrections.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#simple-plot" id="id7">Simple plot</a><ul>
-<li><a class="reference internal" href="#using-defaults" id="id8">Using defaults</a></li>
+<li><a class="reference internal" href="#plotting-with-default-settings" id="id8">Plotting with default settings</a></li>
 <li><a class="reference internal" href="#instantiating-defaults" id="id9">Instantiating defaults</a></li>
 <li><a class="reference internal" href="#changing-colors-and-line-widths" id="id10">Changing colors and line widths</a></li>
 <li><a class="reference internal" href="#setting-limits" id="id11">Setting limits</a></li>
@@ -126,42 +200,60 @@ corrections.</p>
 </div>
 <div class="section" id="introduction">
 <h2><a class="toc-backref" href="#id4">1.4.1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://matplotlib.org/">Matplotlib</a> is probably the single most used Python
-package for 2D-graphics. It provides both a very quick way to visualize data
-from Python and publication-quality figures in many formats.  We are going to
-explore matplotlib in interactive mode covering most common cases.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><a class="reference external" href="http://matplotlib.org/">Matplotlib</a> is probably the single most
+used Python package for 2D-graphics. It provides both a very quick
+way to visualize data from Python and publication-quality figures in
+many formats.  We are going to explore matplotlib in interactive mode
+covering most common cases.</p>
+</div>
 <div class="section" id="ipython-and-the-pylab-mode">
 <h3><a class="toc-backref" href="#id5">1.4.1.1. IPython and the pylab mode</a><a class="headerlink" href="#ipython-and-the-pylab-mode" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://ipython.org/">IPython</a> is an enhanced interactive Python shell that
-has lots of interesting features including named inputs and outputs, access to
-shell commands, improved debugging and many more. When we start it with the
-command line argument <tt class="docutils literal"><span class="pre">-pylab</span></tt> (<tt class="docutils literal"><span class="pre">--pylab</span></tt> since IPython version 0.12), it allows
-interactive matplotlib sessions that have Matlab/Mathematica-like functionality.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><a class="reference external" href="http://ipython.org/">IPython</a> is an enhanced interactive Python
+shell that has lots of interesting features including named inputs
+and outputs, access to shell commands, improved debugging and many
+more. It is central to the scientific-computing workflow in Python
+for its use in combination with Matplotlib:</p>
+</div>
+<p>We start IPython with the command line argument <tt class="docutils literal"><span class="pre">-pylab</span></tt> (<tt class="docutils literal"><span class="pre">--pylab</span></tt>
+since IPython version 0.12), for interactive matplotlib sessions with
+Matlab/Mathematica-like functionality.</p>
 </div>
 <div class="section" id="pylab">
 <h3><a class="toc-backref" href="#id6">1.4.1.2. pylab</a><a class="headerlink" href="#pylab" title="Permalink to this headline">¶</a></h3>
-<p><em>pylab</em> provides a procedural interface to the matplotlib object-oriented
-plotting library. It is modeled closely after Matlab™. Therefore, the
-majority of plotting commands in pylab have Matlab™ analogs with similar
-arguments.  Important commands are explained with interactive examples.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><em>pylab</em> provides a procedural interface to the matplotlib
+object-oriented plotting library. It is modeled closely after
+Matlab™. Therefore, the majority of plotting commands in pylab have
+Matlab™ analogs with similar arguments.  Important commands are
+explained with interactive examples.</p>
+</div>
 </div>
 </div>
 <div class="section" id="simple-plot">
 <h2><a class="toc-backref" href="#id7">1.4.2. Simple plot</a><a class="headerlink" href="#simple-plot" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we want to draw the cosine and sine functions on the same
-plot. Starting from the default settings, we&#8217;ll enrich the figure step by step
-to make it nicer.</p>
-<p>First step is to get the data for the sine and cosine functions:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>In this section, we want to draw the cosine and sine functions on the
+same plot. Starting from the default settings, we&#8217;ll enrich the
+figure step by step to make it nicer.</p>
+<p class="last">First step is to get the data for the sine and cosine functions:</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <div class="newline"></div><span class="n">C</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">X</span></tt> is now a numpy array with 256 values ranging from -π to +π (included). <tt class="docutils literal"><span class="pre">C</span></tt> is
-the cosine (256 values) and <tt class="docutils literal"><span class="pre">S</span></tt> is the sine (256 values).</p>
+<p><tt class="docutils literal"><span class="pre">X</span></tt> is now a numpy array with 256 values ranging from -π to +π
+(included). <tt class="docutils literal"><span class="pre">C</span></tt> is the cosine (256 values) and <tt class="docutils literal"><span class="pre">S</span></tt> is the sine (256
+values).</p>
 <p>To run the example, you can type them in an IPython interactive session:</p>
-<div class="code sh highlight-python"><pre>$ ipython --pylab</pre>
+<div class="highlight-python"><pre>$ ipython --pylab</pre>
 </div>
 <p>This brings us to the IPython prompt:</p>
 <div class="highlight-python"><pre>IPython 0.13 -- An enhanced Interactive Python.
@@ -173,12 +265,16 @@ object? -&gt; Details about 'object'. ?object also works, ?? prints more.
 Welcome to pylab, a matplotlib-based Python environment.
 For more information, type 'help(pylab)'.</pre>
 </div>
-<p>or you can download each of the examples and run it using regular python:</p>
-<div class="code sh highlight-python"><pre>$ python exercice_1.py</pre>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>You can also download each of the examples and run it using regular
+python, but you will loose interactive data manipulation:</p>
+<div class="highlight-python"><pre>$ python exercice_1.py</pre>
 </div>
-<p>You can get source for each step by clicking on the corresponding figure.</p>
-<div class="section" id="using-defaults">
-<h3><a class="toc-backref" href="#id8">1.4.2.1. Using defaults</a><a class="headerlink" href="#using-defaults" title="Permalink to this headline">¶</a></h3>
+<p class="last">You can get source for each step by clicking on the corresponding figure.</p>
+</div>
+<div class="section" id="plotting-with-default-settings">
+<h3><a class="toc-backref" href="#id8">1.4.2.1. Plotting with default settings</a><a class="headerlink" href="#plotting-with-default-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference external image-reference" href="auto_examples/plot_exercice_1.html"><img alt="../../_images/plot_exercice_1_1.png" class="align-right" src="../../_images/plot_exercice_1_1.png" style="width: 280.0px; height: 210.0px;" /></a>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
@@ -188,10 +284,14 @@ For more information, type 'help(pylab)'.</pre>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.plot">plot() command</a></li>
 </ul>
 </div>
-<p>Matplotlib comes with a set of default settings that allow customizing all
-kinds of properties. You can control the defaults of almost every property in
-matplotlib: figure size and dpi, line width, color and style, axes, axis and
-grid properties, text and font properties and so on.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Matplotlib comes with a set of default settings that allow
+customizing all kinds of properties. You can control the defaults of
+almost every property in matplotlib: figure size and dpi, line width,
+color and style, axes, axis and grid properties, text and font
+properties and so on.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div>
@@ -216,9 +316,13 @@ grid properties, text and font properties and so on.</p>
 </ul>
 </div>
 <p>In the script below, we&#8217;ve instantiated (and commented) all the figure settings
-that influence the appearance of the plot. The settings have been explicitly
-set to their default values, but now you can interactively play with the values
-to explore their affect (see <a class="reference internal" href="#line-properties">Line properties</a> and <a class="reference internal" href="#line-styles">Line styles</a> below).</p>
+that influence the appearance of the plot.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The settings have been explicitly set to their default values, but
+now you can interactively play with the values to explore their
+affect (see <a class="reference internal" href="#line-properties">Line properties</a> and <a class="reference internal" href="#line-styles">Line styles</a> below).</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div>
@@ -268,9 +372,12 @@ to explore their affect (see <a class="reference internal" href="#line-propertie
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.lines.Line2D">Line API</a></li>
 </ul>
 </div>
-<p>First step, we want to have the cosine in blue and the sine in red and a
-slighty thicker line for both of them. We&#8217;ll also slightly alter the figure
-size to make it more horizontal.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">First step, we want to have the cosine in blue and the sine in red
+and a slighty thicker line for both of them. We&#8217;ll also slightly
+alter the figure size to make it more horizontal.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">)</span>
@@ -290,8 +397,11 @@ size to make it more horizontal.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.ylim">ylim() command</a></li>
 </ul>
 </div>
-<p>Current limits of the figure are a bit too tight and we want to make some space
-in order to clearly see all data points.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Current limits of the figure are a bit too tight and we want to make
+some space in order to clearly see all data points.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span>
@@ -312,9 +422,12 @@ in order to clearly see all data points.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/ticker_api.html">Tick locating and formatting</a></li>
 </ul>
 </div>
-<p>Current ticks are not ideal because they do not show the interesting values
-(+/-π,+/-π/2) for sine and cosine. We&#8217;ll change them such that they show only
-these values.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Current ticks are not ideal because they do not show the interesting
+values (+/-π,+/-π/2) for sine and cosine. We&#8217;ll change them such that
+they show only these values.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">])</span>
@@ -336,10 +449,14 @@ these values.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html?#matplotlib.axes.Axes.set_yticklabels">set_yticklabels()</a></li>
 </ul>
 </div>
-<p>Ticks are now properly placed but their label is not very explicit. We could
-guess that 3.142 is π but it would be better to make it explicit. When we set
-tick values, we can also provide a corresponding label in the second argument
-list. Note that we&#8217;ll use latex to allow for nice rendering of the label.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Ticks are now properly placed but their label is not very explicit.
+We could guess that 3.142 is π but it would be better to make it
+explicit. When we set tick values, we can also provide a
+corresponding label in the second argument list. Note that we&#8217;ll use
+latex to allow for nice rendering of the label.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span>
 <div class="newline"></div>          <span class="p">[</span><span class="s">r&#39;$-\pi$&#39;</span><span class="p">,</span> <span class="s">r&#39;$-\pi/2$&#39;</span><span class="p">,</span> <span class="s">r&#39;$0$&#39;</span><span class="p">,</span> <span class="s">r&#39;$+\pi/2$&#39;</span><span class="p">,</span> <span class="s">r&#39;$+\pi$&#39;</span><span class="p">])</span>
@@ -362,12 +479,16 @@ list. Note that we&#8217;ll use latex to allow for nice rendering of the label.<
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/users/transforms_tutorial.html">Transformations tutorial</a></li>
 </ul>
 </div>
-<p>Spines are the lines connecting the axis tick marks and noting the boundaries
-of the data area. They can be placed at arbitrary positions and until now, they
-were on the border of the axis. We&#8217;ll change that since we want to have them in
-the middle. Since there are four of them (top/bottom/left/right), we&#8217;ll discard
-the top and right by setting their color to none and we&#8217;ll move the bottom and
-left ones to coordinate 0 in data space coordinates.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Spines are the lines connecting the axis tick marks and noting the
+boundaries of the data area. They can be placed at arbitrary
+positions and until now, they were on the border of the axis. We&#8217;ll
+change that since we want to have them in the middle. Since there are
+four of them (top/bottom/left/right), we&#8217;ll discard the top and right
+by setting their color to none and we&#8217;ll move the bottom and left
+ones to coordinate 0 in data space coordinates.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>  <span class="c"># gca stands for &#39;get current axis&#39;</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
@@ -392,9 +513,12 @@ left ones to coordinate 0 in data space coordinates.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/legend_api.html#matplotlib.legend.Legend">Legend API</a></li>
 </ul>
 </div>
-<p>Let&#8217;s add a legend in the upper left corner. This only requires adding the
-keyword argument label (that will be used in the legend box) to the plot
-commands.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Let&#8217;s add a legend in the upper left corner. This only requires
+adding the keyword argument label (that will be used in the legend
+box) to the plot commands.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;cosine&quot;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;sine&quot;</span><span class="p">)</span>
@@ -415,10 +539,14 @@ commands.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.annotate">annotate() command</a></li>
 </ul>
 </div>
-<p>Let&#8217;s annotate some interesting points using the annotate command. We chose the
-2π/3 value and we want to annotate both the sine and the cosine. We&#8217;ll first
-draw a marker on the curve as well as a straight dotted line. Then, we&#8217;ll use
-the annotate command to display some text with an arrow.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Let&#8217;s annotate some interesting points using the annotate command. We
+chose the 2π/3 value and we want to annotate both the sine and the
+cosine. We&#8217;ll first draw a marker on the curve as well as a straight
+dotted line. Then, we&#8217;ll use the annotate command to display some
+text with an arrow.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">t</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span>
@@ -443,7 +571,7 @@ the annotate command to display some text with an arrow.</p>
 </div>
 <div class="section" id="devil-is-in-the-details">
 <h3><a class="toc-backref" href="#id17">1.4.2.10. Devil is in the details</a><a class="headerlink" href="#devil-is-in-the-details" title="Permalink to this headline">¶</a></h3>
-<a class="reference external image-reference" href="auto_examples/plot_exercice_10_1.html"><img alt="../../_images/plot_exercice_10_1.png" class="align-right" src="../../_images/plot_exercice_10_1.png" style="width: 280.0px; height: 175.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_exercice_10.html"><img alt="../../_images/plot_exercice_10_1.png" class="align-right" src="../../_images/plot_exercice_10_1.png" style="width: 280.0px; height: 175.0px;" /></a>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p>Documentation</p>
@@ -452,10 +580,13 @@ the annotate command to display some text with an arrow.</p>
 <li><a class="reference external" href="http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.text.Text.set_bbox">BBox</a></li>
 </ul>
 </div>
-<p>The tick labels are now hardly visible because of the blue and red lines. We can
-make them bigger and we can also adjust their properties such that they&#8217;ll be
-rendered on a semi-transparent white background. This will allow us to see both
-the data and the labels.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The tick labels are now hardly visible because of the blue and red
+lines. We can make them bigger and we can also adjust their
+properties such that they&#8217;ll be rendered on a semi-transparent white
+background. This will allow us to see both the data and the labels.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
 <div class="newline"></div><span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
 <div class="newline"></div>    <span class="n">label</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
@@ -467,22 +598,30 @@ the data and the labels.</p>
 </div>
 <div class="section" id="figures-subplots-axes-and-ticks">
 <h2><a class="toc-backref" href="#id18">1.4.3. Figures, Subplots, Axes and Ticks</a><a class="headerlink" href="#figures-subplots-axes-and-ticks" title="Permalink to this headline">¶</a></h2>
-<p>So far we have used implicit figure and axes creation. This is handy for fast
-plots. We can have more control over the display using figure, subplot, and
-axes explicitly. A figure in matplotlib means the whole window in the user
-interface. Within this figure there can be subplots. While subplot positions
-the plots in a regular grid, axes allows free placement within the figure. Both
-can be useful depending on your intention. We&#8217;ve already worked with figures
-and subplots without explicitly calling them. When we call plot, matplotlib
-calls <tt class="docutils literal"><span class="pre">gca()</span></tt> to get the current axes and gca in turn calls <tt class="docutils literal"><span class="pre">gcf()</span></tt> to get the
-current figure. If there is none it calls <tt class="docutils literal"><span class="pre">figure()</span></tt> to make one, strictly
-speaking, to make a <tt class="docutils literal"><span class="pre">subplot(111)</span></tt>. Let&#8217;s look at the details.</p>
+<p>A <strong>&#8220;figure&#8221;</strong> in matplotlib means the whole window in the user interface.
+Within this figure there can be <strong>&#8220;subplots&#8221;</strong>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">So far we have used implicit figure and axes creation. This is handy
+for fast plots. We can have more control over the display using
+figure, subplot, and axes explicitly.  While subplot positions the
+plots in a regular grid, axes allows free placement within the
+figure. Both can be useful depending on your intention. We&#8217;ve already
+worked with figures and subplots without explicitly calling them.
+When we call plot, matplotlib calls <tt class="docutils literal"><span class="pre">gca()</span></tt> to get the current axes
+and gca in turn calls <tt class="docutils literal"><span class="pre">gcf()</span></tt> to get the current figure. If there
+is none it calls <tt class="docutils literal"><span class="pre">figure()</span></tt> to make one, strictly speaking, to make
+a <tt class="docutils literal"><span class="pre">subplot(111)</span></tt>. Let&#8217;s look at the details.</p>
+</div>
 <div class="section" id="figures">
 <h3><a class="toc-backref" href="#id19">1.4.3.1. Figures</a><a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h3>
-<p>A figure is the windows in the GUI that has &#8220;Figure #&#8221; as title. Figures
-are numbered starting from 1 as opposed to the normal Python way starting
-from 0. This is clearly MATLAB-style.  There are several parameters that
-determine what the figure looks like:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A figure is the windows in the GUI that has &#8220;Figure #&#8221; as title.
+Figures are numbered starting from 1 as opposed to the normal Python
+way starting from 0. This is clearly MATLAB-style.  There are several
+parameters that determine what the figure looks like:</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -522,21 +661,34 @@ determine what the figure looks like:</p>
 </tr>
 </tbody>
 </table>
-<p>The defaults can be specified in the resource file and will be used most of the
-time. Only the number of the figure is frequently changed.</p>
-<p>When you work with the GUI you can close a figure by clicking on the x in the
-upper right corner. But you can close a figure programmatically by calling
-close. Depending on the argument it closes (1) the current figure (no
-argument), (2) a specific figure (figure number or figure instance as
-argument), or (3) all figures (all as argument).</p>
-<p>As with other objects, you can set figure properties also setp or with the
-set_something methods.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>The defaults can be specified in the resource file and will be used
+most of the time. Only the number of the figure is frequently
+changed.</p>
+<p>As with other objects, you can set figure properties also setp or
+with the set_something methods.</p>
+<p class="last">When you work with the GUI you can close a figure by clicking on the
+x in the upper right corner. But you can close a figure
+programmatically by calling close. Depending on the argument it
+closes (1) the current figure (no argument), (2) a specific figure
+(figure number or figure instance as argument), or (3) all figures
+(<tt class="docutils literal"><span class="pre">&quot;all&quot;</span></tt> as argument).</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pl</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="c"># Closes figure 1</span>
+<div class="newline"></div></pre></div>
+</div>
 </div>
 <div class="section" id="subplots">
 <h3><a class="toc-backref" href="#id20">1.4.3.2. Subplots</a><a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h3>
-<p>With subplot you can arrange plots in a regular grid. You need to specify the
-number of rows and columns and the number of the plot. Note that the <a class="reference external" href="http://matplotlib.sourceforge.net/users/gridspec.html">gridspec</a> command is a more
-powerful alternative.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">With subplot you can arrange plots in a regular grid. You need to
+specify the number of rows and columns and the number of the plot.
+Note that the <a class="reference external" href="http://matplotlib.sourceforge.net/users/gridspec.html">gridspec</a> command is
+a more powerful alternative.</p>
+</div>
+<p><div style="clear: both"></div></p>
 <a class="reference external image-reference" href="auto_examples/plot_subplot-horizontal.html"><img alt="../../_images/plot_subplot-horizontal_1.png" src="../../_images/plot_subplot-horizontal_1.png" style="width: 168.0px; height: 112.0px;" /></a>
 <a class="reference external image-reference" href="auto_examples/plot_subplot-vertical.html"><img alt="../../_images/plot_subplot-vertical_1.png" src="../../_images/plot_subplot-vertical_1.png" style="width: 168.0px; height: 112.0px;" /></a>
 <a class="reference external image-reference" href="auto_examples/plot_subplot-grid.html"><img alt="../../_images/plot_subplot-grid_1.png" src="../../_images/plot_subplot-grid_1.png" style="width: 168.0px; height: 112.0px;" /></a>
@@ -569,7 +721,7 @@ follows:</p>
 </div>
 <p>There are several locators for different kind of requirements:</p>
 <a class="reference external image-reference" href="auto_examples/plot_ticks.html"><img alt="../../_images/plot_ticks_1.png" src="../../_images/plot_ticks_1.png" style="width: 426.6px; height: 232.8px;" /></a>
-<p>All of these locators derive from the base class <a class="reference external" href="http://matplotlib.org/api/ticker_api.html#matplotlib.ticker.Locator" title="(in Matplotlib v1.2.0)"><tt class="xref py py-class docutils literal"><span class="pre">matplotlib.ticker.Locator</span></tt></a>.
+<p>All of these locators derive from the base class <a class="reference external" href="http://matplotlib.org/api/ticker_api.html#matplotlib.ticker.Locator" title="(in Matplotlib v1.3.0)"><tt class="xref py py-class docutils literal"><span class="pre">matplotlib.ticker.Locator</span></tt></a>.
 You can make your own locator deriving from it. Handling dates as ticks can be
 especially tricky. Therefore, matplotlib provides special locators in
 matplotlib.dates.</p>
@@ -804,7 +956,7 @@ care of line styles.</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>Click on figure for solution.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="../../advanced/3d_plotting/index.html#mayavi-label"><em>3D plotting with Mayavi</em></a></p>
 </div>
@@ -1030,7 +1182,7 @@ technical.</p>
 </div>
 <div class="section" id="markers">
 <h3><a class="toc-backref" href="#id45">1.4.6.3. Markers</a><a class="headerlink" href="#markers" title="Permalink to this headline">¶</a></h3>
-<img alt="../../_images/plot_markers_1.png" src="../../_images/plot_markers_1.png" />
+<a class="reference internal image-reference" href="../../_images/plot_markers_1.png"><img alt="../../_images/plot_markers_1.png" src="../../_images/plot_markers_1.png" style="width: 799.2px; height: 374.4px;" /></a>
 </div>
 <div class="section" id="colormaps">
 <h3><a class="toc-backref" href="#id46">1.4.6.4. Colormaps</a><a class="headerlink" href="#colormaps" title="Permalink to this headline">¶</a></h3>
@@ -1038,7 +1190,7 @@ technical.</p>
 the reverse of <tt class="docutils literal"><span class="pre">gray</span></tt>.</p>
 <p>If you want to know more about colormaps, checks <a class="reference external" href="https://gist.github.com/2719900">Documenting the matplotlib
 colormaps</a>.</p>
-<img alt="../../_images/plot_colormaps_1.png" src="../../_images/plot_colormaps_1.png" />
+<a class="reference internal image-reference" href="../../_images/plot_colormaps_1.png"><img alt="../../_images/plot_colormaps_1.png" src="../../_images/plot_colormaps_1.png" style="width: 800.0px; height: 400.0px;" /></a>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -1056,15 +1208,29 @@ colormaps</a>.</p>
           <a href="../scipy.html" title="1.5. Scipy : high-level scientific computing"
              >next</a></li>
         <li class="right" >
-          <a href="../numpy/advanced_operations.html" title="1.3.4. Advanced operations"
+          <a href="../numpy/exercises.html" title="1.3.5. Some exercises"
              >previous</a> |</li>
         <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li> 
+          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

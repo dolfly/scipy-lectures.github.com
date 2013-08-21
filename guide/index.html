@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,12 +23,74 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../index.html" />
     <link rel="up" title="Scipy-Lecture-Notes" href="../README.html" />
     <link rel="next" title="License" href="../LICENSE.html" />
     <link rel="prev" title="Scipy-Lecture-Notes" href="../README.html" /> 
   </head>
   <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -41,7 +101,21 @@
           <a href="../README.html" title="Scipy-Lecture-Notes"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../README.html" accesskey="U">Scipy-Lecture-Notes</a> &raquo;</li> 
+          <li><a href="../README.html" accesskey="U">Scipy-Lecture-Notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>  
 
@@ -67,7 +141,7 @@
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id6">How to contribute ?</a></li>
-<li><a class="reference internal" href="#keeping-it-concise" id="id7">Keeping it concise</a></li>
+<li><a class="reference internal" href="#keeping-it-concise-collapsing-paragraphs" id="id7">Keeping it concise: collapsing paragraphs</a></li>
 <li><a class="reference internal" href="#figures-and-code-examples" id="id8">Figures and code examples</a></li>
 <li><a class="reference internal" href="#using-markup" id="id9">Using Markup</a></li>
 <li><a class="reference internal" href="#linking-to-package-documentations" id="id10">Linking to package documentations</a></li>
@@ -97,17 +171,31 @@ useful to learning the main features of the scipy ecosystem. If you want to
 contribute to reference material, we suggest that you contribute to the
 documentation of the specific packages that you are interested in.</p>
 </div>
-<div class="section" id="keeping-it-concise">
-<h2><a class="toc-backref" href="#id7">Keeping it concise</a><a class="headerlink" href="#keeping-it-concise" title="Permalink to this headline">¶</a></h2>
-<p>The HTML output can be used for displaying on screen while
-teaching. The goal is to have the same material displayed as
-in the notes. This is why the HTML version should be kept concise, with
-bullet-lists rather than full-blown paragraphs and sentences.
-In the long run, we would like to build more elaborate discussions. For this,
-the policy is to use the:</p>
-<div class="highlight-python"><pre>.. only:: pdf</pre>
+<div class="section" id="keeping-it-concise-collapsing-paragraphs">
+<h2><a class="toc-backref" href="#id7">Keeping it concise: collapsing paragraphs</a><a class="headerlink" href="#keeping-it-concise-collapsing-paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>The HTML output is used for displaying on screen while teaching. The goal
+is to have the same material displayed as in the notes. Thus there needs
+to be a very concise display, with bullet-lists rather than full-blown
+paragraphs and sentences. However, in the long run, it is useful to have
+more elaborate discussions that people can read and refer to. For this,
+the <tt class="docutils literal"><span class="pre">tip</span></tt> sphinx directive will create collapsible paragraphs, that can
+be hidden during an oral presentation:</p>
+<div class="highlight-python"><pre>.. tip::
+
+    Here insert a full-blown discussion, that will be collapsable in
+    the HTML version.
+
+    It can span on multiple paragraphs</pre>
 </div>
-<p>sphinx directive.</p>
+<p>This renders as following:</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>Here insert a full-blown discussion, that will be collapsable in
+the HTML version.</p>
+<p class="last">It can span on multiple paragraphs</p>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="figures-and-code-examples">
 <h2><a class="toc-backref" href="#id8">Figures and code examples</a><a class="headerlink" href="#figures-and-code-examples" title="Permalink to this headline">¶</a></h2>
@@ -115,9 +203,9 @@ the policy is to use the:</p>
 Any figure must be generated from a python script that needs to be named
 <tt class="docutils literal"><span class="pre">plot_xxx.py</span></tt> (xxx can be anything of course) and put into the <tt class="docutils literal"><span class="pre">examples</span></tt>
 directory. The generated image will be named from the script name.</p>
-<a class="reference external image-reference" href="auto_examples/plot_simple.html"><img alt="guide/auto_examples/images/plot_simple.png" src="guide/auto_examples/images/plot_simple.png" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_simple.html"><img alt="../_images/plot_simple_1.png" src="../_images/plot_simple_1.png" /></a>
 <p>This is the way to include your image and link it to the code:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">image</span><span class="p">::</span>  auto_examples/images/plot_simple.png
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">image</span><span class="p">::</span>  auto_examples/images/plot_simple_1.png
 <div class="newline"></div>   <span class="nc">:target:</span> <span class="nf">auto_examples/plot_simple.html</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -151,9 +239,9 @@ documentation of the various packages. You should link as much as
 possible to the original documentation.</p>
 <p>For cross-referencing API documentation we prefer to use the <a class="reference external" href="http://sphinx-doc.org/latest/ext/intersphinx.html">intersphinx
 extension</a>. This provides
-the directives <cite>:mod:</cite>, <cite>:class:</cite> and <cite>:func:</cite> to cross-link to modules,
+the directives <tt class="xref py py-obj docutils literal"><span class="pre">:mod:</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">:class:</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">:func:</span></tt> to cross-link to modules,
 classes and functions respectively. For example the <tt class="docutils literal"><span class="pre">:func:`numpy.var`</span></tt> will
-create a link like <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.var.html#numpy.var" title="(in NumPy v1.6)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.var()</span></tt></a>.</p>
+create a link like <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.var.html#numpy.var" title="(in NumPy v1.7)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.var()</span></tt></a>.</p>
 </div>
 <div class="section" id="chapter-section-subsection-paragraph">
 <h2><a class="toc-backref" href="#id11">Chapter, section, subsection, paragraph</a><a class="headerlink" href="#chapter-section-subsection-paragraph" title="Permalink to this headline">¶</a></h2>
@@ -203,7 +291,7 @@ necessary.</p>
 </div>
 <div class="section" id="clearing-floats">
 <h2><a class="toc-backref" href="#id14">Clearing floats</a><a class="headerlink" href="#clearing-floats" title="Permalink to this headline">¶</a></h2>
-<p>Figures positionned with <cite>:align: right</cite> are float. To flush them, use:</p>
+<p>Figures positionned with <tt class="xref py py-obj docutils literal"><span class="pre">:align:</span> <span class="pre">right</span></tt> are float. To flush them, use:</p>
 <div class="highlight-python"><pre>|clear-floats|</pre>
 </div>
 </div>
@@ -240,12 +328,26 @@ necessary.</p>
           <a href="../README.html" title="Scipy-Lecture-Notes"
              >previous</a> |</li>
         <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
-          <li><a href="../README.html" >Scipy-Lecture-Notes</a> &raquo;</li> 
+          <li><a href="../README.html" >Scipy-Lecture-Notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

@@ -34,6 +34,11 @@ Examples
 
    :ref:`example_cost_functions.py`
 
+.. figure:: ./images/thumb/non_convex.png
+   :target: ./non_convex.html
+
+   :ref:`example_non_convex.py`
+
 .. figure:: ./images/thumb/plot_1d_optim.png
    :target: ./plot_1d_optim.html
 
