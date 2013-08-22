@@ -930,7 +930,9 @@ processing they perform.</p>
 <div class="newline"></div><span class="go">(1024, 1024)</span>
 <div class="newline"></div></pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/lena_transforms.png"><img alt="../_images/lena_transforms.png" class="align-center" src="../_images/lena_transforms.png" style="width: 903.0px; height: 186.2px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lena_transforms.png"><img alt="../_images/lena_transforms.png" src="../_images/lena_transforms.png" style="width: 903.0px; height: 186.2px;" /></a>
+</div>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [35]: </span><span class="n">subplot</span><span class="p">(</span><span class="mi">151</span><span class="p">)</span>
 <div class="newline"></div><span class="gr">Out[35]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x925f46c</span><span class="o">&gt;</span>
 <div class="newline"></div>
@@ -957,7 +959,9 @@ processing they perform.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">wiener_lena</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">wiener</span><span class="p">(</span><span class="n">blurred_lena</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <div class="newline"></div></pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/filtered_lena.png"><img alt="../_images/filtered_lena.png" class="align-center" src="../_images/filtered_lena.png" style="width: 923.2px; height: 249.6px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/filtered_lena.png"><img alt="../_images/filtered_lena.png" src="../_images/filtered_lena.png" style="width: 923.2px; height: 249.6px;" /></a>
+</div>
 <p>Many other filters in <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.filters" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.filters</span></tt></a> and <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#scipy.signal" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></tt></a>
 can be applied to images.</p>
 <div class="green topic">
@@ -1083,7 +1087,9 @@ image.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">closed_mask</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">opened_mask</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/morpho.png"><img alt="../_images/morpho.png" class="align-center" src="../_images/morpho.png" style="width: 924.0px; height: 240.0px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/morpho.png"><img alt="../_images/morpho.png" src="../_images/morpho.png" style="width: 866.25px; height: 225.0px;" /></a>
+</div>
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
 <blockquote>
@@ -1143,7 +1149,9 @@ structuring element centered on the pixel of interest.</p>
 <div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
 <div class="newline"></div></pre></div>
 </div>
-<img alt="../_images/measures.png" class="align-center" src="../_images/measures.png" />
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/measures.png"><img alt="../_images/measures.png" src="../_images/measures.png" style="width: 910.4px; height: 312.8px;" /></a>
+</div>
 <p>See the summary exercise on <a class="reference internal" href="summary-exercises/image-processing.html#summary-exercise-image-processing"><em>Image processing application: counting bubbles and unmolten grains</em></a> for a more
 advanced example.</p>
 </div>
@@ -1154,7 +1162,7 @@ advanced example.</p>
 real-life examples of scientific computing with Python. Now that the basics of
 working with Numpy and Scipy have been introduced, the interested user is
 invited to try these exercises.</p>
-<p>Exercises:</p>
+<p><strong>Exercises:</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary-exercises/stats-interpolate.html">1.5.11.13. Maximum wind speed prediction at the Sprogø station</a></li>
@@ -1162,7 +1170,7 @@ invited to try these exercises.</p>
 <li class="toctree-l1"><a class="reference internal" href="summary-exercises/image-processing.html">1.5.11.15. Image processing application: counting bubbles and unmolten grains</a></li>
 </ul>
 </div>
-<p>Proposed solutions:</p>
+<p><strong>Proposed solutions:</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="summary-exercises/answers_image_processing.html">1.5.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>

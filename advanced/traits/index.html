@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2.8. Traits &mdash; Scipy lecture notes</title>
+    <title>2.8. Traits: building interactive dialogs &mdash; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2013.1',
+        VERSION:     '2013.2 beta (euroscipy 2013)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -123,8 +123,8 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="traits">
-<h1>2.8. Traits<a class="headerlink" href="#traits" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="traits-building-interactive-dialogs">
+<span id="traits"></span><h1>2.8. Traits: building interactive dialogs<a class="headerlink" href="#traits-building-interactive-dialogs" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -133,8 +133,16 @@
 </tr>
 </tbody>
 </table>
-<p>The Traits project allows you to simply add validation, initialization, delegation, notification and a graphical user interface to Python object attributes. In this tutorial we will explore the Traits toolset and learn how to dramatically reduce the amount of boilerplate code you write, do rapid GUI application development, and understand the ideas which underly other parts of the Enthought Tool Suite.</p>
-<p>Traits and the Enthought Tool Suite are open source projects licensed under a BSD-style license.</p>
+<p>The Traits project allows you to simply add validation, initialization, delegation, notification and a graphical user interface to Python object attributes.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>In this tutorial we will explore the Traits toolset and learn how to
+dramatically reduce the amount of boilerplate code you write, do
+rapid GUI application development, and understand the ideas which
+underly other parts of the Enthought Tool Suite.</p>
+<p class="last">Traits and the Enthought Tool Suite are open source projects licensed
+under a BSD-style license.</p>
+</div>
 <div class="topic">
 <p class="topic-title first">Intended Audience</p>
 <p>Intermediate to advanced Python programmers</p>
@@ -158,7 +166,7 @@
 <li><a class="reference internal" href="#initialisation" id="id4">Initialisation</a></li>
 <li><a class="reference internal" href="#validation" id="id5">Validation</a></li>
 <li><a class="reference internal" href="#documentation" id="id6">Documentation</a></li>
-<li><a class="reference internal" href="#visualisation" id="id7">Visualisation</a></li>
+<li><a class="reference internal" href="#visualization-opening-a-dialog" id="id7">Visualization: opening a dialog</a></li>
 <li><a class="reference internal" href="#deferral" id="id8">Deferral</a></li>
 <li><a class="reference internal" href="#notification" id="id9">Notification</a></li>
 <li><a class="reference internal" href="#some-more-advanced-traits" id="id10">Some more advanced traits</a></li>
@@ -169,8 +177,15 @@
 </div>
 <div class="section" id="introduction">
 <h2><a class="toc-backref" href="#id1">2.8.1. Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The Enthought Tool Suite enable the construction of sophisticated application frameworks for data analysis, 2D plotting and 3D visualization. These powerful, reusable components are released under liberal BSD-style licenses.</p>
-<p>The main packages are:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>The Enthought Tool Suite enable the construction of sophisticated
+application frameworks for data analysis, 2D plotting and 3D
+visualization. These powerful, reusable components are released under
+liberal BSD-style licenses.</p>
+<img alt="../../_images/ETS.jpg" class="last align-right" src="../../_images/ETS.jpg" />
+</div>
+<p>The main packages of the Enthought Tool Suite are:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Traits - component based approach to build our applications.</li>
@@ -183,7 +198,6 @@ alpha blending and more.</li>
 extensible applications</li>
 </ul>
 </div></blockquote>
-<img alt="../../_images/ETS.jpg" class="align-center" src="../../_images/ETS.jpg" />
 <p>In this tutorial, we will focus on Traits.</p>
 </div>
 <div class="section" id="example">
@@ -204,7 +218,9 @@ reservoir and the dams do have a set of parameters :</p>
 </ul>
 </div></blockquote>
 <p>The reservoir has a known behaviour. One part is related to the energy
-production based on the water released. A simple formula for approximating electric power production at a hydroelectric plant is <img class="math" src="../../_images/math/ae46cf28adb288dfa57f4a30efe2b6e53f26fb47.png" alt="P = \rho hrgk" style="vertical-align: -6px"/>, where:</p>
+production based on the water released. A simple formula for
+approximating electric power production at a hydroelectric plant is
+<img class="math" src="../../_images/math/ae46cf28adb288dfa57f4a30efe2b6e53f26fb47.png" alt="P = \rho hrgk" style="vertical-align: -6px"/>, where:</p>
 <blockquote>
 <div><ul class="simple">
 <li><img class="math" src="../../_images/math/4b4cade9ca8a2c8311fafcf040bc5b15ca507f52.png" alt="P" style="vertical-align: 0px"/> is Power in watts,</li>
@@ -215,9 +231,14 @@ production based on the water released. A simple formula for approximating elect
 <li><img class="math" src="../../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k" style="vertical-align: 0px"/> is a coefficient of efficiency ranging from 0 to 1.</li>
 </ul>
 </div></blockquote>
-<p>Annual electric energy production depends on the available water supply. In some installations the water flow rate can vary by a factor of 10:1 over the course of a year.</p>
-<p>The second part of the behaviour is the state of the storage that depends on
-controlled and uncontrolled parameters :</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Annual electric energy production depends on the available water supply.
+In some installations the water flow rate can vary by a factor of 10:1
+over the course of a year.</p>
+</div>
+<p>The second part of the behaviour is the state of the storage that depends
+on controlled and uncontrolled parameters :</p>
 <blockquote>
 <div><img class="math" src="../../_images/math/7c5f3fb2ea7d8163ce646eb028ab0b725d8d9273.png" alt="storage_{t+1} = storage_t + inflows - release - spillage - irrigation" style="vertical-align: -6px"/></div></blockquote>
 <div class="admonition warning">
@@ -228,7 +249,8 @@ in the reality.</p>
 </div>
 <div class="section" id="what-are-traits">
 <h2><a class="toc-backref" href="#id3">2.8.3. What are Traits</a><a class="headerlink" href="#what-are-traits" title="Permalink to this headline">¶</a></h2>
-<p>A trait is a type definition that can be used for normal Python object attributes, giving the attributes some additional characteristics:</p>
+<p>A trait is a type definition that can be used for normal Python object
+attributes, giving the attributes some additional characteristics:</p>
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
@@ -249,7 +271,10 @@ in the reality.</p>
 </li>
 </ul>
 </div></blockquote>
-<p>A class can freely mix trait-based attributes with normal Python attributes, or can opt to allow the use of only a fixed or open set of trait attributes within the class. Trait attributes defined by a class are automatically inherited by any subclass derived from the class.</p>
+<p>A class can freely mix trait-based attributes with normal Python
+attributes, or can opt to allow the use of only a fixed or open set of
+trait attributes within the class. Trait attributes defined by a class
+are automatically inherited by any subclass derived from the class.</p>
 <p>The common way of creating a traits class is by extending from the
 <strong>HasTraits</strong> base class and defining class traits :</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">traits.api</span> <span class="kn">import</span> <span class="n">HasTraits</span><span class="p">,</span> <span class="n">Str</span><span class="p">,</span> <span class="n">Float</span>
@@ -337,13 +362,12 @@ Dict, List, Color, Set, Expression, Code, Callable, Type, Tuple, etc.</p>
 <div class="newline"></div><span class="n">reservoir</span> <span class="o">=</span> <span class="n">Reservoir</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Lac de Vouglans&#39;</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Complex initialisation</p>
+<div class="topic">
+<p class="topic-title first"><strong>Complex initialisation</strong></p>
 <p>When a complex initialisation is required for a trait, a _XXX_default magic
 method can be implemented. It will be lazily called when trying to access
 the XXX trait. For example:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">_name_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">_name_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <div class="newline"></div>    <span class="sd">&quot;&quot;&quot; Complex initialisation of the reservoir name. &quot;&quot;&quot;</span>
 <div class="newline"></div>
 <div class="newline"></div>    <span class="k">return</span> <span class="s">&#39;Undefined&#39;</span>
@@ -427,8 +451,8 @@ information about the trait :</p>
 <div class="newline"></div></pre></div>
 </div>
 </div>
-<div class="section" id="visualisation">
-<h3><a class="toc-backref" href="#id7">2.8.3.4. Visualisation</a><a class="headerlink" href="#visualisation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="visualization-opening-a-dialog">
+<h3><a class="toc-backref" href="#id7">2.8.3.4. Visualization: opening a dialog</a><a class="headerlink" href="#visualization-opening-a-dialog" title="Permalink to this headline">¶</a></h3>
 <p>The Traits library is also aware of user interfaces and can pop up a default
 view for the Reservoir class:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">reservoir1</span> <span class="o">=</span> <span class="n">Reservoir</span><span class="p">()</span>
@@ -806,7 +830,7 @@ behaviour.</p>
 </div>
 </div>
 <div class="section" id="notification">
-<h3><a class="toc-backref" href="#id9">2.8.3.6. Notification</a><a class="headerlink" href="#notification" title="Permalink to this headline">¶</a></h3>
+<span id="traits-notification"></span><h3><a class="toc-backref" href="#id9">2.8.3.6. Notification</a><a class="headerlink" href="#notification" title="Permalink to this headline">¶</a></h3>
 <p>Traits implements a Listener pattern. For each trait a list of static and
 dynamic listeners can be fed with callbacks. When the trait does change, all
 the listeners are called.</p>
@@ -893,10 +917,9 @@ the listeners are called.</p>
 </li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Listening to all the changes</p>
-<p class="last">To listen to all the changes on a HasTraits class, the magic
+<div class="topic">
+<p class="topic-title first"><strong>Listening to all the changes</strong></p>
+<p>To listen to all the changes on a HasTraits class, the magic
 <strong>_any_trait_changed</strong> method can be implemented.</p>
 </div>
 <p>In many situations, you do not know in advance what type of listeners need to

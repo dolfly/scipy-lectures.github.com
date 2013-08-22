@@ -142,6 +142,10 @@ div.body h3, div.body hr {
     margin-top: 30px;
 }
 
+div.body hr.docutils {
+    border-style: solid;
+    color: gray;
+}
 
 /* clear both after section titles */
 div.body h1, div.body h2, div.body h3, div.body h4, hr {
@@ -213,6 +217,9 @@ table.docutils tr {
 /* Boxes */
 div.topic, div.admonition {
     border-radius: 4px 4px 4px 4px;
+}
+
+div.topic, div.sidebar {
     padding-top: 2px;
 }
 
@@ -233,7 +240,7 @@ div.contents p {
     margin-top : 0px;
 }
 
-div.body p.topic-title {
+div.body p.topic-title, div.body p.sidebar-title {
     margin-bottom: 3px;
 }
 

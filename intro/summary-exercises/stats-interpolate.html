@@ -199,9 +199,9 @@ used because a spline of degree 3 seems to correctly fit the data:</p>
 of probabilities:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nprob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">fitted_max_speeds</span> <span class="o">=</span> <span class="n">quantile_func</span><span class="p">(</span><span class="n">nprob</span><span class="p">)</span>
+<div class="newline"></div><span class="go">2%</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>2%</p>
 <p>In the current model, the maximum wind speed occurring every 50 years is
 defined as the upper 2% quantile. As a result, the cumulative probability
 value will be:</p>

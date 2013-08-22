@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2013.1',
+        VERSION:     '2013.2 beta (euroscipy 2013)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -115,7 +115,7 @@
             
   <div class="section" id="mlab-the-scripting-interface">
 <h1>Mlab: the scripting interface<a class="headerlink" href="#mlab-the-scripting-interface" title="Permalink to this headline">¶</a></h1>
-<p>The <tt class="xref py py-mod docutils literal"><span class="pre">mayavi.mlab</span></tt> module provides simple plotting functions to apply
+<p>The <a class="reference external" href="http://docs.enthought.com/mayavi/mayavi/auto/mlab_reference.html#mayavi.mlab" title="(in mayavi v4.2.1)"><tt class="xref py py-mod docutils literal"><span class="pre">mayavi.mlab</span></tt></a> module provides simple plotting functions to apply
 to numpy arrays. Try them using in IPython, by starting IPython with the
 switch <tt class="docutils literal"><span class="pre">--gui=wx</span></tt>.</p>
 <div class="section" id="d-plotting-functions">
@@ -160,8 +160,7 @@ switch <tt class="docutils literal"><span class="pre">--gui=wx</span></tt>.</p>
 <div class="newline"></div><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 <div class="newline"></div><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 <div class="newline"></div><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<div class="newline"></div><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">representation</span><span class="o">=</span><span class="s">&#39;wireframe&#39;</span><span class="p">,</span>
-<div class="newline"></div>          <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<div class="newline"></div><span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">representation</span><span class="o">=</span><span class="s">&#39;wireframe&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="admonition note">
@@ -183,7 +182,7 @@ connectivity information</strong></p>
 <div class="newline"></div><span class="n">mlab</span><span class="o">.</span><span class="n">contour3d</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/viz_volume_structure1.png"><img alt="../../_images/viz_volume_structure1.png" class="align-right" src="../../_images/viz_volume_structure1.png" style="width: 199.0px; height: 158.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/viz_volume_structure1.png"><img alt="../../_images/viz_volume_structure1.png" class="align-right" src="../../_images/viz_volume_structure1.png" style="width: 200.0px; height: 160.0px;" /></a>
 <p><strong>This function works with a regular orthogonal grid:</strong> the <cite>value</cite> array
 is a 3D array that gives the shape of the grid.</p>
 <p><div style="clear: both"></div></p>
