@@ -140,20 +140,40 @@ processing tasks, and insists on the link with other scientific Python
 modules such as NumPy and SciPy.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last">For basic image manipulation, such as image cropping or simple
+<p>For basic image manipulation, such as image cropping or simple
 filtering, a large number of simple operations can be realized with
 NumPy and SciPy only. See <a class="reference internal" href="../../advanced/image_processing/index.html#basic-image"><em>Image manipulation and processing using Numpy and Scipy</em></a>.</p>
+<p class="last">Note that you should be familiar with the content of the previous
+chapter before reading the current one, as basic operations such as
+masking and labeling are a prerequisite.</p>
 </div>
 <div class="contents local topic" id="chapters-contents">
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#introduction-and-concepts" id="id2">Introduction and concepts</a></li>
-<li><a class="reference internal" href="#input-output-data-types-and-colorspaces" id="id3">Input/output, data types and colorspaces</a></li>
-<li><a class="reference internal" href="#image-preprocessing-enhancement" id="id4">Image preprocessing / enhancement</a></li>
-<li><a class="reference internal" href="#image-segmentation" id="id5">Image segmentation</a></li>
-<li><a class="reference internal" href="#measuring-regions-properties" id="id6">Measuring regions&#8217; properties</a></li>
-<li><a class="reference internal" href="#data-visualization-and-interaction" id="id7">Data visualization and interaction</a></li>
-<li><a class="reference internal" href="#feature-extraction-for-computer-vision" id="id8">Feature extraction for computer vision</a></li>
+<li><a class="reference internal" href="#introduction-and-concepts" id="id2">Introduction and concepts</a><ul>
+<li><a class="reference internal" href="#scikit-image-and-the-scipy-ecosystem" id="id3"><tt class="docutils literal"><span class="pre">scikit-image</span></tt> and the <tt class="docutils literal"><span class="pre">SciPy</span></tt> ecosystem</a></li>
+<li><a class="reference internal" href="#what-s-to-be-found-in-scikit-image" id="id4">What&#8217;s to be found in scikit-image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#input-output-data-types-and-colorspaces" id="id5">Input/output, data types and colorspaces</a><ul>
+<li><a class="reference internal" href="#data-types" id="id6">Data types</a></li>
+<li><a class="reference internal" href="#colorspaces" id="id7">Colorspaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-preprocessing-enhancement" id="id8">Image preprocessing / enhancement</a><ul>
+<li><a class="reference internal" href="#local-filters" id="id9">Local filters</a></li>
+<li><a class="reference internal" href="#non-local-filters" id="id10">Non-local filters</a></li>
+<li><a class="reference internal" href="#mathematical-morphology" id="id11">Mathematical morphology</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-segmentation" id="id12">Image segmentation</a><ul>
+<li><a class="reference internal" href="#histogram-based-method-otsu-thresholding" id="id13">Histogram-based method: <strong>Otsu thresholding</strong></a></li>
+<li><a class="reference internal" href="#marker-based-methods" id="id14">Marker based methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#measuring-regions-properties" id="id15">Measuring regions&#8217; properties</a></li>
+<li><a class="reference internal" href="#data-visualization-and-interaction" id="id16">Data visualization and interaction</a></li>
+<li><a class="reference internal" href="#feature-extraction-for-computer-vision" id="id17">Feature extraction for computer vision</a></li>
 </ul>
 </div>
 <div class="section" id="introduction-and-concepts">
@@ -184,7 +204,7 @@ NumPy and SciPy only. See <a class="reference internal" href="../../advanced/ima
 </div>
 <a class="reference external image-reference" href="auto_examples/plot_check.html"><img alt="../../_images/plot_check_1.png" class="align-center" src="../../_images/plot_check_1.png" style="width: 360.0px; height: 360.0px;" /></a>
 <div class="section" id="scikit-image-and-the-scipy-ecosystem">
-<h3>3.2.1.1. <tt class="docutils literal"><span class="pre">scikit-image</span></tt> and the <tt class="docutils literal"><span class="pre">SciPy</span></tt> ecosystem<a class="headerlink" href="#scikit-image-and-the-scipy-ecosystem" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">3.2.1.1. <tt class="docutils literal"><span class="pre">scikit-image</span></tt> and the <tt class="docutils literal"><span class="pre">SciPy</span></tt> ecosystem</a><a class="headerlink" href="#scikit-image-and-the-scipy-ecosystem" title="Permalink to this headline">¶</a></h3>
 <p>Stable release : 0.8 (included in Canopy and Anaconda)</p>
 <p>0.7 release packaged in Ubuntu</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage</span>
@@ -204,8 +224,8 @@ NumPy and SciPy only. See <a class="reference internal" href="../../advanced/ima
 NumPy arrays:</p>
 <blockquote>
 <div><ul class="simple">
-<li>:mod:<tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt>: for nd-arrays (no image magics). Basic filtering,
-mathematical morphology, regions properties</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a> : for nd-arrays (no image magics). Basic
+filtering, mathematical morphology, regions properties</li>
 <li><a class="reference external" href="http://luispedro.org/software/mahotas">Mahotas</a></li>
 </ul>
 </div></blockquote>
@@ -243,7 +263,7 @@ just a wrapper class around NumPy <tt class="docutils literal"><span class="pre"
 </div>
 </div>
 <div class="section" id="what-s-to-be-found-in-scikit-image">
-<h3>3.2.1.2. What&#8217;s to be found in scikit-image<a class="headerlink" href="#what-s-to-be-found-in-scikit-image" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">3.2.1.2. What&#8217;s to be found in scikit-image</a><a class="headerlink" href="#what-s-to-be-found-in-scikit-image" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Website: <a class="reference external" href="http://scikit-image.org/">http://scikit-image.org/</a></li>
 <li>Gallery of examples (as in
@@ -273,7 +293,7 @@ local maxima, of corners, etc.</p>
 </div>
 </div>
 <div class="section" id="input-output-data-types-and-colorspaces">
-<h2><a class="toc-backref" href="#id3">3.2.2. Input/output, data types and colorspaces</a><a class="headerlink" href="#input-output-data-types-and-colorspaces" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">3.2.2. Input/output, data types and colorspaces</a><a class="headerlink" href="#input-output-data-types-and-colorspaces" title="Permalink to this headline">¶</a></h2>
 <p>I/O: <a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.io.html#skimage.io" title="(in skimage v0.8.0)"><tt class="xref py py-mod docutils literal"><span class="pre">skimage.io</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
 <div class="newline"></div></pre></div>
@@ -303,7 +323,7 @@ or OpenCV are present</p>
 <div class="newline"></div></pre></div>
 </div>
 <div class="section" id="data-types">
-<h3>3.2.2.1. Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">3.2.2.1. Data types</a><a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
 <a class="reference external image-reference" href="auto_examples/plot_camera_uint.html"><img alt="../../_images/plot_camera_uint_1.png" class="align-right" src="../../_images/plot_camera_uint_1.png" style="width: 50%;" /></a>
 <p>Image ndarrays can be represented either by integers (signed or unsigned) or
 floats.</p>
@@ -343,7 +363,7 @@ dtype and the data range, following skimage&#8217;s conventions:
 more details.</p>
 </div>
 <div class="section" id="colorspaces">
-<h3>3.2.2.2. Colorspaces<a class="headerlink" href="#colorspaces" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">3.2.2.2. Colorspaces</a><a class="headerlink" href="#colorspaces" title="Permalink to this headline">¶</a></h3>
 <p>Color images are of shape (N, M, 3) or (N, M, 4) (when an alpha channel
 encodes transparency)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
@@ -352,17 +372,15 @@ encodes transparency)</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>Routines converting between different colorspaces (RGB, HSV, LAB etc.)
-are available in <a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.color.html#skimage.color" title="(in skimage v0.8.0)"><tt class="xref py py-mod docutils literal"><span class="pre">skimage.color</span></tt></a>: <tt class="docutils literal"><span class="pre">color.rgb2hsv</span></tt>, <tt class="docutils literal"><span class="pre">color.lab2rgb</span></tt>,
+are available in <a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.color.html#skimage.color" title="(in skimage v0.8.0)"><tt class="xref py py-mod docutils literal"><span class="pre">skimage.color</span></tt></a> : <tt class="docutils literal"><span class="pre">color.rgb2hsv</span></tt>, <tt class="docutils literal"><span class="pre">color.lab2rgb</span></tt>,
 etc. Check the docstring for the expected dtype (and data range) of input
 images.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>3-D images</p>
-<p class="last">Some functions of <tt class="docutils literal"><span class="pre">skimage</span></tt> can take 3-D images as input arguments.
-Check the docstring to know if a function can be used on 3-D images
+<div class="topic">
+<p class="topic-title first">3D images</p>
+<p>Some functions of <tt class="docutils literal"><span class="pre">skimage</span></tt> can take 3D images as input arguments.
+Check the docstring to know if a function can be used on 3D images
 (for example MRI or CT images).</p>
 </div>
-<hr class="docutils" />
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
 <blockquote>
@@ -375,10 +393,10 @@ plot the histogram of each color channel</p>
 </div>
 </div>
 <div class="section" id="image-preprocessing-enhancement">
-<h2><a class="toc-backref" href="#id4">3.2.3. Image preprocessing / enhancement</a><a class="headerlink" href="#image-preprocessing-enhancement" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">3.2.3. Image preprocessing / enhancement</a><a class="headerlink" href="#image-preprocessing-enhancement" title="Permalink to this headline">¶</a></h2>
 <p>Goals: denoising, feature (edges) extraction, ...</p>
 <div class="section" id="local-filters">
-<h3>3.2.3.1. Local filters<a class="headerlink" href="#local-filters" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">3.2.3.1. Local filters</a><a class="headerlink" href="#local-filters" title="Permalink to this headline">¶</a></h3>
 <p>Local filters replace the value of pixels by a function of the
 values of neighboring pixels. The function can be linear or non-linear.</p>
 <p>Neighbourhood: square (choose size), disk, or more complicated
@@ -397,7 +415,7 @@ values of neighboring pixels. The function can be linear or non-linear.</p>
 <a class="reference external image-reference" href="auto_examples/plot_sobel.html"><img alt="../../_images/plot_sobel_1.png" class="align-center" src="../../_images/plot_sobel_1.png" style="width: 70%;" /></a>
 </div>
 <div class="section" id="non-local-filters">
-<h3>3.2.3.2. Non-local filters<a class="headerlink" href="#non-local-filters" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">3.2.3.2. Non-local filters</a><a class="headerlink" href="#non-local-filters" title="Permalink to this headline">¶</a></h3>
 <p>Non-local filters use a large region of the image (or all the image) to
 transform the value of one pixel:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
@@ -409,7 +427,7 @@ transform the value of one pixel:</p>
 <a class="reference external image-reference" href="auto_examples/plot_equalize_hist.html"><img alt="../../_images/plot_equalize_hist_1.png" class="align-center" src="../../_images/plot_equalize_hist_1.png" style="width: 70%;" /></a>
 </div>
 <div class="section" id="mathematical-morphology">
-<h3>3.2.3.3. Mathematical morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">3.2.3.3. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Mathematical_morphology">http://en.wikipedia.org/wiki/Mathematical_morphology</a></p>
 <p>Probe an image with a simple shape (a <strong>structuring element</strong>), and
 modify this image according to how the shape locally fits or misses the
@@ -494,7 +512,14 @@ image.</p>
 (non-binary) grayscale images (int or float type). Erosion and dilation
 correspond to minimum (resp. maximum) filters.</p>
 </div>
-<p>Higher-level mathematical morphology are available: tophat, skeletonization, etc.</p>
+<p>Higher-level mathematical morphology are available: tophat,
+skeletonization, etc.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Basic mathematical morphology is also implemented in
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.morphology" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.morphology</span></tt></a>. The <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt> implementation
+works on arbitrary-dimensional arrays.</p>
+</div>
 <hr class="docutils" />
 <div class="topic">
 <p class="topic-title first">Example of filters comparison: image denoising</p>
@@ -512,12 +537,17 @@ correspond to minimum (resp. maximum) filters.</p>
 </div>
 </div>
 <div class="section" id="image-segmentation">
-<h2><a class="toc-backref" href="#id5">3.2.4. Image segmentation</a><a class="headerlink" href="#image-segmentation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">3.2.4. Image segmentation</a><a class="headerlink" href="#image-segmentation" title="Permalink to this headline">¶</a></h2>
 <p>Segmentation = filter that maps an image onto an image of labels
 corresponding to different regions.</p>
-<p>Binary segmentation: foreground + background</p>
-<ul>
-<li><p class="first">Histogram-based method: <strong>Otsu thresholding</strong></p>
+<div class="section" id="histogram-based-method-otsu-thresholding">
+<h3><a class="toc-backref" href="#id13">3.2.4.1. Histogram-based method: <strong>Otsu thresholding</strong></a><a class="headerlink" href="#histogram-based-method-otsu-thresholding" title="Permalink to this headline">¶</a></h3>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The <a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_method">Otsu method</a> is a
+simple heuristic to find a threshold to separate the foreground from
+the background.</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="nb">filter</span>
 <div class="newline"></div><span class="n">camera</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
@@ -525,12 +555,15 @@ corresponding to different regions.</p>
 <div class="newline"></div><span class="n">mask</span> <span class="o">=</span> <span class="n">camera</span> <span class="o">&lt;</span> <span class="n">val</span>
 <div class="newline"></div></pre></div>
 </div>
-</li>
-</ul>
 <a class="reference external image-reference" href="auto_examples/plot_threshold.html"><img alt="../../_images/plot_threshold_1.png" class="align-center" src="../../_images/plot_threshold_1.png" style="width: 70%;" /></a>
-<ul class="simple">
-<li>Labeling connected components of a discrete image</li>
-</ul>
+<div class="section" id="labeling-connected-components-of-a-discrete-image">
+<h4>3.2.4.1.1. Labeling connected components of a discrete image<a class="headerlink" href="#labeling-connected-components-of-a-discrete-image" title="Permalink to this headline">¶</a></h4>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Once you have separated foreground objects, it is use to separate them
+from each other. For this, we can assign a different integer labels to
+each one.</p>
+</div>
 <p>Synthetic data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">256</span>
@@ -550,11 +583,21 @@ corresponding to different regions.</p>
 <div class="newline"></div></pre></div>
 </div>
 <a class="reference external image-reference" href="auto_examples/plot_labels.html"><img alt="../../_images/plot_labels_1.png" class="align-center" src="../../_images/plot_labels_1.png" style="width: 90%;" /></a>
-<ul class="simple">
-<li>Markers-based methods: <tt class="docutils literal"><span class="pre">morphology.watershed</span></tt> and
-<tt class="docutils literal"><span class="pre">segmentation.random_walker</span></tt></li>
-</ul>
-<p><strong>Watershed</strong> segmentation</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-func docutils literal"><span class="pre">scipy.ndimage.find_objects()</span></tt> is useful to return slices on
+object in an image.</p>
+</div>
+</div>
+</div>
+<div class="section" id="marker-based-methods">
+<h3><a class="toc-backref" href="#id14">3.2.4.2. Marker based methods</a><a class="headerlink" href="#marker-based-methods" title="Permalink to this headline">¶</a></h3>
+<p>If you have markers inside a set of regions, you can use these to segment
+the regions.</p>
+<div class="section" id="watershed-segmentation">
+<h4>3.2.4.2.1. <em>Watershed</em> segmentation<a class="headerlink" href="#watershed-segmentation" title="Permalink to this headline">¶</a></h4>
+<p>The Watershed (<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.morphology.html#skimage.morphology.watershed" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.morphology.watershed()</span></tt></a>) is a region-growing
+approach that fills &#8220;bassins&#8221; in the image</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">watershed</span><span class="p">,</span> <span class="n">is_local_maximum</span>
 <div class="newline"></div><span class="go">&gt;&gt;&gt;</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># Generate an initial image with two overlapping circles</span>
@@ -574,7 +617,12 @@ corresponding to different regions.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_ws</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Random walker</strong> segmentation</p>
+</div>
+<div class="section" id="random-walker-segmentation">
+<h4>3.2.4.2.2. <em>Random walker</em> segmentation<a class="headerlink" href="#random-walker-segmentation" title="Permalink to this headline">¶</a></h4>
+<p>The random walker algorithm (<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.segmentation.html#skimage.segmentation.random_walker" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.segmentation.random_walker()</span></tt></a>)
+is similar to the Watershed, but with a more &#8220;probabilistic&#8221; appraoch. It
+is based on the idea of the diffusion of labels in the image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Transform markers image so that 0-valued pixels are to</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># be labelled, and -1-valued pixels represent background</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">markers</span><span class="p">[</span><span class="o">~</span><span class="n">image</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -587,8 +635,9 @@ corresponding to different regions.</p>
 <p><tt class="docutils literal"><span class="pre">skimage</span></tt> provides several utility functions that can be used on
 label images (ie images where different discrete values identify
 different regions). Functions names are often self-explaining:
-<tt class="docutils literal"><span class="pre">segmentation.clear_border</span></tt>, <tt class="docutils literal"><span class="pre">segmentation.relabel_from_one</span></tt>,
-<tt class="docutils literal"><span class="pre">morphology.remove_small_objects</span></tt>, etc.</p>
+<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.segmentation.html#skimage.segmentation.clear_border" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.segmentation.clear_border()</span></tt></a>,
+<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.segmentation.html#skimage.segmentation.relabel_from_one" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.segmentation.relabel_from_one()</span></tt></a>,
+<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.morphology.html#skimage.morphology.remove_small_objects" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.morphology.remove_small_objects()</span></tt></a>, etc.</p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
@@ -602,8 +651,10 @@ background segmentation.</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="measuring-regions-properties">
-<h2><a class="toc-backref" href="#id6">3.2.5. Measuring regions&#8217; properties</a><a class="headerlink" href="#measuring-regions-properties" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">3.2.5. Measuring regions&#8217; properties</a><a class="headerlink" href="#measuring-regions-properties" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre>&gt;&gt;&gt; from skimage import measure
 &gt;&gt;&gt; measure.regionprops?</pre>
 </div>
@@ -616,7 +667,8 @@ background segmentation.</li>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">for some properties, functions are available as well in
-<tt class="docutils literal"><span class="pre">scipy.ndimage.measurements</span></tt> with a different API (a list is returned).</p>
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.measurements" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.measurements</span></tt></a> with a different API (a list is
+returned).</p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise (cont&#8217;d)</p>
@@ -631,7 +683,7 @@ exercise.</li>
 </div>
 </div>
 <div class="section" id="data-visualization-and-interaction">
-<h2><a class="toc-backref" href="#id7">3.2.6. Data visualization and interaction</a><a class="headerlink" href="#data-visualization-and-interaction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">3.2.6. Data visualization and interaction</a><a class="headerlink" href="#data-visualization-and-interaction" title="Permalink to this headline">¶</a></h2>
 <p>Meaningful visualizations are useful when testing a given processing
 pipeline.</p>
 <p>Some image processing operations:</p>
@@ -679,7 +731,7 @@ experimental Qt-based GUI-toolkit</p>
 <img alt="../../_images/viewer.png" class="align-center" src="../../_images/viewer.png" />
 </div>
 <div class="section" id="feature-extraction-for-computer-vision">
-<h2><a class="toc-backref" href="#id8">3.2.7. Feature extraction for computer vision</a><a class="headerlink" href="#feature-extraction-for-computer-vision" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">3.2.7. Feature extraction for computer vision</a><a class="headerlink" href="#feature-extraction-for-computer-vision" title="Permalink to this headline">¶</a></h2>
 <p>Geometric or textural descriptor can be extracted from images in order to</p>
 <ul class="simple">
 <li>classify parts of the image (e.g. sky vs. buildings)</li>
