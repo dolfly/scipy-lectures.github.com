@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -115,6 +115,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/packages/scikit-image/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -224,7 +230,7 @@ masking and labeling are a prerequisite.</p>
 NumPy arrays:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a> : for nd-arrays (no image magics). Basic
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage" title="(in SciPy v0.13.0)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></tt></a> : for nd-arrays (no image magics). Basic
 filtering, mathematical morphology, regions properties</li>
 <li><a class="reference external" href="http://luispedro.org/software/mahotas">Mahotas</a></li>
 </ul>
@@ -517,7 +523,7 @@ skeletonization, etc.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">Basic mathematical morphology is also implemented in
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.morphology" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.morphology</span></tt></a>. The <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt> implementation
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.morphology" title="(in SciPy v0.13.0)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.morphology</span></tt></a>. The <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt> implementation
 works on arbitrary-dimensional arrays.</p>
 </div>
 <hr class="docutils" />
@@ -527,7 +533,7 @@ works on arbitrary-dimensional arrays.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">coins_zoom</span> <span class="o">=</span> <span class="n">coins</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span> <span class="mi">300</span><span class="p">:</span><span class="mi">370</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">median_coins</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">coins_zoom</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tv_coins</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">tv_denoise</span><span class="p">(</span><span class="n">coins_zoom</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">tv_coins</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">denoise_tv_chambolle</span><span class="p">(</span><span class="n">coins_zoom</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_coins</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
@@ -598,7 +604,8 @@ the regions.</p>
 <h4>3.2.4.2.1. <em>Watershed</em> segmentation<a class="headerlink" href="#watershed-segmentation" title="Permalink to this headline">¶</a></h4>
 <p>The Watershed (<a class="reference external" href="http://scikit-image.org/docs/0.8.0/api/skimage.morphology.html#skimage.morphology.watershed" title="(in skimage v0.8.0)"><tt class="xref py py-func docutils literal"><span class="pre">skimage.morphology.watershed()</span></tt></a>) is a region-growing
 approach that fills &#8220;bassins&#8221; in the image</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">watershed</span><span class="p">,</span> <span class="n">is_local_maximum</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">watershed</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">peak_local_max</span>
 <div class="newline"></div><span class="go">&gt;&gt;&gt;</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># Generate an initial image with two overlapping circles</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
@@ -612,7 +619,7 @@ approach that fills &#8220;bassins&#8221; in the image</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># to the background</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxi</span> <span class="o">=</span> <span class="n">is_local_maximum</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxi</span> <span class="o">=</span> <span class="n">peak_local_max</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span><span class="n">labels</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">markers</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">local_maxi</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_ws</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
@@ -667,7 +674,7 @@ background segmentation.</li>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">for some properties, functions are available as well in
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.measurements" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.measurements</span></tt></a> with a different API (a list is
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html#scipy.ndimage.measurements" title="(in SciPy v0.13.0)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.measurements</span></tt></a> with a different API (a list is
 returned).</p>
 </div>
 <div class="green topic">
@@ -794,6 +801,12 @@ different images, as described in
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/packages/scikit-image/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

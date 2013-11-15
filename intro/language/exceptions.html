@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -116,6 +116,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/exceptions.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -168,14 +174,13 @@ for the right exception type.</p>
 <h2>1.2.8.2. Catching exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="try-except">
 <h3>1.2.8.2.1. try/except<a class="headerlink" href="#try-except" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<div class="newline"></div><span class="go"> ....:     try:</span>
-<div class="newline"></div><span class="go"> ....:         x = int(raw_input(&#39;Please enter a number: &#39;))</span>
-<div class="newline"></div><span class="go"> ....:         break</span>
-<div class="newline"></div><span class="go"> ....:     except ValueError:</span>
-<div class="newline"></div><span class="go"> ....:         print(&#39;That was no valid number.  Try again...&#39;)</span>
-<div class="newline"></div><span class="go"> ....:</span>
-<div class="newline"></div><span class="go"> ....:</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">try</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a number: &#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="k">break</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>         <span class="k">print</span><span class="p">(</span><span class="s">&#39;That was no valid number.  Try again...&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>
 <div class="newline"></div><span class="go">Please enter a number: a</span>
 <div class="newline"></div><span class="go">That was no valid number.  Try again...</span>
 <div class="newline"></div><span class="go">Please enter a number: 1</span>
@@ -188,11 +193,11 @@ for the right exception type.</p>
 <div class="section" id="try-finally">
 <h3>1.2.8.2.2. try/finally<a class="headerlink" href="#try-finally" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="k">try</span><span class="p">:</span>
-<div class="newline"></div><span class="go"> ....:    x = int(raw_input(&#39;Please enter a number: &#39;))</span>
-<div class="newline"></div><span class="go"> ....: finally:</span>
-<div class="newline"></div><span class="go"> ....:    print(&#39;Thank you for your input&#39;)</span>
-<div class="newline"></div><span class="go"> ....:</span>
-<div class="newline"></div><span class="go"> ....:</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Please enter a number: &#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">   ....:</span> <span class="k">finally</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">   ....:</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Thank you for your input&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">   ....:</span>
+<div class="newline"></div><span class="gp">   ....:</span>
 <div class="newline"></div><span class="go">Please enter a number: a</span>
 <div class="newline"></div><span class="go">Thank you for your input</span>
 <div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
@@ -309,6 +314,12 @@ StopIteration) or not (e.g. custom error raising)</p>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/exceptions.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

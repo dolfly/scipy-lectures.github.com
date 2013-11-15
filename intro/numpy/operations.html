@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -116,6 +116,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/numpy/operations.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -129,16 +135,16 @@
 <div class="contents local topic" id="section-contents">
 <p class="topic-title first">Section contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#elementwise-operations" id="id4">Elementwise operations</a></li>
-<li><a class="reference internal" href="#basic-reductions" id="id5">Basic reductions</a></li>
-<li><a class="reference internal" href="#broadcasting" id="id6">Broadcasting</a></li>
-<li><a class="reference internal" href="#array-shape-manipulation" id="id7">Array shape manipulation</a></li>
-<li><a class="reference internal" href="#sorting-data" id="id8">Sorting data</a></li>
-<li><a class="reference internal" href="#summary" id="id9">Summary</a></li>
+<li><a class="reference internal" href="#elementwise-operations" id="id2">Elementwise operations</a></li>
+<li><a class="reference internal" href="#basic-reductions" id="id3">Basic reductions</a></li>
+<li><a class="reference internal" href="#broadcasting" id="id4">Broadcasting</a></li>
+<li><a class="reference internal" href="#array-shape-manipulation" id="id5">Array shape manipulation</a></li>
+<li><a class="reference internal" href="#sorting-data" id="id6">Sorting data</a></li>
+<li><a class="reference internal" href="#summary" id="id7">Summary</a></li>
 </ul>
 </div>
 <div class="section" id="elementwise-operations">
-<h2><a class="toc-backref" href="#id4">1.3.2.1. Elementwise operations</a><a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">1.3.2.1. Elementwise operations</a><a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-operations">
 <h3>1.3.2.1.1. Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h3>
 <p>With scalars:</p>
@@ -195,9 +201,9 @@
 <p class="topic-title first"><strong>Exercise: Elementwise operations</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Try simple arithmetic elementwise operations.</li>
+<li>Try simple arithmetic elementwise operations: add even elements
+with odd elements</li>
 <li>Time them against their pure python counterparts using <tt class="docutils literal"><span class="pre">%timeit</span></tt>.</li>
-<li>Try using <tt class="docutils literal"><span class="pre">dot</span></tt>.</li>
 <li>Generate:<ul>
 <li><tt class="docutils literal"><span class="pre">[2**0,</span> <span class="pre">2**1,</span> <span class="pre">2**2,</span> <span class="pre">2**3,</span> <span class="pre">2**4]</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">a_j</span> <span class="pre">=</span> <span class="pre">2^(3*j)</span> <span class="pre">-</span> <span class="pre">j</span></tt></li>
@@ -209,58 +215,13 @@
 </div>
 <div class="section" id="other-operations">
 <h3>1.3.2.1.2. Other operations<a class="headerlink" href="#other-operations" title="Permalink to this headline">¶</a></h3>
-<p>Comparisons:</p>
+<p><strong>Comparisons:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
 <div class="newline"></div><span class="go">array([False,  True, False,  True], dtype=bool)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
 <div class="newline"></div><span class="go">array([False, False,  True, False], dtype=bool)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Logical operations:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([ True,  True,  True, False], dtype=bool)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([ True, False, False, False], dtype=bool)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Transcendental functions:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([ 0.        ,  0.84147098,  0.90929743,  0.14112001, -0.7568025 ,</span>
-<div class="newline"></div><span class="go">       -0.95892427, -0.2794155 ,  0.6569866 ,  0.98935825,  0.41211849])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([       -inf,  0.        ,  0.69314718,  1.09861229,  1.38629436,</span>
-<div class="newline"></div><span class="go">        1.60943791,  1.79175947,  1.94591015,  2.07944154,  2.19722458])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([  1.00000000e+00,   2.71828183e+00,   7.38905610e+00,</span>
-<div class="newline"></div><span class="go">         2.00855369e+01,   5.45981500e+01,   1.48413159e+02,</span>
-<div class="newline"></div><span class="go">         4.03428793e+02,   1.09663316e+03,   2.98095799e+03,</span>
-<div class="newline"></div><span class="go">         8.10308393e+03])</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Shape mismatches</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  
-<div class="newline"></div><span class="gt">Traceback (most recent call last):</span>
-<div class="newline"></div>  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<div class="newline"></div><span class="gr">ValueError</span>: <span class="n">operands could not be broadcast together with shapes (4) (2)</span>
-<div class="newline"></div></pre></div>
-</div>
-<p><strong>Broadcasting?</strong> We&#8217;ll return to that <a class="reference internal" href="#broadcasting"><em>later</em></a>.</p>
-<p>Transposition:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c"># see help(np.triu)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<div class="newline"></div><span class="go">array([[ 0.,  1.,  1.],</span>
-<div class="newline"></div><span class="go">       [ 0.,  0.,  1.],</span>
-<div class="newline"></div><span class="go">       [ 0.,  0.,  0.]])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">T</span>
-<div class="newline"></div><span class="go">array([[ 0.,  0.,  0.],</span>
-<div class="newline"></div><span class="go">       [ 1.,  0.,  0.],</span>
-<div class="newline"></div><span class="go">       [ 1.,  1.,  0.]])</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="admonition tip">
@@ -276,13 +237,63 @@
 <div class="newline"></div></pre></div>
 </div>
 </div>
+<p><strong>Logical operations:</strong></p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([ True,  True,  True, False], dtype=bool)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([ True, False, False, False], dtype=bool)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Transcendental functions:</strong></p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([ 0.        ,  0.84147098,  0.90929743,  0.14112001, -0.7568025])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([       -inf,  0.        ,  0.69314718,  1.09861229,  1.38629436])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="newline"></div><span class="go">array([  1.00000000e+00,   2.71828183e+00,   7.38905610e+00,</span>
+<div class="newline"></div><span class="go">         2.00855369e+01,   5.45981500e+01])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Shape mismatches</strong></p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  
+<div class="newline"></div><span class="gt">Traceback (most recent call last):</span>
+<div class="newline"></div>  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<div class="newline"></div><span class="gr">ValueError</span>: <span class="n">operands could not be broadcast together with shapes (4) (2)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><em>Broadcasting?</em> We&#8217;ll return to that <a class="reference internal" href="#broadcasting"><em>later</em></a>.</p>
+<p><strong>Transposition:</strong></p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c"># see help(np.triu)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([[ 0.,  1.,  1.],</span>
+<div class="newline"></div><span class="go">       [ 0.,  0.,  1.],</span>
+<div class="newline"></div><span class="go">       [ 0.,  0.,  0.]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">T</span>
+<div class="newline"></div><span class="go">array([[ 0.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [ 1.,  0.,  0.],</span>
+<div class="newline"></div><span class="go">       [ 1.,  1.,  0.]])</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>The transposition is a view</strong></p>
+<p>As a results, the following code <strong>is wrong</strong> and will <strong>not make a
+matrix symmetric</strong>:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p><strong>Linear algebra</strong></p>
 <p class="last">The sub-module <tt class="xref py py-mod docutils literal"><span class="pre">numpy.linalg</span></tt> implements basic linear algebra, such as
 solving linear systems, singular value decomposition, etc. However, it is
 not guaranteed to be compiled using efficient routines, and thus we
-recommend the use of <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a>, as detailed in section
+recommend the use of <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#scipy.linalg" title="(in SciPy v0.13.0)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></tt></a>, as detailed in section
 <a class="reference internal" href="../scipy.html#scipy-linalg"><em>Linear algebra operations: scipy.linalg</em></a></p>
 </div>
 <div class="green topic">
@@ -291,16 +302,15 @@ recommend the use of <a class="reference external" href="http://docs.scipy.org/d
 <div><ul class="simple">
 <li>Look at the help for <tt class="docutils literal"><span class="pre">np.allclose</span></tt>. When might this be useful?</li>
 <li>Look at the help for <tt class="docutils literal"><span class="pre">np.triu</span></tt> and <tt class="docutils literal"><span class="pre">np.tril</span></tt>.</li>
-<li>Is the transpose a view or a copy? What implications does this have for
-making a matrix symmetric?</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
 </div>
 <div class="section" id="basic-reductions">
-<h2><a class="toc-backref" href="#id5">1.3.2.2. Basic reductions</a><a class="headerlink" href="#basic-reductions" title="Permalink to this headline">¶</a></h2>
-<p>Computing sums:</p>
+<h2><a class="toc-backref" href="#id3">1.3.2.2. Basic reductions</a><a class="headerlink" href="#basic-reductions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="computing-sums">
+<h3>1.3.2.2.1. Computing sums<a class="headerlink" href="#computing-sums" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <div class="newline"></div><span class="go">10</span>
@@ -335,24 +345,11 @@ making a matrix symmetric?</li>
 <div class="newline"></div></pre></div>
 </div>
 </div>
-<div class="section" id="other-reductions">
-<h3>1.3.2.2.1. Other reductions<a class="headerlink" href="#other-reductions" title="Permalink to this headline">¶</a></h3>
-<p>&#8212; works the same way (and take <tt class="docutils literal"><span class="pre">axis=</span></tt>)</p>
-<p>Statistics:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<div class="newline"></div><span class="go">1.75</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<div class="newline"></div><span class="go">1.5</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># last axis</span>
-<div class="newline"></div><span class="go">array([ 2.,  5.])</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>          <span class="c"># full population standard dev.</span>
-<div class="newline"></div><span class="go">0.82915619758884995</span>
-<div class="newline"></div></pre></div>
 </div>
-<p>Extrema:</p>
+<div class="section" id="other-reductions">
+<h3>1.3.2.2.2. Other reductions<a class="headerlink" href="#other-reductions" title="Permalink to this headline">¶</a></h3>
+<p>&#8212; works the same way (and take <tt class="docutils literal"><span class="pre">axis=</span></tt>)</p>
+<p><strong>Extrema:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 <div class="newline"></div><span class="go">1</span>
@@ -365,7 +362,7 @@ making a matrix symmetric?</li>
 <div class="newline"></div><span class="go">1</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Logical operations:</p>
+<p><strong>Logical operations:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
 <div class="newline"></div><span class="go">False</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
@@ -389,6 +386,20 @@ making a matrix symmetric?</li>
 <div class="newline"></div></pre></div>
 </div>
 </div>
+<p><strong>Statistics:</strong></p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="newline"></div><span class="go">1.75</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="newline"></div><span class="go">1.5</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># last axis</span>
+<div class="newline"></div><span class="go">array([ 2.,  5.])</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>          <span class="c"># full population standard dev.</span>
+<div class="newline"></div><span class="go">0.82915619758884995</span>
+<div class="newline"></div></pre></div>
+</div>
 <p>... and many more (best to learn as you go).</p>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise: Reductions</strong></p>
@@ -401,7 +412,7 @@ making a matrix symmetric?</li>
 </div>
 <div class="green topic">
 <p class="topic-title first">Worked Example: data statistics</p>
-<p>Data in <a href="#id1"><span class="problematic" id="id2">:download:`populations.txt &lt;../../data/populations.txt&gt;`_</span></a>
+<p>Data in <a class="reference download internal" href="../../_downloads/populations.txt"><tt class="xref download docutils literal"><span class="pre">populations.txt</span></tt></a>
 describes the populations of hares and lynxes (and carrots) in northern
 Canada during 20 years.</p>
 <p>You can view the data in an editor, or alternatively in IPython (both shell and notebook):</p>
@@ -439,10 +450,61 @@ Canada during 20 years.</p>
 <div class="newline"></div></pre></div>
 </div>
 </div>
+<div class="topic">
+<p class="topic-title first">Worked Example: diffusion using a random walk algorithm</p>
+<img alt="../../_images/random_walk.png" class="align-center" src="../../_images/random_walk.png" />
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>Let us consider a simple 1D random walk process: at each time step a
+walker jumps right or left with equal probability.</p>
+<p class="last">We are interested in finding the typical distance from the origin of a
+random walker after <tt class="docutils literal"><span class="pre">t</span></tt> left or right jumps? We are going to
+simulate many &#8220;walkers&#8221; to find this law, and we are going to do so
+using array computing tricks: we are going to create a 2D array with
+the &#8220;stories&#8221; (each walker has a story) in one direction, and the
+time in the other:</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/random_walk_schema.png"><img alt="../../_images/random_walk_schema.png" class="align-center" src="../../_images/random_walk_schema.png" style="width: 100%;" /></a>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">n_stories</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c"># number of walkers</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">t_max</span> <span class="o">=</span> <span class="mi">200</span>      <span class="c"># time during which we follow the walker</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>We randomly choose all the steps 1 or -1 of the walk:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_max</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">steps</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n_stories</span><span class="p">,</span> <span class="n">t_max</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="c"># Verification: all steps are 1 or -1</span>
+<div class="newline"></div><span class="go">array([-1,  1])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>We build the walks by summing steps along the time:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c"># axis = 1: dimension of time</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sq_distance</span> <span class="o">=</span> <span class="n">positions</span><span class="o">**</span><span class="mi">2</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>We get the mean in the axis of the stories:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mean_sq_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sq_distance</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Plot the results:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.figure.Figure object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_sq_distance</span><span class="p">),</span> <span class="s">&#39;g.&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s">&#39;y-&#39;</span><span class="p">)</span> 
+<div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;, &lt;matplotlib.lines.Line2D object at ...&gt;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$t$&quot;</span><span class="p">)</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.text.Text object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&quot;$\sqrt{\langle (\delta x)^2 \rangle}$&quot;</span><span class="p">)</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.text.Text object at ...&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.pdf">pdf</a>]</p>
+<img alt="../../_images/numpy_intro_5.png" src="../../_images/numpy_intro_5.png" />
+<p>We find a well-known result in physics: the RMS distance grows as the
+square root of the time!</p>
+</div>
 </div>
 </div>
 <div class="section" id="broadcasting">
-<span id="id3"></span><h2><a class="toc-backref" href="#id6">1.3.2.3. Broadcasting</a><a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id4">1.3.2.3. Broadcasting</a><a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Basic operations on <tt class="docutils literal"><span class="pre">numpy</span></tt> arrays (addition, etc.) are elementwise</p>
 </li>
@@ -587,7 +649,7 @@ want to) benefit from broadcasting:</p>
 </div>
 </div>
 <div class="section" id="array-shape-manipulation">
-<h2><a class="toc-backref" href="#id7">1.3.2.4. Array shape manipulation</a><a class="headerlink" href="#array-shape-manipulation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">1.3.2.4. Array shape manipulation</a><a class="headerlink" href="#array-shape-manipulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="flattening">
 <h3>1.3.2.4.1. Flattening<a class="headerlink" href="#flattening" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -717,7 +779,7 @@ has some more information about copies and views.</li>
 </div>
 </div>
 <div class="section" id="sorting-data">
-<h2><a class="toc-backref" href="#id8">1.3.2.5. Sorting data</a><a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">1.3.2.5. Sorting data</a><a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
 <p>Sorting along an axis:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -770,7 +832,7 @@ exercise.</li>
 </div>
 </div>
 <div class="section" id="summary">
-<h2><a class="toc-backref" href="#id9">1.3.2.6. Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">1.3.2.6. Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p><strong>What do you need to know to get started?</strong></p>
 <ul>
 <li><p class="first">Know how to create arrays : <tt class="docutils literal"><span class="pre">array</span></tt>, <tt class="docutils literal"><span class="pre">arange</span></tt>, <tt class="docutils literal"><span class="pre">ones</span></tt>,
@@ -797,6 +859,15 @@ broadcasting. Know more Numpy functions to handle various array
 operations.</p>
 </li>
 </ul>
+<div class="topic">
+<p class="topic-title first"><strong>Quick read</strong></p>
+<p>If you want to do a first quick pass through the Scipy lectures to
+learn the ecosystem, you can directly skip to the next chapter:
+<a class="reference internal" href="../matplotlib/matplotlib.html#matplotlib"><em>Matplotlib: plotting</em></a>.</p>
+<p>The remainder of this chapter is not necessary to follow the rest of
+the intro part. But be sure to come back and finish this chapter, as
+well as to do some more <a class="reference internal" href="exercises.html#numpy-exercises"><em>exercices</em></a>.</p>
+</div>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -831,6 +902,12 @@ operations.</p>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/numpy/operations.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

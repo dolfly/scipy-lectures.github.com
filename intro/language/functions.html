@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -116,6 +116,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/functions.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -202,11 +208,11 @@ by a colon.</li>
 <p>Keyword arguments allow you to specify <em>default values</em>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Default values are evaluated when the function is defined, not when
+<p>Default values are evaluated when the function is defined, not when
 it is called. This can be problematic when using mutable types (e.g.
 dictionary or list) and modifying them in the function body, since the
 modifications will be persistent across invocations of the function.</p>
-</div>
+<p>Using an immutable type in a keyword argument:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [124]: </span><span class="n">bigx</span> <span class="o">=</span> <span class="mi">10</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [125]: </span><span class="k">def</span> <span class="nf">double_it</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bigx</span><span class="p">):</span>
@@ -218,6 +224,28 @@ modifications will be persistent across invocations of the function.</p>
 <div class="newline"></div><span class="gp">In [128]: </span><span class="n">double_it</span><span class="p">()</span>
 <div class="newline"></div><span class="gr">Out[128]: </span><span class="mi">20</span>
 <div class="newline"></div></pre></div>
+</div>
+<p>Using an mutable type in a keyword argument (and modifying it inside the
+function body):</p>
+<div class="last highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="k">def</span> <span class="nf">add_to_dict</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}):</span>
+<div class="newline"></div><span class="gp">   ...:</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<div class="newline"></div><span class="gp">   ...:</span>         <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="newline"></div><span class="gp">   ...:</span>     <span class="k">print</span> <span class="n">args</span>
+<div class="newline"></div><span class="gp">   ...:</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">add_to_dict</span>
+<div class="newline"></div><span class="gr">Out[3]: </span><span class="o">&lt;</span><span class="n">function</span> <span class="n">__main__</span><span class="o">.</span><span class="n">add_to_dict</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">add_to_dict</span><span class="p">()</span>
+<div class="newline"></div><span class="go">{&#39;a&#39;: 2, &#39;b&#39;: 3}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">add_to_dict</span><span class="p">()</span>
+<div class="newline"></div><span class="go">{&#39;a&#39;: 3, &#39;b&#39;: 4}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">add_to_dict</span><span class="p">()</span>
+<div class="newline"></div><span class="go">{&#39;a&#39;: 4, &#39;b&#39;: 5}</span>
+<div class="newline"></div></pre></div>
+</div>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -298,7 +326,7 @@ may modify the caller&#8217;s variable in-place:</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>Functions have a local variable table called a <em>local namespace</em>.</p>
-<p>The variable <tt class="docutils literal"><span class="pre">x</span></tt> only exists within the function <em>try_to_modify</em>.</p>
+<p>The variable <tt class="docutils literal"><span class="pre">x</span></tt> only exists within the function <tt class="docutils literal"><span class="pre">try_to_modify</span></tt>.</p>
 </div>
 <div class="section" id="global-variables">
 <h2>1.2.4.5. Global variables<a class="headerlink" href="#global-variables" title="Permalink to this headline">¶</a></h2>
@@ -495,6 +523,12 @@ else append x to greater</div></blockquote>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/functions.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

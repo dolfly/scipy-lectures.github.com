@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -115,6 +115,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/advanced_numpy/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -541,20 +547,13 @@ etc. for loading sound data...</p>
 <col width="19%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">0x01</span></tt></p>
-</td>
-<td><p class="first last">||</p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">0x02</span></tt></p>
-</td>
-<td><p class="first last">||</p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">0x03</span></tt></p>
-</td>
-<td><p class="first last">||</p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">0x04</span></tt></p>
-</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">0x01</span></tt></td>
+<td>||</td>
+<td><tt class="docutils literal"><span class="pre">0x02</span></tt></td>
+<td>||</td>
+<td><tt class="docutils literal"><span class="pre">0x03</span></tt></td>
+<td>||</td>
+<td><tt class="docutils literal"><span class="pre">0x04</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -1231,35 +1230,23 @@ pre-made ones</p>
 <col width="82%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_f_f</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">float</span> <span class="pre">elementwise_func(float</span> <span class="pre">input_1)</span></tt></p>
-</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">PyUfunc_f_f</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">float</span> <span class="pre">elementwise_func(float</span> <span class="pre">input_1)</span></tt></td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_ff_f</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">float</span> <span class="pre">elementwise_func(float</span> <span class="pre">input_1,</span> <span class="pre">float</span> <span class="pre">input_2)</span></tt></p>
-</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">PyUfunc_ff_f</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">float</span> <span class="pre">elementwise_func(float</span> <span class="pre">input_1,</span> <span class="pre">float</span> <span class="pre">input_2)</span></tt></td>
 </tr>
-<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_d_d</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">double</span> <span class="pre">elementwise_func(double</span> <span class="pre">input_1)</span></tt></p>
-</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">PyUfunc_d_d</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">double</span> <span class="pre">elementwise_func(double</span> <span class="pre">input_1)</span></tt></td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_dd_d</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">double</span> <span class="pre">elementwise_func(double</span> <span class="pre">input_1,</span> <span class="pre">double</span> <span class="pre">input_2)</span></tt></p>
-</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">PyUfunc_dd_d</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">double</span> <span class="pre">elementwise_func(double</span> <span class="pre">input_1,</span> <span class="pre">double</span> <span class="pre">input_2)</span></tt></td>
 </tr>
-<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_D_D</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">elementwise_func(npy_cdouble</span> <span class="pre">*input,</span> <span class="pre">npy_cdouble*</span> <span class="pre">output)</span></tt></p>
-</td>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">PyUfunc_D_D</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">elementwise_func(npy_cdouble</span> <span class="pre">*input,</span> <span class="pre">npy_cdouble*</span> <span class="pre">output)</span></tt></td>
 </tr>
-<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">PyUfunc_DD_D</span></tt></p>
-</td>
-<td><p class="first last"><tt class="docutils literal"><span class="pre">elementwise_func(npy_cdouble</span> <span class="pre">*in1,</span> <span class="pre">npy_cdouble</span> <span class="pre">*in2,</span> <span class="pre">npy_cdouble*</span> <span class="pre">out)</span></tt></p>
-</td>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">PyUfunc_DD_D</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">elementwise_func(npy_cdouble</span> <span class="pre">*in1,</span> <span class="pre">npy_cdouble</span> <span class="pre">*in2,</span> <span class="pre">npy_cdouble*</span> <span class="pre">out)</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -2113,6 +2100,12 @@ git push github name-of-my-feature-branch</pre>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/advanced_numpy/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

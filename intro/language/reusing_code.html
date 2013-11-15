@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -116,6 +116,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/reusing_code.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -127,7 +133,7 @@
   <div class="section" id="reusing-code-scripts-and-modules">
 <h1>1.2.5. Reusing code: scripts and modules<a class="headerlink" href="#reusing-code-scripts-and-modules" title="Permalink to this headline">¶</a></h1>
 <p>For now, we have typed all instructions in the interpreter. For longer
-sets of instructions we need to change tack and write the code in text
+sets of instructions we need to change track and write the code in text
 files (using a text editor), that we will call either <em>scripts</em> or
 <em>modules</em>. Use your favorite text editor (provided it offers syntax
 highlighting for Python), or the editor that comes with the Scientific
@@ -170,7 +176,7 @@ example,</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>The script has been executed. Moreover the variables defined in the
-script (such as <tt class="docutils literal"><span class="pre">message</span></tt>) are now available inside the interpeter&#8217;s
+script (such as <tt class="docutils literal"><span class="pre">message</span></tt>) are now available inside the interpreter&#8217;s
 namespace.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -203,7 +209,7 @@ directory as the test.py file, we can execute this in a console:</p>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Don&#8217;t implement option parsing yourself. Use modules such as
-<tt class="docutils literal"><span class="pre">optparse</span></tt> or <tt class="docutils literal"><span class="pre">argparse</span></tt> .</p>
+<tt class="docutils literal"><span class="pre">optparse</span></tt>, <tt class="docutils literal"><span class="pre">argparse</span></tt> or <tt class="docutils literal"><span class="pre">docopt</span></tt>.</p>
 </div>
 </div>
 </div>
@@ -246,10 +252,10 @@ directory as the test.py file, we can execute this in a console:</p>
 <li>Makes the code harder to read and understand: where do symbols come
 from?</li>
 <li>Makes it impossible to guess the functionality by the context and
-the name (hint: <a class="reference external" href="http://docs.python.org/2.7/library/os.html#os.name" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">os.name</span></tt></a> is the name of the OS), and to profit
+the name (hint: <cite>os.name</cite> is the name of the OS), and to profit
 usefully from tab completion.</li>
-<li>Restricts the variable names you can use: <a class="reference external" href="http://docs.python.org/2.7/library/os.html#os.name" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">os.name</span></tt></a> might override
-<tt class="xref py py-obj docutils literal"><span class="pre">name</span></tt>, or vise-versa.</li>
+<li>Restricts the variable names you can use: <cite>os.name</cite> might override
+<cite>name</cite>, or vise-versa.</li>
 <li>Creates possible name clashes between modules.</li>
 <li>Makes the code impossible to statically check for undefined
 symbols.</li>
@@ -440,8 +446,8 @@ module is imported in the different scripts (do not copy-and-paste
 your functions in the different scripts!).</li>
 </ul>
 </div>
-<div class="section" id="how-module-are-found-and-imported">
-<h3>1.2.5.5.1. How module are found and imported<a class="headerlink" href="#how-module-are-found-and-imported" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-modules-are-found-and-imported">
+<h3>1.2.5.5.1. How modules are found and imported<a class="headerlink" href="#how-modules-are-found-and-imported" title="Permalink to this headline">¶</a></h3>
 <p>When the <tt class="docutils literal"><span class="pre">import</span> <span class="pre">mymodule</span></tt> statement is executed, the module <tt class="docutils literal"><span class="pre">mymodule</span></tt>
 is searched in a given list of directories. This list includes a list
 of installation-dependent default path (e.g., <tt class="docutils literal"><span class="pre">/usr/lib/python</span></tt>) as
@@ -622,6 +628,15 @@ conventions as anybody else!) are given in the <a class="reference external" hre
 Code</a>.</p>
 </li>
 </ul>
+<hr class="docutils" />
+<div class="topic">
+<p class="topic-title first"><strong>Quick read</strong></p>
+<p>If you want to do a first quick pass through the Scipy lectures to
+learn the ecosystem, you can directly skip to the next chapter:
+<a class="reference internal" href="../numpy/index.html#numpy"><em>NumPy: creating and manipulating numerical data</em></a>.</p>
+<p>The remainder of this chapter is not necessary to follow the rest of
+the intro part. But be sure to come back and finish this chapter later.</p>
+</div>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -656,6 +671,12 @@ Code</a>.</p>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/language/reusing_code.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

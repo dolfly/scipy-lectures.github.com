@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -115,6 +115,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/numpy/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -124,7 +130,7 @@
           <div class="body">
             
   <div class="section" id="numpy-creating-and-manipulating-numerical-data">
-<h1>1.3. NumPy: creating and manipulating numerical data<a class="headerlink" href="#numpy-creating-and-manipulating-numerical-data" title="Permalink to this headline">¶</a></h1>
+<span id="numpy"></span><h1>1.3. NumPy: creating and manipulating numerical data<a class="headerlink" href="#numpy-creating-and-manipulating-numerical-data" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -173,18 +179,24 @@ numerical computing with Python.</p>
 </style><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="array_object.html">1.3.1. The Numpy array object</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and Numpy arrays?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#reference-documentation">1.3.1.2. Reference documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#import-conventions">1.3.1.3. Import conventions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#creating-arrays">1.3.1.4. Creating arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#functions-for-creating-arrays">1.3.1.5. Functions for creating arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#basic-data-types">1.3.1.6. Basic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#basic-visualization">1.3.1.7. Basic visualization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#indexing-and-slicing">1.3.1.8. Indexing and slicing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#copies-and-views">1.3.1.9. Copies and views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="array_object.html#fancy-indexing">1.3.1.10. Fancy indexing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="array_object.html#using-boolean-masks">1.3.1.10.1. Using boolean masks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="array_object.html#indexing-with-an-array-of-integers">1.3.1.10.2. Indexing with an array of integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and Numpy arrays?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#numpy-arrays">1.3.1.1.1. Numpy arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#numpy-reference-documentation">1.3.1.1.2. Numpy Reference documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#import-conventions">1.3.1.1.3. Import conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#creating-arrays">1.3.1.2. Creating arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#manual-construction-of-arrays">1.3.1.2.1. Manual construction of arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#functions-for-creating-arrays">1.3.1.2.2. Functions for creating arrays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#basic-data-types">1.3.1.3. Basic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#basic-visualization">1.3.1.4. Basic visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#indexing-and-slicing">1.3.1.5. Indexing and slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#copies-and-views">1.3.1.6. Copies and views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_object.html#fancy-indexing">1.3.1.7. Fancy indexing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#using-boolean-masks">1.3.1.7.1. Using boolean masks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="array_object.html#indexing-with-an-array-of-integers">1.3.1.7.2. Indexing with an array of integers</a></li>
 </ul>
 </li>
 </ul>
@@ -196,7 +208,8 @@ numerical computing with Python.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="operations.html#basic-reductions">1.3.2.2. Basic reductions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="operations.html#other-reductions">1.3.2.2.1. Other reductions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#computing-sums">1.3.2.2.1. Computing sums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#other-reductions">1.3.2.2.2. Other reductions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="operations.html#broadcasting">1.3.2.3. Broadcasting</a></li>
@@ -279,6 +292,12 @@ numerical computing with Python.</p>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/intro/numpy/index.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

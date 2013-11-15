@@ -69,6 +69,35 @@ div.related {
     padding: 2px 0;
 }
 
+div.related li.edit_on_github a {
+    font-weight: normal;
+    margin-right: 1em;
+    color: #DDD;
+}
+
+div.related li.edit_on_github span.tooltip {
+    display: none;
+    z-index: 100;
+}
+
+div.related li.edit_on_github:hover span.tooltip {
+    display: block;
+    color: white;
+    position: absolute;
+    right: 120px;
+    top: 37px;
+    padding: 2px 10px;
+    background-color: #222;
+    border-radius: 6px;
+}
+
+@media all and (max-width: 840px) {
+  li.edit_on_github a {
+      display: none;
+  }
+}
+
+
 /* Hide the footer */
 div.footer {
     display: none;

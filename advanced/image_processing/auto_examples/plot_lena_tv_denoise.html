@@ -67,7 +67,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -105,6 +105,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/image_processing/auto_examples/plot_lena_tv_denoise.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -117,14 +123,14 @@
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../../_downloads/plot_lena_tv_denoise.py"><tt class="xref download docutils literal"><span class="pre">plot_lena_tv_denoise.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">scipy</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<div class="newline"></div><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">tv_denoise</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">denoise_tv_chambolle</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">l</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
 <div class="newline"></div><span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">230</span><span class="p">:</span><span class="mi">290</span><span class="p">,</span> <span class="mi">220</span><span class="p">:</span><span class="mi">320</span><span class="p">]</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">noisy</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">l</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">tv_denoised</span> <span class="o">=</span> <span class="n">tv_denoise</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="newline"></div><span class="n">tv_denoised</span> <span class="o">=</span> <span class="n">denoise_tv_chambolle</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">))</span>
@@ -138,7 +144,7 @@
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;TV denoising&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">tv_denoised</span> <span class="o">=</span> <span class="n">tv_denoise</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="newline"></div><span class="n">tv_denoised</span> <span class="o">=</span> <span class="n">denoise_tv_chambolle</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tv_denoised</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
@@ -173,6 +179,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/image_processing/auto_examples/plot_lena_tv_denoise.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>

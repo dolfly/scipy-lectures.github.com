@@ -70,7 +70,7 @@
 		if($(this).hasClass("collapsed")) {
 		    var content = $(this).text();
 		    var html = $(this).html();
-    
+
 		    if(content.length > 40) {
 			if ($.browser.msie) {
 			    // We start at '3' to avoid 'tip', as IE
@@ -115,6 +115,12 @@
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/interfacing_with_c/interfacing_with_c.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>  
@@ -645,7 +651,7 @@ must use a combination of <tt class="docutils literal"><span class="pre">make</s
 <li>Note the inherent limitation of contiguous single dimensional Numpy arrays,
 since the C functions requires this kind of buffer.</li>
 <li>Also note that the output array must be preallocated, for example with
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.7)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></tt></a> and the function will write into it&#8217;s buffer.</li>
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.8)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></tt></a> and the function will write into it&#8217;s buffer.</li>
 <li>Although the original signature of the <tt class="docutils literal"><span class="pre">cos_doubles</span></tt> function is <tt class="docutils literal"><span class="pre">ARRAY,</span>
 <span class="pre">ARRAY,</span> <span class="pre">int</span></tt> the final <tt class="docutils literal"><span class="pre">cos_doubles_func</span></tt> takes only two Numpy arrays as
 arguments.</li>
@@ -1329,6 +1335,12 @@ you, thus making it more like the Numpy-C-API example.</li>
          alt="Collapse to compact view" style="padding: 1ex;"/>
 	<span class="hiddenlink">Collapse document to compact view</span>
     </a></li>
+    <li class="right edit_on_github"><a href="https://github.com/scipy-lectures/scipy-lecture-notes/edit/master/advanced/interfacing_with_c/interfacing_with_c.rst">Edit
+    <span class="tooltip">
+	Improve this page:<br/>Edit it on Github.
+    </span>
+    </a>
+    </li>
 
       </ul>
     </div>
